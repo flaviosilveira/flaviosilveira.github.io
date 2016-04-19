@@ -1,0 +1,278 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CodeIgniter, Internet Explorer E O Tempo De Expiração Da Sessão - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="CodeIgniter, Internet Explorer E O Tempo De Expiração Da Sessão Categorias: desenvolvimento, php Nesta Quinta-feira antes de sair do trabalho me &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>CodeIgniter, Internet Explorer E O Tempo De Expiração Da Sessão</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-01-17T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Nesta Quinta-feira antes de sair do trabalho me deparo com uma surpresa no novo sistema que estou trabalhando. O login de acesso havia parado de funcionar no Internet Explorer. No Firefox tudo normal. Chata mania de ficar testando só no Firefox por conta das facilidades como Firebug e WebDeveloper, ai quando vamos testar no browser do usuário acontece essas coisas.</p>
+
+
+
+
+<p>Sexta pela manhã, foi minha primeira tarefa do dia. Achei que seria algo bobo. Realmente era, mas levei 4 horas para descobrir.</p>
+
+
+
+
+<p>Comecei pelos arquivos de JavaScript vendo se estava tudo ok.<br/>
+Os retornos via ajax do banco estavam ok.<br/>
+Parti para os controllers que gravam a sessão no browser.<br/>
+Comentei a biblioteca que faz verificação da sessão para deixar eu acessar livremente a aplicação. Dei um print no valor da sessão, que pelo codeIgniter se verifica assim:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">//Não esqueça de chamar o helper session
+// Login é o valor que eu estava gravando na sessão
+print($this-&gt;session-&gt;userdata('login'));
+
+// A tradicional global session não funcionará no codeIgniter
+print($_SESSION['login']);
+</pre>
+
+
+
+
+<p>No Firefox tudo ok. No Internet Explorer em branco. Que beleza, o Internet Explorer não está deixando escrever na sessão&#8230;</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Navegando pelo <a href="http://www.google.com">segundo cérebro</a> não tive nenhuma resposta conclusiva. As soluções propostas não se encaixavam para mim. Atualizar versão do apache, tirar Underlines da url, tirar números do nome do servidor, nada disso fez sentido pra mim.</p>
+
+
+
+
+<p>Sem idéias, me juntei ao meu amigo <a href="http://www.ronieneubauer.com">Ronie</a> e ao Rafael que também faz parte da minha equipe nesse projeto para caçar uma solução.</p>
+
+
+
+
+<p>Tiramos o redirecionamento do Login, para manter na mesma página. E demos ali também um print, dessa vez em todos os valores da sessão</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">//Print_r por se tratar de array
+print_r($this-&gt;session-&gt;userdata);
+</pre>
+
+
+
+
+<p>Os valores estavam ali, o problema estava no redirecionamento então.</p>
+
+
+
+
+<p>Quebramos a cabeça demais, e como antes estava funcionando no IE, resolvemos rever tudo de brusco que mudamos no sistema.<br/>
+Verificamos rotas, Jquery e seus plugins, Verificações de nível de acesso, nada.<br/>
+Até que me lembrei que havia mudado a configuração da sessão, para expirar em meia hora (1800 segundos) tirando do padrão de duas horas (7200 segundos) que vem no CodeIgniter. Esses valores são alterados no config.php, ali você dá de encontro com outras configurações para sua sessão, como nome dela e etc.</p>
+
+
+
+
+<p>E, Sim, era isso. Voltamos ao default do codeIgniter e tudo voltou a funcionar. Me lembro de ter tido uns problemas similares trabalhando com PHP sem frameworks, mas nem suspeitava. Fomos testando para ver o mínimo que o IE iria aceitar de tempo de expiração. Chegamos no valor de 3835 segundos. Mesmo assim continuou muita instável, e setamos em 4000 segundos.</p>
+
+
+
+
+<p>Problema resolvido após 4 horas de Prints, Alerts, Pesquisa, Palpites e Indignação&#8230;</p>
+
+
+
+
+<p>Valeu..<br/>
+Abraços !!!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao';
+    var disqus_title = 'CodeIgniter, Internet Explorer E O Tempo De Expiração Da Sessão';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2009/firefox-ajudando-no-seu-dia-de-trabalho/" title="Previous Post: Firefox Ajudando No Seu Dia De Trabalho">&laquo; Anterior: Firefox Ajudando No Seu Dia De Trabalho</a>
+        
+
+        
+          <a class="pull-right" href="/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/" title="Next Post: Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)">Próximo: Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre) &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/';
+        var disqus_url = 'http://flaviosilveira.com/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

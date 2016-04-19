@@ -1,0 +1,338 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios Categorias: desenvolvimento, php Cenário: Você compra o domínio &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-07-26T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Cenário:</p>
+
+
+
+
+<p>Você compra o domínio principal, <em>www.site.com.br</em>. E você vai ter duas versões desse site, uma para cada cliente, que vai usar todas as regras de negócio iguais. A única diferença será o layout. Os clientes pediram os subdomínios <em>branco.site.com.br</em> e <em>preto.site.com.br</em>.</p>
+
+
+
+
+<p>Você pode fazer duas cópias do site em pastas diferentes, mas levando em consideração que eles tem o mesmo CORE, isso não é muito inteligente. Pense se você tiver que fazer uma atualização, você vai ter de mexer em ambos os projetos.</p>
+
+
+
+
+<p>Porque não fazer os subdomínios como links simbólicos para uma mesma pasta? De lá você pode fazer uma verificação. Se for um site, pega o layout branco, se for o outro pega o layout preto.</p>
+
+
+
+
+<p>Problema:</p>
+
+
+
+
+<p>No Codeigniter você define a URL principal do seu projeto nos arquivos de configuração, na variável <em>$config[&#8216;base_url&#8217;]</em>. Você não vai ter como colocar os subdomínios lá. O que fazer?</p>
+
+
+
+
+<p>Solução:<br/>
+Usar a Global <em>$_SERVER</em>.</p>
+
+
+
+
+<p>Essa Global traz informações como o host que você está acessando, o email do administrador da máquina, o software usado, a configuração do TimeOut entre outras.</p>
+
+
+
+
+<p>Para que você mesmo visualize tudo isso faça o seguinte. Abra o seu config.php do CodeIgniter e logo acima de onde está setado a variável <em>$config[&#8216;base_url&#8217;]</em> de um print_r, como abaixo:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       http://example.com/
+|
+*
+print_r($_SERVER);
+die;
+$config['base_url']     = "http://www.site.com.br/";
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Veja em seu browser todas as opções que você tem nessa global.</p>
+
+
+
+
+<p>Dê uma atenção na primeira opção que vêm no array, o <em>HTTP_HOST</em>. Ele traz o endereço primário que você está acessando. É o que você precisa para setar seu config de acordo com a url que seu visitante acessar.</p>
+
+
+
+
+<p>Dando um print apenas nesse cara,</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       http://example.com/
+|
+*
+print_r($_SERVER['HTTP_HOST']);
+die;
+$config['base_url']     = "http://www.site.com.br/";
+
+</pre>
+
+
+
+
+<p>ele retorna o seu subdomínio.</p>
+
+
+
+
+<p>Agora é só fazer uma adaptação.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">|--------------------------------------------------------------------------
+| Base Site URL
+|--------------------------------------------------------------------------
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       http://example.com/
+|
+*
+
+$config['base_url']     = "http://" . $_SERVER['HTTP_HOST'];
+
+</pre>
+
+
+
+
+<p>Seja lá qual subdomínio você acessar, ele vai setar como <em>base_url</em> para você.</p>
+
+
+
+
+<p>Caso você não use subdomínios, esse artifício pode ser usado para você deixar o base_url automatizado para seus projetos.</p>
+
+
+
+
+<p>Espero que tenham curtido a idéia.<br/>
+Qualquer dúvida só mandar.<br/>
+Abraços!!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios';
+    var disqus_title = 'CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2009/redirecionando-para-versao-mobile/" title="Previous Post: Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript">&laquo; Anterior: Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</a>
+        
+
+        
+          <a class="pull-right" href="/2009/comparando-arrays-e-trazendo-os-valores-diferentes/" title="Next Post: Comparando Arrays E Trazendo Os Valores Diferentes">Próximo: Comparando Arrays E Trazendo Os Valores Diferentes &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/';
+        var disqus_url = 'http://flaviosilveira.com/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

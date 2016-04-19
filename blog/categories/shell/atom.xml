@@ -1,0 +1,503 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Shell | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Erros No Vagrant No Mavericks OSX?]]></title>
+    <link href="http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx/"/>
+    <updated>2014-01-17T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx</id>
+    <content type="html"><![CDATA[<p>Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.</p>
+
+
+
+
+<p>[Ainda não sabe o que é Vagrant? Confira esses meus dois posts: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/" title="Vagrant fácil e útil">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a> e <a href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/" title="Vagrant, PuPHPet e PHP Built In">http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/</a>]</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Correndo atrás do que estava acontecendo cheguei no post do Stu Miller <a href="http://www.stumiller.me/fixing-vagrant-osx-mavericks-update/" title="Stu Miller : Fixing Vagrant after an Mavericks Update">http://www.stumiller.me/fixing-vagrant-osx-mavericks-update/</a> que mostra os comandos para sair desse problema.</p>
+
+
+
+
+<p>Porém você vai descobrir, seja lendo os comentários no blog do Stu ou na prática, que a cada vez que desligar seu Mac terá que executar esses comandos. Para diminuir um pouco o saco de ter que fazer isso sempre, criei um Shell Script que você pode colocar para rodar automaticamente quando sua máquina liga ou ao menos não ter que ficar lembrando quais eram os comandos.</p>
+
+
+
+
+<p><a href="../../assets/uploads/fix-mavericks.sh" title="Fix Mavericks Shell Script">Faça o download aqui!</a></p>
+
+
+
+
+<p>Execute-o com SUDO.<br/>
+Você passa um primeiro parâmetro com o caminho da sua máquina virtual.<br/>
+O segundo parâmetro é opcional, caso a sua versão do <em>VirtualBox</em> seja maior ou igual que 4.3 apenas passe um <em>true</em>.<br/>
+Exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo ./fix-maverick.sh seu-diretorio true
+</pre>
+
+
+
+
+<p>O script não está a prova de balas, é apenas uma ajuda para resolver o problema.<br/>
+Abrindo o script você vê um código bem simples, checando se o <em>vagrant</em> está instalado, se você executou o comando como SUDO e se o caminho passado é válido.</p>
+
+
+
+
+<p>Qualquer sugestão é só enviar. Abraços!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
+    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
+    <updated>2011-12-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
+
+
+
+
+<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
+
+
+
+
+<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Buscando comandos digitados no terminal</strong></p>
+
+
+
+
+<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
+
+
+
+
+<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
+Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
+Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
+
+
+
+
+<p><strong>Exigindo um pouco mais do histórico</strong></p>
+
+
+
+
+<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
+Uma das maneiras de se fazer isso é com o comando abaixo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">history
+</pre>
+
+
+
+
+<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
+<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
+
+
+
+
+<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!44
+</pre>
+
+
+
+
+<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
+
+
+
+
+<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!-2
+</pre>
+
+
+
+
+<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
+
+
+
+
+<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
+
+
+
+
+<p><strong>O que mais?</strong></p>
+
+
+
+
+<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">man history
+</pre>
+
+
+
+
+<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
+Dúvidas? Sugestões? Estamos aí!<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Conhecendo Melhor Seu Interpretador De Comandos]]></title>
+    <link href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
+    <updated>2011-10-30T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
+    <content type="html"><![CDATA[<p>Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.</p>
+
+
+
+
+<p>Quem faz essa ligação entre você e o coração do sistema operacional, permitindo executar esses comandos, é o Shell. Quem interpreta e processa os comandos para você, é uma implementação do Shell, que é o que vamos conhecer melhor aqui hoje.</p>
+
+
+
+
+<p>Este termo Shell, deve ter feito você lembrar sobre Shell Script, que escutamos falar muito e nada mais é do que um script com vários comandos Shell dentro dele.</p>
+
+
+
+
+<p>Dentre as implementações de Shell, aquilo que interpreta seus comandos, a mais famosa hoje é o Bash (Bourne-again shell, fazendo uma referência ao Bourne Shell que você pode pesquisar sobre). Para conferir qual o interpretador padrão de seus comandos, em seu terminal digite o seguinte comando</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">echo $SHELL
+</pre>
+
+
+
+
+<p>Se seu interpretador for o Bash, como a maioria, você vai ver a saída <em>/bin/bash</em>.</p>
+
+
+
+
+<p>Entre outras implementações de Shell podemos ter <em>csh</em>, <em>tcsh</em>, <em>sh</em>, <em>ksh</em>, e várias outras. Para conferir se essas implementações estão instaladas no seu sistema operacional, basta digitar o nome delas. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">bash
+</pre>
+
+
+
+
+<p>Caso esteja instalada, o terminal irá permitir que execute comandos naquela implementação, caso contrário apontará como comando inexistente. Você também consegue uma listagem das implementações shell disponíveis em seu sistema operacional abrindo o arquivo shells, geralmente localizado em <em>/etc/shells</em>.</p>
+
+
+
+
+<p>Acredito que se você usar outras implementações apenas por algum tempo, vai achar todas muito parecidas pois uma deriva ou usa a outra, e assim nem vai notar diferença entre elas.</p>
+
+
+
+
+<p><strong>Usando o Bash</strong></p>
+
+
+
+
+<p>O bash traz alguns atalhos que podem facilitar a sua vida, sendo um dos principais a tecla <em>TAB</em> (ou <em>ctrl + i</em>) para completar comandos, nomes de arquivos ou nomes de variáveis.</p>
+
+
+
+
+<p>Para buscar por comandos que você tenha digitado anteriormente use <em>ctrl + r</em>.<br/>
+Para anular a busca use <em>ctrl + c</em>, que também é usado para abortar outros comandos, scripts e as vezes loops infinitos.</p>
+
+
+
+
+<p><em>ctrl + a</em> para ir ao início da linha do comando (também obtido com a tecla <em>home</em>, se houver), <em>ctrl + e</em> para ir ao final dela (equivalente a tecla <em>end</em>).<br/>
+Perdeu a tecla <em>enter</em> ou cansou dela? Use <em>ctrl + j</em></p>
+
+
+
+
+<p>Esses atalhos tendem a funcionar melhor quando se está definido o padrão de teclas <em>Emacs</em>, embora grande maioria deles funcione em outros padrões.</p>
+
+
+
+
+<p>Você pode mudar esse padrão com o comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">set -o emacs
+</pre>
+
+
+
+
+<p>Você poderia usar o padrão <em>VI</em>, da seguinte maneira</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">set -o vi
+</pre>
+
+
+
+
+<p>Como exemplo para essa situação, temos os atalhos <em>ctrl + p</em> (equivalente a seta para cima) e <em>ctrl + n</em> (equivalente a seta para baixo) para trazer os últimos comandos executados. Eles funcionam apenas no padrão <em>emacs</em>.</p>
+
+
+
+
+<p><strong>Preciso saber esses comandos?</strong></p>
+
+
+
+
+<p>Muito provavelmente um marginal não vai encostar uma arma na sua cabeça lhe cobrando esses comandos no meio da rua. Mas talvez algum dia na sua carreira, você vai entrar em algum Data Center, e ter de mexer diretamente em uma máquina que estiver dentro de um hack enorme.</p>
+
+
+
+
+<p>Você irá puxar uma pequena gaveta, que irá se tornar um monitor e um simples teclado. Esse teclado pode conter apenas teclas básicas, excluindo assim as suas tão usadas setas para navegar entre os caracteres e palavras, e as vezes até sem a tecla enter. Esteja preparado conhecendo alguns desses comandos. Lembre-se que o google pode não estar por perto.</p>
+
+
+
+
+<p>Em breve trarei para vocês uma alternativa bem legal para o Bash, e como ela pode ajudar na produtividade de pessoas que trabalham diretamente com o terminal.</p>
+
+
+
+
+<p>Até lá!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)]]></title>
+    <link href="http://flaviosilveira.com/2009/codeigniter-metido-a-ruby/"/>
+    <updated>2009-04-16T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2009/codeigniter-metido-a-ruby</id>
+    <content type="html"><![CDATA[<p>Salve Galera&#8230;</p>
+
+
+
+
+<p>Vocês sabem, muitos projetos em sistemas são similares, sempre aquela mesma coisa&#8230;Listar, Inserir, Editar e Remover.<br/>
+Isso me levou a querer criar algo para facilitar tudo isso.</p>
+
+
+
+
+<p>Vendo meu Amigo <a href="http://www.fabiotomio.com" title="Fábio's Blogs">Fábio Tomio</a> mandando ver no <a href="http://www.rubyonrails.pro.br/">Ruby On Rails</a>, ele me mostrou que criava um cadastro (Listar, Inserir, Editar e Remover) muito facilmente, com apenas um comando no terminal, usando a funcão Scaffold se não me engano.</p>
+
+
+
+
+<p>Inspirado nisso, resolvi fazer um Shell Script que geraria todas as views, controller e model prontas com essas opções.</p>
+
+
+
+
+<p><strong>Introdução</strong></p>
+
+
+
+
+<ul>
+<li>Chamei de CiForms.</li>
+<li>Essa é uma versão de teste. É a versão Zero.</li>
+<li>Fiz esse script como estudo. Não tenho pretensões de lucros, suporte, nem nada com ele.</li>
+</ul>
+
+
+
+
+<p><strong>Porque não usar o Scaffolding do CodeIgniter</strong></p>
+
+
+
+
+<ul>
+<li>O Scaffolding do CodeIgniter não é aproveitável para o desenvolvimento de um projeto, ele não segue o padrão MVC do Framework. Como consta no manual, ele é apenas uma maneira de popular rapidamente uma tabela.</li>
+</ul>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Limitações dessa versão</strong></p>
+
+
+
+
+<ul>
+<li>É um shell Script. Vai rodar apenas em base Unix. Fiz testes no Linux distribuição Ubuntu 8.10 e no Leopard MAC OSX 10.5.6. Não vai rodar no Windows.</li>
+<li>Por enquanto está rodando apenas em DataBase MySQL, Tive problemas com a função listFields com outros bancos.</li>
+<li>Você deve estar com o módulo Rewrite do apache instalado, e usando o .htaccess como indicado no manual do CodeIgniter para fazer suas URL amigáveis, senão a navegação vai ficar super esquisita.</li>
+<li>Você deverá chamar o script de dentro da sua pasta Application e as pastas Controllers, Models e Views não podem ter sido renomeadas.</li>
+</ul>
+
+
+
+
+<p><strong>Como Usar</strong></p>
+
+
+
+
+<ul>
+<li>É bem simples. Basta chamar o script, passando o nome da tabela e em seguida o de sua PK.</li>
+<li>O script tem uma opção para ajuda (-h ou &#8211;help) e para verificar a versão (-V ou &#8211;version)</li>
+</ul>
+
+
+
+
+<p><strong>Exemplo prático</strong></p>
+
+
+
+
+<p>Baixe o Sheel Script <a href="../../assets/uploads/ciforms.sh" title="Baixe o arquivo">clicando aqui</a>.</p>
+
+
+
+
+<p>É necessário colocar o sheel dentro da pasta applications.<br/>
+<img class="alignnone size-full wp-image-83" title="picture-1" src="../../assets/uploads/2009/04/picture-1.png" alt="picture-1" width="541" height="316" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Em seguida Vamos executá-lo no terminal.<br/>
+Para chamar o script, apontamos o caminho atual (./) e depois seu nome (ciforms.sh).<br/>
+Repare que se não passar os parâmetros corretos ele não irá executar e irá lhe oferecer o help.<br/>
+<img class="alignnone size-full wp-image-91" title="picture-8" src="../../assets/uploads/2009/04/picture-8.png" alt="picture-8" width="596" height="83" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Colocando corretamente os parâmetros (Nome da tabela e em seguida a Primary Key da tabela)<br/>
+<img class="alignnone size-full wp-image-85" title="picture-3" src="../../assets/uploads/2009/04/picture-3.png" alt="picture-3" width="598" height="76" /><br style='clear: both;' /></p>
+
+
+
+
+<p>O Script é executado e você já pode conferir nas pastas que foram criados os arquivos .php.<br/>
+Um controller, um model, e três views.<br/>
+<img class="alignnone size-full wp-image-86" title="picture-4" src="../../assets/uploads/2009/04/picture-4.png" alt="picture-4" width="618" height="420" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Basta agora chamar no browser o seu site, em seguida o nome da tabela.<br/>
+Aqui está a listagem, onde você tem o Id do registro e os opções para Editar ou Remover.<br/>
+<img class="alignnone size-full wp-image-87" title="picture-5" src="../../assets/uploads/2009/04/picture-5.png" alt="picture-5" width="546" height="234" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Após Editar você volta para a listagem.<br/>
+<img class="alignnone size-full wp-image-88" title="picture-6" src="../../assets/uploads/2009/04/picture-6.png" alt="picture-6" width="450" height="294" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Após clicar em remover, você repara na listagem com um registro a menos.<br/>
+<img class="alignnone size-full wp-image-89" title="picture-7" src="../../assets/uploads/2009/04/picture-7.png" alt="picture-7" width="511" height="195" /><br style='clear: both;' /></p>
+
+
+
+
+<p>Fique a vontade para abrir o código e conferir como são feitas as chamadas e tudo mais. O Shell vai gerar tudo em uma linha só. Se você usa o Eclipse ou o Aptana como editor basta dar um Ctrl+Shift+F para identar tudo automaticamente.</p>
+
+
+
+
+<p>Os Arquivos php não contam com praticamente nenhum comentário, pois tive problemas do Shell em relação a eles.</p>
+
+
+
+
+<p>Devo mexer em breve nele para funcionar com Postgres. Até lá, um abraço a todos.</p>
+
+]]></content>
+  </entry>
+  
+</feed>

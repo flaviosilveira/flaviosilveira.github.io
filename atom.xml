@@ -1,0 +1,3662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Evoluindo Seu Primeiro Jogo Em HTML5]]></title>
+    <link href="http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5/"/>
+    <updated>2014-02-17T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5</id>
+    <content type="html"><![CDATA[<p>O post de hoje é uma continuação do anteriormente escrito Seu primeiro jogo em HTML5. O objetivo dessa continuação é aprender mais alguns conceitos de desenvolvimento de jogos e animar um pouco o nosso game que não estava lá essas coisas de divertido. Você acompanha a primeira parte no seguinte link <a href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/" title="Seu primeiro jogo em HTML5 - Parte 1">http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Nessa continuação vamos adicionar um pouco de jogabilidade, variando a velocidade das bolas que caem e também seu tamanho e a sua pontuação.</p>
+
+
+
+
+<p><strong>Objeto</strong><br/>
+Estamos querendo tipos diferentes de bolas. Tamanhos diferente, velocidades diferentes, pontos diferentes. Ainda são bolas, mas cada uma de um jeito, certo?<br/>
+Estamos falando então de uma mesma coisa, mas com características e comportamentos diferentes, concorda?</p>
+
+
+
+
+<p>Vamos entrar aqui então com o conceito de programação orientada a objetos para resolver o problema.<br/>
+Dependendo do seu nível em programação, esse pode ser um conceito novo e, se esse é o caso, você vai precisar fazer algumas pesquisas caso queira entender melhor alguns pontos. Se você não conhece Orientação a Objetos recomendo que pare a leitura aqui e pesquise á respeito e também como é aplicado na linguagem javaScript. Não é necessário um conhecimento profundo neste momento, dê aquela lida no conceito, faça um exemplos simples em um papel e volte a leitura do post. Caso você já entenda o suficiente desse conceito é seguir em frente.</p>
+
+
+
+
+<p>Precisamos então programar algo que crie as bolas para a gente, uma fôrma das bolas, que é equivalente a uma classe em orientação a objetos. Em javaScript não temos classes propriamente ditas, tudo que precisamos fazer é uma função.</p>
+
+
+
+
+<p>Pegue então o código que desenvolvemos no post anterior.<br/>
+Antes da nossa função inicializar, vamos criar uma função chamada bola e dentro dela vamos colocar todas as variáveis iniciais referente a bola que estão hoje na função inicializar.<br/>
+Veja como fica:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function bola()
+    {
+                bolaDiametro = 10;
+                bolaPosX = canvas.width / 2;
+                bolaPosY = -10;
+        velocidadeBola = 10;
+        colisao = false;
+    }
+        
+    function inicializar()
+    {
+        barraAltura = 15;
+        barraLargura = 90;
+
+        pontosJogador = 0;
+        jogadorPosicaoX = (canvas.width - barraLargura) / 2;
+        velocidadeJogador = 20;
+                
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");              
+                
+        document.addEventListener('keydown', keyDown);
+                
+        setInterval(gameLoop, 30);
+    }
+</pre>
+
+
+
+
+<p>Dentro da função inicializar vamos criar a primeira bola e adicionar ela dentro de um array. Esse array vai guardar todas as bolas que estiverem em cena. Dessa maneira teremos controle sobre elas.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function inicializar()
+    {
+        …     
+        var primeira = new bola()
+        bolas = new Array(primeira);
+        …
+    }
+</pre>
+
+
+
+
+<p>Rodando o seu código nesse momento verá que está tudo como antes. A questão é que nesse ponto não estamos utilizando nenhum conceito novo. Tudo que foi feito foi adicionar o código de antes para uma função, e chamar ela. Nem estamos trabalhando com o array criado não é mesmo?</p>
+
+
+
+
+<p>Vamos trocar a nossa função para ela realmente virar um objeto, com propriedades. Para isso adicione a palavra chave this a frente de todas as variáveis.<br/>
+Essa palavra chave fará referência para aquela instância de objeto e apenas ela. Caso não entenda isso aqui, talvez você entenda melhor quando trabalharmos com o array das bolas que estão em cena.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function bola()
+{
+    this.bolaDiametro = 10;
+    this.bolaPosX = canvas.width / 2;
+    this.bolaPosY = -10;
+    this.velocidadeBola = 10;
+    this.colisao = false;
+}
+</pre>
+
+
+
+
+<p>Neste momento o game para de funcionar. Isso porque as variáveis que temos dentro de nosso gameLoop já não existem mais. Temos agora um objeto bola e esse objeto adicionado a um array que é responsável por todas as bolas em cena. Precisamos trabalhar com esse array para as coisas voltarem a funcionar.</p>
+
+
+
+
+<p>Para questão de organização, já que as variáveis que definiam as características da bola não nos servem mais, podemos limpar elas da nossa definição inicial na primeira linha de javaScript. Mas não esqueça de adicionar a variável para o nosso array de bolas, para que fique acessível para todo o resto do código. Ficando assim:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, pontosJogador, bolas;
+</pre>
+
+
+
+
+<p>Agora vá até a função de gameLoop, e repare onde está a lógica da bola. Começa onde iniciamos com o desenho dela e termina com a verificação da colisão.<br/>
+O que vamos fazer aqui é tirar tudo isso, e aplicar para cada objeto dentro do array bolas usando um foreach. Fica dessa forma:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">// Bola
+bolas.forEach(function(bola, indice){
+    context.beginPath();
+    context.arc(b.bolaPosX, b.bolaPosY, b.bolaDiametro, 0, Math.PI * 2, true);
+    context.fill();
+                
+    if(bola.bolaPosY &lt;= canvas.height)
+    {
+        bola.bolaPosY += bola.velocidadeBola;
+    }
+    else
+    {
+        bola.bolaPosX = Math.random() * 600;
+        bola.bolaPosY = -10;
+        bola.colisao = false;
+    }
+                
+    // Checar Colisão
+    if((bola.bolaPosX &gt; jogadorPosicaoX && bola.bolaPosX &lt; jogadorPosicaoX + barraLargura) && bola.bolaPosY &gt;= canvas.height - barraAltura && bola.colisao == false)
+    {
+        pontosJogador++;
+        bola.colisao = true;
+    }
+});
+</pre>
+
+
+
+
+<p>Na função de forEach do javaScript o primeiro parâmetro é o elemento em si e o segundo o indíce.<br/>
+Para cada objeto dentro do array, ele vai executar uma vez.<br/>
+Note que agora nas variáveis com as características da bola de antes, adicionamos “b.”. É dessa maneira que acessamos as propriedades do objeto.<br/>
+Tome cuidado para não adicionar isso nas variáveis do jogador nem do canvas.<br/>
+Neste ponto se jogo volta a funcionar como antes, mas dessa vez usando bola com o conceito de orientação a objetos.</p>
+
+
+
+
+<p><strong>Cada bola um Objeto</strong><br/>
+Olhe o código e verá que quando a bola chega ao final do canvas ou quando ela colide com o jogador, não criamos uma nova, apenas editamos novamente as propriedades do mesmo objeto que foi criado da primeira vez. Vamos mudar isso alterando o if que checa se a bola já passou do canvas. Agora quando ela passar do canvas, vamos retirar ela do nosso array usando a função splice do javaScript.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if(bola.bolaPosY &lt;= canvas.height)
+    {
+        bola.bolaPosY += bola.velocidadeBola;
+    }
+    else
+    {
+        bolas.splice(indice, 1);
+    }
+</pre>
+
+
+
+
+<p>Tudo que estava dentro do else, que era usado para criar uma nova bola, não é mais necessário. Trocamos tudo isso pela função splice.<br/>
+Splice irá retirar um item do array baseado em seu índice. O primeiro parâmetro é o índice que queremos tirar e o segundo é a quantidade de índices a partir dele, que para nós será sempre 1.</p>
+
+
+
+
+<p>Rodando seu game agora, quando a bola passa pelo canvas, não é criado nenhuma nova.</p>
+
+
+
+
+<p><strong>Criando uma nova bola</strong><br/>
+Nosso foreach só é executado se tivermos bolas dentro dele. Como nossa primeira bola passou pelo canvas e foi destruída, vamos adicionar uma verificação antes do foreach para caso nosso array estiver vazio, criar uma nova bola dentro dele. Para isso vamos usar um push. Veja como fica:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if(bolas.length &lt;= 0)
+{
+    bolas.push(new bola());
+}
+</pre>
+
+
+
+
+<p>Certo, mas todas as bolas estão saindo no mesmo lugar. Dá para ganhar o jogo parado!<br/>
+Isso está acontecendo por conta da posição X e Y estarem fixas dentro da criação do nosso objeto.<br/>
+Vamos alterar isso com a ajuda da classe Math de javaScript.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function bola()
+{
+    this.bolaDiametro = 10;
+    this.bolaPosX = Math.random() * 600;
+    this.bolaPosY = -10;
+    this.velocidadeBola = 10;
+    this.colisao = false;
+}
+</pre>
+
+
+
+
+<p>A posição Y da bola pode continuar sendo -10 para aparecer antes do canvas. Mas para deixar a posição X randômica, use Math.random multiplicando pela largura do seu canvas.</p>
+
+
+
+
+<p>Use um pouco da matemática aqui para alterar também a velocidade de sua bola.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function bola()
+{
+    this.bolaDiametro = 10;
+    this.bolaPosX = Math.random() * 600;
+    this.bolaPosY = -10;
+    this.velocidadeBola = Math.random() * (10 - 6) + 6;
+    this.colisao = false;
+}
+</pre>
+
+
+
+
+<p>No exemplo acima temos velocidades entre 10 e 6.<br/>
+Acima você vê como obter um número randômico entre um mínimo e um máximo. Math.random multiplicado pelo máximo diminuindo o mínimo e somado ao mínimo.<br/>
+Caso queira tentar entender o “truque” acima lembre-se que Math.random retorna um número entre 0 e 1.</p>
+
+
+
+
+<p><strong>Diâmetros e pontos variados</strong><br/>
+Para termos diâmetros variados e pontos baseados nesse diâmetro, vamos primeiro definir isso em um array, antes do nosso objeto bola.<br/>
+Nesse array, criamos um objeto que tem um dâimetro e uma pontuação.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, pontosJogador, bolas;
+        
+var diametros = new Array(
+    {'diametro' : 7, 'pontos' : 1},
+    {'diametro' : 10, 'pontos' : 2},
+    {'diametro' : 15, 'pontos' : 3}
+);
+</pre>
+
+
+
+
+<p>Com isso definido, vamos agora usar a mesma fórmula que usamos acima para pegar um número randômico que esteja dentro dos valores desse array. Lembrando que o array começa em 0, então vamos diminuir um ao final. Vamos armazenar esse número, e usar ele para o tamanho da bola e consequentemente sua pontuação. Veja como fica:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function bola()
+{
+    var indice = Math.round(Math.random() * (3 - 1) + 1) - 1;
+    this.bolaDiametro = diametros[indice]['diametro'];
+    this.pontos = diametros[indice]['pontos'];
+                
+    this.bolaPosX = Math.random() * 600;
+    this.bolaPosY = -10;
+    this.velocidadeBola = Math.random() * (10 - 6) + 6;
+    this.colisao = false;
+}
+</pre>
+
+
+
+
+<p>Neste momento os tamanhos de bolas já aparecem diferentes na tela. Mas a pontuação continua somando 1 sempre.<br/>
+Precisamos alterar nosso gameLoop para pegar os pontos do objeto em questão. Veja como:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if((bola.bolaPosX &gt; jogadorPosicaoX && bola.bolaPosX &lt; jogadorPosicaoX + barraLargura) && bola.bolaPosY &gt;= canvas.height - barraAltura && bola.colisao == false)
+{
+    pontosJogador += bola.pontos;
+    bola.colisao = true;
+}
+</pre>
+
+
+
+
+<p>Trocamos o incrementar que tinha antes para um += que vai pegar o valor que já tinha na variável e somar o valor dos pontos daquela bola que colidiu.</p>
+
+
+
+
+<p>Mais de uma ao mesmo tempo e tudo junto<br/>
+Para finalizar, que tal deixar cair mais de uma bola ao mesmo tempo?</p>
+
+
+
+
+<p>Para fazer isso de forma bem simples, adicione dentro do foreach um verificação para caso aquela bola já tenha passado da posição 50 em Y, criar uma nova.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">// Criar nova bola?
+if(bola.bolaPosY &gt;= 50 && bolas.length &lt;= 2)
+{
+    bolas.push(new bola());
+}
+</pre>
+
+
+
+
+<p>Cuidado! Veja no código acima que eu também verifiquei quantas bolas estão em cena antes de adicionar uma nova. Caso contrário você vai ter um efeito matrix em sua tela e travar seu navegador. Tente por sua conta e risco :).</p>
+
+
+
+
+<p><strong>Conclusão</strong><br/>
+Você pode aplicar o conceito de orientação a objetos para tudo o que for objeto na tela. Dessa maneira você vai ter um melhor controle das coisas e é a maneira correta de trabalhar em jogos.</p>
+
+
+
+
+<p>Acompanhe o repositório gitHub dessa série em <a href="https://github.com/flaviosilveira/primeiro-jogo-html5" title="Git Hub - Seu primeiro jogo em HTML5">https://github.com/flaviosilveira/primeiro-jogo-html5</a>.</p>
+
+
+
+
+<p>Aguarde o próximo post da série. Abraços!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Erros No Vagrant No Mavericks OSX?]]></title>
+    <link href="http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx/"/>
+    <updated>2014-01-17T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx</id>
+    <content type="html"><![CDATA[<p>Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.</p>
+
+
+
+
+<p>[Ainda não sabe o que é Vagrant? Confira esses meus dois posts: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/" title="Vagrant fácil e útil">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a> e <a href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/" title="Vagrant, PuPHPet e PHP Built In">http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/</a>]</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Correndo atrás do que estava acontecendo cheguei no post do Stu Miller <a href="http://www.stumiller.me/fixing-vagrant-osx-mavericks-update/" title="Stu Miller : Fixing Vagrant after an Mavericks Update">http://www.stumiller.me/fixing-vagrant-osx-mavericks-update/</a> que mostra os comandos para sair desse problema.</p>
+
+
+
+
+<p>Porém você vai descobrir, seja lendo os comentários no blog do Stu ou na prática, que a cada vez que desligar seu Mac terá que executar esses comandos. Para diminuir um pouco o saco de ter que fazer isso sempre, criei um Shell Script que você pode colocar para rodar automaticamente quando sua máquina liga ou ao menos não ter que ficar lembrando quais eram os comandos.</p>
+
+
+
+
+<p><a href="../../assets/uploads/fix-mavericks.sh" title="Fix Mavericks Shell Script">Faça o download aqui!</a></p>
+
+
+
+
+<p>Execute-o com SUDO.<br/>
+Você passa um primeiro parâmetro com o caminho da sua máquina virtual.<br/>
+O segundo parâmetro é opcional, caso a sua versão do <em>VirtualBox</em> seja maior ou igual que 4.3 apenas passe um <em>true</em>.<br/>
+Exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo ./fix-maverick.sh seu-diretorio true
+</pre>
+
+
+
+
+<p>O script não está a prova de balas, é apenas uma ajuda para resolver o problema.<br/>
+Abrindo o script você vê um código bem simples, checando se o <em>vagrant</em> está instalado, se você executou o comando como SUDO e se o caminho passado é válido.</p>
+
+
+
+
+<p>Qualquer sugestão é só enviar. Abraços!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Seu Primeiro Jogo Em HTML5]]></title>
+    <link href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/"/>
+    <updated>2013-09-19T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5</id>
+    <content type="html"><![CDATA[<p>Hoje quero ajudar você a desenvolver seu primeiro jogo, que talvez não fique aquele delírio de diversão, mas é o primeiro passo para você começar a entrar nesse mundo de desenvolvimento de jogos. E para isso vamos usar tecnologias que você tem em mãos no seu navegador. HTML5 e javascript.</p>
+
+
+
+
+<p>Vou passo a passo, tentando deixar claro o porque de algumas coisas primordiais em desenvolvimento de jogos. Cometendo erros para depois corrigi-los. Isso talvez torne o post um pouco extenso, então busque sua garrafa de água para manter seu cérebro hidratado.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Para os sem saco, no final do post você tem um link para o código completo.</p>
+
+
+
+
+<p><strong>O Jogo</strong><br/>
+Eu havia pensado em desenvolver um <a href="http://en.wikipedia.org/wiki/Arkanoid">Arkanoid</a> para esse post, mas a criação e a lógica subiriam um pouco de nível e a intenção de começar devagar iria se perder. Então temos algo bem mais simples, bolas que caem do topo da tela e que você deve resgatá-las com a plataforma.<br/>
+<img src="../../../assets/uploads/2013/09/Imagem1-300x240.png" alt="" title="Imagem1" width="300" height="240" class="alignnone size-medium wp-image-660" /><br style="clear:both;" /></p>
+
+
+
+
+<p><strong>HTML</strong><br/>
+Para montar o desenho da tela, o jogador e a bola, vamos usar a tag canvas. Ela está presente há algum tempo nos navegadores, tendo começado no Safari da Apple, mas ganhou mais popularidade recentemente com o HTML5.</p>
+
+
+
+
+<p>Crie um arquivo HTML com qualquer nome e dentro dele crie um Canvas.</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Seu Primeiro Jogo - HTML5&lt;/title&gt;
+    &lt;/head&gt;   
+    &lt;body&gt;
+        &lt;canvas id="canvas" width="600" height="480"&gt;
+            Navegador não suporta HTML5
+        &lt;/canvas&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+
+
+<p>Usamos o Doctype do HTML5 junto com um título.<br/>
+Dentro da tag body vemos o canvas, onde definimos uma largura e uma altura.</p>
+
+
+
+
+<p>Carregando isso no navegador, não vemos nada. Mas não se preocupe, você não fez nada de errado. Vamos com ajuda de um CSS definir uma borda para nosso canvas, assim vamos ver ele na tela. Nosso head vai ficar como abaixo.</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;head&gt;
+    &lt;title&gt;Seu Primeiro Jogo - HTML5&lt;/title&gt;
+     &lt;style type="text/css"&gt;
+    canvas {
+        border: 1px solid #000000;
+    }
+     &lt;/style&gt;
+&lt;/head&gt;  
+</pre>
+
+
+
+
+<p>Fique a vontade para alterar a cor, o tipo da borda ou o que mais quiser nesse CSS.</p>
+
+
+
+
+<p>Nosso trabalho com HTML acaba aqui. Tudo o que vamos usar agora é JavaScript. Para isso vamos então chamar uma função javaScript quando o body estiver totalmente carregado, da seguinte maneira.</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;body onload="inicializar()"&gt;
+</pre>
+
+
+
+
+<p><strong>JavaScript</strong><br/>
+Vamos criar nosso JavaScript no mesmo arquivo do HTML. Nosso intuito não é discutir arquitetura aqui. Vamos criar uma tag script logo depois de nosso canvas, e já vamos definir nossa função inicializar que chamamos acima.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">&lt;script type="text/javascript"&gt;
+function inicializar()
+{
+ // Nosso código aqui
+}
+&lt;/script&gt;
+</pre>
+
+
+
+
+<p><strong>Jogador</strong><br/>
+Vamos começar desenhando o jogador, que nada mais é do que uma barra.</p>
+
+
+
+
+<p>Vamos iniciar algumas variáveis acima da nossa função. barraAltura e barraLargura.<br/>
+Em seguida em nossa função inicializar setamos os valores desejados para elas.</p>
+
+
+
+
+<p>Para desenhar com o canvas, precisamos capturar o elemento com javaScript e usar o contexto que no nosso caso vai ser 2D.</p>
+
+
+
+
+<p>O método para desenhar retângulos com canvas é fillRect. Essa função nos pede a posição do elemento (pontos X e Y), sua largura e sua altura.</p>
+
+
+
+
+<p>Como a posição X (horizontal) do jogador vai ficar mudando, vamos criar uma variável para isso também. Já a posição Y (vertical) como não vai mudar, podemos deixá-la fixa usando a altura do canvas menos o tamanho da barra.</p>
+
+
+
+
+<p>Confira o código abaixo com as explicações acima:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX;
+        
+function inicializar()
+{
+    barraAltura = 15;
+    barraLargura = 90;
+
+    jogadorPosicaoX = 0;
+
+    canvas = document.getElementById("canvas");
+    context = canvas.getContext("2d");
+
+    context.fillRect(jogadorPosicaoX, canvas.height - barraAltura, barraLargura, barraAltura);
+}
+</pre>
+
+
+
+
+<p>Resultado na tela:<br/>
+<img src="../../../assets/uploads/2013/09/imagem2-300x240.png" alt="" title="imagem2" width="300" height="240" class="alignnone size-medium wp-image-659" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Nosso jogador não ficou centralizado, porque definimos sua posição X como 0, ou seja, o canto esquerdo do canvas.<br/>
+Altere os valores de pouco em pouco para você perceber como o jogador irá se mover, isso também irá ajudar na lógica de colisão mais para frente. Entendido isso, vamos deixar nosso jogador centralizado, pegando o tamanho do canvas e dividindo por 2.</p>
+
+
+
+
+<p>Ao atualizar seu browser e conferir o resultado nesse ponto não se preocupe, você não está com problema na vista. É necessário diminuir o tamanho da barra para que o jogador fique exatamente no centro do canvas. Ficando então da seguinte maneira.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">jogadorPosicaoX = (canvas.width - barraLargura) / 2;
+</pre>
+
+
+
+
+<p>Use os parênteses para fazer a subtração primeiro.</p>
+
+
+
+
+<p><strong>Comandos do jogador</strong><br/>
+É hora de dar vida ao jogador.<br/>
+O que queremos é que quando for pressionado para a direita, para esquerda, a nossa barra obedeça isso.</p>
+
+
+
+
+<p>Vamos deixar nosso javaScript de olho quando o jogador apertar alguma tecla com os Event Listeners do javaScript.</p>
+
+
+
+
+<p>Então definimos a função desse listener. Aqui no meu notebook, o código das teclas para esquerda e para direita são respectivamente 37 e 39. Isso pode variar se você tem um tipo diferente de teclado ou ainda se quiser outras teclas de comando.</p>
+
+
+
+
+<p>Vamos agora reposicionar o jogador de acordo com as teclas pressionadas.<br/>
+Se apertar a tecla código 37, esquerda, diminuimos a posição do jogador. Se apertar a tecla código 39 vamos somar.</p>
+
+
+
+
+<p>Mas vamos somar/diminuir quanto? Vamos definir uma variável para a velocidade do jogador, essa velocidade será a quantidade de pixels que o jogador se movimenta a cada vez que é pressionado as teclas. Voltando então, se pressionar para a direita somamos a velocidade do jogador, se pressionar para a esquerda diminuimos a velocidade do jogador.</p>
+
+
+
+
+<p>Não esqueça de desenhar a barra novamente com a posição nova do jogador.</p>
+
+
+
+
+<p>Confira o código abaixo:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador;
+        
+function inicializar() ...
+    velocidadeJogador = 20;
+    ...
+    document.addEventListener('keydown', keyDown);
+}
+            
+function keyDown(e) 
+{
+    if(e.keyCode == 37)
+    {
+        jogadorPosicaoX -= velocidadeJogador;
+    }
+                
+    if(e.keyCode == 39)
+    {
+        jogadorPosicaoX += velocidadeJogador;
+    }
+
+    context.fillRect(jogadorPosicaoX, canvas.height - barraAltura, barraLargura, barraAltura);
+}
+</pre>
+
+
+
+
+<p>Atualizando nossa tela e apertando as teclas você vê o resultado.<br/>
+<img src="../../../assets/uploads/2013/09/Imagem3-300x241.png" alt="" title="Imagem3" width="300" height="241" class="alignnone size-medium wp-image-658" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Percebe um problema? Temos dois na verdade, mas vamos um de cada vez.<br/>
+O primeiro é que não estamos apagando a posição anterior do jogador. Estamos então tendo a sensação de que a barra está aumentando de tamanho.</p>
+
+
+
+
+<p>Para resolver isso temos que entender um conceito no desenvolvimento de jogos que é o GameLoop.<br/>
+Não vou entrar em detalhes á fundo, mas acompanhe.</p>
+
+
+
+
+<p><strong>Game Loop &#8211; Explicação ultra simples</strong><br/>
+Um jogo não passa de um loop infinito. Se você perde, você volta ao começo.<br/>
+Então pense em um loop que contêm algumas verificações dentro dele que serão os comandos do jogador, pontuação e etc.</p>
+
+
+
+
+<p>Durante esse loop, os inimigos, o jogador e outras coisas na tela irão mudar de posição o tempo todo.<br/>
+Mas você deve apagar a posição anterior caso contrário vai ficar um efeito como o que estamos tendo.</p>
+
+
+
+
+<p>Então vamos apagar tudo da tela e fazer aparecer novamente. Ok!<br/>
+Mas isso não pode ser visível ao jogador, a tela não pode parecer que está piscando.<br/>
+Então vamos definir um tempo, um certo número de frames que não permita que o jogador perceba isso.</p>
+
+
+
+
+<p>Então vamos re-estruturar nosso código, pensando nesse conceito.</p>
+
+
+
+
+<p>No topo temos a definição das variáveis.</p>
+
+
+
+
+<p>Em seguida na função inicializar, vamos deixar apenas o valor inicial das variável e o listener, e de dentro dela chamar o gameLoop.<br/>
+Para o loop, vamos usar setInterval e chamar nossa função a cada 30 milisegundos.<br/>
+Ficando assim:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador;
+        
+function inicializar()
+{
+    barraAltura = 15;
+    barraLargura = 90;
+
+    jogadorPosicaoX = (canvas.width - barraLargura) / 2;
+    velocidadeJogador = 20;
+
+    canvas = document.getElementById("canvas");
+    context = canvas.getContext("2d");              
+
+    document.addEventListener('keydown', keyDown);
+
+    setInterval(gameLoop, 30);
+}
+</pre>
+
+
+
+
+<p>Seguimos o código com a função keyDown que fizemos acima, mas já vamos resolver nosso segundo problema que não comentei anteriormente. O jogador não pode continuar indo para a direita ou para esquerda se ele chegar aos limites do canvas. Então adicionamos algumas verificações para isso. Repare também que não vamos mais redesenhar a tela a partir dessa função.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function keyDown(e) 
+{
+    if(e.keyCode == 37)
+    {
+        if(jogadorPosicaoX &gt; 0)
+        {
+            jogadorPosicaoX -= velocidadeJogador;
+        }
+    }
+
+    if(e.keyCode == 39)
+    {
+        if(jogadorPosicaoX &lt; (canvas.width - barraLargura))
+        {
+            jogadorPosicaoX += velocidadeJogador;
+        }
+    }
+}
+</pre>
+
+
+
+
+<p>Por último nosso gameLoop. Ele contém uma função que desenha um retângulo em branco em cima de toda a área do canvas.<br/>
+Isso limpa a nossa tela. E em seguida redesenhamos nosso jogador.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function gameLoop()
+{
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    context.fillRect(jogadorPosicaoX, canvas.height - barraAltura, barraLargura, barraAltura);
+}
+Recarregue sua tela e se divirta movimentando a barra.
+
+&lt;strong&gt;Bola&lt;/strong&gt;
+Vamos primeiro desenhar uma bola parada no topo da tela.
+Vamos definir algumas configurações para ela. Diâmetro, posição X, posição Y e sua velocidade.
+1
+var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, bolaDiametro, bolaPosX, bolaPosY, velocidadeBola;
+        
+function inicializar()
+{
+    ...
+    bolaDiametro = 10;
+    bolaPosX = canvas.width / 2;
+    bolaPosY = 0;
+    velocidadeBola = 10;
+    ...
+}
+</pre>
+
+
+
+
+<p>Para desenhar a bola, adicione as seguintes linhas dentro de gameLoop.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function gameLoop()
+{
+    ...
+    context.beginPath();
+    context.arc(bolaPosX, bolaPosY, bolaDiametro, 0, Math.PI * 2, true);
+    context.fill();
+    ...
+}
+</pre>
+
+
+
+
+<p>Procure pesquisar some a função de desenho do arco que usamos acima. Foge do mérito desse artigo explicá-la.</p>
+
+
+
+
+<p>Como resultado você deve ver metade da bola desenhada no topo do canvas. Como abaixo:<br/>
+<img src="../../../assets/uploads/2013/09/Imagem4-300x240.png" alt="" title="Imagem4" width="300" height="240" class="alignnone size-medium wp-image-657" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Vemos metade dela pois ela é desenhada a partir do centro, como setamos Y para 0, a outra metade está acima do canvas.<br/>
+Sendo desenhada do centro, não precisamos diminuir seu diâmetro para centralizar ela na tela, bastou dividir por 2 o eixo X.</p>
+
+
+
+
+<p><strong>Movimentando a bola</strong><br/>
+Bom, não queremos que a bola inicia com metade aparecendo, melhor que isso queremos que ela venha antes do canvas.<br/>
+Você pode setar o valor de bolaPosY para -10 para que isso aconteça.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">...
+    bolaPosY = -10;
+    ...
+</pre>
+
+
+
+
+<p>Agora vamos movimentar ela como se estivesse caindo, no eixo Y.<br/>
+Simples não? Basta a cada gameLoop diminuir a velocidade da bola.</p>
+
+
+
+
+<p>Mas veja que isso só pode acontecer se a posição Y da bola for menor que a altura do canvas, caso contrário a bola vai descer até o infinito.</p>
+
+
+
+
+<p>E já que a bola chegou ao fim do canvas, que tal iniciar outra lá no topo?</p>
+
+
+
+
+<p>Acompanhe isso no trecho abaixo:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">...
+if(bolaPosY &lt;= canvas.height)
+{
+    bolaPosY += velocidadeBola;
+}
+else
+{
+    bolaPosY = -10;
+}
+...
+</pre>
+
+
+
+
+<p>Legal! Mas o jogo já não é muito divertido, se a bola ficar caindo sempre no mesmo lugar então.<br/>
+Vamos adicionar um cálculo para fazer a posição X da bola variar cada vez que é criada uma nova.<br/>
+Basta reformular o nosso else acima.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">...
+else
+{
+    bolaPosX = Math.random() * 600;
+    bolaPosY = -10;
+}
+...
+</pre>
+
+
+
+
+<p>Você já pode ir treinando para o game final agora.</p>
+
+
+
+
+<p><strong>Colisão</strong><br/>
+Chegou a hora de checar se a bola colide com a barra e com isso marcar pontos para você.</p>
+
+
+
+
+<p>Vamos definir uma variável pontosJogador. Não esqueça de iniciá-la como zero dentro da função inicializar.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, bolaDiametro, bolaPosX, bolaPosY, velocidadeBola, pontosJogador;
+
+function inicializar()
+{
+    ...
+    pontosJogador = 0;
+    ...
+}
+</pre>
+
+
+
+
+<p>Em seguida vamos pensar na matemática da colisão.<br/>
+Temos que fazer um cálculo que coloque a bola em cima da barra.<br/>
+Então primeiramente, a posição X da bola tem de ser maior que a posição X da barra.<br/>
+Mas também essa posição X da bola tem de ser menor que a posição X da barra + o tamanho dela.<br/>
+Lembrando que na barra, sua posição X é o início dela, no canto esquerdo, por isso somamos a sua largura.</p>
+
+
+
+
+<p>Não podemos bater apenas o ponto X. O eixo Y da bola tem de ser maior ou igual que a altura do canvas menos a altura da barra.</p>
+
+
+
+
+<p>Dentro do IF da colisão incrementamos os pontos do jogador.</p>
+
+
+
+
+<p>Em seguida temos um código para escrever a pontuação na tela.</p>
+
+
+
+
+<p>Confira o código abaixo com a explicação acima:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if((bolaPosX &gt; jogadorPosicaoX && bolaPosX &lt; jogadorPosicaoX + barraWidth) && bolaPosY &gt;= canvas.height - barraHeight)
+{
+    pontosJogador++;
+}
+
+context.font = "32pt Tahoma";
+context.fillText(pontosJogador, canvas.width - 70, 50);
+</pre>
+
+
+
+
+<p>Hora de rodar o seu jogo!<br/>
+<img src="../../../assets/uploads/2013/09/Imagem5-300x241.png" alt="" title="Imagem5" width="300" height="241" class="alignnone size-medium wp-image-656" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Mas espere! Isso não é basquete e a cada bola que pegamos estamos fazendo 3 pontos ou mais.<br/>
+Porque isso está acontecendo?</p>
+
+
+
+
+<p>Ah, simples! Como refazemos a tela a cada 30 milesegundos, a bola leva muito mais tempo que isso para passar pela barra. Então ela está caindo no IF de colisão mais de uma vez.</p>
+
+
+
+
+<p>Para resolver isso vamos adicionar uma flag dizendo se colidiu ou não.<br/>
+Vamos primeiro definir essa variável, em seguida inicializar ela como false.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">var barraAltura, barraLargura, jogadorPosicaoX, velocidadeJogador, bolaDiametro, bolaPosX, bolaPosY, velocidadeBola, pontosJogador, colisao;
+
+function inicializar()
+{
+    ...
+    colisao = false;
+    ...
+}
+</pre>
+
+
+
+
+<p>Agora no IF onde checamos a colisão, mudamos o valor para true quando colidir, e antes de checar se colidiu verificamos se esse status ainda é false.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if((bolaPosX &gt; jogadorPosicaoX && bolaPosX &lt; jogadorPosicaoX + barraLargura) && bolaPosY &gt;= canvas.height - barraAltura && colisao == false)
+{
+    pontosJogador++;
+    colisao = true;
+}
+</pre>
+
+
+
+
+<p>Por último, se uma bola nova começa a cair ela tem de vir com esse status como falso.<br/>
+Lembra do nosso else que cria uma nova bola no eixo X?</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">...
+else
+{
+    bolaPosX = Math.random() * 600;
+    bolaPosY = -10;
+    colisao = false;
+}
+...
+</pre>
+
+
+
+
+<p>Feito! Hora de chamar os amigos e iniciar um campeonato.</p>
+
+
+
+
+<p><strong>Conclusão</strong><br/>
+Estude alterando as variáveis como velocidade do jogador, velocidade da bola e etc.<br/>
+A partir daqui pode surgir muita coisa. Quem sabe não continuamos desenvolvendo esse jogo em um próximo post?</p>
+
+
+
+
+<p>Código completo aqui: <a href="https://github.com/flaviosilveira/primeiro-jogo-html5">https://github.com/flaviosilveira/primeiro-jogo-html5</a></p>
+
+
+
+
+<p>Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
+    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
+    <updated>2013-09-15T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
+    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
+
+
+
+
+<p><strong>O que é Vagrant?</strong><br/>
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Alguns pontos do Vagrant:<br/>
+&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
+&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
+Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
+&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
+&#8211; Muito mais.</p>
+
+
+
+
+<p><strong>PuPHPet: Arquivos puppet</strong><br/>
+Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
+Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
+
+
+
+
+<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
+Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
+
+
+
+
+<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
+É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
+Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
+
+
+
+
+<p><strong>O que é PHP Built In?</strong><br/>
+Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
+É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
+Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
+Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
+
+
+
+
+<p><strong>Mãos a Obra</strong><br/>
+Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
+Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
+
+
+
+
+<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
+Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
+
+
+
+
+<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
+Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
+
+
+
+
+<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
+Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
+
+
+
+
+<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
+mkdir teste
+cd teste
+</pre>
+
+
+
+
+<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
+
+
+
+
+<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
+</pre>
+
+
+
+
+<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
+8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
+** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
+
+
+
+
+<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
+Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
+</pre>
+
+
+
+
+<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
+
+
+
+
+<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
+Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
+
+
+
+
+<p><strong>Resumindo</strong><br/>
+Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 2]]></title>
+    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/"/>
+    <updated>2013-04-13T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2</id>
+    <content type="html"><![CDATA[<p>[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS.<br/>
+<span style="line-height: 1.6em;">Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Nessa parte 2 vamos continuar dando os primeiros passos e criando os primeiros exemplos com a linguagem Objective-C. Como discutido no primeiro artigo, essa linguagem veio evoluindo mas ainda mantém a linguagem C por trás dela, e é com isso que estamos criando nossos primeiros exemplos.</span></p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><span style="line-height: 1.6em;">[Acompanhe a primeira parte desse artigo em </span><a style="line-height: 1.6em;" href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"><a href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/">http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/</a></a><span style="line-height: 1.6em;">]</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">Lição de casa da parte 1<br /> </strong><span style="line-height: 1.6em;">No primeiro artigo deixei uma Lição de Casa que na verdade era uma pegadinha. Imprimir uma variável do tipo Boleana com o printf. Rapidamente o pessoal sacou e colocou nos comentários de que isso não existe. O </span><em style="line-height: 1.6em;">Boolean</em><span style="line-height: 1.6em;"> ou </span><em style="line-height: 1.6em;">Bool</em><span style="line-height: 1.6em;">, aparece em linguagens mais modernas. Para utilizar isso com C, fazemos uma simulação usando por exemplo um inteiro (0 e 1) ou também definindo um tipo qualquer e usando </span><em style="line-height: 1.6em;">enum</em><span style="line-height: 1.6em;">.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Hoje vamos Criar algumas condicionais e alguns loops.<br /> </span><span style="line-height: 1.6em;">Não tem novidade para quem já programa em outras linguagens, basta checar a sintaxe.<br /> </span><span style="line-height: 1.6em;">Mas caso você não se encaixe nesse grupo, siga o artigo.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Caso não lembre onde testar o seu código, que arquivo estamos mexendo e etc, consulte a parte 1!</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">IF<br /> </strong><span style="line-height: 1.6em;">O IF não é segredo. Traduzindo do inglês = SE.<br /> </span><span style="line-height: 1.6em;">Se a condição bater, executa o código entre as chaves. Veja o exemplo:<br /> </span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int valor = 5;
+if(valor &lt; 10)
+{
+    printf("Menor que dez!");
+}
+</pre>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Definimos um variável inteira com valor 5. Se o valor for menor que 10, o printf é executado, caso contrário esse trecho é ignorado. </span><span style="line-height: 1.6em;">Simples não?</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Para fazer comparações com a variável de valor, você pode usar no lugar do menor:<br /> </span><em style="line-height: 1.6em;">> Maior<br /> </em><em style="line-height: 1.6em;">&lt;= Menor ou Igual<br /> </em><em style="line-height: 1.6em;">>= Maior ou Igual<br /> </em><em style="line-height: 1.6em;">== Igual<br /> </em><em style="line-height: 1.6em;">!= Diferente</em></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">ELSE<br /> </strong><span style="line-height: 1.6em;">Para os casos onde você quer executar algo quando o IF não bater, temos o ELSE. Traduzindo SENÃO.<br /> </span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int valor = 15;
+if(valor &lt; 10)
+{
+    printf("Menor que dez!");
+}
+else
+{
+    printf("Maior que dez!");
+}
+</pre>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Alteramos o valor da variável para 15. Em seguida adicionamos um ELSE.<br /> </span><span style="line-height: 1.6em;">Como valor é Maior que 10, esse trecho é pulado e o que está dentro das chaves do ELSE é executado.</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">Combinando IFs e ELSEs<br /> </strong><span style="line-height: 1.6em;">Você pode combinar o If com o Else quantas vezes quiser, como no seguinte exemplo:<br /> </span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int valor = 7;
+if(valor == 7)
+{
+    printf("Valor Igual 7");
+}
+else if(valor &lt; 10)
+{
+    printf("Um numero menor que dez!");
+}
+else
+{
+    printf("Um numero maior que dez!");
+}
+</pre>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Alteramos a variável para 7, o que faz ela cair no primeiro IF. Caso contrário o código iria passando até bater com uma das condicionais. </span><span style="line-height: 1.6em;">Caso não bata com nenhum das condições ela cai no último ELSE. Lembrando que esse ELSE final não é obrigatório.</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">SWITCH<br /> </strong><span style="line-height: 1.6em;">É recomendado evitar o uso de muitas combinações de IF e ELSE, para ficar mais fácil de manter o código ou até para entendimento do mesmo. </span><span style="line-height: 1.6em;">Veja o exemplo:</span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int valor = 16;
+    
+switch (valor) 
+{
+    case 7:
+        printf("Sete!");
+    break;
+        
+    case 9:
+        printf("Nove!");
+    break;    
+        
+    case 16:
+        printf("Dezesseis!");
+    break;    
+        
+    case 10:
+        printf("Dez!");
+    break;    
+            
+    default:
+        printf("Outro!");
+    break;
+}
+</pre>
+
+
+
+
+<p><span style="line-height: 1.6em;">Entramos com o valor a ser analisado dentro do Switch.<br /> </span><span style="line-height: 1.6em;">Então usando o Case, entramos com as condicionais.<br /> </span><span style="line-height: 1.6em;">Caso não bata com nenhuma, temos a opção </span><em style="line-height: 1.6em;">DEFAULT</em><span style="line-height: 1.6em;">.</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">FOR<br /> </strong><span style="line-height: 1.6em;">Quando temos a necessidade de executar uma ação várias vezes ou iterar um valor, surgem para nós os Loops.<br /> </span><span style="line-height: 1.6em;">E o FOR é um dos primeiros que encontramos.<br /> </span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">for(int i = 0; i &lt;= 10; i++)
+{
+    printf("Valor de i: %d", i);
+}
+</pre>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Para entender o FOR, leia da seguinte maneira. i é igual a 0, enquanto i é menor ou igual que 10, vá aumentando i.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Esse i++, significa que estamos somando 1 ao valor de i, chamamos isso de incremento. Teremos mais detalhes sobre isso em próximos artigos.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Está é a maneira mais simples do FOR. Temos outros variações, mais complexas, com mais, com menos parâmetros.<br /> </span><span style="line-height: 1.6em;">Mas se você está começando fique com essa por enquanto.</span></p>
+
+
+
+
+<p><strong style="line-height: 1.6em;">WHILE<br /> </strong><span style="line-height: 1.6em;">While, que traduzindo significa enquanto, é uma outra opção de loop. Veja o exemplo:<br /> </span></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int i = 0;
+while (i &lt;= 10) 
+{
+    printf("Valor de i: %d", i);
+    i++;
+}
+</pre>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Seguindo a mesma ideia do FOR, definimos o valor de i, mas dessa vez for da função. Enquanto i for menor igual que 10, o que temos dentro das chaves do while será executado.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Cuidado! Não esqueça de somar 1 ao valor de i cada vez que passarmos dentro do while.<br /> </span><span style="line-height: 1.6em;">Caso contrário teremos um loop infinito, e isso irá exceder o limite de memória e te causar problemas.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">No exemplo acima, se i fosse por exemplo 15, o </span><em style="line-height: 1.6em;">WHILE</em><span style="line-height: 1.6em;"> não seria executado nenhuma vez.</span></p>
+
+
+
+
+<p>Há situações onde precisamos executar ao menos uma vez o loop, mesmo que o valor não bata. Para essas situações temos o <em>DO WHILE</em>.</p>
+
+
+
+
+<p><strong>DO WHILE<br/>
+</strong></p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">int i = 15;
+    
+do 
+{
+    printf("Valor de i: %d", i);
+    i++;
+}
+while (i &lt;= 10); 
+</pre>
+
+
+
+
+<p>O código é executado uma vez, independente se o valor bate com a condicional ou não.</p>
+
+
+
+
+<p>No exemplo acima, como o valor está setado para 15, ele já não bate com nosso <em>WHILE</em> que pede um número menor igual a 10. Mesmo assim o código é executado uma vez, por conta do <em>DO</em>, traduzindo <em>FAÇA</em>.<span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p><strong>Resumindo<br/>
+</strong><span style="line-height: 1.6em;">Os exemplos são bem simples e ainda não refletem exemplos muito reais. São exemplos fáceis de entender para que venham no futuro encaixar em problemas que você vai encontrar. </span></p>
+
+
+
+
+<p>Pratique, mude valores das variáveis, faça seus exemplos, crie outras situações.<br/>
+Esse é o caminho nesse estágio.</p>
+
+
+
+
+<p>Até o próximo!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Montando a Tela Do Seu Aplicativo – Parte 1]]></title>
+    <link href="http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1/"/>
+    <updated>2013-03-06T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1</id>
+    <content type="html"><![CDATA[<p><span style="line-height: 1.6em;">[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS. Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
+
+
+
+
+<p>No artigo de hoje vamos conhecer alguns objetos para nos ajudar a criar a tela de nossos aplicativos para iOS. Para conhecer eles vamos usar o projeto que criamos nos artigos anteriores. É um projeto simples do tipo <em>Single View Application</em>, que ainda não tem nada demais, já que estamos apenas conhecendo algumas coisas. Então nada impede que você crie outro projeto do tipo <em>Single View Application</em>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Interface Builder</strong></p>
+
+
+
+
+<p>Como explicado no primeiro artigo, temos na estrutura que o XCode cria para nós arquivos do tipo StoryBoard. Como criamos nosso projeto com a opção <em>Universal</em> temos um StoryBoard para IPhone e outro para IPad, como mostra a imagem abaixo.<br/>
+<span style="line-height: 1.6em;"><img class="size-full wp-image-633 alignleft" title="Estrutura do projeto" src="../../assets/uploads/2013/03/Imagem-1.png" alt="" width="296" height="115" /><br style="clear: both;" /></span><span style="line-height: 1.6em;">Ao clicar em um desses arquivos você visualiza o Interface Builder.</span></p>
+
+
+
+
+<p>Vejamos por exemplo o arquivo <em>MainStoryboard_IPhone.storyboard</em>:<br/>
+<span style="line-height: 1.6em;"><img class="alignnone size-large wp-image-634" title="Imagem 2" src="../../assets/uploads/2013/03/Imagem-2-1024x606.png" alt="" width="655" height="387" /></span><span style="line-height: 1.6em;">Uma pequena curiosidade aqui. As atuais versões do XCode trazem o Interface Builder acoplado ao XCode, tudo na mesma ferramenta. Em versões anteriores você tinha uma aplicação separada para isso, assim como o IPhone Simulator por exemplo. </span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Descrevendo rapidamente as janelas da imagem temos:</span></p>
+
+
+
+
+<p>No canto esquerdo superior a Document Outline onde está aparecendo nossa<em>View Controller Scene</em>. É onde irá conter todos os elementos e objetos da nossa cena, da nossa tela.<br/>
+<img class="size-full wp-image-631 alignleft" title="Imagem3" src="../../assets/uploads/2013/03/Imagem3.png" alt="" width="268" height="159" /><br style="clear: both;" /><br style="clear: both;" /></p>
+
+
+
+
+<p>No canto direito superior é onde irão aparecer os utilitários. Nesses utilitários poderemos alterar tamanhos, identificadores, conexões com funções entre outros. Você pode navegar entre os botões para encontrar essas opções.<br/>
+<img class="size-full wp-image-632 alignleft" title="Imagem4" src="../../assets/uploads/2013/03/Imagem4.png" alt="" width="241" height="198" /><br style="clear: both;" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Logo abaixo temos nossa Library de objetos, que é onde estão os objetos que vamos usar para montar nossas telas.<br/>
+<span style="line-height: 1.6em;"><img class="size-full wp-image-629 alignleft" title="Imagem 5" src="../../assets/uploads/2013/03/Imagem-5.png" alt="" width="257" height="247" /><br style="clear: both;" /></span><span style="line-height: 1.6em;">Repare que temos uma caixa de busca logo no rodapé. Ela vai nos ajudar a encontrar mais rápido o que queremos sem que precisar ficar rolando e rolando com o mouse em busca de algo. Caso você navegue pelos botões que aparecem em cima, você irá para outras libraries que aparecem no XCode, mas não vamos usar nenhuma delas tão cedo então não se preocupe agora.</span></p>
+
+
+
+
+<p>Resumindo então:</p>
+
+
+
+
+<ul>
+<li><span style="line-height: 1.6em;">Document outline: Mostra os objetos da nossa cena</span></li>
+<li><span style="line-height: 1.6em;">Utilitários: Onde vamos alterar propiedades, características, identificadores, alinhamentos, etc…</span></li>
+<li><span style="line-height: 1.6em;">Library de objects: Onde os objetos estão.</span></li>
+</ul>
+
+
+
+
+<p><div>
+  <p>
+    <strong>Primeiros Objetos</strong>
+  </p></p>
+
+<p>  <p>
+    <span style="line-height: 1.6em;">Vamos agora conhecer 4 objetos básicos para montar nossas telas: Um botão, label, campo texto e um slider.<br /> </span><span style="line-height: 1.6em;">Esses são os objetos que mais devem surgir em seus projetos, mas claro que isso pode variar de projeto para projeto.</span><span style="line-height: 1.6em;"> </span>
+  </p></p>
+
+<p>  <p>
+    <strong>Botão</strong>
+  </p></p>
+
+<p>  <p>
+    <span style="line-height: 1.6em;">No campo de busca da library de objetos digite </span><em style="line-height: 1.6em;">Round Rec Button</em><span style="line-height: 1.6em;">. Ao começar a digitar você já vai ver o objeto surgir para você. Clique em cima dele e arraste para a sua tela. Posicione como preferir.</span>
+  </p></p>
+
+<p>  <p>
+    Você pode trabalhar o alinhamento, largura e altura diretamente com o objeto, mas se preferir pode fazer isso também pelas janelas de utilitários. O mesmo para alterar o label do botão, você pode dar um duplo clique em cima dele ou alterar pelos utilitários. Experimente essas e algumas outras opções na janela de utilitários chamada <em>Attributes Inspector</em>.
+  </p></p>
+
+<p>  <p>
+    <strong>Label</strong>
+  </p></p>
+
+<p>  <p>
+    Devolta ao campo de busca da library de objetos, dessa vez vamos buscar por label. A label é uma simples etiqueta, um texto para nos indicar alguma coisa. Da mesma maneira que o botão você pode alterar algumas de suas características diretamente sobre o elemento, ou fazer isso pelas janelas utilitárias.  Tente por exemplo alterar a cor da fonte para vermelho.
+  </p></p>
+
+<p>  <p>
+    Repare que ao mover diretamente os objetos pelo nosso protótipo de tela, algumas linhas quase que como réguas aparecem para te ajudar no alinhamento dos seus objetos. Use disso para manter tudo alinhado e bem distribuído.
+  </p></p>
+
+<p>  <p>
+    <strong>Campo de texto</strong>
+  </p></p>
+
+<p>  <p>
+    Para adicionar um campo de texto vamos devolta ao campo de busca da library de objetos, e digite Text Field. Nesse objeto o usuário poderá entrar com um texto. É aquele famoso objeto que quando ativo exibe um teclado na tela. Logo, além de todas as opções dos objetos anteriores, como cor da fonte, alinhamento, tamanho, você pode selecionar qual o tipo de teclado que o usuário irá ter disponível.
+  </p></p>
+
+<p>  <p>
+    Outra opção ainda é setar um placeholder no campo de texto e tentar com isso economizar um label para explicar do que se trata aquele campo.
+  </p></p>
+
+<p>  <p>
+    <strong>Slider</strong>
+  </p></p>
+
+<p>  <p>
+    Um slider pode servir como marcador de alguma coisa, um projeto onde por exemplo o usuário deve entrar sua altura ou seu peso pode ser melhor apresentado com um slide. Na caixa de busca da library procure por <em>slider</em>.
+  </p></p>
+
+<p>  <p>
+    Um detalhe é que o slider não traz um indicador de em que ponto ele está, como por exemplo 50% ou 100%. Então uma boa ideia é colocar junto do Slide uma Label para indicar esse valor.
+  </p></p>
+
+<p>  <p>
+    <strong>Exercício</strong>
+  </p></p>
+
+<p>  <p>
+    Com o objetos que aprendemos acima, você deve ser capaz de montar uma tela como essa:<br /> <img class="alignnone size-medium wp-image-630" title="Imagem6" src="../../assets/uploads/2013/03/Imagem6-152x300.png" alt="" width="152" height="300" />
+  </p></p>
+
+<p>  <p>
+    <strong>Difícil? Vou te ajudar</strong>
+  </p></p>
+
+<p>  <p>
+    Esses são os 4 objetos que temos para hoje. Achou complicado de entender? Não te culpo já que é um tema totalmente visual. Por isso estou anexando a esse artigo o vídeo abaixo que segue os passos executados no texto. Com a leitura e o visual da coisa você deve entender tudo sem problemas.<br />
+  </p></p>
+
+<p>  <p>
+    <br style="clear: both;" />Mas, caso ainda tenha dúvidas é só mandar. Grande Abraço!
+  </p></p>
+
+<p>  <iframe src="https://player.vimeo.com/video/61175405" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<p><a href="https://vimeo.com/61175405">Montando a tela do seu aplicativo - Parte 1</a> from <a href="https://vimeo.com/user9814221">Fl&aacute;vio Silveira</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 1]]></title>
+    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
+    <updated>2013-02-21T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Este é segundo artigo, que faz parte da série sobre desenvolvimento para iOS que estou fazendo. Se você perdeu o primeiro post siga esse link <a href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/">http://flaviosilveira.com/2013/comece-a-programar-para-ios/</a> para acompanhar nossos passos desde o início.<span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Em nosso primeiro post criamos um projeto simples e entendemos a sua estrutura de pastas. Partindo desse ponto, vamos hoje conhecer um pouco da linguagem que vamos usar para desenvolver para iOS. É! XCode não é só arrastar e soltar, tem que codificar. E para isso usamos a linguagem Objective-C.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Rápida História</strong></p>
+
+
+
+
+<p>Você deve achar que o Objective-C não é tão antigo, já que não faz tanto tempo que temos pessoas com IPhones desfilando por aí não é mesmo? Mas não, o Objective-C está na área desde o início dos anos 80 e foi idealizado e criado pelo PHD em Matemática biológica Brad Cox e pelo (também) PHD em Ciência cognitiva Tom Love.</p>
+
+
+
+
+<p>Como com esses títulos eles caíram na programação eu não sei, mas outros detalhes da história deles, de como eles estavam preocupados com a falta de reutilização de código em cima do Smaltalk dentro da ITT e de como eles começaram a criação de um processador em C para resolver esses problemas, você pode encontrar dando aquela rápida pesquisada no Google. Se você está com seu listening de inglês em dia você pode conferir o próprio Tom Love falando sobre o assunto nesse vídeo no Youtube <a href="http://youtu.be/adI6-liGXqE">http://youtu.be/adI6-liGXqE</a> (Há outros vídeos e keynotes de Tom que você pode encontrar no youtube).</p>
+
+
+
+
+<p>No vídeo, Love também comenta sobre como o Objective-C sobreviveu através dos anos até ele ser popularizado pela NeXT, empresa de Steve Jobs. A NeXT extendeu o GCC para compilar Objective-C e também criou as primeiras ferramentas de desenvolvimento para ele que vão evoluindo até chegar no XCode que temos em mãos hoje.</p>
+
+
+
+
+<p>E aproveitando que comentei sobre o XCode, vale dizer que visto que o Objective-C é uma linguagem que já vem de algum tempo, você encontra vários compiladores para ela de modo que consiga estudar ela em separado. Mas como aqui vamos focar em IPhones, IPads e em ambiente Apple, nada melhor que o XCode na hora de te ajudar a desenvolver para esses fins.<span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p><strong>C</strong></p>
+
+
+
+
+<p>Tom Love comenta que apesar de tudo que eles desenvolveram, o C continua lá sem nenhuma alteração. E é verdade. Os tipos prímarios de dados em cima de Objective-C são exatamente os mesmos que no C puro. Para experimentar isso abra em seu projeto o arquivo <em>ViewController.m</em> e procure pelo método <em>viewDidLoad</em> (view carregada), dentro dele você pode experimentar alguns tipos de dados no melhor estilo C.</p>
+
+
+
+
+<p>Os principais tipos de dados em C são <em>char</em>, <em>int</em>, <em>float</em>, <em>double</em> e <em>bool</em>. Para definir eles usamos a seguinte sintaxe:</p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">tipo nome_da_variavel;
+tipo nome_da_segunda_variavel = valor_da_variavel;
+</pre>
+
+
+
+
+<p>Repare que no primeiro exemplo de sintaxe apenas iniciamos a variável, sem nenhum valor inicial. Já no segundo exemplo, aproveitamos e já definimos um valor para ela. Vejamos alguns exemplos abaixo:</p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">// Char
+char caracter;
+char letra = 'a';
+char nome[7] = 'Flavio;
+
+// Int
+int idade;
+int ano = 2013;
+
+// Float
+float peso = 81.30;
+
+// Double
+// que tal você pesquisar a diferença do float para o double?
+double pi = 3.1415926535;
+
+// Bool --de booleano
+bool aceite = TRUE;
+</pre>
+
+
+
+
+<p>Certo, certo. Estamos aqui definindo variáveis. Mas que coisa sem graça. Vamos colocar um pouquinho mais de diversão nisso?</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">No XCode vamos abrir nosso console e exibir nossas animadas variáveis. Para exibir o console você pode ir até o menu </span><em style="line-height: 1.6em;">View >> Debug Area >> Active Console</em><span style="line-height: 1.6em;"> ou em </span><em style="line-height: 1.6em;">View >> Debug Area >> Show Debug Area. </em><span style="line-height: 1.6em;">Outra opção é clicar em um pequeno botão no rodapé do XCode que contém uma seta apontando para cima como mostra a figura abaixo:<br /> <a href="../../assets/uploads/2013/02/Imagem-1.png"><img class="alignnone size-full wp-image-617" title="Imagem 1" src="../../assets/uploads/2013/02/Imagem-1.png" alt="" width="174" height="52" /></a></p>
+
+
+<p></p></p>
+
+<p>
+  </span>
+</p>
+
+
+
+
+<p>
+  Seu console deve parecer como na imagem abaixo:<br /> <a href="../../assets/uploads/2013/02/Imagem-2.png"><img class="alignnone size-large wp-image-618" title="Imagem 2" src="../../assets/uploads/2013/02/Imagem-2-1024x102.png" alt="" width="655" height="65" /></a>
+</p>
+
+
+
+
+<p>
+  Console ativado, é hora de exibir as variáveis. Qual a função que exibi variávies no C? A mais conhecida que você já deve ter visto por aí é o printf. Fazendo um teste com o array de char que definimos acima temos o seguinte código:
+</p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">
+
+- (void)viewDidLoad
+{
+[super viewDidLoad];
+
+// Do any additional setup after loading the view, typically from a nib.
+
+// Char
+char nome[7] = "Flavio";
+
+printf("Nome: %s", nome);
+}
+</pre>
+
+
+
+
+<p>
+  </span><span style="line-height: 1.6em;">Compile o seu projeto para ver a variavel sair no output. (Caso não lembre como compilar o projeto, dê uma olhada no final do primeiro post da série </span><a style="line-height: 1.6em;" href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/">http://flaviosilveira.com/2013/comece-a-programar-para-ios/</a><span style="line-height: 1.6em;"> ).<br /> </span>
+</p>
+
+
+
+
+<p>
+  Repare bem na sintaxe do printf. No primeiro parâmetro da função colocamos a string mais um identificador <em>%s</em>. Esse identificador será substituído pelo segundo parâmetro da função, no caso aqui nossa variável nome. Esse <em>s</em> em nosso identificador é um indicador para o tipo da nossa variável, no caso aqui String. Para imprimir um inteiro utilize o identificador <em>%d</em>, onde <em>d</em> se refere a decimal:
+</p>
+
+
+
+
+<pre class="brush: cpp; title: ; notranslate" title="">
+- (void)viewDidLoad
+{
+[super viewDidLoad];
+// Do any additional setup after loading the view, typically from a nib.
+
+// Char
+int ano = 2013;
+
+printf("Ano: %d", ano);
+}
+</pre>
+
+
+
+
+<p>
+  </span><span style="line-height: 1.6em;">Sim, sim. É verdade que </span><em style="line-height: 1.6em;">%i</em><span style="line-height: 1.6em;"> tambem funciona para inteiros, mas em materiais por aí é mais comum ver o </span><em style="line-height: 1.6em;">%d</em><span style="line-height: 1.6em;">.</span>
+</p>
+
+
+
+
+<p>
+  Continue seus testes com floats e doubles. Use o Identificador <em>%f </em>para esses dois tipos. Se quiser formatar seu numero utilize %.3f, onde 3 é o numero de casas decimais que você quer. <em>%lf </em>ou <em>%g</em> também servem para esses tipos.
+</p>
+
+
+
+
+<p>
+  <strong>Lição de casa</strong>
+</p>
+
+
+
+
+<p>
+  O que? Quer só ler o artigo com os códigos prontos e sair mandando ver? Aqui não! Para aprender tem que ir começando a se virar sozinho certo?
+</p>
+
+
+
+
+<p>
+  A primeira lição que deixo é a de imprimir uma variável do tipo boleana usando o printf. Fácil não? Só dar aquela googada aí ou pegar aquela Barsa da estante.
+</p>
+
+
+
+
+<p>
+  Para aqueles que já tem uma noções de lógica, que tal experimentar alguns IFS, ELSES, WHILE, CASE, DO…WHILE, FOR ??
+</p>
+
+
+
+
+<p>
+  Para os demais, é isso que veremos no próximo post.
+</p>
+
+
+
+
+<p>
+  Grande Abraço!
+</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Comece a Programar Para iOS]]></title>
+    <link href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/"/>
+    <updated>2013-02-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/comece-a-programar-para-ios</id>
+    <content type="html"><![CDATA[<p><strong style="line-height: 1.6em;">Sem blá blá blá</strong></p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Sem muito blá blá blá, quero hoje começar uma pequena série sobre desenvolvimento para iOS. </span><span style="line-height: 1.6em;">Quero ajudar quem deseja conhecer a tecnologia sem a enrolação que vejo em outros materiais sobre o assunto. </span><span style="line-height: 1.6em;">Paralelo a isso também consigo me manter estudando o assunto e evoluindo junto com quem acompanha os artigos.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Vou pular toda aquela parte que você já deve ter lido por aí sobre precisar de um Mac, que há outras maneiras de você conseguir instalar o sistema da Apple em um PC Intel comum, que vamos usar o XCode porque ele facilita nossa vida, instalação do XCode, as camadas de desenvolvimento do iOS, etc, etc. Mas é claro, caso venha a necessidade podemos segurar e detalhar um pouco mais o que surgir.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Criando seu primeiro projeto no XCode</strong></p>
+
+
+
+
+<p>Vamos começar com tudo, direto para a prática. Para isso abra o XCode e crie um novo projeto. <span style="line-height: 1.6em;">Vamos criar um projeto do tipo Single view Application, ele já vai nos trazer uma tela inicial e um controller para trabalharmos. </span><span style="line-height: 1.6em;">Na janela seguinte dê um nome qualquer para seu projeto e no último passo selecione uma pasta para ele.<br /> </span><span style="line-height: 1.6em;">Acompanhe pelas imagens abaixo:</span></p>
+
+
+
+
+<p><a href="../../assets/uploads/2013/02/imagem1.png"><img class="alignnone size-medium wp-image-604" title="imagem1" src="../../assets/uploads/2013/02/imagem1-300x200.png" alt="" width="300" height="200" /></a>                 <a style="line-height: 1.6em;" href="../../assets/uploads/2013/02/imagem2.png"><img class="alignnone size-medium wp-image-606" title="imagem2" src="../../assets/uploads/2013/02/imagem2-300x234.png" alt="" width="300" height="234" /></a>            <a style="line-height: 1.6em;" href="../../assets/uploads/2013/02/imagem3.png"><img class="alignnone size-medium wp-image-605" title="imagem3" src="../../assets/uploads/2013/02/imagem3-286x300.png" alt="" width="286" height="300" /></a><span style="line-height: 1.6em;">Repare que não mudamos nada do que já veio selecionado. Estamos usando tudo como já vem configurado.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Dê uma atenção especial no segundo passo, na opção Devices, onde ficou selecionado <em>Universal</em>, o que significa que estamos desenvolvendo tanto para IPhone quanto para IPad. Teríamos a opção nesse passo de selecionar ou um ou outro se quisessémos.</p>
+
+
+
+
+<p><strong><br/>
+Estrutura do seu projeto</strong></p>
+
+
+
+
+<p>Certo, vamos dar uma analisada no que o XCode criou para a gente aqui.<br/>
+<span style="line-height: 1.6em;">No canto esquerdo superior temos o painel project navigator como na imagem abaixo.<br /> </span><span style="line-height: 1.6em;">Se por qualquer motivo você não estiver visualizando ele, basta ir em <em>View >> Navigators >> Show Project Navigator</em>.</span></p>
+
+
+
+
+<p><span style="line-height: 1.6em;"><a href="../../assets/uploads/2013/02/imagem-4.png"><img class="alignnone size-full wp-image-607" title="imagem 4" src="../../assets/uploads/2013/02/imagem-4.png" alt="" width="257" height="241" /></a> </span></p>
+
+
+
+
+<p>Vamos ver primeiro a pasta que leva o nome do seu projeto.<br/>
+<span style="line-height: 1.6em;">Repare que vamos ter extensões de arquivo .h e .m.<br /> </span><span style="line-height: 1.6em;">Nos arquivos .h temos assinaturas e características e no .m vamos ter as implementações dos métodos. (Se você não entendeu muito bem isso agora não se preocupe, mas lembre-se disso).</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>O AppDelegate recebe notificações do sistema operacional iOS.<br/>
+<span style="line-height: 1.6em;">Informações como se seu aplicativo terminou de carregar ou se o usuário fechar seu aplicativo caem nesse arquivo.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>O StoryBoard, é a interface gráfica do seu aplicativo.<br/>
+<span style="line-height: 1.6em;">Lembra da opção </span><em style="line-height: 1.6em;">Universal</em><span style="line-height: 1.6em;"> quando criamos o projeto?<br /> </span><span style="line-height: 1.6em;">Por termos optado por </span><em style="line-height: 1.6em;">universal</em><span style="line-height: 1.6em;"> o XCode preparou para a gente um storyBoard para IPhone e outro para IPad.</span></p>
+
+
+
+
+<p>No ViewController é onde entraremos com código para fazer as interações com nossa interface gráfica.<br/>
+<span style="line-height: 1.6em;">Na Pasta Support Files temos alguns arquivos gerais do seu aplicativo, com ícones, imagens e também arquivos com informações do app.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Em seguida você vê a pasta para os testes, dentro dela arquivos que devem ser usados para os testes unitários.<span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>A pasta frameworks serve para armazenar todas as bibliotecas usadas no seu projeto. Você pode expandir ela e reparar que o XCode já adicionou algumas bibliotecas para a gente usar aqui.</p>
+
+
+
+
+<p>E finalmente a pasta products, que vai conter nosso produto final.<br/>
+<span style="line-height: 1.6em;">Se você pretende colocar seu aplicativo na Apple Store, é daqui que as coisas vão sair.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p><strong><br/>
+Compilando seu projeto</strong></p>
+
+
+
+
+<p>É hora de colocar o seu projeto em ação. Para isso vamos compilar ele.</p>
+
+
+
+
+<p><span style="line-height: 1.6em;">Antes de tudo você deve escolher em qual tipo de device quer ver seu aplicativo.<br /> </span><span style="line-height: 1.6em;">No canto superior esquerdo do XCode você pode selecionar entre o simulador do IPad (que vem por padrão selecionado) ou o simulador do IPhone, como mostrado na imagem.</span></p>
+
+
+
+
+<p><a href="../../assets/uploads/2013/02/imagem5.png"><img class="alignnone size-medium wp-image-608" title="imagem5" src="../../assets/uploads/2013/02/imagem5-300x57.png" alt="" width="300" height="57" /></a><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Feito isso, clique no botão Run, o primeiro botão no canto esquerdo do XCode, ou pressione <em>CMD + R</em>. <span style="line-height: 1.6em;">O resultado deve ser como da imagem abaixo.<br /> <a href="../../assets/uploads/2013/02/imagem6.png"><img class="alignnone size-medium wp-image-611" title="imagem6" src="../../assets/uploads/2013/02/imagem6-151x300.png" alt="" width="151" height="300" /></a> </span></p>
+
+
+
+
+<p>Como não escrevemos nenhum código e ainda não colocamos nada em nosso storyboard, temos essa tela em branco.<br/>
+<span style="line-height: 1.6em;">Vamos descobrir como mudar isso no próximo post.</span><span style="line-height: 1.6em;"> </span></p>
+
+
+
+
+<p>Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hangout – Começando Bem Com Zend Framework 1]]></title>
+    <link href="http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1/"/>
+    <updated>2012-11-19T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Recentemente estive no Rio de Janeiro para ministrar o curso <em>Começando Bem com Zend Framework</em>. Curso que mostra um bé-a-bá em cima do Zend Framework 1 usando a ajuda da Zend Tool. Infelizmente por alguns problemas técnicos não consegui realizar o curso completo e por conta disso marquei um hangout com o pessoal que estava inscrito no evento.</p>
+
+
+
+
+<p>Com esse vídeo fecho essa maneira como o curso é apresentado, sendo que o Zend Framework 2 foi lançado recentemente e vou adaptar o curso para ele. Mas isso não tira a importância de conhecer o Zend 1 visto que ainda teremos manutenções e sistemas legados no mercado, além de servir como base para o próprio Zend 2.</p>
+
+
+<!--more-->
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pJgdn3OG4OI" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<p>O hangout foi realizado junto com um chat onde o pessoal interagiu, fez perguntas e deu sua opinião. Executei os códigos ao vivo, o que gerou problemas que foram interessantes para o aprendizado do pessoal. O resultado de tudo isso você confere no vídeo acima.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant: Fácil E útil]]></title>
+    <link href="http://flaviosilveira.com/2012/vagrant-facil-e-util/"/>
+    <updated>2012-11-07T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/vagrant-facil-e-util</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Hoje eu quero passar uma dica para fazer você parar com aquela desculpa &#8220;Na minha máquina tá funcionando&#8221;. Para isso vou apresentar para vocês o Vagrant <a href="http://vagrantup.com/">http://vagrantup.com/</a>.</p>
+
+
+
+
+<p>O Vagrant é uma ferramenta que te ajuda na criação da infraestrutura para o seu projeto, usando para isso uma máquina virtual. Mas aí você pensa: &#8220;Uma máquina virtual para cada projeto?? Isso vai dar trabalho&#8221;. A grande jogada é que o Vagrant deixa muita coisa invísivel, deixando com que você se preocupe apenas com seu código. É uma máquina virtual reduzida e portável facilmente. Para cada projeto você pode deixar um ambiente diferente rodando, um com PHP 4, outro com PHP 5, um em Debian outro em CentOS, você escolhe.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong><br/>
+Instalação</strong></p>
+
+
+
+
+<p>Para criar suas máquinas vituais o Vagrant precisa do Virtual Box, um cliente de máquinas virtuais da Oracle bastante conhecido. Basta instalar! Você não precisa deixar o programa aberto para usar o Vagrant. Você pode fazer o download do Virtual box no seguinte link <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</p>
+
+
+
+
+<p>Instalado o Virtual Box, faça o download do Vagrant e o instale. Procure pela versão do seu sistema operacional no seguinte link <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.</p>
+
+
+
+
+<p><strong><br/>
+Configurando e rodando</strong></p>
+
+
+
+
+<p>Outra coisa que o Vagrant utiliza para criar suas máquinas virtuais são Boxes, ou no singular uma Box. Essa Box funciona como uma imagem, uma iso do sistema operacional que você quer instalar. Então antes de qualquer coisa vamos adicionar uma box, para que você a tenha disponível para criar seu primeiro teste com vagrant.</p>
+
+
+
+
+<p>Abra o console do seu sistema operacional, seja o cmd no windows ou o terminal no linux ou mac e entre com o comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+</pre>
+
+
+
+
+<p>Essa é a box de exemplo que o Quick Start do Vagrant traz para a gente, onde o primeiro parâmetro que vem após add é o nome que estamos dando a nossa box e o segundo o caminho da onde faremos o download. Esse comando vai trazer uma Box do Ubuntu Lucid. Aqui eu recomendo que caso esteja começando com o Vagrant faça um teste usando essa box, mas caso queira avançar um pouco mais, aqui está uma lista de algumas boxes disponíveis por aí <a href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a>.</p>
+
+
+
+
+<p>Box preparada, que tal colocar nosso ambiente para rodar?</p>
+
+
+
+
+<p>Crie uma pasta para o seu projeto no seu ambiente de trabalho e acesse ela via console.<br/>
+Entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant init lucid32
+</pre>
+
+
+
+
+<p>Caso tenha usado outro nome para a sua box no passo anterior, substitua no lugar de lucid32 no comando acima.</p>
+
+
+
+
+<p>Como o próprio comando se explica, ele prepara uma configuração inicial para você usando um arquivo que ele cria em seu diretório chamada Vagrantfile. Dentro desse arquivo existe algumas configurações como a box a ser usada entre outros.</p>
+
+
+
+
+<p>Agora é só subir o ambiente.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Ao subir o ambiente o vagrant irá realmente criar sua máquina virtual e configurar as coisas para você. Acompanhe as saídas dos comandos para detalhes.</p>
+
+
+
+
+<p>Tudo pronto!</p>
+
+
+
+
+<p><strong><br/>
+Testando</strong></p>
+
+
+
+
+<p>Chegou a hora da verdade. Crie um arquivo html com qualquer conteúdo dentro da pasta do seu projeto.</p>
+
+
+
+
+<p>Por exemplo vamos criar um arquivo chamado teste.html com o seguinte conteúdo</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;Teste&lt;/h1&gt;
+</pre>
+
+
+
+
+<p>Agora acesse via browser a pasta do seu projeto e o arquivo que criou.<br/>
+<a href="../../assets/uploads/2012/11/imagem1.png"><img class="alignleft size-full wp-image-587" title="Vagrant - Rodando" src="../../assets/uploads/2012/11/imagem1.png" alt="Vagrant - Rodando" width="394" height="101" /></a><br/>
+<br style="clear: both;" /><br/>
+Esse HTML está dentro da sua máquina virtual e você está rodando a partir do seu localhost. Muito bom não?</p>
+
+
+
+
+<p>Alguns pontos:</p>
+
+
+
+
+<ul>
+<li>Note que você nem abriu essa máquina virtual para trabalhar dentro dela. Você está trabalhando como se ela fosse uma pasta local em sua máquina, essa é a beleza da coisa. Você pode deixar isso melhor organizado usando a opção share_folder do arquivo de configuração Vagrantfile</li>
+<li>Mostrei aqui um teste com HTML como também é mostrado no Quick Start do Vagrant, mas você pode instalar o que quiser dentro da sua máquina virtual seja PHP, Java, Python e rodar o que bem entender. Apenas atente para fazer direcionamento das portas para que isso funcione de acordo. Veja a opção forward_port do arquivo de configuração Vagrantfile</li>
+<li>Detalhes com todas as opções disponíveis para o Vagrantfile você encontra na documentação oficial <a href="http://vagrantup.com/v1/docs/vagrantfile.html">http://vagrantup.com/v1/docs/vagrantfile.html</a></li>
+</ul>
+
+
+
+
+<p><strong><br/>
+SSH</strong></p>
+
+
+
+
+<p>E que tal um acesso SSH na sua máquina virtual?<br/>
+Sim, o Vagrant te traz isso!<br/>
+Se você está no Mac ou Unix apenas entre com o comando abaixo e você está dentro.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Para usuários do windows será necessário o uso do puttygen, putty e algumas configurações em cima deles. Nada muito complicado para quem já trabalha com SSH no seu dia a dia.</p>
+
+
+
+
+<p>Após acesar o ssh via vagrant, você sai no seu home <em>/home/vagrant</em>.<br/>
+Os arquivos que você criou dentro da pasta do seu projeto podem ser encontrados em <em>/vagrant</em>.</p>
+
+
+
+
+<p><strong><br/>
+Distribuindo seu ambiente</strong></p>
+
+
+
+
+<p>Está trabalhando com alguém em um projeto? Que tal enviar esse ambiente que você criou no Vagrant para essa pessoa, para que vocês trabalhem em cima do mesmo ambiente?</p>
+
+
+
+
+<p>Para isso basta criar um pacote da sua máquina virtual com o seguinte comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant package
+</pre>
+
+
+
+
+<p>Ao final do processo você terá um arquivo chamado package.box.<br/>
+Para que alguém ou você mesmo o utilize, basta seguir os passos apresentados aqui como se esse arquivo fosse uma box que você vai fazer o download. Sem mais.</p>
+
+
+
+
+<p><strong><br/>
+Resumo</strong></p>
+
+
+
+
+<p>Apresentei aqui uma geral sobre o Vagrant, porque ele é útil, porque é interessante usá-lo e etc. Fizemos um exemplo e vimos como distribuir esse ambiente com mais pessoas. Cobri aqui o básico dessa sensacional ferramenta para você configurar o ambiente de seus projetos individualmente.</p>
+
+
+
+
+<p>Você pode ir mais além e criar várias máquinas virtuais que se comunicam entre si e outros. Para isso leia a documentação <a href="http://vagrantup.com/v1/docs/index.html">http://vagrantup.com/v1/docs/index.html</a> e se intere do que mais o Vagrant pode fazer por você.</p>
+
+
+
+
+<p>É isso pessoal.<br/>
+Abraços.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hangout PHP in Rio]]></title>
+    <link href="http://flaviosilveira.com/2012/hangout-php-in-rio/"/>
+    <updated>2012-11-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/hangout-php-in-rio</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>A organização do PHP n Rio deste ano de 2012 tem realizado um bate papo com os palestrantes do evento via Hangout, a funcionalidade de videoconferência do Google Plus.</p>
+
+
+
+
+<p>Como palestrante do evento, chegou minha vez de bater um papo ao vivo junto com Anderson Ferreira (<a href="https://twitter.com/sdfnanderson" title="Twitter Anderson Ferreira">@sdfnanderson</a>) e o pessoal da organização Carlos Carneiro (<a href="https://twitter.com/hiper4tivo" title="Twitter Carlos Carneiro">@hiper4tivo</a>) e Vinicius Machado (<a href="https://twitter.com/x4bigboss" title="Twitter Vinicius Machado">@x4bigboss</a>).</p>
+
+
+
+
+<p>Durante pouco mais de uma hora falamos sobre dicas de carreira, dicas de estudo e desenvolvimento. No final fizemos um bate bola com perguntas e respostas.</p>
+
+
+<!--more-->
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ofl-9RYwIc0" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<p>Para quem não acompanhou ao vivo pode conferir o vídeo acima.<br/>
+Quer saber mais sobre o evento? Acesse <a href="http://www.phpnrio.com.br" title="PHP n Rio">http://www.phpnrio.com.br</a>.<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
+    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
+    <updated>2012-10-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.</p>
+
+
+
+
+<p>Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Após instalar e configurar o PHPUnit a primeira coisa a fazer é testar se está tudo ok.<br/>
+Para isso vá até o seu console e digite o comando <em>phpunit</em>.<br/>
+A saída esperada é um helper como na imagem abaixo:<br/>
+<img class="alignleft size-full wp-image-562" title="phpunit 1" src="../../assets/uploads/2012/10/Imagem1.png" alt="testando phpunit" width="487" height="214" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Caso você tenha problemas é hora de checar a sua instalação.<br/>
+Se você usa sistema unix e instalou o PHPUnit via PEAR aqui vão algumas dicas para tentar resolver isso:</p>
+
+
+
+
+<ul>
+<li>Pode ser que esteja tudo instalado corretamente, mas o console não esteja localizando o comando do PHPUnit. Para resolver isso primeiro verifique se a PEAR está instalada tentando digitar o comando <em>pear</em>. Se sim, entre com o comando <em>pear config-get bin_dir</em> para saber o diretório do bin do PHPUnit. Confira se a saída está no seu PATH de comandos, com o comando <em>echo $PATH</em>. Caso não esteja use o comando <em>export</em> para adicionar esse caminho.</li>
+<li>Se você tem certeza que o PEAR está instalado corretamente, execute o seguinte comando para reinstalar o PHPUnit <em>pear install &#8211;alldeps &#8211;force phpunit/PHPUnit</em>.</li>
+</ul>
+
+
+
+
+<p>Com tudo ok podemos seguir em frente.<br/>
+Daqui em diante conto que você saiba pelo menos um mínimo de Orientação a Objetos para que acompanhe os exemplos abaixo.<br/>
+Para que a gente entenda o que esperar do PHPUnit, vamos primeiro criar uma classe com pelo menos um atributo e seus métodos <em>get()</em> e <em>set()</em>.<br/>
+Que tal a tradicional classe Carro com uma propiedade de cor?</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">/**
+ * Classe Carro
+ *
+ **/
+class Carro
+{
+    private $_cor;
+
+    public function getCor()
+    {
+        return $this-&gt;_cor;
+    }
+
+    public function setCor($cor)
+    {
+        $this-&gt;_cor = $cor;
+    }
+
+}
+</pre>
+
+
+
+
+<p>Com a classe principal criada vamos agora preparar nossa classe de testes.<br/>
+Vamos chamar nossa classe de testes de CarroTeste.php.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+
+}
+</pre>
+
+
+
+
+<p>Repare em duas coisas no código acima:</p>
+
+
+
+
+<ul>
+<li>Sua classe de testes deve conhecer a classe que vai ser testada (use require, include ou autoload).</li>
+<li>Sua classe de testes precisa extender o framework PHP_Unit. Para extender o PHPUnit da mesma forma como no código acima, configure corretamente o seu <em>include_path</em> no seu arquivo de configuração do PHP (php.ini). Não sabe onde está seu arquivo php.ini? Utilize o comando <em>php &#8211;ini</em>. Procure por <em>include_path</em> dentro desse arquivo e adicione o caminho para o framework PHPUnit. <em>**A instalação via PEAR constuma adicionar esse caminho para você no php.ini. Confira o arquivo se for caso.</em></li>
+</ul>
+
+
+
+
+<p>Finalmente vamos ao nosso teste em si. Vamos testar se nossos métodos <em>get()</em> e <em>set()</em> estão realmente fazendo o que se espera. <em>Get()</em> tem de retornar o mesmo valor passado para <em>set()</em>. Para verificar isso vamos usar o método assertEquals do PHPUnit, veja o exemplo:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Azul", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Criamos um método testeCor em nossa classe de testes.<br/>
+Dentro dele instanciamos a classe carro e atribuímos para a propiedade cor o valor Azul.<br/>
+O método AssertEquals do PHPUnit vai comparar se os dois parâmetros passados são iguais.</p>
+
+
+
+
+<p>Vamos rodar nosso teste?<br/>
+Em seu console execute o comando phpunit passando para ele o caminho da sua classe de testes. O resultado deve ser similar a esse:<br/>
+<img class="alignleft size-full wp-image-563" title="Imagem2" src="../../assets/uploads/2012/10/Imagem2.png" alt="Rodando o primeiro teste" width="442" height="171" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Na imagem você percebe abaixo da linha de descrição da versão do PHPUnit um . (ponto). Em seguida uma descrição do tempo de execução e memória utilizada e abaixo um OK. Isso indica que nosso teste teve sucesso. O ponto que falamos acima indica que um teste teve sucesso, em caso de falha teremos um F no lugar do ponto. Para cada teste irá ser adicionado um <em>. ponto</em>ou um <em>F</em>.</p>
+
+
+
+
+<p>Vamos forçar um erro no teste para ver o que acontece? Vamos trocar os parâmetros do nosso <em>AssertEquals</em> e dizer que estamos esperando o resultado <em>Amarelo</em> invés de <em>Azul</em>.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Amarelo", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Rodando nosso teste agora temos a seguinte saída:<br/>
+<img class="alignleft size-full wp-image-564" title="Imagem3" src="../../assets/uploads/2012/10/Imagem3.png" alt="Falha no PHPUnit" width="427" height="317" /><br style="clear: both;" /><br/>
+No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indicando a falha. Junto a isso o PHPUnit nos traz detalhes da falha com o nome do teste que falhou, o que era esperado e o que foi retornado.</p>
+
+
+
+
+<p>A ideia por trás do PHPUnit e suas funções é bem similar ao que foi demonstrado acima, com o detalhe que algumas funções podem ter mais parâmetros ou esperar tipos diferentes de dados. Que tal descobrir mais métodos do PHPUnit e criar novos testes? Visite o capítulo 4 do manual do PHPUnit e teste outras funções do framework. Segue o link para o manual: <a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html" title="PHPUnit Manual Cap4">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Global Game Jam 2012]]></title>
+    <link href="http://flaviosilveira.com/2012/global-game-jam-2012/"/>
+    <updated>2012-01-06T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/global-game-jam-2012</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Na minha palestra <a href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/" title="Palestra Quero ser um desenvolvedor de jogos">Quero ser um desenvolvedor de jogos</a> que estive apresentando durante o ano de 2011, eu comento sobre a Global Game Jam.</p>
+
+
+
+
+<p>A Global Game Jam é um evento que acontece todo ano e ocorre simultâneamente em todo o mundo. Funciona da seguinte maneira:<br/>
+Através do site que organiza o evento (<a href="http://globalgamejam.org" title="Global Game Jam">http://globalgamejam.org</a>) é divulgado um tema. Com esse tema em mãos, equipes de desenvolvedores de jogos (programadores, artistas, músicos, roteiristas, etc) unem forças para desenvolver o seu próprio game. O prazo máximo é de 48 horas e pode ser usado qualquer tecnologia.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Em muitas cidades, as faculdades, empresas e outras instituições reúnem e organizam pessoas que tem interesse em participar, dividindo as equipes para que elas fiquem mais competitivas e também cedendo um local de trabalho para essas equipes. Alguns locais também colaboram com a alimentação dos participantes e, como o prazo é curto, também pode ser um bom abrigo para o seu colchonete. Mas cuidado! As vagas nesses locais geralmente são limitadas.</p>
+
+
+
+
+<p>O Evento é uma excelente porta de entrada para você que quer conhecer o processo de desenvolvimento de jogos, além do grande networking e distribuição de conhecimento que esse evento gera. Em 2011 foram mais de 1500 jogos criados, com participação de mais de 6.500 pessoas em mais de 44 países.</p>
+
+
+
+
+<p>As inscrições para esse ano já estão quase acabando. O que você está esperando para participar?<br/>
+Acesse já o <a href="http://globalgamejam.org" title="Site Global Game Jam">site da Global Game Jam</a>, veja as cidades inscritas e participe. Caso sua cidade não esteja participando, ou os locais na sua cidade estejam com vagas esgotadas, junte seus amigos e monte sua equipe. Veja informações de como se cadastrar nesse wiki feito pela organização <a href="http://globalgamejam.org/wiki/how-register-ggj-2012" title="Como se registrar na Global Game Jam 2012">http://globalgamejam.org/wiki/how-register-ggj-2012</a></p>
+
+
+
+
+<p>Uma dica: Se você for participar através de alguma faculdade, empresa ou instituição na sua cidade, não deixe de entrar em contato com os organizadores e se informar sobre o que terá no local, o que precisa ser levado, etc. Não seja pego de surpresa, principalmente no que diz respeito a comida, sono e emocional. Levante também a necessidade de se cadastrar em um site do local onde você irá participar. Geralmente isso é feito para um controle dos organizadores.</p>
+
+
+
+
+<p>O evento esse ano começa no dia 27 de janeiro no período da noite e vai até o domingo dia 29.<br/>
+Não deixe de participar.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Screencast – Começando Bem Com Zend Framework]]></title>
+    <link href="http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework/"/>
+    <updated>2011-12-29T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Gravei esse screencast baseado no mini-curso/palestra que estive apresentando durante esse ano com o título de <em>Começando bem com Zend Framework</em>.</p>
+
+
+
+
+<p>O vídeo não tem edição, foi gravado direto, sem roteiro.<br/>
+Por isso peço desculpas se acabei atropelando alguma explicação ou se algo não ficar muito claro para alguém, principalmente para iniciantes. Da forma como foi finalizado acabou ficando mais voltado para quem já tem um conhecimento com outros frameworks ou um conhecimento legal de PHP.</p>
+
+
+
+
+<p>Dúvidas? Perguntas? Sugestões? Estamos aí.<br/>
+Aguardo o feedback de todos.<br/>
+Grande Abraço!</p>
+
+
+<!--more-->
+
+
+<iframe src="https://player.vimeo.com/video/34341638" width="640" height="392" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<p><a href="https://vimeo.com/34341638">Come&ccedil;ando Bem com Zend Framework</a> from <a href="https://vimeo.com/user9814221">Fl&aacute;vio Silveira</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+
+
+
+<p><strong>Alguns Links que aparecem no screencast</strong></p>
+
+
+
+
+<ul>
+<li><a href="http://framework.zend.com/download/current/" title="Download Zend Framework">Download Zend &#8211; http://framework.zend.com/download/current/</a><strong><br/>
+</strong></li>
+<li><a href="http://www.slideshare.net/flavioaugustosilveira/minicurso-zend" title="SlideShare Flávio Silveira">Slideshare.net &#8211; http://www.slideshare.net/flavioaugustosilveira/minicurso-zend</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
+    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
+    <updated>2011-12-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
+
+
+
+
+<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
+
+
+
+
+<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Buscando comandos digitados no terminal</strong></p>
+
+
+
+
+<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
+
+
+
+
+<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
+Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
+Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
+
+
+
+
+<p><strong>Exigindo um pouco mais do histórico</strong></p>
+
+
+
+
+<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
+Uma das maneiras de se fazer isso é com o comando abaixo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">history
+</pre>
+
+
+
+
+<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
+<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
+
+
+
+
+<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!44
+</pre>
+
+
+
+
+<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
+
+
+
+
+<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!-2
+</pre>
+
+
+
+
+<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
+
+
+
+
+<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
+
+
+
+
+<p><strong>O que mais?</strong></p>
+
+
+
+
+<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">man history
+</pre>
+
+
+
+
+<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
+Dúvidas? Sugestões? Estamos aí!<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Conhecendo Melhor Seu Interpretador De Comandos]]></title>
+    <link href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
+    <updated>2011-10-30T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
+    <content type="html"><![CDATA[<p>Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.</p>
+
+
+
+
+<p>Quem faz essa ligação entre você e o coração do sistema operacional, permitindo executar esses comandos, é o Shell. Quem interpreta e processa os comandos para você, é uma implementação do Shell, que é o que vamos conhecer melhor aqui hoje.</p>
+
+
+
+
+<p>Este termo Shell, deve ter feito você lembrar sobre Shell Script, que escutamos falar muito e nada mais é do que um script com vários comandos Shell dentro dele.</p>
+
+
+
+
+<p>Dentre as implementações de Shell, aquilo que interpreta seus comandos, a mais famosa hoje é o Bash (Bourne-again shell, fazendo uma referência ao Bourne Shell que você pode pesquisar sobre). Para conferir qual o interpretador padrão de seus comandos, em seu terminal digite o seguinte comando</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">echo $SHELL
+</pre>
+
+
+
+
+<p>Se seu interpretador for o Bash, como a maioria, você vai ver a saída <em>/bin/bash</em>.</p>
+
+
+
+
+<p>Entre outras implementações de Shell podemos ter <em>csh</em>, <em>tcsh</em>, <em>sh</em>, <em>ksh</em>, e várias outras. Para conferir se essas implementações estão instaladas no seu sistema operacional, basta digitar o nome delas. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">bash
+</pre>
+
+
+
+
+<p>Caso esteja instalada, o terminal irá permitir que execute comandos naquela implementação, caso contrário apontará como comando inexistente. Você também consegue uma listagem das implementações shell disponíveis em seu sistema operacional abrindo o arquivo shells, geralmente localizado em <em>/etc/shells</em>.</p>
+
+
+
+
+<p>Acredito que se você usar outras implementações apenas por algum tempo, vai achar todas muito parecidas pois uma deriva ou usa a outra, e assim nem vai notar diferença entre elas.</p>
+
+
+
+
+<p><strong>Usando o Bash</strong></p>
+
+
+
+
+<p>O bash traz alguns atalhos que podem facilitar a sua vida, sendo um dos principais a tecla <em>TAB</em> (ou <em>ctrl + i</em>) para completar comandos, nomes de arquivos ou nomes de variáveis.</p>
+
+
+
+
+<p>Para buscar por comandos que você tenha digitado anteriormente use <em>ctrl + r</em>.<br/>
+Para anular a busca use <em>ctrl + c</em>, que também é usado para abortar outros comandos, scripts e as vezes loops infinitos.</p>
+
+
+
+
+<p><em>ctrl + a</em> para ir ao início da linha do comando (também obtido com a tecla <em>home</em>, se houver), <em>ctrl + e</em> para ir ao final dela (equivalente a tecla <em>end</em>).<br/>
+Perdeu a tecla <em>enter</em> ou cansou dela? Use <em>ctrl + j</em></p>
+
+
+
+
+<p>Esses atalhos tendem a funcionar melhor quando se está definido o padrão de teclas <em>Emacs</em>, embora grande maioria deles funcione em outros padrões.</p>
+
+
+
+
+<p>Você pode mudar esse padrão com o comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">set -o emacs
+</pre>
+
+
+
+
+<p>Você poderia usar o padrão <em>VI</em>, da seguinte maneira</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">set -o vi
+</pre>
+
+
+
+
+<p>Como exemplo para essa situação, temos os atalhos <em>ctrl + p</em> (equivalente a seta para cima) e <em>ctrl + n</em> (equivalente a seta para baixo) para trazer os últimos comandos executados. Eles funcionam apenas no padrão <em>emacs</em>.</p>
+
+
+
+
+<p><strong>Preciso saber esses comandos?</strong></p>
+
+
+
+
+<p>Muito provavelmente um marginal não vai encostar uma arma na sua cabeça lhe cobrando esses comandos no meio da rua. Mas talvez algum dia na sua carreira, você vai entrar em algum Data Center, e ter de mexer diretamente em uma máquina que estiver dentro de um hack enorme.</p>
+
+
+
+
+<p>Você irá puxar uma pequena gaveta, que irá se tornar um monitor e um simples teclado. Esse teclado pode conter apenas teclas básicas, excluindo assim as suas tão usadas setas para navegar entre os caracteres e palavras, e as vezes até sem a tecla enter. Esteja preparado conhecendo alguns desses comandos. Lembre-se que o google pode não estar por perto.</p>
+
+
+
+
+<p>Em breve trarei para vocês uma alternativa bem legal para o Bash, e como ela pode ajudar na produtividade de pessoas que trabalham diretamente com o terminal.</p>
+
+
+
+
+<p>Até lá!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Palestra – Quero Ser Um Desenvolvedor De Jogos]]></title>
+    <link href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
+    <updated>2011-09-01T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
+    <content type="html"><![CDATA[<p>Olá pessoal!</p>
+
+
+
+
+<p>Se vocês acompanham minhas notícias, ficaram sabendo que estive em Bento Gonçalves &#8211; Rio Grande do Sul, palestrando sobre desenvolvimento de jogos no evento Tchê Linux.</p>
+
+
+
+
+<p>A palestra aborda uma visão inicial para quem quer conhecer o desenvolvimento de jogos, apresentando os papéis que fazem parte desse desenvolvimento e como começar a fazer parte deles. Ou seja, dá para assistir com seu Pai e sua mãe na sala sem problemas.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>O pessoal do evento fez a filmagem e edição da palestra e você pode conferir o resultado abaixo.<br/>
+Caso queira acompanhar os Slides, ou mesmo fazer o download dele, segue o link da apresentação: <a href="http://www.slideshare.net/flavioaugustosilveira/quero-ser-um-desenvolvedor-de-jogos" title="Slideshare - Quero ser um desenvolvedor de jogos">http://www.slideshare.net/flavioaugustosilveira/quero-ser-um-desenvolvedor-de-jogos</a></p>
+
+
+
+
+<p><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#AYLO1VwC" style="display:none">
+</embed></p>
+
+
+
+
+<p>Assista também a outras palestras que rolaram em Bento Gonçalves através do Canal do Tchê Linux no Blip.tv <a href="http://blip.tv/tchelinux/" title="Canal Tchê Linux Blip.tv">http://blip.tv/tchelinux/</a>.</p>
+
+
+
+
+<p>Dúdivas, idéias, sugestões, basta entrar em contato.<br/>
+Espero que gostem! Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!]]></title>
+    <link href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
+    <updated>2011-07-25T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Vocês já ouviram falar sobre o <a href="http://initializr.com/" title="Initializr!">Initializr!</a> ?</p>
+
+
+
+
+<p>Ele é um gerador de código que ajuda você a começar seu projeto em HTML5. Ele é baseado no <a href="http://html5boilerplate.com/" title="oilerplate HTML5">Boilerplate</a> e foi criado por Jonathan Verrecchia (<a href="http://twitter.com/#!/verekia" title="Twitter Jonathan Verrecchia">@verekia</a>) com o objetivo de ampliar o uso do HTML5.</p>
+
+
+
+
+<p>Em contato com o Jonathan, combinei com ele de traduzir a documentação oficial do Initializr do francês para o português, para ajudar a divulgar ainda mais essa tremenda ferramenta e quem sabe com isso ver o uso do HTML5 mais e mais em novos projetos.</p>
+
+
+
+
+<p>Segue a tradução da documentação abaixo.<br/>
+Você encontra a versão original em francês no seguinte link: <a href="http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate" title="Documentação oficial Initializr Francês">http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate</a>.</p>
+
+
+
+
+<p>Conheça esses projetos e comece já a trabalhar com HTML5!<br/>
+Grande Abraço!</p>
+
+
+
+
+<h3>Initializr &#8211; Um gerador baseado nos templates Boilerplate HTML5</h3>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-371" title="logo-initializr" src="../../assets/uploads/2011/07/logo-initializr.png" alt="Initializr!" width="600" height="285" /></p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Initializr permite a você gerar um template baseado no Boilerplate, montando um rascunho de um HTML5 funcional em segundos.</p>
+
+
+
+
+<p>Você pode customizar seus templates como precisar, para evitar começar um projeto com um código muito pesado. Todo o processo do projeto de design e as opções disponíveis estão detalhadas neste artigo.</p>
+
+
+
+
+<p>Se você está começando agora com HTML5 e quer ter uma geral do que tem por trás dessa tecnologia, eu recomendo que você leia uma introdução ao HTML5 antes de seguir em frente.</p>
+
+
+
+
+<h3>Boilerplate HTML5</h3>
+
+
+
+
+<p>Boilerplate é uma poderosa e confiável ferramenta de templates criada e mantida por Paul Irish (Google) e Divya Manian.</p>
+
+
+
+
+<p>Boilerplate consiste de um grupo de arquivos HTML, CSS e JavaScript, usados para iniciar com o pé direito em um projeto HTML5.</p>
+
+
+
+
+<p>Ele também inclui ferramentas muito úteis, como o Modernizr, JQuery, e um reset CSS.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-372" title="logo-boilerplate" src="../../assets/uploads/2011/07/logo-boilerplate.png" alt="Boilerplate" width="600" height="75" /></p>
+
+
+
+
+<p>Também inclui outras ferramentas não tão necessárias como um Profiling JQuery, Código Google Analytics, Funções Javascript para loggin,</p>
+
+
+
+
+<p>um arquivo de configuração para Flash cross domain, Configuração IIS server e Nginx, Páginas de teste, scripts ANT… Bem, quando você for iniciar seu projeto com Boilerplate, você vai precisar de algum tempo para selecionar as partes que você quer e não quer no seu projeto.</p>
+
+
+
+
+<h3>Initializr &#8211; Um Boilerplate leve e personalizável</h3>
+
+
+
+
+<p>A proposta com o initializr é ter o Boilerplate sem essas ferramentas raramente usadas com HTML5 para poder começar um projeto rápido e tão confiável quanto o Boilerplate. O código gerado pelo Initializr é totalmente baseado no Boilerplate, que tem uma força inegável. Initializr oferece diferentes opções para customizar seu template. Aqui estão os detalhes:</p>
+
+
+
+
+<h3>HTML / CSS</h3>
+
+
+
+
+<p>Por padrão, o Boilerplate entrega a você uma página em branco. Initializr permite a você gerear um conteúdo inicial como base, para te ajudar a começar rapidamente. A página exemplo trás o tema do site da Initializr, com uma página estruturada com um clássico cabeçalho, um rodapé, um menu para navegação, um bloco lateral, e uma estrutura similar a um blog com alguns posts.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-373" title="initializr-html5-template" src="../../assets/uploads/2011/07/initializr-html5-template.jpg" alt="Site Initializr" width="510" height="391" /></p>
+
+
+
+
+<h3>Javascript</h3>
+
+
+
+
+<p>O Boilerplate inclui a excelente biblioteca de Javascript jQuery. E no Initializr nós também encontramos essa biblioteca, disponível em forma minimizada ou não. Ou também o direito de não incluir ela, ou não incluir nenhum Javascript. Vamos atentar para um ponto: Estamos falando do seu Javascript. Nada no Modernizr ou no HTML5shiv vai garantir uma compatibilidade 100% com todos os navegadores. Então não esqueça de testar isso posteriormente.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-374" title="jquery-logo" src="../../assets/uploads/2011/07/jquery-logo.png" alt="JQuery" width="366" height="90" /></p>
+
+
+
+
+<h3>Compatibilidade</h3>
+
+
+
+
+<h3>Html5Shiv</h3>
+
+
+
+
+<p>Navegadores modernos suportam totalmente as novas tags do HTML5. Mas versões do Internet Explorer 8, e anteriores a ele, precisam de uma ajudinha para exibir essas novas tags, que por padrão não são reconhecidas. Esta pequena ajuda é chamada HTML5shiv. Ele é um pequeno arquivo javascript que vai permitir ao Internet Explorer reconhecer essas tags graças a uma função createElement():</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">document.createElement("header");
+</pre>
+
+
+
+
+<p>Todos os novos itens são automaticamente criados antes do conteúdo da página ser completamente exibido. Isso torna obrigatório colocar o HTML5shiv no <em>Head</em> da sua página ao invés de colocar no rodapé, que é o recomendado para todos os outros javascripts.</p>
+
+
+
+
+<h3>Modernizr</h3>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-375" title="modernizr-logo" src="../../assets/uploads/2011/07/modernizr-logo.png" alt="Modernizr" width="222" height="50" /></p>
+
+
+
+
+<p>O Modernizr, é um sensor de suporte das funcionalidades HTML5 e CSS3, que inclui o HTML5shiv. Ele é um arquivo javascript que irá criar um objeto contendo propriedades modernizr para cada funcionalidade, indicando se ela funciona ou não no seu navegador.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if (Modernizr.geolocation){
+  // A geolocalização é suportada
+}
+else {
+  // A geolocalização não é suportada
+}
+</pre>
+
+
+
+
+<p>Modernizr também adiciona classes CSS para o HTML, para que você possa facilmente indicar um estilo alternativo se certas propiedades CSS3 não forem suportadas.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">.multiplebgs header {
+  /* Backgrounds múltiplos são suportados */
+}
+.no-multiplebgs header {
+  /* Backgrounds múltiplos não são suportados */
+}
+</pre>
+
+
+
+
+<p>Modernizr é bem abrangente na detecção de suporte a HTML5 e CSS3, mas é importante entender que ele não adiciona nenhuma característica faltante (como faz o HTML5shiv em relação as tags). Ele é a ferramenta selecionada por padrão para compatibilidade do Initializr.</p>
+
+
+
+
+<h3>A configuração do servidor</h3>
+
+
+
+
+<p>O Initializr traz um arquivo de configuração para o servidor, também gerado pelo Boilerplate. Portanto é possível selecionar um arquivo .htaccess para servidores Apache, web.config para Microsoft IIS, ou nginx.conf para Servidores NGinx. É importante notar que por padrão, esses arquivos vão re-escrever a URL da página, removendo o &#8220;www&#8221; para montar URLs curtas.</p>
+
+
+
+
+<p>Se você preferir manter o seu &#8220;www&#8221;, você pode remover as seguintes linhas no caso do .htaccess:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;IfModule mod_rewrite.c&gt;
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+&lt;/IfModule&gt;
+</pre>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-376" title="server" src="../../assets/uploads/2011/07/server.png" alt="" width="256" height="256" /></p>
+
+
+
+
+<h3>É apenas um clique no botão!</h3>
+
+
+
+
+<p>Após fazer suas escolhas com relação a configuração, um simples clique no botão Download! fará o download de seus arquivos.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-377" title="initializr-download" src="../../assets/uploads/2011/07/initializr-download.png" alt="" width="400" height="157" /></p>
+
+
+
+
+<p>Se você manter as configurações padrão, você terá uma estrutura de projeto completa e pronta para uso, como a mostrada abaixo:</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-378" title="html5-initializr-structure" src="../../assets/uploads/2011/07/html5-initializr-structure.png" alt="" width="224" height="250" /></p>
+
+
+
+
+<p>Uma rápida olhada no arquivo index.html e você pode ver que o código traz muita coisa do Boilerplate:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7 ]&gt; &lt;html lang="en" class="no-js ie6"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7 ]&gt;    &lt;html lang="en" class="no-js ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;    &lt;html lang="en" class="no-js ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;    &lt;html lang="en" class="no-js ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt; &lt;html lang="en" class="no-js"&gt; &lt;!--&lt;![endif]--&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+
+  &lt;title&gt;Your website name&lt;/title&gt;
+
+  &lt;meta name="description" content=""&gt;
+  &lt;meta name="author" content=""&gt;
+
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;link rel="shortcut icon" href="favicon.ico"&gt;
+  &lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+
+  &lt;link rel="stylesheet" href="css/style.css?v=2"&gt;
+
+  &lt;script src="js/libs/modernizr-1.6.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- Código da página exemplo do Initializr --&gt;
+
+  &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.4.min.js"%3E%3C/script%3E'))&lt;/script&gt;
+  &lt;script src="js/script.js"&gt;&lt;/script&gt;
+  &lt;!--[if lt IE 7 ]&gt;
+  &lt;script src="js/libs/dd_belatedpng.js"&gt;&lt;/script&gt;
+  &lt;script&gt; DD_belatedPNG.fix('img, .png_bg');&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+
+
+<p>O arquivo style.css traz em torno de 200 linhas, os primeiros 3 quartos disso um CSS Reset. Se você estiver procurando onde colocar os seus estilos no meio desse código CSS, role o arquivo para baixo até você encontrar o seguinte comentário:</p>
+
+
+
+
+<pre class="brush: css; title: ; notranslate" title="">/*
+    // ========================================== \\
+   ||                                              ||
+   ||               Your styles !                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+</pre>
+
+
+
+
+<p>Por último, o arquivo script.js contém um simples teste para ver se a biblioteca JQuery está sendo carregada. Nesse arquivo você pode escrever seu código JavaScript.</p>
+
+
+
+
+<h3>TODO.txt</h3>
+
+
+
+
+<p>Um arquivo todo.txt também é incluído para te mostrar que tarefas você tem de fazer para começar seu projeto e como usar alguns truques de HTML5 presentes no Boilerplate. Por exemplo, você e lembrado para não esquecer de substituir a linguagem se sua página não estiver em inglês, ou para criar uma  página 404.html no seu arquivo se configuração do servidor para fazer um redirecionamento em erros 404.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-379" title="initializr-todo" src="../../assets/uploads/2011/07/initializr-todo.png" alt="" width="463" height="110" /></p>
+
+
+
+
+<h3>Indo mais longe</h3>
+
+
+
+
+<p>A versão do Boilerplate que vem no Initializr é mais leve que a original. Se você precisa de um entendimento mais profundo do template ou de informações mais detalhadas de todos os arquivos, você pode ver a explicação oficial do Boilerplate em um vídeo feito por Paul Irish em inglês:</p>
+
+
+
+
+<p>Eu também lhe convido a visitar o <a href="http://html5boilerplate.com/" title="Boilerplate">site oficial do Boilerplate</a>, onde você vai encontrar algumas dicas para melhorar seu site , dicas de compatibilidade e performance.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Codeigniter 2 – Templates E Layouts]]></title>
+    <link href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/"/>
+    <updated>2011-05-26T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo <em>Habilitando Layouts no CodeIgniter (Template Engine)</em> que está dividido em <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/">parte 1</a> e <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/">parte 2</a>.</p>
+
+
+
+
+<p>Como esse artigo tem mais de um ano, resolvi dar um upgrade nele com algumas observações.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Desde que ele foi escrito temos algumas novidades. A principal dela é  o lançamento de uma versão crítica do Codeigniter. Mas não se preocupe, a mecânica do artigo continua funcionando.<br/>
+Apenas atente para alguns detalhes.</p>
+
+
+
+
+<p>Preste atenção para a parte do seu controller:</p>
+
+
+
+
+<ul>
+<li>Agora ele extende da classe CI_Controller e não mais da classe Controller.</li>
+<li>Agora você não tem de ter mais um método construtor com o mesmo nome da classe. Pode arrancar fora aquilo sem medo.</li>
+</ul>
+
+
+
+
+<p>Outros:</p>
+
+
+
+
+<ul>
+<li>No tutorial anterior há uma correção porque eu tratava minha pasta system diferente do convencional. Com a ajuda e os comentários de vocês, foi feita uma correção que está no final do post. Agora na versão 2 está tudo ok. A pasta system vem separada da pasta application.</li>
+<li>Na versão 2 temos agora arquivos .htaccess, arquivos de configuração, dentro das pastas application e da pasta system. Dentro deles há uma regra para recusar qualquer coisa que tentar acessar a pasta. Certifique-se que, em caso de colocar seus arquivos de estilo, ou seus arquivos javascript dentro de application por exemplo, alterar essa regra no .htaccess.</li>
+</ul>
+
+
+
+
+<p>Então você pode seguir normalmente o tutorial, apenas adapte os detalhes citados acima.<br/>
+Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2exemplo1.zip">Clique aqui para baixar um exemplo com Layouts em cima do Codeigniter 2</a>.</p>
+
+
+
+
+<p>É isso galera. Abraço!!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Coding Dojo – O Que é ? E Como Participar ?]]></title>
+    <link href="http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar/"/>
+    <updated>2011-04-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar</id>
+    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
+Para quem não conhece, Coding dojo não se refere a um framework de linguagem ou a uma sessão de treinos do Bruce Lee.<br/>
+Coding Dojo é simplesmente uma reunião de programadores para treinar e aperfeiçoar seus talentos com algoritmos.<br/>
+Uma reunião para resolver um algoritmo.<br/>
+Estas reuniões estão sendo cada vez mais frequentes no Brasil e no mundo.<br/>
+Veja abaixo porque isso está acontecendo e porque elas são interessantes.</p>
+
+
+
+
+<h3>Porque participar?</h3>
+
+
+
+
+<p><br style="clear: both;" /><br/>
+Os Dojos de programação foram criados para desafiar programadores com algoritmos complexos, diferente de algumas empresas ou trabalhos onde você acostuma com as lógicas e regras de negócio e com o tempo acaba apenas replicando aquilo onde você teve que pensar uma única vez.</p>
+
+
+
+
+<p>Ele leva esse nome por ser baseado nos Dojos de artes marciais, onde no tatâme é feito um círculo e enquanto dois lutadores aprendem na prática, os demais aprendem olhando.<br/>
+Nos dojos de programação a idéia é a mesma, enquanto duas pessoas estão codificando na máquina as demais aprendem olhando o raciocínio e o caminho que essas pessoas estão seguindo.</p>
+
+
+
+
+<p>É muito importante ressaltar que os dojos não são competições de quem programa melhor ou de quem resolve problemas mais rápidos.<br/>
+O espírito da coisa toda é ser colaborativo e se divertir. E claro aprender.</p>
+
+
+
+
+<h3>Em que linguagem é programado e quais são os problemas propostos?</h3>
+
+
+
+
+<p><br style="clear: both;" /><!--more--></p>
+
+
+
+
+<p>Há Dojos de vários tipos e maneiras por aí.<br/>
+Algumas empresas estão montando Dojos internos para seus funcionários, nesses casos sempre seguindo a linguagem de desenvolvimento usada na empresa.</p>
+
+
+
+
+<p>Outros Dojos específicos estão por aí, como de Java, Rails e etc.</p>
+
+
+
+
+<p>Mas onde há programadores de várias linguagens, pode se decidir no dia do Dojo que linguagem utilizar, desde que tenha um especialista da linguagem presente para evitar maiores impasses do tipo <em>&#8220;como faz um if aqui?&#8221;</em>.<br/>
+Isso é bom para você se desligar daquela linguagem que você trabalha todo dia e olhar para alguma sintaxe diferente um pouco.</p>
+
+
+
+
+<p>Os problemas de lógica são propostos por colaboradores de todo o mundo.<br/>
+Você pode ver alguns exemplo no <a href="http://dojopuzzles.com/">Dojo Puzzles</a>.<br/>
+Os problemas devem ser escolhidos minutos antes de começar o Dojo, evitando que ao escolher um dia ou dois antes, você começe a resolver o desafio na sua cabeça sem perceber.</p>
+
+
+
+
+<h3>Como funciona?</h3>
+
+
+
+
+<p><br style="clear: both;" /><br/>
+Cada dojo pode ter suas regras específicas de tempo ou funcionamento. Mas no geral eles seguem as seguintes premissas:</p>
+
+
+
+
+<p><strong>Programação baseada em testes</strong></p>
+
+
+
+
+<p>Antes de ser escrito uma implementação de código é escrito um teste. Isso é programação baseada em testes. TDD (Test-Driven Development).<br/>
+Se você não conhece  ou não imagina como é testar um resultado de uma função que ainda não foi criada, o Dojo pode ser uma forma de você se iniciar nessa metodologia e ver quais as vantagens ou desvantagens dela.</p>
+
+
+
+
+<p><strong>Passos de bebê</strong></p>
+
+
+
+
+<p>Quando um bebê está aprendendo a caminhar ele não arrisca dar passos grandes por aí. No Dojo acontece da mesma forma.<br/>
+O código vai saindo devagar, ajudando para que todos estejam entendendo o que está acontecendo e que rumo tudo está tomando.<br/>
+Sempre que alguém não estiver entendendo o que está acontecendo, esse tem o direito de perguntar e se encaixar nos trilhos novamente.</p>
+
+
+
+
+<p><strong>Pair Programming &#8211; Programação em duplas</strong></p>
+
+
+
+
+<p>A programação é feita em dupla. Um piloto e um co-piloto.<br/>
+O piloto, obviamente, coloca a mão na massa, digitando e identando código e testes.<br/>
+O co-piloto palpita ajuda olhando e apontando onde pode melhorar, o que está errado, etc.<br/>
+Quando esse piloto volta para a platéia após alguns minutos, o co-piloto se torna  piloto e alguém da platéia vem para ajudá-lo no papel de co-piloto.<br/>
+E assim segue.</p>
+
+
+
+
+<p><strong>Fases</strong></p>
+
+
+
+
+<p>Quando piloto e co-piloto estão sem idéias de como resolver o problema, é liberado que a platéia interaja e opine a respeito do código. Para demais casos há  fases onde a platéia pode opinar ou não. Quem dita essas fases são os testes.</p>
+
+
+
+
+<p>Quando algum teste não estiver passando, não estiver dando um resultado correto, a dupla deve se concentrar em corrigir isso. Nessa fase a platéia não deve opinar, a menos que seja pedido.<br/>
+Quando os testes estão passando e tudo está ok, é liberado que a platéia de opiniões e sugestões para o piloto e co-piloto.</p>
+
+
+
+
+<h3>Onde Acontece?</h3>
+
+
+
+
+<p><br style="clear: both;" /><br/>
+Os Dojos tem se espalhado por toda parte e com certeza há um perto de você.<br/>
+O <a href="http://Codingdojo.org">Codingdojo.org</a> traz uma listagem de Dojos pelo mundo que você pode conferir <a href="http://maps.google.com/maps/ms?ie=UTF&amp;msa=0&amp;msid=116400871369678060090.000453a8d6ee3a6d3b8fe">clicando aqui</a>.<br/>
+Outra fonte de pesquisa, claro, é o <a href="http://www.google.com">google</a>. Pesquisando por Coding Dojo + o nome da sua cidade com certeza irá pintar alguma coisa.</p>
+
+
+
+
+<p>Não encontrou nada?<br/>
+Ao Invés de reclamar que sua cidade é fraca e não tem nada, porque você não monta um grupo de dojo e chama seus conhecidos?</p>
+
+
+
+
+<p>Então é isso pessoal. Quer se aperfeiçoar? Conhecer novas pessoas? Participar de um grupo bacana?<br/>
+Procure e participe dos Dojos.</p>
+
+
+
+
+<p>Abraço!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

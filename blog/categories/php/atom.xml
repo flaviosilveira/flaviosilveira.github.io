@@ -1,0 +1,1080 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Php | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
+    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
+    <updated>2013-09-15T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
+    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
+
+
+
+
+<p><strong>O que é Vagrant?</strong><br/>
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Alguns pontos do Vagrant:<br/>
+&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
+&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
+Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
+&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
+&#8211; Muito mais.</p>
+
+
+
+
+<p><strong>PuPHPet: Arquivos puppet</strong><br/>
+Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
+Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
+
+
+
+
+<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
+Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
+
+
+
+
+<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
+É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
+Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
+
+
+
+
+<p><strong>O que é PHP Built In?</strong><br/>
+Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
+É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
+Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
+Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
+
+
+
+
+<p><strong>Mãos a Obra</strong><br/>
+Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
+Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
+
+
+
+
+<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
+Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
+
+
+
+
+<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
+Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
+
+
+
+
+<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
+Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
+
+
+
+
+<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
+mkdir teste
+cd teste
+</pre>
+
+
+
+
+<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
+
+
+
+
+<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
+</pre>
+
+
+
+
+<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
+8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
+** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
+
+
+
+
+<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
+Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
+</pre>
+
+
+
+
+<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
+
+
+
+
+<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
+Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
+
+
+
+
+<p><strong>Resumindo</strong><br/>
+Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
+    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
+    <updated>2012-10-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.</p>
+
+
+
+
+<p>Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Após instalar e configurar o PHPUnit a primeira coisa a fazer é testar se está tudo ok.<br/>
+Para isso vá até o seu console e digite o comando <em>phpunit</em>.<br/>
+A saída esperada é um helper como na imagem abaixo:<br/>
+<img class="alignleft size-full wp-image-562" title="phpunit 1" src="../../assets/uploads/2012/10/Imagem1.png" alt="testando phpunit" width="487" height="214" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Caso você tenha problemas é hora de checar a sua instalação.<br/>
+Se você usa sistema unix e instalou o PHPUnit via PEAR aqui vão algumas dicas para tentar resolver isso:</p>
+
+
+
+
+<ul>
+<li>Pode ser que esteja tudo instalado corretamente, mas o console não esteja localizando o comando do PHPUnit. Para resolver isso primeiro verifique se a PEAR está instalada tentando digitar o comando <em>pear</em>. Se sim, entre com o comando <em>pear config-get bin_dir</em> para saber o diretório do bin do PHPUnit. Confira se a saída está no seu PATH de comandos, com o comando <em>echo $PATH</em>. Caso não esteja use o comando <em>export</em> para adicionar esse caminho.</li>
+<li>Se você tem certeza que o PEAR está instalado corretamente, execute o seguinte comando para reinstalar o PHPUnit <em>pear install &#8211;alldeps &#8211;force phpunit/PHPUnit</em>.</li>
+</ul>
+
+
+
+
+<p>Com tudo ok podemos seguir em frente.<br/>
+Daqui em diante conto que você saiba pelo menos um mínimo de Orientação a Objetos para que acompanhe os exemplos abaixo.<br/>
+Para que a gente entenda o que esperar do PHPUnit, vamos primeiro criar uma classe com pelo menos um atributo e seus métodos <em>get()</em> e <em>set()</em>.<br/>
+Que tal a tradicional classe Carro com uma propiedade de cor?</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">/**
+ * Classe Carro
+ *
+ **/
+class Carro
+{
+    private $_cor;
+
+    public function getCor()
+    {
+        return $this-&gt;_cor;
+    }
+
+    public function setCor($cor)
+    {
+        $this-&gt;_cor = $cor;
+    }
+
+}
+</pre>
+
+
+
+
+<p>Com a classe principal criada vamos agora preparar nossa classe de testes.<br/>
+Vamos chamar nossa classe de testes de CarroTeste.php.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+
+}
+</pre>
+
+
+
+
+<p>Repare em duas coisas no código acima:</p>
+
+
+
+
+<ul>
+<li>Sua classe de testes deve conhecer a classe que vai ser testada (use require, include ou autoload).</li>
+<li>Sua classe de testes precisa extender o framework PHP_Unit. Para extender o PHPUnit da mesma forma como no código acima, configure corretamente o seu <em>include_path</em> no seu arquivo de configuração do PHP (php.ini). Não sabe onde está seu arquivo php.ini? Utilize o comando <em>php &#8211;ini</em>. Procure por <em>include_path</em> dentro desse arquivo e adicione o caminho para o framework PHPUnit. <em>**A instalação via PEAR constuma adicionar esse caminho para você no php.ini. Confira o arquivo se for caso.</em></li>
+</ul>
+
+
+
+
+<p>Finalmente vamos ao nosso teste em si. Vamos testar se nossos métodos <em>get()</em> e <em>set()</em> estão realmente fazendo o que se espera. <em>Get()</em> tem de retornar o mesmo valor passado para <em>set()</em>. Para verificar isso vamos usar o método assertEquals do PHPUnit, veja o exemplo:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Azul", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Criamos um método testeCor em nossa classe de testes.<br/>
+Dentro dele instanciamos a classe carro e atribuímos para a propiedade cor o valor Azul.<br/>
+O método AssertEquals do PHPUnit vai comparar se os dois parâmetros passados são iguais.</p>
+
+
+
+
+<p>Vamos rodar nosso teste?<br/>
+Em seu console execute o comando phpunit passando para ele o caminho da sua classe de testes. O resultado deve ser similar a esse:<br/>
+<img class="alignleft size-full wp-image-563" title="Imagem2" src="../../assets/uploads/2012/10/Imagem2.png" alt="Rodando o primeiro teste" width="442" height="171" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Na imagem você percebe abaixo da linha de descrição da versão do PHPUnit um . (ponto). Em seguida uma descrição do tempo de execução e memória utilizada e abaixo um OK. Isso indica que nosso teste teve sucesso. O ponto que falamos acima indica que um teste teve sucesso, em caso de falha teremos um F no lugar do ponto. Para cada teste irá ser adicionado um <em>. ponto</em>ou um <em>F</em>.</p>
+
+
+
+
+<p>Vamos forçar um erro no teste para ver o que acontece? Vamos trocar os parâmetros do nosso <em>AssertEquals</em> e dizer que estamos esperando o resultado <em>Amarelo</em> invés de <em>Azul</em>.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Amarelo", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Rodando nosso teste agora temos a seguinte saída:<br/>
+<img class="alignleft size-full wp-image-564" title="Imagem3" src="../../assets/uploads/2012/10/Imagem3.png" alt="Falha no PHPUnit" width="427" height="317" /><br style="clear: both;" /><br/>
+No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indicando a falha. Junto a isso o PHPUnit nos traz detalhes da falha com o nome do teste que falhou, o que era esperado e o que foi retornado.</p>
+
+
+
+
+<p>A ideia por trás do PHPUnit e suas funções é bem similar ao que foi demonstrado acima, com o detalhe que algumas funções podem ter mais parâmetros ou esperar tipos diferentes de dados. Que tal descobrir mais métodos do PHPUnit e criar novos testes? Visite o capítulo 4 do manual do PHPUnit e teste outras funções do framework. Segue o link para o manual: <a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html" title="PHPUnit Manual Cap4">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Codeigniter 2 – Templates E Layouts]]></title>
+    <link href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/"/>
+    <updated>2011-05-26T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo <em>Habilitando Layouts no CodeIgniter (Template Engine)</em> que está dividido em <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/">parte 1</a> e <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/">parte 2</a>.</p>
+
+
+
+
+<p>Como esse artigo tem mais de um ano, resolvi dar um upgrade nele com algumas observações.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Desde que ele foi escrito temos algumas novidades. A principal dela é  o lançamento de uma versão crítica do Codeigniter. Mas não se preocupe, a mecânica do artigo continua funcionando.<br/>
+Apenas atente para alguns detalhes.</p>
+
+
+
+
+<p>Preste atenção para a parte do seu controller:</p>
+
+
+
+
+<ul>
+<li>Agora ele extende da classe CI_Controller e não mais da classe Controller.</li>
+<li>Agora você não tem de ter mais um método construtor com o mesmo nome da classe. Pode arrancar fora aquilo sem medo.</li>
+</ul>
+
+
+
+
+<p>Outros:</p>
+
+
+
+
+<ul>
+<li>No tutorial anterior há uma correção porque eu tratava minha pasta system diferente do convencional. Com a ajuda e os comentários de vocês, foi feita uma correção que está no final do post. Agora na versão 2 está tudo ok. A pasta system vem separada da pasta application.</li>
+<li>Na versão 2 temos agora arquivos .htaccess, arquivos de configuração, dentro das pastas application e da pasta system. Dentro deles há uma regra para recusar qualquer coisa que tentar acessar a pasta. Certifique-se que, em caso de colocar seus arquivos de estilo, ou seus arquivos javascript dentro de application por exemplo, alterar essa regra no .htaccess.</li>
+</ul>
+
+
+
+
+<p>Então você pode seguir normalmente o tutorial, apenas adapte os detalhes citados acima.<br/>
+Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2exemplo1.zip">Clique aqui para baixar um exemplo com Layouts em cima do Codeigniter 2</a>.</p>
+
+
+
+
+<p>É isso galera. Abraço!!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[O for Além Do for – PHP]]></title>
+    <link href="http://flaviosilveira.com/2010/o-for-alem-do-for-php/"/>
+    <updated>2010-11-20T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2010/o-for-alem-do-for-php</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>O Post que trago hoje trata de algo bem simples mas que pode não ser muito comum para algumas pessoas.<br/>
+São usos não muito populares de um de nossos laços de repetição, o FOR.</p>
+
+
+
+
+<p>Quando estamos aprendendo uma linguagem, bem no início, os manuais parecem mais nos confundir do que ajudar.<br/>
+O que fazemos ?? Saímos em busca de uma comunicação mais direta em Blogs ou Sites.</p>
+
+
+
+
+<p>Essas fontes resolvem nosso problema mais podem acabar deixando alguns vácuos quando se trata de estruturas básicas, como é o caso do FOR.</p>
+
+
+
+
+<p>E sobre o FOR eu te pergunto o seguinte:<br/>
+Você sabia que os parâmetros passados para ele são opcionais ??<br/>
+Você sabia que pode passar quantas variáveis quiser para os parâmetros ??</p>
+
+
+
+
+<p>Se já sabe maravilha, caso não, vamos ver como isso funciona.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Nesse primeiro exemplo temos nosso FOR comum, como todos aprendemos:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        for($i = 0; $i &lt; 5; $i++)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+        }
+</pre>
+
+
+
+
+<p>Nesse segundo exemplo, retiramos o primeiro parâmetro do FOR, e deixamos a variável $i definida fora do laço:<br/>
+Repare que o resultado que vai sair na tela, vai ser o mesmo do exemplo anterior.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; $i &lt; 5; $i++)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+        }
+
+</pre>
+
+
+
+
+<p>Agora, vmaos tirar o terceiro parâmetro, e incrementar a variável dentro do laço.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; $i &lt; 5;)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+                $i++;
+        }
+
+</pre>
+
+
+
+
+<p>Por último, vamos retirar o segundo parâmetro.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; ; )
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+
+                if($i == 5)
+                {
+                        break;
+                }
+
+                $i++;
+        }
+
+</pre>
+
+
+
+
+<p>Repare que em todos esses exemplos acima, fugimos do Loop infinito com alguma condição ou mecanismo que colocamos dentro do laço. Tome cuidado. Esse último exemplo se não for feito nada dentro do laço, gera facilmente um Loop infinito.</p>
+
+
+
+
+<p>Outra opção que temos é usar mais de uma variável para cada parâmetro.<br/>
+Confira:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $w = 2;
+
+        for($i = 1, $j = 9; $j &gt; 0; $j - $i, $w*=2)
+        {
+                echo $w;
+                echo '&lt;br /&gt;';
+        }
+</pre>
+
+
+
+
+<p>Vamos analisar o exemplo acima.<br/>
+Definimos para o loop a variável <em>$i</em> e a variável <em>$j</em>.<br/>
+O segundo parâmetro, que define até quando nosso loop vai rodar, nos mostra que será enquanto <em>$j</em> for maior que zero.<br/>
+E no último parâmetro, definimos que a cada volta <em>$j</em> vai diminuir o valor de <em>$i</em>, e que <em>$w</em>, que é uma variável que está definida fora do loop, será multiplicada por 2.<br/>
+Dentro do loop, pedimos para exibir <em>$w</em>.<br/>
+Faça o teste. Confira a saída.</p>
+
+
+
+
+<p>Com esses exemplos acredito que já conseguimos absorver mais usos do que aquele que estamos acostumados do FOR. Todos eles são tratados na <a href="http://br.php.net/manual/pt_BR/control-structures.for.php">documentação</a> e também tem uns exemplos bem bacanas nos comentários dela que valem a pena olhar.</p>
+
+
+
+
+<p>E aí você me pergunta… &#8220;E um uso prático disso?? Uma situação real ??&#8221;</p>
+
+
+
+
+<p>De cara assim não consigo dar uma resposta, um exemplo.<br/>
+Mas com isso eu lembro de uma entrevista que um dos melhores guitarristas do mundo, Yngwie Malmsteen, deu há alguns anos para a Guitar Player americana. Ele disse:<br/>
+<em>&#8220;As pessoas falam que eu sou muito técnico e etc. Mas eu preciso conhecer a técnica para fazer virar música. Assim como um escritor deve conhecer várias palavras para escrever um livro&#8230;&#8221;</em></p>
+
+
+
+
+<p>Pense nisso!<br/>
+Devemos conhecer as possibilidades que a linguagem nos dá, e assim ficamos preparados para montar as lógicas que cruzarem nosso caminho.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Habilitando Layouts No CodeIgniter (Template Engine) – Parte 2]]></title>
+    <link href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/"/>
+    <updated>2010-02-18T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2</id>
+    <content type="html"><![CDATA[<div id="atencao">
+  <p>
+    Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework <a href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts">clique aqui</a>.
+  </p>
+</div>
+
+
+
+
+<p>Continuando a parte 1 deste post.<br/>
+Se você perdeu a primeira parte <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1">clique aqui para ler a primeira parte</a>.</p>
+
+
+
+
+<p><strong>5 &#8211; Construindo sua View</strong></p>
+
+
+
+
+<p>Sua View deve ser feita normalmente, como voce já está acostumado a fazer, com o nome que você colocaria normalmente.<br/>
+Apenas com o conteúdo que muda de uma página para outra.</p>
+
+
+
+
+<p>O HTML que você colocar aqui na View irá substituir a variável <em>{content_for_layout}</em> que definimos no layout acima.<br/>
+Vou colocar nessa nossa view de exemplo apenas um título e um parágrafo para demonstrar.<br/>
+Ficando assim:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;Titulo VIEW&lt;/h1&gt;
+
+&lt;p&gt;Paragrafo teste teste teste teste.&lt;/p&gt;
+
+</pre>
+
+
+
+
+<p>Chamei essa view de <em>home.php</em>.</p>
+
+
+
+
+<p><strong>6 &#8211; Desenvolvendo a Classe</strong></p>
+
+
+
+
+<p>Quando definimos nosso Hook no passo 2, setamos que a pasta onde ficaria nossa classe seria a pasta hooks que vem por padrão no projeto do CodeIgniter.</p>
+
+
+
+
+<p>Vamos criar nossa classe dentro dessa pasta, e, com o nome que também especificamos na definição do Hook que foi Layout.php<br/>
+Se você não seguiu o exemplo, faça suas devidas adaptações.</p>
+
+
+
+
+<p>A classe é um pouco extensa, leia com atenção.<br/>
+Para ajudar ela está com os comentários do próprio <a href="http://www.mozartpetter.com/pt/">Mozart Petter</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">// Padrao do CI para não acessar a Classe direto pelo Browser
+&lt;?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+/**
+ * Layout Class
+ *
+ * @package hooks
+ * @description Implementa as views do tipo layout no framework.
+ */
+
+class Layout
+{
+
+public $base_url;
+
+/**
+* Metodo que executa as implementacoes.
+* Este metodo e chamado atraves do arquivo hooks.php
+* na pasta config.
+*
+* @return
+*/
+public function init()
+{
+// Instancia do CI.
+$CI =& get_instance();
+
+// Definindo o base_url.
+$this-&gt;base_url = $CI-&gt;config-&gt;slash_item('base_url');
+
+// Pegando a saida que o CI gera normalmente.
+$output = $CI-&gt;output-&gt;get_output();
+
+// Pegando o valor de title, se definido no controller.
+$title = (isset($CI-&gt;title)) ? $CI-&gt;title : '';
+
+// Links CSS definidos no controlador.
+$css = (isset($CI-&gt;css)) ? $this-&gt;createCSSLinks($CI-&gt;css) : '';
+
+// Links JS definidos no controlador.
+$js = (isset($CI-&gt;js)) ? $this-&gt;createJSLinks($CI-&gt;js) : '';
+
+// Se layout estiver definido e a regexp nao bater.
+if (isset($CI-&gt;layout) && !preg_match('/(.+).php$/', $CI-&gt;layout))
+{
+$CI-&gt;layout .= '.php';
+}
+else
+{
+$CI-&gt;layout = 'default.php';
+}
+
+// Definindo caminho completo do layout.
+$layout = LAYOUTPATH . $CI-&gt;layout;
+
+// Se o layout for diferente do default, e o arquivo nao existir.
+if ($CI-&gt;layout !== 'default.php' && !file_exists($layout))
+{
+// Exibe a mensagem, se o layout for diferente de '.php'.
+if ($CI-&gt;layout != '.php') show_error("You have specified a invalid layout: " . $CI-&gt;layout);
+}
+
+// Se o arquivo layout existir.
+if (file_exists($layout))
+{
+// Carrega o conteudo do  arquivo.
+$layout = $CI-&gt;load-&gt;file($layout, true);
+
+// Substitui o texto {content_for_layout} pelo valor de output em layout.
+$view = str_replace('{content_for_layout}', $output, $layout);
+
+// Substitui o texto {title_for_layout} pelo valor de title em view.
+$view = str_replace('{title_for_layout}', $title, $view);
+
+// Links CSS.
+$view = str_replace('{css_for_layout}', $css, $view);
+
+// Links JS.
+$view = str_replace('{js_for_layout}', $js, $view);
+}
+else
+{
+$view = $output;
+}
+
+echo $view;
+}
+
+/**
+* Gera os links CSS utilizados no layout.
+*
+* @return void
+*/
+private function createCSSLinks($links)
+{
+$html = "";
+
+for ($i = 0; $i &lt; count($links); $i++)
+{
+$html .= "&lt;link rel='stylesheet' type='text/css' href='" . $this-&gt;base_url . CSSPATH . $links[$i] . ".css' media='screen' /&gt;n";
+}
+
+return $html;
+
+}
+
+/**
+* Gera os links JS utilizados no layout.
+*
+* @return void
+*/
+private function createJSLinks($links)
+{
+$html = "";
+
+for ($i = 0; $i &lt; count($links); $i++)
+{
+$html .= "&lt;script type='text/javascript' src='" . $this-&gt;base_url . JSPATH . $links[$i] . ".js'&gt;&lt;/script&gt; n";
+}
+
+return $html;
+}
+
+}
+</pre>
+
+
+
+
+<p><strong>7 &#8211; Fazendo as chamadas no Controller</strong></p>
+
+
+
+
+<p>Chegou o momento final!<br/>
+É hora de juntar tudo isso que fizemos até agora.</p>
+
+
+
+
+<p>A construção do seu controller é normal, como você está acostumado, mas temos que inserir algumas variáveis globais nele.</p>
+
+
+
+
+<ul>
+<li>Uma para o Layout default do controller, para que você não precise fazer a mesma definição várias vezes.</li>
+<li>Uma para o título, onde você pode definir um default para todos as páginas que vão surgir desse controller mas, o interessante é estar um título por página.</li>
+<li>Outra para guardar um Array dos CSS&#8217;s que você vai usar na página.</li>
+<li>E por último, outro Array para guardar os JavaScripts que você vai usar na página.</li>
+</ul>
+
+
+
+
+<p>Vejamos como fica.<br/>
+Acompanhe pelos comentários.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+/**
+ *
+ */
+class Principal extends Controller
+{
+
+/**
+* Layout default utilizado pelo controlador.
+*/
+public $layout = 'default';
+
+/**
+* Titulo default.
+*/
+public $title = '::: Titulo default :::';
+
+/**
+* Definindo os css default.
+*/
+public $css = array('default');
+
+/**
+* Carregando os js default.
+*/
+public $js = array('home');
+
+/**
+* Construtora.
+* @return
+*/
+function Principal()
+{
+
+parent::Controller();
+
+}
+
+// Metodoo index
+function index()
+{
+// Carregando a view.
+$this-&gt;load-&gt;view('home');
+}
+
+// Metodo teste
+function teste()
+{
+//Title
+$this-&gt;title = '::: TESTE Título :::';
+
+//CSS
+$this-&gt;css = array('test');
+
+//JS
+$this-&gt;js = array('jquery');
+
+// Carregando a View
+$this-&gt;load-&gt;view('teste');
+}
+
+}
+
+?&gt;
+
+</pre>
+
+
+
+
+<p>Vamos reparar no seguinte.<br/>
+Há dois métodos nesse controller que vão chamar páginas diferentes, o index e o teste.</p>
+
+
+
+
+<p>Para o index não definimos nada de Layout, Titulo, CSS ou JS.<br/>
+Ou seja, vai vir tudo do valor default que usamos quando definimos as variáveis globais.</p>
+
+
+
+
+<p>Já no método teste, por algum motivo precisamos de um CSS, um JS e um Título diferente.<br/>
+Então redefinimos esses valores no nosso método com o que precisamos.</p>
+
+
+
+
+<p>A gente poderia ter definido um outro Layout caso tivesse a necessidade, da mesma forma com que fiz com esses valores.<br/>
+Aí, claro, teria que criar um outro Layout na pasta layouts.</p>
+
+
+
+
+<hr />
+
+
+
+
+<p><span id="explicacao"> </span><br/>
+<strong>UPDATE 20 DE NOVEMBRO DE 2010</strong><br/>
+Detalhe importante observado pelo <a href="http://diegofelix.com.br/">Diego Felix</a> (<a href="http://twitter.com/diegofelix">@diegofelix</a>), que comentou esse detalhe abaixo nos comentários, no dia 16 de setembro desse mesmo ano.</p>
+
+
+
+
+<p>&nbsp;</p>
+
+
+
+
+<p>Eu tenho como costume em meus projetos com CI, retirar a pasta system no qual ele vem por padrão.<br/>
+Faço então a alteração da variável <em>$system_folder</em> no arquivo de configuração e tudo segue sem problemas.</p>
+
+
+
+
+<p>Exceto esse tutorial, que não leva em consideração essa pasta system.<br/>
+Você tem duas opções para consertar isso:</p>
+
+
+
+
+<p><strong>Primeiro:</strong><br/>
+No local onde são definidas as variáveis contantes, adicionar sua pasta system antes de <em>$application_folder</em>.<br/>
+Exemplo: <em>define(&#8216;LAYOUTPATH&#8217;, &#8216;system/&#8217; . $application_folder.&#8217;/layouts/&#8217;);</em></p>
+
+
+
+
+<p>Particularmente acho essa solução acima atrasada, por deixar o projeto estático.<br/>
+Se ocorrer de você alterar a pasta system, terá que alterar nesse local também. Chato.</p>
+
+
+
+
+<p><strong>Segundo:</strong><br/>
+Seguindo essa linha de raciocínio, de não deixar o projeto estático, prefiro fazer o seguinte:<br/>
+No local onde são definidas as variáveis constantes, adicionar a variável <em>$system_folder</em>.<br/>
+Exemplo: <em>define(&#8216;LAYOUTPATH&#8217;, $system_folder . &#8216;/&#8217; . $application_folder.&#8217;/layouts/&#8217;);</em></p>
+
+
+
+
+<p>Mas há um detalhe.<br/>
+No arquivo <em>index.php</em>, em torno da linha 53, é adicionado a variável <em>$system_folder</em> o seu caminho completo do servidor. Isso, claro, vai gerar problemas para o projeto.<br/>
+O que eu faço então é pegar as variáveis constantes que usam a pasta system, e jogar antes desse bloco.<br/>
+Se você seguir pelo projeto exemplo, verá que as coloquei logo depois do comentário <em>&#8220;END OF USER CONFIGURABLE SETTINGS&#8221;</em>.</p>
+
+
+
+
+<p>Feito isso, caso você altera sua pasta system, basta alterar no local de sempre para o projeto continuar funcionando.</p>
+
+
+
+
+<hr />
+
+
+
+
+<p>Pessoal é isso!<br/>
+Fazia tempo que queria escrever sobre isso, espero que ajude a galera por aí.<br/>
+Dúvidas podem mandar sem problemas, vou responder no que estiver a meu alcance.</p>
+
+
+
+
+<p>Se você teve dificuldades, <a href="../../assets/uploads/2010/02/projetoExemplo.zip" title="Baixar projeto Exemplo">baixe o projeto pronto aqui</a> e dê uma olhada mais de perto.</p>
+
+
+
+
+<p>Agradeço novamente ao <a href="http://www.mozartpetter.com/pt/" title="Mozart Petter Developer">Mozart Petter</a>, grande Brother, que implementou essa solução que uso até hoje em meus projetos. E, como sempre, também ao pessoal que garante minhas 30 visitas diárias, Valeu!</p>
+
+
+
+
+<p>É isso pessoal.<br/>
+Até a próxima!!!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

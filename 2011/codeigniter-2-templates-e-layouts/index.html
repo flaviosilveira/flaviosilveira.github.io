@@ -1,0 +1,252 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Codeigniter 2 – Templates E Layouts - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Codeigniter 2 – Templates E Layouts Categorias: desenvolvimento, php Fala pessoal! O que mais gera acessos aqui no Blog são os artigos sobre &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Codeigniter 2 – Templates E Layouts</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-05-26T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Fala pessoal!</p>
+
+
+
+
+<p>O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo <em>Habilitando Layouts no CodeIgniter (Template Engine)</em> que está dividido em <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/">parte 1</a> e <a href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/">parte 2</a>.</p>
+
+
+
+
+<p>Como esse artigo tem mais de um ano, resolvi dar um upgrade nele com algumas observações.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Desde que ele foi escrito temos algumas novidades. A principal dela é  o lançamento de uma versão crítica do Codeigniter. Mas não se preocupe, a mecânica do artigo continua funcionando.<br/>
+Apenas atente para alguns detalhes.</p>
+
+
+
+
+<p>Preste atenção para a parte do seu controller:</p>
+
+
+
+
+<ul>
+<li>Agora ele extende da classe CI_Controller e não mais da classe Controller.</li>
+<li>Agora você não tem de ter mais um método construtor com o mesmo nome da classe. Pode arrancar fora aquilo sem medo.</li>
+</ul>
+
+
+
+
+<p>Outros:</p>
+
+
+
+
+<ul>
+<li>No tutorial anterior há uma correção porque eu tratava minha pasta system diferente do convencional. Com a ajuda e os comentários de vocês, foi feita uma correção que está no final do post. Agora na versão 2 está tudo ok. A pasta system vem separada da pasta application.</li>
+<li>Na versão 2 temos agora arquivos .htaccess, arquivos de configuração, dentro das pastas application e da pasta system. Dentro deles há uma regra para recusar qualquer coisa que tentar acessar a pasta. Certifique-se que, em caso de colocar seus arquivos de estilo, ou seus arquivos javascript dentro de application por exemplo, alterar essa regra no .htaccess.</li>
+</ul>
+
+
+
+
+<p>Então você pode seguir normalmente o tutorial, apenas adapte os detalhes citados acima.<br/>
+Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2exemplo1.zip">Clique aqui para baixar um exemplo com Layouts em cima do Codeigniter 2</a>.</p>
+
+
+
+
+<p>É isso galera. Abraço!!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2011/codeigniter-2-templates-e-layouts';
+    var disqus_title = 'Codeigniter 2 – Templates E Layouts';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2011/coding-dojo-o-que-e-e-como-participar/" title="Previous Post: Coding Dojo – O Que é ? E Como Participar ?">&laquo; Anterior: Coding Dojo – O Que é ? E Como Participar ?</a>
+        
+
+        
+          <a class="pull-right" href="/2011/initializr-comece-seu-projeto-html5-em-15-segundos/" title="Next Post: Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!">Próximo: Initializr – Comece Seu Projeto HTML5 Em 15 Segundos! &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/';
+        var disqus_url = 'http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

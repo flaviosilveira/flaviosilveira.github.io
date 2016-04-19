@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Vídeos E Casts | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/videos-e-casts/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hangout – Começando Bem Com Zend Framework 1]]></title>
+    <link href="http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1/"/>
+    <updated>2012-11-19T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Recentemente estive no Rio de Janeiro para ministrar o curso <em>Começando Bem com Zend Framework</em>. Curso que mostra um bé-a-bá em cima do Zend Framework 1 usando a ajuda da Zend Tool. Infelizmente por alguns problemas técnicos não consegui realizar o curso completo e por conta disso marquei um hangout com o pessoal que estava inscrito no evento.</p>
+
+
+
+
+<p>Com esse vídeo fecho essa maneira como o curso é apresentado, sendo que o Zend Framework 2 foi lançado recentemente e vou adaptar o curso para ele. Mas isso não tira a importância de conhecer o Zend 1 visto que ainda teremos manutenções e sistemas legados no mercado, além de servir como base para o próprio Zend 2.</p>
+
+
+<!--more-->
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pJgdn3OG4OI" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<p>O hangout foi realizado junto com um chat onde o pessoal interagiu, fez perguntas e deu sua opinião. Executei os códigos ao vivo, o que gerou problemas que foram interessantes para o aprendizado do pessoal. O resultado de tudo isso você confere no vídeo acima.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Hangout PHP in Rio]]></title>
+    <link href="http://flaviosilveira.com/2012/hangout-php-in-rio/"/>
+    <updated>2012-11-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/hangout-php-in-rio</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>A organização do PHP n Rio deste ano de 2012 tem realizado um bate papo com os palestrantes do evento via Hangout, a funcionalidade de videoconferência do Google Plus.</p>
+
+
+
+
+<p>Como palestrante do evento, chegou minha vez de bater um papo ao vivo junto com Anderson Ferreira (<a href="https://twitter.com/sdfnanderson" title="Twitter Anderson Ferreira">@sdfnanderson</a>) e o pessoal da organização Carlos Carneiro (<a href="https://twitter.com/hiper4tivo" title="Twitter Carlos Carneiro">@hiper4tivo</a>) e Vinicius Machado (<a href="https://twitter.com/x4bigboss" title="Twitter Vinicius Machado">@x4bigboss</a>).</p>
+
+
+
+
+<p>Durante pouco mais de uma hora falamos sobre dicas de carreira, dicas de estudo e desenvolvimento. No final fizemos um bate bola com perguntas e respostas.</p>
+
+
+<!--more-->
+
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ofl-9RYwIc0" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+<p>Para quem não acompanhou ao vivo pode conferir o vídeo acima.<br/>
+Quer saber mais sobre o evento? Acesse <a href="http://www.phpnrio.com.br" title="PHP n Rio">http://www.phpnrio.com.br</a>.<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Screencast – Começando Bem Com Zend Framework]]></title>
+    <link href="http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework/"/>
+    <updated>2011-12-29T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Gravei esse screencast baseado no mini-curso/palestra que estive apresentando durante esse ano com o título de <em>Começando bem com Zend Framework</em>.</p>
+
+
+
+
+<p>O vídeo não tem edição, foi gravado direto, sem roteiro.<br/>
+Por isso peço desculpas se acabei atropelando alguma explicação ou se algo não ficar muito claro para alguém, principalmente para iniciantes. Da forma como foi finalizado acabou ficando mais voltado para quem já tem um conhecimento com outros frameworks ou um conhecimento legal de PHP.</p>
+
+
+
+
+<p>Dúvidas? Perguntas? Sugestões? Estamos aí.<br/>
+Aguardo o feedback de todos.<br/>
+Grande Abraço!</p>
+
+
+<!--more-->
+
+
+<iframe src="https://player.vimeo.com/video/34341638" width="640" height="392" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+
+<p><a href="https://vimeo.com/34341638">Come&ccedil;ando Bem com Zend Framework</a> from <a href="https://vimeo.com/user9814221">Fl&aacute;vio Silveira</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+
+
+
+
+<p><strong>Alguns Links que aparecem no screencast</strong></p>
+
+
+
+
+<ul>
+<li><a href="http://framework.zend.com/download/current/" title="Download Zend Framework">Download Zend &#8211; http://framework.zend.com/download/current/</a><strong><br/>
+</strong></li>
+<li><a href="http://www.slideshare.net/flavioaugustosilveira/minicurso-zend" title="SlideShare Flávio Silveira">Slideshare.net &#8211; http://www.slideshare.net/flavioaugustosilveira/minicurso-zend</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Palestra – Quero Ser Um Desenvolvedor De Jogos]]></title>
+    <link href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
+    <updated>2011-09-01T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
+    <content type="html"><![CDATA[<p>Olá pessoal!</p>
+
+
+
+
+<p>Se vocês acompanham minhas notícias, ficaram sabendo que estive em Bento Gonçalves &#8211; Rio Grande do Sul, palestrando sobre desenvolvimento de jogos no evento Tchê Linux.</p>
+
+
+
+
+<p>A palestra aborda uma visão inicial para quem quer conhecer o desenvolvimento de jogos, apresentando os papéis que fazem parte desse desenvolvimento e como começar a fazer parte deles. Ou seja, dá para assistir com seu Pai e sua mãe na sala sem problemas.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>O pessoal do evento fez a filmagem e edição da palestra e você pode conferir o resultado abaixo.<br/>
+Caso queira acompanhar os Slides, ou mesmo fazer o download dele, segue o link da apresentação: <a href="http://www.slideshare.net/flavioaugustosilveira/quero-ser-um-desenvolvedor-de-jogos" title="Slideshare - Quero ser um desenvolvedor de jogos">http://www.slideshare.net/flavioaugustosilveira/quero-ser-um-desenvolvedor-de-jogos</a></p>
+
+
+
+
+<p><embed type="application/x-shockwave-flash" src="http://a.blip.tv/api.swf#AYLO1VwC" style="display:none">
+</embed></p>
+
+
+
+
+<p>Assista também a outras palestras que rolaram em Bento Gonçalves através do Canal do Tchê Linux no Blip.tv <a href="http://blip.tv/tchelinux/" title="Canal Tchê Linux Blip.tv">http://blip.tv/tchelinux/</a>.</p>
+
+
+
+
+<p>Dúdivas, idéias, sugestões, basta entrar em contato.<br/>
+Espero que gostem! Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PodCast – Desenvolvimento Mobile Web]]></title>
+    <link href="http://flaviosilveira.com/2010/podcast-desenvolvimento-mobile-web/"/>
+    <updated>2010-09-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2010/podcast-desenvolvimento-mobile-web</id>
+    <content type="html"><![CDATA[<p>Salve Galera!<br/>
+Hoje deixo aqui o meu podcast relatando minha ida ao <a href="http://www.phpsc.com.br/">PHP SC Conf</a> (<a href="http://www.phpsc.com.br/">http://www.phpsc.com.br/</a>) neste ano de 2010, falando principalmente dos assuntos colocados pelo <a href="http://www.porkaria.com.br/">Bruno Fernandes</a> (@porkaria) em sua palestra <em>Desenvolvimento Mobile Web</em>.</p>
+
+
+
+
+<p>No Podcast:</p>
+
+
+
+
+<ul>
+<li>PHP SC Conf</li>
+<li>Identificação do dispositivo mobile</li>
+<li>Disparo de SMS</li>
+<li>Novo Marketing</li>
+<li>QR Code</li>
+<li>Ferramentas Web para Mobile</li>
+<li>Conteúdo de um site Mobile</li>
+<li>Outros</li>
+</ul>
+
+
+
+
+<!--more-->
+
+
+<p><audio controls>
+  <source src="../../assets/uploads/audio/podPhpScConf.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+</audio></p>
+
+<p>A trilha sonora é da Banda <a href="http://www.myspace.com/auraaor">Auras</a> aqui de Curitiba.<br/>
+Mais abaixo você tem os links para acompanhar melhor o Cast.</p>
+
+
+
+
+<p>Links:<br/>
+Tera-WURFL &#8211; <a href="http://www.tera-wurfl.com/wiki/index.php/Main_Page">http://www.tera-wurfl.com/wiki/index.php/Main_Page</a><br/>
+W3C Mobile &#8211; <a href="http://www.w3.org/Mobile">http://www.w3.org/Mobile</a><br/>
+Bruno @Porkaria &#8211; <a href="http://www.porkaria.com.br/">http://www.porkaria.com.br/</a><br/>
+Gerando QRCode com PHP -<a href="http://www.porkaria.com.br/2010/04/24/gerando-qr-code-com-php/">http://www.porkaria.com.br/2010/04/24/gerando-qr-code-com-php/</a><br/>
+PHP Mobile &#8211; <a href="http://www.phpmobile.com.br">http://www.phpmobile.com.br/</a><br/>
+JQuery Mobile &#8211; <a href="http://jquerymobile.com/">http://jquerymobile.com/</a><br/>
+WordPress Mobile &#8211; <a href="http://wordpress.org/extend/plugins/wordpress-mobile-edition/">http://wordpress.org/extend/plugins/wordpress-mobile-edition/</a></p>
+
+
+
+
+<p>Abraço!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

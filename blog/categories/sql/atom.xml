@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Sql | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Função Para Contar Palavras (Padrão De Caracteres) Em Uma String Microsoft SQL Server]]></title>
+    <link href="http://flaviosilveira.com/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/"/>
+    <updated>2009-11-06T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server</id>
+    <content type="html"><![CDATA[<p>Salve galera!</p>
+
+
+
+
+<p>Precisei durante essa semana de uma função que contasse quantas vezes uma palavra aparecia dentro de uma String no SQL Server. Achei que já tivesse algo pelo menos similar, mais após andar pelo MSDN e pelo Books Online vi que o jeito seria fazer uma função.</p>
+
+
+
+
+<p>A lógica é a seguinte:</p>
+
+
+
+
+<ul>
+<li>Recebo via Parâmetro a Palavra que quero buscar e a String toda ou texto.</li>
+<li>Faço um loop baseado no tamanho do texto.</li>
+<li>Pego o tamanho da palavra que está sendo procurada e a cada caracter do texto, andamos o tamanho da palavra e comparamos se isso é igual a palavra procurada.</li>
+<li>Se for, soma um no contador de palavras e continua.</li>
+</ul>
+
+
+
+
+<p>Agora como fica o código disso? Repare abaixo:</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">CREATE FUNCTION CountSearchPat
+(
+      @Word Varchar(100),
+      @String Varchar(Max)
+)
+RETURNS int
+AS
+BEGIN
+ 
+      -- Declaração Variáveis
+      Declare @Count int, @CountWord int
+ 
+      -- Contador de quantas vezes apareceu a palavra
+      Set @CountWord = 0
+ 
+      -- Contador do Loop
+      Set @Count = 0
+ 
+      -- Loop
+      While @Count &lt;= Len(@String)
+      Begin
+ 
+            -- Se encontrar a palavra soma mais um para @CountWord
+            Set @CountWord =
+                  Case When Substring(@String, @Count, Len(@Word)) = @Word
+                        Then @CountWord + 1
+                        Else @CountWord
+                  End
+ 
+            -- Soma mais um ao contador
+            Set @Count = @Count + 1
+ 
+      End
+ 
+      -- Retorna Valor
+      Return @CountWord
+ 
+END
+</pre>
+
+
+
+
+<p>Repare no loop da linha 30 que tem seu contador baseado no tamanho da String inteira, para percorrer cada caracter.</p>
+
+
+
+
+<p>Na linha 24 temos uma variável que seu valor depende do CASE onde, se a partir daquele caracter for encontrada a palavra, soma mais um, senão continua com o mesmo valor.</p>
+
+
+
+
+<p>Na linha 31 temos a soma do contador do loop. E então o retorno do valor da função.</p>
+
+
+
+
+<p>Agora é só testar.<br/>
+Por Exemplo: Select dbo.SearchStringPat(&#8216;teste&#8217;, &#8216;aatestehstestehjkteste&#8217;)<br/>
+O resultado será 3.</p>
+
+
+
+
+<p>Agora reflita comigo no próximo Exemplo sugerido pelo meu Brother Hernando Santana:<br/>
+Você tem uma String da seguinte maneira &#8216;AAAAA&#8217; e procura pelo padrão &#8216;AA&#8217;. Qual valor irá retornar ?</p>
+
+
+
+
+<p>A função criada aqui irá retornar 4. A resposta é uma questão de conceito. Eu ando caracter por caracter atrás da palavra. Podemos fazer andar a partir da palavra encontrada adicionando mais algumas variáveis sem problema e fazendo retornar o valor 2. Para minha necessidade não fazia diferença a princípio.</p>
+
+
+
+
+<p>Idéia simples que resolveu os problemas do dia.<br/>
+Até a Próxima! Abraços!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Limitando O SELECT Do SQL Em Diferentes Bancos De Dados]]></title>
+    <link href="http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/"/>
+    <updated>2009-02-27T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados</id>
+    <content type="html"><![CDATA[<p>Olá pessoal&#8230;</p>
+
+
+
+
+<p>Atualmente tenho tido o privilégio de trabalhar com vários data bases, e com isso está dando para ver as diferenças de sintaxe, performance, ferramentas e demais coisas de um para outro.</p>
+
+
+
+
+<p>Tenho trabalhado com Microsoft SQL, Postgres e Oracle.</p>
+
+
+
+
+<p>Uma coisa que me chamou a atenção foi a maneira de limitar a consulta em cada um deles. Tenho feito bastante consultas limitadas pois ainda estou conhecendo a base de dados da empresa e não sei ao certo quantos registros tem certas tabelas. Para evitar que a coisa caia ou trave, faço consultas limitadas.</p>
+
+
+
+
+<p>Repare as diferenças de um banco para outro abaixo:</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT * FROM tabela LIMIT 20
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Essa é a sintaxe para o postgres, que acho que deve ser a mais conhecida por ser software livre e etc.<br/>
+Basta adicionar o parâmetro LIMIT e passar o valor de máximo de registros que você quer.</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT TOP 20 * FROM tabela
+</pre>
+
+
+
+
+<p>Essa é a maneira como o Microsoft limita sua consulta.<br/>
+Você adiciona o parâmetro TOP passando o valor do máximo de registros que você quer. Isso deve vir logo após o SELECT.</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT * FROM tabela WHERE ROWNUM &lt; 20
+</pre>
+
+
+
+
+<p>E por último o Oracle.<br/>
+Você deve usar o parâmetro ROWNUM junto a um operador (&lt;, >, &lt;=, >=, =) e em seguida o valor máximo de registros que você quer para sua consulta.<br/>
+Traduzindo este exemplo acima ficaria mais ou menos assim:<br/>
+<em>Selecione tudo da tabela chamada &#8216;tabela&#8217; onde o número de tuplas seja menor que 20</em></p>
+
+
+
+
+<p>Por hoje é isso ai rapaziada. Valeu !</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)]]></title>
+    <link href="http://flaviosilveira.com/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/"/>
+    <updated>2009-01-21T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre</id>
+    <content type="html"><![CDATA[<p>Olhando para os códigos php no trabalho, como tem sido de costume para averiguar erros e algoritmos que possa melhorar, me deparo em vários controllers com uma série de <a href="http://br.php.net/manual/pt_BR/function.split.php">splits</a> e loops para horas tratar o cpf, horas tratar o cnpj que vem do banco de dados.</p>
+
+
+
+
+<p>No banco de dados estes campos estão salvos em um domínio String, e gravados sem pontuação ou dígitos. Então quando você quer mostrar para o usuário, para não deixar aquele emaranhado de números, você deixa as coisas como ele está acustumado a ver, com os pontos e etc.</p>
+
+
+
+
+<p>Para não ficar repetindo a mesma rotina em vários locais do sistema, nem mesmo criar um método que eu tenha que chamar sempre que quiser um tratamento desses, já trago a coisa toda pronta no retorno da consulta. Simples, confira&#8230;</p>
+
+
+
+
+<p>Trazendo o CPF com a pontuação e o dígito antes dos dois últimos numerais</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT SUBSTR(cpf, 1, 3) || '.' || SUBSTR(cpf, 4, 3) || '.' ||
+SUBSTR(cpf, 7, 3) || '-' || SUBSTR(cpf, 10) AS cpf
+FROM e001_pessoas
+WHERE pessoaid = 33;
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p> Explicação:</p>
+
+
+
+
+<p>SELECT &#8211; estamos selecionando algo do banco SUBSTR &#8211; é uma função SQL, a mesma do PHP, a mesma do javascript que conhecemos, que serve para trazer parte de uma string.<br/>
+Sintaxe &#8211; SUBSTR(campo, á partir de qual caracter começar, o máximo de caracteres a trazer) , sendo esse último opcional.</p>
+
+
+
+
+<p>Então repare começo pegando do campo CPF, a partir do campo 1, 3 caracteres. Em seguida faço uma concatenação, que no SQL é feita com dois pipelines (||). Concateno com um ponto (está entre aspas pois é uma string).<br/>
+Depois mais uma vez pego outro pedaço do campo cpf, dessa vez começando do 4° caracter. São mais 3 caracteres e mais uma concatenação com um ponto. Novamente mais um pedaço do cpf , começando do 7° caracter. São mais 3 caracteres e agora um dígito, o famoso <em>tracinho</em>.<br/>
+Finalizo essa parte pegando o restante do CPF, que está a partir do caracter 10. Não limitei o número de caracteres nesse último, pois quero todo o restante.</p>
+
+
+
+
+<p>Em seguida faço um ALIAS para o meu resultado, chamando de <em>&#8216;cpf&#8217;</em>. Caso você não o faça o nome do campo retornará como unknow ou com uma interrogação.<br/>
+FROM &#8211; para indicar a tabela onde está o campo, que no meu caso é a <em>e001_pessoas</em>.<br/>
+WHERE &#8211; para trazer apenas o cpf do registro <em>pessoaid = 33</em>.</p>
+
+
+
+
+<p>Então a coisa toda é muito simples. Tenho meu cpf salvo no banco como um grande número. Pego 3 caracteres dele, concateno com um ponto, mais 3 caracteres, concateno a outro ponto, e assim por diante seguindo o <a href="http://en.wikipedia.org/wiki/File:Cpf2.jpg">modelo do cpf</a>.</p>
+
+
+
+
+<p>Para o CNPJ funciona igual. Basta ver como é dividido o número do CNPJ, e ver quantos dígitos trazer, concatenar a que símbolo e assim por diante. Confira:</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT SUBSTR(cnpj, 1, 2) || '.' || SUBSTR(cnpj, 3, 3) || '.' ||
+SUBSTR(cnpj, 6, 3) || '/' || SUBSTR(cnpj, 9, 4) || '-' ||
+SUBSTR(cnpj, 13) AS cnpj
+FROM t020_clientes;
+</pre>
+
+
+
+
+<p>Acima trouxemos todos os CNPJ&#8217;s da tabela de clientes já com a devida pontuação e a coisa toda.</p>
+
+
+
+
+<p>Uma outra situação é quando queremos mostrar apenas o primeiro nome da pessoa na tela. Novamente falando, você pode tratar isso onde quiser, mas o SQL pode fazer isso para você, então porque deixar isso passar&#8230;</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT SPLIT_PART(nome, '  ', 1) AS nome
+FROM e001_pessoas
+WHERE pessoaid = 33;
+</pre>
+
+
+
+
+<p>Acima usamos a função do SQL, SPLIT_PART, que se assemelha muito a SPLIT do php e a SPLIT do javascript, dividindo a string em pedaços, de acordo com um separador comum.<br/>
+Sintaxe &#8211; SPLIT_PART(campo que queremos dividir, separador entre as partes, parte que eu quero mostrar)</p>
+
+
+
+
+<p>Então na SQL mostrada, a SPLIT_PART, separou o meu campo nome em partes, de acordo com o espaço em branco.<br/>
+Exemplo: se o meu campo é &#8216;Maria Francisca Joana&#8217;, a função separou em 3 partes. 1 &#8211; Maria, 2 &#8211; Francisca e 3 &#8211; Joana.<br/>
+Nó último parâmetro da função eu passo a parte que eu quero mostrar. No meu caso como quero apenas o primeiro nome, trago só a primeira parte.</p>
+
+
+
+
+<p>Outro caso, esse já bem mais usado, é quando eu tenho um campo de domínio DATE, e quero trazer no resultado da consulta como uma string já com os separadores de dia, mês e ano.<br/>
+Digamos que você queira trazer a data no seguinte formato DD/MM/AAAA.</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT TO_CHAR(dtnascimento, 'DD/MM/YYYY') AS dtnascimento
+FROM e001_pessoas
+WHERE pessoaid = 33;
+</pre>
+
+
+
+
+<p>Usando a função TO_CHAR você consegue isso.<br/>
+Sintaxe &#8211; TO_CHAR(campo à transformar, formato que você quer).<br/>
+Cuidado ! Repare no Y de Year, e não A de ano.</p>
+
+
+
+
+<p>Experimente outras formatações. Deixem o SQL trabalhar por vocês.</p>
+
+
+
+
+<p>Abraços!<br/>
+Valeu !!!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

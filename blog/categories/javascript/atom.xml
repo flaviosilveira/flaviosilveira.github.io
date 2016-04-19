@@ -1,0 +1,1139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Javascript | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!]]></title>
+    <link href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
+    <updated>2011-07-25T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Vocês já ouviram falar sobre o <a href="http://initializr.com/" title="Initializr!">Initializr!</a> ?</p>
+
+
+
+
+<p>Ele é um gerador de código que ajuda você a começar seu projeto em HTML5. Ele é baseado no <a href="http://html5boilerplate.com/" title="oilerplate HTML5">Boilerplate</a> e foi criado por Jonathan Verrecchia (<a href="http://twitter.com/#!/verekia" title="Twitter Jonathan Verrecchia">@verekia</a>) com o objetivo de ampliar o uso do HTML5.</p>
+
+
+
+
+<p>Em contato com o Jonathan, combinei com ele de traduzir a documentação oficial do Initializr do francês para o português, para ajudar a divulgar ainda mais essa tremenda ferramenta e quem sabe com isso ver o uso do HTML5 mais e mais em novos projetos.</p>
+
+
+
+
+<p>Segue a tradução da documentação abaixo.<br/>
+Você encontra a versão original em francês no seguinte link: <a href="http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate" title="Documentação oficial Initializr Francês">http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate</a>.</p>
+
+
+
+
+<p>Conheça esses projetos e comece já a trabalhar com HTML5!<br/>
+Grande Abraço!</p>
+
+
+
+
+<h3>Initializr &#8211; Um gerador baseado nos templates Boilerplate HTML5</h3>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-371" title="logo-initializr" src="../../assets/uploads/2011/07/logo-initializr.png" alt="Initializr!" width="600" height="285" /></p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Initializr permite a você gerar um template baseado no Boilerplate, montando um rascunho de um HTML5 funcional em segundos.</p>
+
+
+
+
+<p>Você pode customizar seus templates como precisar, para evitar começar um projeto com um código muito pesado. Todo o processo do projeto de design e as opções disponíveis estão detalhadas neste artigo.</p>
+
+
+
+
+<p>Se você está começando agora com HTML5 e quer ter uma geral do que tem por trás dessa tecnologia, eu recomendo que você leia uma introdução ao HTML5 antes de seguir em frente.</p>
+
+
+
+
+<h3>Boilerplate HTML5</h3>
+
+
+
+
+<p>Boilerplate é uma poderosa e confiável ferramenta de templates criada e mantida por Paul Irish (Google) e Divya Manian.</p>
+
+
+
+
+<p>Boilerplate consiste de um grupo de arquivos HTML, CSS e JavaScript, usados para iniciar com o pé direito em um projeto HTML5.</p>
+
+
+
+
+<p>Ele também inclui ferramentas muito úteis, como o Modernizr, JQuery, e um reset CSS.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-372" title="logo-boilerplate" src="../../assets/uploads/2011/07/logo-boilerplate.png" alt="Boilerplate" width="600" height="75" /></p>
+
+
+
+
+<p>Também inclui outras ferramentas não tão necessárias como um Profiling JQuery, Código Google Analytics, Funções Javascript para loggin,</p>
+
+
+
+
+<p>um arquivo de configuração para Flash cross domain, Configuração IIS server e Nginx, Páginas de teste, scripts ANT… Bem, quando você for iniciar seu projeto com Boilerplate, você vai precisar de algum tempo para selecionar as partes que você quer e não quer no seu projeto.</p>
+
+
+
+
+<h3>Initializr &#8211; Um Boilerplate leve e personalizável</h3>
+
+
+
+
+<p>A proposta com o initializr é ter o Boilerplate sem essas ferramentas raramente usadas com HTML5 para poder começar um projeto rápido e tão confiável quanto o Boilerplate. O código gerado pelo Initializr é totalmente baseado no Boilerplate, que tem uma força inegável. Initializr oferece diferentes opções para customizar seu template. Aqui estão os detalhes:</p>
+
+
+
+
+<h3>HTML / CSS</h3>
+
+
+
+
+<p>Por padrão, o Boilerplate entrega a você uma página em branco. Initializr permite a você gerear um conteúdo inicial como base, para te ajudar a começar rapidamente. A página exemplo trás o tema do site da Initializr, com uma página estruturada com um clássico cabeçalho, um rodapé, um menu para navegação, um bloco lateral, e uma estrutura similar a um blog com alguns posts.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-373" title="initializr-html5-template" src="../../assets/uploads/2011/07/initializr-html5-template.jpg" alt="Site Initializr" width="510" height="391" /></p>
+
+
+
+
+<h3>Javascript</h3>
+
+
+
+
+<p>O Boilerplate inclui a excelente biblioteca de Javascript jQuery. E no Initializr nós também encontramos essa biblioteca, disponível em forma minimizada ou não. Ou também o direito de não incluir ela, ou não incluir nenhum Javascript. Vamos atentar para um ponto: Estamos falando do seu Javascript. Nada no Modernizr ou no HTML5shiv vai garantir uma compatibilidade 100% com todos os navegadores. Então não esqueça de testar isso posteriormente.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-374" title="jquery-logo" src="../../assets/uploads/2011/07/jquery-logo.png" alt="JQuery" width="366" height="90" /></p>
+
+
+
+
+<h3>Compatibilidade</h3>
+
+
+
+
+<h3>Html5Shiv</h3>
+
+
+
+
+<p>Navegadores modernos suportam totalmente as novas tags do HTML5. Mas versões do Internet Explorer 8, e anteriores a ele, precisam de uma ajudinha para exibir essas novas tags, que por padrão não são reconhecidas. Esta pequena ajuda é chamada HTML5shiv. Ele é um pequeno arquivo javascript que vai permitir ao Internet Explorer reconhecer essas tags graças a uma função createElement():</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">document.createElement("header");
+</pre>
+
+
+
+
+<p>Todos os novos itens são automaticamente criados antes do conteúdo da página ser completamente exibido. Isso torna obrigatório colocar o HTML5shiv no <em>Head</em> da sua página ao invés de colocar no rodapé, que é o recomendado para todos os outros javascripts.</p>
+
+
+
+
+<h3>Modernizr</h3>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-375" title="modernizr-logo" src="../../assets/uploads/2011/07/modernizr-logo.png" alt="Modernizr" width="222" height="50" /></p>
+
+
+
+
+<p>O Modernizr, é um sensor de suporte das funcionalidades HTML5 e CSS3, que inclui o HTML5shiv. Ele é um arquivo javascript que irá criar um objeto contendo propriedades modernizr para cada funcionalidade, indicando se ela funciona ou não no seu navegador.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if (Modernizr.geolocation){
+  // A geolocalização é suportada
+}
+else {
+  // A geolocalização não é suportada
+}
+</pre>
+
+
+
+
+<p>Modernizr também adiciona classes CSS para o HTML, para que você possa facilmente indicar um estilo alternativo se certas propiedades CSS3 não forem suportadas.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">.multiplebgs header {
+  /* Backgrounds múltiplos são suportados */
+}
+.no-multiplebgs header {
+  /* Backgrounds múltiplos não são suportados */
+}
+</pre>
+
+
+
+
+<p>Modernizr é bem abrangente na detecção de suporte a HTML5 e CSS3, mas é importante entender que ele não adiciona nenhuma característica faltante (como faz o HTML5shiv em relação as tags). Ele é a ferramenta selecionada por padrão para compatibilidade do Initializr.</p>
+
+
+
+
+<h3>A configuração do servidor</h3>
+
+
+
+
+<p>O Initializr traz um arquivo de configuração para o servidor, também gerado pelo Boilerplate. Portanto é possível selecionar um arquivo .htaccess para servidores Apache, web.config para Microsoft IIS, ou nginx.conf para Servidores NGinx. É importante notar que por padrão, esses arquivos vão re-escrever a URL da página, removendo o &#8220;www&#8221; para montar URLs curtas.</p>
+
+
+
+
+<p>Se você preferir manter o seu &#8220;www&#8221;, você pode remover as seguintes linhas no caso do .htaccess:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;IfModule mod_rewrite.c&gt;
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+&lt;/IfModule&gt;
+</pre>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-376" title="server" src="../../assets/uploads/2011/07/server.png" alt="" width="256" height="256" /></p>
+
+
+
+
+<h3>É apenas um clique no botão!</h3>
+
+
+
+
+<p>Após fazer suas escolhas com relação a configuração, um simples clique no botão Download! fará o download de seus arquivos.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-377" title="initializr-download" src="../../assets/uploads/2011/07/initializr-download.png" alt="" width="400" height="157" /></p>
+
+
+
+
+<p>Se você manter as configurações padrão, você terá uma estrutura de projeto completa e pronta para uso, como a mostrada abaixo:</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-378" title="html5-initializr-structure" src="../../assets/uploads/2011/07/html5-initializr-structure.png" alt="" width="224" height="250" /></p>
+
+
+
+
+<p>Uma rápida olhada no arquivo index.html e você pode ver que o código traz muita coisa do Boilerplate:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;!DOCTYPE html&gt;
+&lt;!--[if lt IE 7 ]&gt; &lt;html lang="en" class="no-js ie6"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7 ]&gt;    &lt;html lang="en" class="no-js ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;    &lt;html lang="en" class="no-js ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;    &lt;html lang="en" class="no-js ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)|!(IE)]&gt;&lt;!--&gt; &lt;html lang="en" class="no-js"&gt; &lt;!--&lt;![endif]--&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+
+  &lt;title&gt;Your website name&lt;/title&gt;
+
+  &lt;meta name="description" content=""&gt;
+  &lt;meta name="author" content=""&gt;
+
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+  &lt;link rel="shortcut icon" href="favicon.ico"&gt;
+  &lt;link rel="apple-touch-icon" href="apple-touch-icon.png"&gt;
+
+  &lt;link rel="stylesheet" href="css/style.css?v=2"&gt;
+
+  &lt;script src="js/libs/modernizr-1.6.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;!-- Código da página exemplo do Initializr --&gt;
+
+  &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"&gt;&lt;/script&gt;
+  &lt;script&gt;!window.jQuery && document.write(unescape('%3Cscript src="js/libs/jquery-1.4.4.min.js"%3E%3C/script%3E'))&lt;/script&gt;
+  &lt;script src="js/script.js"&gt;&lt;/script&gt;
+  &lt;!--[if lt IE 7 ]&gt;
+  &lt;script src="js/libs/dd_belatedpng.js"&gt;&lt;/script&gt;
+  &lt;script&gt; DD_belatedPNG.fix('img, .png_bg');&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+
+
+
+<p>O arquivo style.css traz em torno de 200 linhas, os primeiros 3 quartos disso um CSS Reset. Se você estiver procurando onde colocar os seus estilos no meio desse código CSS, role o arquivo para baixo até você encontrar o seguinte comentário:</p>
+
+
+
+
+<pre class="brush: css; title: ; notranslate" title="">/*
+    // ========================================== \\
+   ||                                              ||
+   ||               Your styles !                  ||
+   ||                                              ||
+    \\ ========================================== //
+*/
+</pre>
+
+
+
+
+<p>Por último, o arquivo script.js contém um simples teste para ver se a biblioteca JQuery está sendo carregada. Nesse arquivo você pode escrever seu código JavaScript.</p>
+
+
+
+
+<h3>TODO.txt</h3>
+
+
+
+
+<p>Um arquivo todo.txt também é incluído para te mostrar que tarefas você tem de fazer para começar seu projeto e como usar alguns truques de HTML5 presentes no Boilerplate. Por exemplo, você e lembrado para não esquecer de substituir a linguagem se sua página não estiver em inglês, ou para criar uma  página 404.html no seu arquivo se configuração do servidor para fazer um redirecionamento em erros 404.</p>
+
+
+
+
+<p><img class="aligncenter size-full wp-image-379" title="initializr-todo" src="../../assets/uploads/2011/07/initializr-todo.png" alt="" width="463" height="110" /></p>
+
+
+
+
+<h3>Indo mais longe</h3>
+
+
+
+
+<p>A versão do Boilerplate que vem no Initializr é mais leve que a original. Se você precisa de um entendimento mais profundo do template ou de informações mais detalhadas de todos os arquivos, você pode ver a explicação oficial do Boilerplate em um vídeo feito por Paul Irish em inglês:</p>
+
+
+
+
+<p>Eu também lhe convido a visitar o <a href="http://html5boilerplate.com/" title="Boilerplate">site oficial do Boilerplate</a>, onde você vai encontrar algumas dicas para melhorar seu site , dicas de compatibilidade e performance.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery]]></title>
+    <link href="http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/"/>
+    <updated>2010-11-17T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery</id>
+    <content type="html"><![CDATA[<p>Salve pessoal.</p>
+
+
+
+
+<p>Hoje trago um artigo pesado e extenso, mas acredito que vá ajudar o pessoal que precisar em várias frentes. Vou Tratar aqui de JQuery, JQuery Validation, a diferença entre síncrono e assíncrono, como fazer ajax síncrono usando JQuery e também soluções para problemas em um dia de trabalho no mundo do desenvolvimento.</p>
+
+
+
+
+<p>Bom, que o JQuery é um dos frameworks mais usados para javascript e que facilita muito a sua vida você já deve saber. E que o plugin para JQuery, JQuery Validation, é uma excelente maneira de validar seus formulários do lado cliente, você também deveria saber.</p>
+
+
+
+
+<p>Veja um exemplo:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.validate.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    
+function init()
+{
+    $("#form").validate({
+        rules:
+        {
+            nome:{required: true},
+            senha:{required: true, minlength: 5}
+                }
+    });
+}
+
+$(document).ready(init);
+    
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;form id="form"&gt;
+    
+    &lt;p&gt;
+        &lt;label for="nome"&gt;Nome&lt;/label&gt;
+        &lt;input type="text" name="nome" id="nome" /&gt;
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+        &lt;label for="senha"&gt;Senha&lt;/label&gt;
+        &lt;input type="password" name="senha" id="senha" /&gt;
+    &lt;/p&gt;
+    
+&lt;/form&gt;
+
+&lt;/body&gt;
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Com essas poucas linhas você já tem um formulário com campo obrigatório para nome e campo obrigatório para senha exigindo um mínimo 5 caractéres.Ao não seguir qualquer uma das regras, o plugin insere uma Label com uma mensagem de erro.</p>
+
+
+
+
+<p>Você tem opções para personalizar essa mensagem, além de outras várias opções oferecidas pelo plugin.<br/>
+Você pode dar uma conferida nessas opções pela <a href="http://bassistance.de/jquery-plugins/jquery-plugin-validation/">documentação e exemplos no site oficial do plugin aqui</a>.</p>
+
+
+
+
+<p><strong>Primeiro Problema</strong></p>
+
+
+
+
+<p>O plugin JQuery Validation é gringo; Internacional se você preferir assim dizer.<br/>
+Na sua condição de estrangeiro, ele não conhece o que é CPF.<br/>
+Ele não tem um método para entrada e validação de CPF, o que é muito comum nos formulários de cadastro aqui no Brasil.</p>
+
+
+
+
+<p>Por sorte, o JQuery validation tem uma maneira muito fácil de você inserir novos métodos a ele.<br/>
+Com uma rápida busca na internet chegamos em vários blogs que nos trazem a solução, como é o caso do <a href="http://www.tidbits.com.br/">TidBits</a> escrito pelo <a href="http://twitter.com/maktuiu">Danilo Augusto</a>, que falou sobre isso em seu post <a href="http://www.tidbits.com.br/colecao-de-metodos-para-o-plugin-validate-do-jquery">Coleção de métodos para o plugin validate do Jquery</a>.</p>
+
+
+
+
+<p>Primeiro vamos adicionar um campo para o CPF.<br/>
+Vamos também separar o arquivo .js para ficar mais organizado a coisa toda, separando o que é Html do que é javascript.</p>
+
+
+
+
+<p>Nosso Html vai ficar assim:</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="jquery.validate.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;!-- default.js será o arquivo separado do javaScript --&gt;
+&lt;script src="default.js" type="text/javascript"&gt;&lt;/script&gt;
+
+&lt;form id="form"&gt;
+        
+    &lt;p&gt;
+        &lt;label for="nome"&gt;Nome&lt;/label&gt;
+        &lt;input type="text" name="nome" id="nome" /&gt;
+    &lt;/p&gt;
+    
+    &lt;p&gt;
+        &lt;label for="senha"&gt;Senha&lt;/label&gt;
+        &lt;input type="password" name="senha" id="senha" /&gt;
+    &lt;/p&gt;
+
+    &lt;p&gt;
+        &lt;label for="cpf"&gt;CPF&lt;/label&gt;
+        &lt;input type="text" name="cpf" id="cpf" /&gt;
+    &lt;/p&gt;
+    
+&lt;/form&gt;
+
+</pre>
+
+
+
+
+<p>Ok, adicionamos o Input para o CPF em nosso HTML.<br/>
+Agora vamos adicionar o método para o Jquery Validation no nosso arquivo default.js, seguindo o exemplo que pegamos no <a href="http://www.tidbits.com.br/colecao-de-metodos-para-o-plugin-validate-do-jquery">Blog do Danilo</a>.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $("#form").validate({
+        rules:
+        {
+            nome:{required: true},
+            senha:{required: true, minlength: 5}
+           }
+    });
+}
+
+jQuery.validator.addMethod("verificaCPF", function(value, element) {
+value = value.replace('.','');
+value = value.replace('.','');
+cpf = value.replace('-','');
+while(cpf.length &lt; 11) cpf = "0"+ cpf;
+var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+var a = [];
+var b = new Number;
+var c = 11;
+for (i=0; i&lt;11; i++){
+    a[i] = cpf.charAt(i);
+    if (i &lt; 9) b += (a[i] * --c);
+}
+if ((x = b % 11) &lt; 2) { a[9] = 0 } else { a[9] = 11-x }
+b = 0;
+c = 11;
+for (y=0; y&lt;10; y++) b += (a[y] * c--);
+if ((x = b % 11) &lt; 2) { a[10] = 0; } else { a[10] = 11-x; }
+if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) return false;
+return true;
+}, "Informe um CPF válido.");
+
+$(document).ready(init);
+
+</pre>
+
+
+
+
+<p>Agora falta chamar o método para o seu campo.<br/>
+Para isso adicione a seguinte validação no seu código javascript:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">$("#form").validate({
+    rules:
+    {
+        nome:{required: true},
+        senha:{required: true, minlength: 5},
+        cpf:{required: true, verificaCPF: true}
+       }
+});
+</pre>
+
+
+
+
+<p>Repare:<br/>
+Chamamos o método verificaCPF, e passamos o valor que queremos, no caso, true para que seja um CPF válido.<br/>
+Faça seus testes.</p>
+
+
+
+
+<p><strong>Segundo Problema</strong></p>
+
+
+
+
+<p>Legal! Temos o formulário validando, inclusive com um campo de CPF, sem muito trabalho pois estamos contando com o JQuery Validation. Mas então nos surgi outro problema. No seu banco de dados você tem um campo onde CPF tem de ser único.</p>
+
+
+
+
+<p>E para ajudar seu usuário, além de mostrar se o CPF é válido ou não, você quer mostrar se é um CPF cadastrado ou não.<br/>
+E então, como fazemos ?</p>
+
+
+
+
+<p>Para pesquisas no banco de dados sem refresh na página a resposta é fácil não? Ajax!<br/>
+Mas como juntar isso no Jquery validation?</p>
+
+
+
+
+<p>Você conhecendo a <a href="http://api.jquery.com/category/ajax/">facilidade do Ajax no Jquery</a>, pode sair logo de cara transformando o seu método de validação de CPF para o seguinte:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">jQuery.validator.addMethod("verificaCPF", function(value, element) {
+    
+value = value.replace('.','');
+value = value.replace('.','');
+cpf = value.replace('-','');
+
+while(cpf.length &lt; 11) cpf = "0"+ cpf;
+var expReg = /^0+$|^1+$|^2+$|^3+$|^4+$|^5+$|^6+$|^7+$|^8+$|^9+$/;
+var a = [];
+var b = new Number;
+var c = 11;
+
+for (i=0; i&lt;11; i++)
+{
+    a[i] = cpf.charAt(i);
+    if (i &lt; 9) b += (a[i] * --c);
+}
+
+if ((x = b % 11) &lt; 2) { a[9] = 0 } else { a[9] = 11-x }
+
+b = 0;
+c = 11;
+
+for (y=0; y&lt;10; y++) b += (a[y] * c--);
+
+if ((x = b % 11) &lt; 2) { a[10] = 0; } else { a[10] = 11-x; }
+
+if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) return false;
+
+var verifica = false;
+$.get('verificaCpf.php', {cpf : cpf}, function(data){
+    if(data == 0) verifica = true;
+});
+
+if(!verifica) return false;
+
+return true;
+}, "CPF inválido ou já cadastrado!");
+</pre>
+
+
+
+
+<p>Vamos ver o que foi feito aqui. Acompanhe da linha 30 em diante.<br/>
+Adicionamos uma variável dentro do nosso método chamada <em>&#8220;verifica&#8221;</em>, e definimos o valor de false para ela.</p>
+
+
+
+
+<p>Em seguida fazemos uma chamada para um arquivo PHP através de Ajax.<br/>
+Esse arquivo PHP deve fazer uma consulta no seu banco de dados pelo CPF digitado.<br/>
+Por ser algo simples de fazer e para não estender ainda mais esse post ,não vou tratar desse código PHP aqui.</p>
+
+
+
+
+<p>Para entendimento, basta saber que nosso código PHP retorna o número de linhas onde encontrou aquele CPF.<br/>
+Esse valor vai vir para o javascript pela variável data.<br/>
+Repare que é feito uma comparação na resposta do Ajax, que, caso o número de linhas encontradas no banco seja 0, mudamos a variável para true. E fim do Ajax.</p>
+
+
+
+
+<p>Em seguida, verificamos a variável <em>&#8220;verifica&#8221;</em>.<br/>
+Se ela for diferente de verdadeira, o método verificaCPF retorna false e será acusado erro em seu formulário.</p>
+
+
+
+
+<p>Ufa! Certo. Vamos testar?<br/>
+Problemas acontecem não? Está sempre retornando erro.<br/>
+O que está acontecendo?</p>
+
+
+
+
+<p><strong>Terceiro Problema</strong></p>
+
+
+
+
+<p>Vamos entender:<br/>
+Seu código PHP é chamado. Ele vai lá no banco de dados, faz a consulta e está retonando o resultado.<br/>
+Mas enquanto isso, o código javascript já continuou sua execução, e quando a resposta do ajax chegar, a execução do método terá acabado. Com isso ele vai retornar o valor que tinha na variável, false.</p>
+
+
+
+
+<p>Isso acontece, pois o ajax padrão do JQuery, como foi usado acima, é assíncrono.<br/>
+Você está se perguntando o que é isso? Vou tentar ser claro.<br/>
+É o fato de não importar quando a resposta do ajax vai vir. Não precisar de sincronismo, compreende?</p>
+
+
+
+
+<p>Porém veja que esse é exatamente o nosso problema aqui. Precisamos desse sincronismo.<br/>
+Precisamos da resposta do nosso Ajax antes de continuar a execução do código.</p>
+
+
+
+
+<p>Como fazer?<br/>
+Vamos fazer o Ajax Síncrono.<br/>
+A execução do javascript só pode continuar depois da resposta do ajax.</p>
+
+
+
+
+<p>Procurando pela internet, achei alguns desenvolvedores falando que não é possível fazer ajax síncrono com JQuery. Isso não é verdade. É uma das primeiras coisas que <a href="http://api.jquery.com/jQuery.ajax/">encontramos na documentação</a>.</p>
+
+
+
+
+<p>Veja como fazer:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">jQuery.ajax({
+        url: 'verifica_cpf.php?cpf='+cpf,
+        async: false,
+        success: function(data) {
+           if(data == 0) verifica = true; 
+       }});
+</pre>
+
+
+
+
+<p>Passando o valor false para a propiedade async do ajax, temos nosso ajax síncrono.<br/>
+Repare que o código segue o padrão JQuery e é fácil de entender.<br/>
+Ao invés de passar as variáveis em uma propiedade, as adicionei no padrão GET diretamente na url.<br/>
+Uma opção a isso seria usar a propiedade data.</p>
+
+
+
+
+<p>Substituindo esse trecho de código no lugar do nosso ajax assíncrono anterior, temos nosso problema corrigido.</p>
+
+
+
+
+<p>Uma observação importante, é você reparar que a execução dá página dá uma travada enquanto espera a resposta do javascript. Fique atento para não deixar de dar uma resposta em situações de erro ou sucesso. Caso contrário sua página vai ficar travada nesse ponto.</p>
+
+
+
+
+<p><strong>Quarto problema</strong></p>
+
+
+
+
+<p>Não não…brincadeira… hahaha</p>
+
+
+
+
+<p>Legal! Acredito que chegamos finalmente ao final.<br/>
+Dúvidas? Dicas para melhorar todo esse processo? Não deixem de comentar pessoal…<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário]]></title>
+    <link href="http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/"/>
+    <updated>2010-10-15T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario</id>
+    <content type="html"><![CDATA[<p>Salve pessoal.</p>
+
+
+
+
+<p>Muita gente me manda emails ou mensagens no twitter achando que eu escrevi o Plugin JQuery Price para JQuery, que ajuda você a formatar seus campos de texto com valores monetários, valores de preço. Se você ler bem certinho na <a href="http://meiaduzia.com.br/cuducos2/priceformat/">página oficial do Plugin</a> (<a href="http://meiaduzia.com.br/cuducos2/priceformat/">http://meiaduzia.com.br/cuducos2/priceformat</a>), e também no código ao baixar ele, verá que eu apenas colaborei com uma nova função do plugin, uma necessidade minha no início do ano de 2009.</p>
+
+
+
+
+<p>O Autor do Plugin é o <a href="http://www.meiaduzia.com.br/cuducos/">Eduardo Cuducos</a>, Um tremendo Designer e Desenvolvedor Web do estado de Santa Catarina que conheci por meio desse Plugin. <a href="http://www.meiaduzia.com.br/cuducos/">Aqui</a> você pode conhecer mais dele ou seguir seu <a href="http://twitter.com/cuducos">twitter</a> (<a href="http://twitter.com/cuducos">http://twitter.com/cuducos</a>) para pegar suas idéias, sejam de designer, política ou pensamentos de vida, que também valem a pena.</p>
+
+
+
+
+<p>Para usar o Plugin é fácil.<br/>
+Na <a href="http://meiaduzia.com.br/cuducos2/priceformat/">página oficial</a> consta alguns exemplos bem explicativos.<br/>
+Mas se você ainda tem dúvidas vou reproduzí-los aqui.</p>
+
+
+
+
+<p>Primeiro crie seu Html com o campo que quer formatar.<br/>
+Não preciso dizer para você carregar a JQuery e o Plugin JQuery Price preciso ?</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jprice.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    
+    function init()
+    {
+        
+    }
+
+    $(document).ready(init);
+    
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Exemplo&lt;/h1&gt;
+
+    &lt;label for="price"&gt;Valor:&lt;/label&gt;
+    &lt;input type="text" id="price" /&gt;
+
+&lt;/body&gt;
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Ok.<br/>
+Reparem que eu já acrescentei um código JavaScript para chamar a funcão init assim que a página terminar de carregar. Isso evita que o JavaScript tente fazer algo com algum campo do Html que não esteja criado ainda. Uma outra solução para isso poderia ser colocar esse código ao final do Html.</p>
+
+
+
+
+<p>Para o uso básico do Plugin, basta fazer a chamada do campo (no meu caso chamei pelo id) e acrescentar o método priceFormat veja:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat();
+}
+
+$(document).ready(init);
+
+</pre>
+
+
+
+
+<p>Com isso seu input já formata automaticamente os números inseridos nele para as configurações padrões do Jquery Price. Ah sim, ele impede que você digite letras e alfanuméricos nesse campo também.</p>
+
+
+
+
+<p>Ficou legal não?<br/>
+Mas você não quer esse valor em doláres, você está lidando com o seu Brasil Brasileiro.<br/>
+Vamos personalizar isso então.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.'
+    });
+}
+
+</pre>
+
+
+
+
+<p>Passando parâmetros para funcão em formato de array, conseguimos personalizar nosso input conhecendo algumas propiedades do plugin.</p>
+
+
+
+
+<p>Com a propiedade prefix, alteramos o que vem antes dos números.<br/>
+Repare que foi dado um espaço após o cifrão para ficar melhor visivelmente dentro do input.<br/>
+Em seguida foi modificado o separador de centavos para uma vírgula e o separador de milhar para um ponto.</p>
+
+
+
+
+<p>Muito fácil não ??</p>
+
+
+
+
+<p>E chegamos ao momento mais esperado (Ou não).<br/>
+Qual foi a minha colaboração com o Plugin ? Qual foi meu problema ?</p>
+
+
+
+
+<p>Eu precisava limitar o valor que o usuário digitava.<br/>
+Se você testar os exemplos que fizemos até aqui, verá que você pode inserir números até cansar.</p>
+
+
+
+
+<p>Na época fiz um código meio xulo para resolver o problema, porque estava começando com JQuery e não tinha muita desenvoltura para alterar seus plugins. Mandei o código para o Cuducos que fez as devidas adaptações, não estragando a facilidade de uso do plugin.<br/>
+Vamos a um exemplo:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+        limit: 6
+    });
+}
+
+</pre>
+
+
+
+
+<p>Passando mais uma propiedade para o método, chamada limit, agora você só pode inserir 6 numerais dentro do seu input.</p>
+
+
+
+
+<p>Um outro limitador que temos é o de casas para os centavos.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+        limit: 6,
+        centsLimit: 4
+    });
+}
+
+</pre>
+
+
+
+
+<p>Difícil ? Acredito que não certo ?<br/>
+Experimente outros valores e confira os resultados.</p>
+
+
+
+
+<p>Por hoje é isso pessoal.<br/>
+Demos uma passada por todo o uso do plugin JQuery Price além de conhecer a história de como colaborei para o plugin. Espero ter tirado as dúvidas do pessoal que me manda emails e afins.</p>
+
+
+
+
+<p>Agradecimentos imensos para o <a href="http://www.meiaduzia.com.br/cuducos/">Eduardo Cuducos</a> que adicionou meu nome dentro do projeto do plugin pela minha pequena colaboração, tornando o meu nome mais visível para a comunidade de desenvolvimento.</p>
+
+
+
+
+<p>Qualquer coisa é só entrar em contato.<br/>
+Abraços!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript]]></title>
+    <link href="http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/"/>
+    <updated>2009-07-19T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2009/redirecionando-para-versao-mobile</id>
+    <content type="html"><![CDATA[<div id="atencao">
+  Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
+</div>
+
+
+
+
+<p>As pessoas que me acompanham sabem que há pouco mais de um mês adquiri um IPhone.<br/>
+A minha operadora me ligou oferecendo alguns pontos que valiam desconto na aquisição do aparelho. Não perdi tempo e corri lá buscar.</p>
+
+
+
+
+<p>Desde então as minhas leituras diárias começaram a se voltar mais para IPhone.<br/>
+Desenvolvimento de aplicativos, desenvolvimento de sites, &#8216;manhas&#8217; para usar o aparelho, dicas para economizar bateria, e por ai vai.</p>
+
+
+
+
+<p>O que trago hoje aqui faz parte dos meus estudos para criação de sites para o público que usa IPhone, que é, identificar que seu visitante está usando o aparelho e redirecioná-lo para a versão mobile do seu site.</p>
+
+
+
+
+<p>A ideia é bem simples, e, para colocar ela em prática usamos JavaScript.</p>
+
+
+
+
+<p>Primeiro crie um arquivo HTML e o prepare para receber um javaScript dentro das tags do cabeçalho.</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;::: Teste IPhone :::&lt;/title&gt;
+&lt;script type='text/javascript'&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Deixei apenas o necessário para o HTML funcionar acima.<br/>
+Coloquei um título para constar, e abri as tags de script onde vai entrar o nosso JavaScript.</p>
+
+
+
+
+<p>Em JavaScript temos um objeto que traz propiedades e métodos do nosso navegador, que é o <strong>navigator</strong>.<br/>
+Você pode vê-lo em ação adicionando o seguinte código dentro das tags script:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">alert(navigator);
+</pre>
+
+
+
+
+<p>Esse objeto tem propiedades que nos trazem dados como o nome do browser, sua versão, dizer se os cookies estão habilitados e outros.</p>
+
+
+
+
+<p>A propiedade que vamos usar é a <em>userAgent</em>, que traz um conjunto de informações do browser e do dispositivo que está acessando, que é o que precisamos.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">alert(navigator.userAgent);
+</pre>
+
+
+
+
+<p>Veja o resultado do código acima ao acessarmos a página. Repare nas informações retornadas:<br/>
+<strong>No Firefox do Linux:</strong><br/>
+<img class="alignnone size-full wp-image-103" title="linux-firefox" src="../../assets/uploads/2009/07/screenshot.png" alt="linux-firefox" width="628" height="313" /><br  style='clear:both;' /><br/>
+<strong>No Safari do Mac:</strong><br/>
+<img class="alignnone size-full wp-image-104" title="safari-mac" src="../../assets/uploads/2009/07/picture-2.png" alt="safari-mac" width="514" height="222" /><br  style='clear:both;' /><br/>
+<strong>No Simulador do IPhone:</strong><br/>
+<img class="alignnone size-full wp-image-105" title="simulador" src="../../assets/uploads/2009/07/picture-3.png" alt="simulador" width="299" height="586" /><br  style='clear:both;' /><br/>
+<strong>No própio IPhone:<br/>
+<img class="alignnone size-full wp-image-106" title="iphone" src="../../assets/uploads/2009/07/img_0095.png" alt="iphone" width="298" height="447" /></strong><br  style='clear:both;' /></p>
+
+
+
+
+<p>Reparou que quando estamos lidando com o Iphone, essa informação aparece para a gente na propiedade do objeto ?<br/>
+Caso estivessemos no IPod Touch, apareceria <em>IPod</em> ao invés de <em>IPhone</em> nas informações.</p>
+
+
+
+
+<p>Agora basta fazer uma verificação para ver se a palavra Iphone ou Ipod está presente nas informações, e, se estiver, redirecionar para sua versão mobile.<br/>
+Veja o código:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if ((navigator.userAgent.indexOf('iPhone') != -1) || (navigator.userAgent.indexOf('iPod') != -1))
+{
+alert('IPhone!!!');
+//Essa linha redireciona você para o endereço que você colocar
+document.location = "http://www.flaviosilveira.com";
+}
+</pre>
+
+
+
+
+<p>Qualquer dúvida estamos aí&#8230;Abraços!!!</p>
+
+]]></content>
+  </entry>
+  
+</feed>

@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript Categorias: desenvolvimento, javascript, mobile Atenção! O post &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2009/redirecionando-para-versao-mobile">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-07-19T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>, <a class='category' href='/blog/categories/mobile/'>mobile</a>
+  
+</span>
+
+
+        </div>
+        <div id="atencao">
+  Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
+</div>
+
+
+
+
+<p>As pessoas que me acompanham sabem que há pouco mais de um mês adquiri um IPhone.<br/>
+A minha operadora me ligou oferecendo alguns pontos que valiam desconto na aquisição do aparelho. Não perdi tempo e corri lá buscar.</p>
+
+
+
+
+<p>Desde então as minhas leituras diárias começaram a se voltar mais para IPhone.<br/>
+Desenvolvimento de aplicativos, desenvolvimento de sites, &#8216;manhas&#8217; para usar o aparelho, dicas para economizar bateria, e por ai vai.</p>
+
+
+
+
+<p>O que trago hoje aqui faz parte dos meus estudos para criação de sites para o público que usa IPhone, que é, identificar que seu visitante está usando o aparelho e redirecioná-lo para a versão mobile do seu site.</p>
+
+
+
+
+<p>A ideia é bem simples, e, para colocar ela em prática usamos JavaScript.</p>
+
+
+
+
+<p>Primeiro crie um arquivo HTML e o prepare para receber um javaScript dentro das tags do cabeçalho.</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;::: Teste IPhone :::&lt;/title&gt;
+&lt;script type='text/javascript'&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Deixei apenas o necessário para o HTML funcionar acima.<br/>
+Coloquei um título para constar, e abri as tags de script onde vai entrar o nosso JavaScript.</p>
+
+
+
+
+<p>Em JavaScript temos um objeto que traz propiedades e métodos do nosso navegador, que é o <strong>navigator</strong>.<br/>
+Você pode vê-lo em ação adicionando o seguinte código dentro das tags script:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">alert(navigator);
+</pre>
+
+
+
+
+<p>Esse objeto tem propiedades que nos trazem dados como o nome do browser, sua versão, dizer se os cookies estão habilitados e outros.</p>
+
+
+
+
+<p>A propiedade que vamos usar é a <em>userAgent</em>, que traz um conjunto de informações do browser e do dispositivo que está acessando, que é o que precisamos.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">alert(navigator.userAgent);
+</pre>
+
+
+
+
+<p>Veja o resultado do código acima ao acessarmos a página. Repare nas informações retornadas:<br/>
+<strong>No Firefox do Linux:</strong><br/>
+<img class="alignnone size-full wp-image-103" title="linux-firefox" src="../../assets/uploads/2009/07/screenshot.png" alt="linux-firefox" width="628" height="313" /><br  style='clear:both;' /><br/>
+<strong>No Safari do Mac:</strong><br/>
+<img class="alignnone size-full wp-image-104" title="safari-mac" src="../../assets/uploads/2009/07/picture-2.png" alt="safari-mac" width="514" height="222" /><br  style='clear:both;' /><br/>
+<strong>No Simulador do IPhone:</strong><br/>
+<img class="alignnone size-full wp-image-105" title="simulador" src="../../assets/uploads/2009/07/picture-3.png" alt="simulador" width="299" height="586" /><br  style='clear:both;' /><br/>
+<strong>No própio IPhone:<br/>
+<img class="alignnone size-full wp-image-106" title="iphone" src="../../assets/uploads/2009/07/img_0095.png" alt="iphone" width="298" height="447" /></strong><br  style='clear:both;' /></p>
+
+
+
+
+<p>Reparou que quando estamos lidando com o Iphone, essa informação aparece para a gente na propiedade do objeto ?<br/>
+Caso estivessemos no IPod Touch, apareceria <em>IPod</em> ao invés de <em>IPhone</em> nas informações.</p>
+
+
+
+
+<p>Agora basta fazer uma verificação para ver se a palavra Iphone ou Ipod está presente nas informações, e, se estiver, redirecionar para sua versão mobile.<br/>
+Veja o código:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">if ((navigator.userAgent.indexOf('iPhone') != -1) || (navigator.userAgent.indexOf('iPod') != -1))
+{
+alert('IPhone!!!');
+//Essa linha redireciona você para o endereço que você colocar
+document.location = "http://www.flaviosilveira.com";
+}
+</pre>
+
+
+
+
+<p>Qualquer dúvida estamos aí&#8230;Abraços!!!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2009/redirecionando-para-versao-mobile';
+    var disqus_title = 'Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2009/codeigniter-metido-a-ruby/" title="Previous Post: CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)">&laquo; Anterior: CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)</a>
+        
+
+        
+          <a class="pull-right" href="/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/" title="Next Post: CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios">Próximo: CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/';
+        var disqus_url = 'http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,262 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Limitando O SELECT Do SQL Em Diferentes Bancos De Dados - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Limitando O SELECT Do SQL Em Diferentes Bancos De Dados Categorias: desenvolvimento, sql Olá pessoal&#8230; Atualmente tenho tido o privilégio de &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Limitando O SELECT Do SQL Em Diferentes Bancos De Dados</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-02-27T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/sql/'>sql</a>
+  
+</span>
+
+
+        </div>
+        <p>Olá pessoal&#8230;</p>
+
+
+
+
+<p>Atualmente tenho tido o privilégio de trabalhar com vários data bases, e com isso está dando para ver as diferenças de sintaxe, performance, ferramentas e demais coisas de um para outro.</p>
+
+
+
+
+<p>Tenho trabalhado com Microsoft SQL, Postgres e Oracle.</p>
+
+
+
+
+<p>Uma coisa que me chamou a atenção foi a maneira de limitar a consulta em cada um deles. Tenho feito bastante consultas limitadas pois ainda estou conhecendo a base de dados da empresa e não sei ao certo quantos registros tem certas tabelas. Para evitar que a coisa caia ou trave, faço consultas limitadas.</p>
+
+
+
+
+<p>Repare as diferenças de um banco para outro abaixo:</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT * FROM tabela LIMIT 20
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Essa é a sintaxe para o postgres, que acho que deve ser a mais conhecida por ser software livre e etc.<br/>
+Basta adicionar o parâmetro LIMIT e passar o valor de máximo de registros que você quer.</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT TOP 20 * FROM tabela
+</pre>
+
+
+
+
+<p>Essa é a maneira como o Microsoft limita sua consulta.<br/>
+Você adiciona o parâmetro TOP passando o valor do máximo de registros que você quer. Isso deve vir logo após o SELECT.</p>
+
+
+
+
+<pre class="brush: sql; title: ; notranslate" title="">SELECT * FROM tabela WHERE ROWNUM &lt; 20
+</pre>
+
+
+
+
+<p>E por último o Oracle.<br/>
+Você deve usar o parâmetro ROWNUM junto a um operador (&lt;, >, &lt;=, >=, =) e em seguida o valor máximo de registros que você quer para sua consulta.<br/>
+Traduzindo este exemplo acima ficaria mais ou menos assim:<br/>
+<em>Selecione tudo da tabela chamada &#8216;tabela&#8217; onde o número de tuplas seja menor que 20</em></p>
+
+
+
+
+<p>Por hoje é isso ai rapaziada. Valeu !</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados';
+    var disqus_title = 'Limitando O SELECT Do SQL Em Diferentes Bancos De Dados';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2009/multiplos-sites-com-codeigniter-exemplo-pratico/" title="Previous Post: Múltiplos Sites Com CodeIgniter – Exemplo Prático">&laquo; Anterior: Múltiplos Sites Com CodeIgniter – Exemplo Prático</a>
+        
+
+        
+          <a class="pull-right" href="/2009/codeigniter-metido-a-ruby/" title="Next Post: CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)">Próximo: CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh) &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/';
+        var disqus_url = 'http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

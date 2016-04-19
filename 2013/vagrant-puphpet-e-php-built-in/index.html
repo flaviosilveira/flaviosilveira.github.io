@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Vagrant, PuPHPet E PHP Built In - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Vagrant, PuPHPet E PHP Built In Categorias: desenvolvimento, php Fala pessoal.
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Vagrant, PuPHPet E PHP Built In</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2013-09-15T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Fala pessoal.<br/>
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
+
+
+
+
+<p><strong>O que é Vagrant?</strong><br/>
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Alguns pontos do Vagrant:<br/>
+&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
+&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
+Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
+&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
+&#8211; Muito mais.</p>
+
+
+
+
+<p><strong>PuPHPet: Arquivos puppet</strong><br/>
+Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
+Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
+
+
+
+
+<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
+Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
+
+
+
+
+<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
+É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
+Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
+
+
+
+
+<p><strong>O que é PHP Built In?</strong><br/>
+Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
+É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
+Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
+Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
+
+
+
+
+<p><strong>Mãos a Obra</strong><br/>
+Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
+Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
+
+
+
+
+<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
+Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
+
+
+
+
+<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
+Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
+
+
+
+
+<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
+Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
+
+
+
+
+<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
+mkdir teste
+cd teste
+</pre>
+
+
+
+
+<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
+
+
+
+
+<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
+</pre>
+
+
+
+
+<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
+8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
+** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
+
+
+
+
+<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
+Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
+</pre>
+
+
+
+
+<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
+
+
+
+
+<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
+Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
+
+
+
+
+<p><strong>Resumindo</strong><br/>
+Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2013/vagrant-puphpet-e-php-built-in';
+    var disqus_title = 'Vagrant, PuPHPet E PHP Built In';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/" title="Previous Post: Objective-C: A Linguagem Por Trás Do iOS – Parte 2">&laquo; Anterior: Objective-C: A Linguagem Por Trás Do iOS – Parte 2</a>
+        
+
+        
+          <a class="pull-right" href="/2013/seu-primeiro-jogo-em-html5/" title="Next Post: Seu Primeiro Jogo Em HTML5">Próximo: Seu Primeiro Jogo Em HTML5 &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/';
+        var disqus_url = 'http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

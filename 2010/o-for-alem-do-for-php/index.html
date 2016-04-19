@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>O for Além Do for – PHP - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="O for Além Do for – PHP Categorias: desenvolvimento, php Salve pessoal! O Post que trago hoje trata de algo bem simples mas que pode não ser muito &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2010/o-for-alem-do-for-php">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>O for Além Do for – PHP</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-11-20T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Salve pessoal!</p>
+
+
+
+
+<p>O Post que trago hoje trata de algo bem simples mas que pode não ser muito comum para algumas pessoas.<br/>
+São usos não muito populares de um de nossos laços de repetição, o FOR.</p>
+
+
+
+
+<p>Quando estamos aprendendo uma linguagem, bem no início, os manuais parecem mais nos confundir do que ajudar.<br/>
+O que fazemos ?? Saímos em busca de uma comunicação mais direta em Blogs ou Sites.</p>
+
+
+
+
+<p>Essas fontes resolvem nosso problema mais podem acabar deixando alguns vácuos quando se trata de estruturas básicas, como é o caso do FOR.</p>
+
+
+
+
+<p>E sobre o FOR eu te pergunto o seguinte:<br/>
+Você sabia que os parâmetros passados para ele são opcionais ??<br/>
+Você sabia que pode passar quantas variáveis quiser para os parâmetros ??</p>
+
+
+
+
+<p>Se já sabe maravilha, caso não, vamos ver como isso funciona.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Nesse primeiro exemplo temos nosso FOR comum, como todos aprendemos:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        for($i = 0; $i &lt; 5; $i++)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+        }
+</pre>
+
+
+
+
+<p>Nesse segundo exemplo, retiramos o primeiro parâmetro do FOR, e deixamos a variável $i definida fora do laço:<br/>
+Repare que o resultado que vai sair na tela, vai ser o mesmo do exemplo anterior.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; $i &lt; 5; $i++)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+        }
+
+</pre>
+
+
+
+
+<p>Agora, vmaos tirar o terceiro parâmetro, e incrementar a variável dentro do laço.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; $i &lt; 5;)
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+                $i++;
+        }
+
+</pre>
+
+
+
+
+<p>Por último, vamos retirar o segundo parâmetro.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $i = 0;
+
+        for(; ; )
+        {
+                echo $i;
+                echo '&lt;br /&gt;';
+
+                if($i == 5)
+                {
+                        break;
+                }
+
+                $i++;
+        }
+
+</pre>
+
+
+
+
+<p>Repare que em todos esses exemplos acima, fugimos do Loop infinito com alguma condição ou mecanismo que colocamos dentro do laço. Tome cuidado. Esse último exemplo se não for feito nada dentro do laço, gera facilmente um Loop infinito.</p>
+
+
+
+
+<p>Outra opção que temos é usar mais de uma variável para cada parâmetro.<br/>
+Confira:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">&lt;?php
+
+        $w = 2;
+
+        for($i = 1, $j = 9; $j &gt; 0; $j - $i, $w*=2)
+        {
+                echo $w;
+                echo '&lt;br /&gt;';
+        }
+</pre>
+
+
+
+
+<p>Vamos analisar o exemplo acima.<br/>
+Definimos para o loop a variável <em>$i</em> e a variável <em>$j</em>.<br/>
+O segundo parâmetro, que define até quando nosso loop vai rodar, nos mostra que será enquanto <em>$j</em> for maior que zero.<br/>
+E no último parâmetro, definimos que a cada volta <em>$j</em> vai diminuir o valor de <em>$i</em>, e que <em>$w</em>, que é uma variável que está definida fora do loop, será multiplicada por 2.<br/>
+Dentro do loop, pedimos para exibir <em>$w</em>.<br/>
+Faça o teste. Confira a saída.</p>
+
+
+
+
+<p>Com esses exemplos acredito que já conseguimos absorver mais usos do que aquele que estamos acostumados do FOR. Todos eles são tratados na <a href="http://br.php.net/manual/pt_BR/control-structures.for.php">documentação</a> e também tem uns exemplos bem bacanas nos comentários dela que valem a pena olhar.</p>
+
+
+
+
+<p>E aí você me pergunta… &#8220;E um uso prático disso?? Uma situação real ??&#8221;</p>
+
+
+
+
+<p>De cara assim não consigo dar uma resposta, um exemplo.<br/>
+Mas com isso eu lembro de uma entrevista que um dos melhores guitarristas do mundo, Yngwie Malmsteen, deu há alguns anos para a Guitar Player americana. Ele disse:<br/>
+<em>&#8220;As pessoas falam que eu sou muito técnico e etc. Mas eu preciso conhecer a técnica para fazer virar música. Assim como um escritor deve conhecer várias palavras para escrever um livro&#8230;&#8221;</em></p>
+
+
+
+
+<p>Pense nisso!<br/>
+Devemos conhecer as possibilidades que a linguagem nos dá, e assim ficamos preparados para montar as lógicas que cruzarem nosso caminho.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2010/o-for-alem-do-for-php';
+    var disqus_title = 'O for Além Do for – PHP';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/" title="Previous Post: JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery">&laquo; Anterior: JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery</a>
+        
+
+        
+          <a class="pull-right" href="/2011/coding-dojo-o-que-e-e-como-participar/" title="Next Post: Coding Dojo – O Que é ? E Como Participar ?">Próximo: Coding Dojo – O Que é ? E Como Participar ? &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2010/o-for-alem-do-for-php/';
+        var disqus_url = 'http://flaviosilveira.com/2010/o-for-alem-do-for-php/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

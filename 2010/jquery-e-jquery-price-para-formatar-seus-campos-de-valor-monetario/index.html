@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário Categorias: desenvolvimento, javascript Salve pessoal. Muita gente me manda &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2010-10-15T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
+  
+</span>
+
+
+        </div>
+        <p>Salve pessoal.</p>
+
+
+
+
+<p>Muita gente me manda emails ou mensagens no twitter achando que eu escrevi o Plugin JQuery Price para JQuery, que ajuda você a formatar seus campos de texto com valores monetários, valores de preço. Se você ler bem certinho na <a href="http://meiaduzia.com.br/cuducos2/priceformat/">página oficial do Plugin</a> (<a href="http://meiaduzia.com.br/cuducos2/priceformat/">http://meiaduzia.com.br/cuducos2/priceformat</a>), e também no código ao baixar ele, verá que eu apenas colaborei com uma nova função do plugin, uma necessidade minha no início do ano de 2009.</p>
+
+
+
+
+<p>O Autor do Plugin é o <a href="http://www.meiaduzia.com.br/cuducos/">Eduardo Cuducos</a>, Um tremendo Designer e Desenvolvedor Web do estado de Santa Catarina que conheci por meio desse Plugin. <a href="http://www.meiaduzia.com.br/cuducos/">Aqui</a> você pode conhecer mais dele ou seguir seu <a href="http://twitter.com/cuducos">twitter</a> (<a href="http://twitter.com/cuducos">http://twitter.com/cuducos</a>) para pegar suas idéias, sejam de designer, política ou pensamentos de vida, que também valem a pena.</p>
+
+
+
+
+<p>Para usar o Plugin é fácil.<br/>
+Na <a href="http://meiaduzia.com.br/cuducos2/priceformat/">página oficial</a> consta alguns exemplos bem explicativos.<br/>
+Mas se você ainda tem dúvidas vou reproduzí-los aqui.</p>
+
+
+
+
+<p>Primeiro crie seu Html com o campo que quer formatar.<br/>
+Não preciso dizer para você carregar a JQuery e o Plugin JQuery Price preciso ?</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;script type="text/javascript" src="jquery.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jprice.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+    
+    function init()
+    {
+        
+    }
+
+    $(document).ready(init);
+    
+&lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;h1&gt;Exemplo&lt;/h1&gt;
+
+    &lt;label for="price"&gt;Valor:&lt;/label&gt;
+    &lt;input type="text" id="price" /&gt;
+
+&lt;/body&gt;
+
+</pre>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Ok.<br/>
+Reparem que eu já acrescentei um código JavaScript para chamar a funcão init assim que a página terminar de carregar. Isso evita que o JavaScript tente fazer algo com algum campo do Html que não esteja criado ainda. Uma outra solução para isso poderia ser colocar esse código ao final do Html.</p>
+
+
+
+
+<p>Para o uso básico do Plugin, basta fazer a chamada do campo (no meu caso chamei pelo id) e acrescentar o método priceFormat veja:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat();
+}
+
+$(document).ready(init);
+
+</pre>
+
+
+
+
+<p>Com isso seu input já formata automaticamente os números inseridos nele para as configurações padrões do Jquery Price. Ah sim, ele impede que você digite letras e alfanuméricos nesse campo também.</p>
+
+
+
+
+<p>Ficou legal não?<br/>
+Mas você não quer esse valor em doláres, você está lidando com o seu Brasil Brasileiro.<br/>
+Vamos personalizar isso então.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.'
+    });
+}
+
+</pre>
+
+
+
+
+<p>Passando parâmetros para funcão em formato de array, conseguimos personalizar nosso input conhecendo algumas propiedades do plugin.</p>
+
+
+
+
+<p>Com a propiedade prefix, alteramos o que vem antes dos números.<br/>
+Repare que foi dado um espaço após o cifrão para ficar melhor visivelmente dentro do input.<br/>
+Em seguida foi modificado o separador de centavos para uma vírgula e o separador de milhar para um ponto.</p>
+
+
+
+
+<p>Muito fácil não ??</p>
+
+
+
+
+<p>E chegamos ao momento mais esperado (Ou não).<br/>
+Qual foi a minha colaboração com o Plugin ? Qual foi meu problema ?</p>
+
+
+
+
+<p>Eu precisava limitar o valor que o usuário digitava.<br/>
+Se você testar os exemplos que fizemos até aqui, verá que você pode inserir números até cansar.</p>
+
+
+
+
+<p>Na época fiz um código meio xulo para resolver o problema, porque estava começando com JQuery e não tinha muita desenvoltura para alterar seus plugins. Mandei o código para o Cuducos que fez as devidas adaptações, não estragando a facilidade de uso do plugin.<br/>
+Vamos a um exemplo:</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+        limit: 6
+    });
+}
+
+</pre>
+
+
+
+
+<p>Passando mais uma propiedade para o método, chamada limit, agora você só pode inserir 6 numerais dentro do seu input.</p>
+
+
+
+
+<p>Um outro limitador que temos é o de casas para os centavos.</p>
+
+
+
+
+<pre class="brush: jscript; title: ; notranslate" title="">function init()
+{
+    $('#price').priceFormat({
+        prefix: 'R$ ',
+        centsSeparator: ',',
+        thousandsSeparator: '.',
+        limit: 6,
+        centsLimit: 4
+    });
+}
+
+</pre>
+
+
+
+
+<p>Difícil ? Acredito que não certo ?<br/>
+Experimente outros valores e confira os resultados.</p>
+
+
+
+
+<p>Por hoje é isso pessoal.<br/>
+Demos uma passada por todo o uso do plugin JQuery Price além de conhecer a história de como colaborei para o plugin. Espero ter tirado as dúvidas do pessoal que me manda emails e afins.</p>
+
+
+
+
+<p>Agradecimentos imensos para o <a href="http://www.meiaduzia.com.br/cuducos/">Eduardo Cuducos</a> que adicionou meu nome dentro do projeto do plugin pela minha pequena colaboração, tornando o meu nome mais visível para a comunidade de desenvolvimento.</p>
+
+
+
+
+<p>Qualquer coisa é só entrar em contato.<br/>
+Abraços!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario';
+    var disqus_title = 'JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2010/podcast-desenvolvimento-mobile-web/" title="Previous Post: PodCast – Desenvolvimento Mobile Web">&laquo; Anterior: PodCast – Desenvolvimento Mobile Web</a>
+        
+
+        
+          <a class="pull-right" href="/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/" title="Next Post: JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery">Próximo: JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/';
+        var disqus_url = 'http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

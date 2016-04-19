@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Múltiplos Sites Com CodeIgniter – Exemplo Prático - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Múltiplos Sites Com CodeIgniter – Exemplo Prático Categorias: desenvolvimento, php Devido a muita procura do post sobre a restruturação do &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2009/multiplos-sites-com-codeigniter-exemplo-pratico">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Múltiplos Sites Com CodeIgniter – Exemplo Prático</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2009-01-27T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Devido a muita procura do post sobre a restruturação do CodeIgniter para trabalhar com múltiplos sites (<a href="http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter/">Múltiplos sites com CodeIgniter</a>), fiz um passo a passo aqui da estrutura para o pessoal entender melhor.</p>
+
+
+
+
+<p>Estava recebendo muitas dúvidas, vamos ver se com este exemplo consigo deixar as coisas mais claras para todos.</p>
+
+
+
+
+<p><strong>Começando do zero.</strong></p>
+
+
+
+
+<p>Baixei a <a href="http://codeigniter.com/downloads/">última versão do CodeIgniter</a>.<br/>
+Descompacto ela no meu <em>desktop</em>.</p>
+
+
+
+
+<p>Dentro dessa pasta veio o <em>system</em>, o <em>user_guide</em>, o <em>index.php</em> e o <em>license.txt</em>.<br/>
+Costumo deletar o User_guide, pois uso a documentação online.</p>
+
+
+
+
+<p><strong>Atenção agora ! </strong><br/>
+Dentro da pasta system temos a pasta <em>application</em>. É esta pasta que faz o seu site funcionar. Com esta informação em mente vamos em frente.</p>
+
+
+
+
+<p>Para começar a trabalhar com o servidor. Começe criando uma pasta para cada site. Como exemplo <em>site1</em> e <em>site2</em>.<br/>
+<img class="alignnone size-full wp-image-61" title="ex1" src="../../assets/uploads/2009/01/ex1.jpg" alt="ex1" width="99" height="77" /><br/>
+<br style="clear: both;" /></p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>O que o site vai precisar para funcionar ? Sim, como vimos acima é a pasta <em>application</em>. Dentro da pasta de cada site vamos precisar de uma application.<br/>
+<img class="alignnone size-full wp-image-62" title="ex2" src="../../assets/uploads/2009/01/ex2.jpg" alt="ex2" width="160" height="486" /><br/>
+<br style="clear: both;" /><br/>
+A pasta <em>application</em>, claro, deve ir com a estrutura que vem por padrão nela, como você deve ter reparado na imagem acima.</p>
+
+
+
+
+<p>Agora que já temos o local dos sites prontos, precisamos do que faz o Codeigniter funcionar, que é todo o restante da pasta <em>system</em>. Essa pasta deve estar no mesmo nível dos seus sites.<br/>
+<img class="alignnone size-full wp-image-63" title="ex3" src="../../assets/uploads/2009/01/ex3.jpg" alt="ex3" width="99" height="86" /><br/>
+<br style="clear: both;" /><br/>
+Ok. Quase lá.<br/>
+Agora, sabe aquele <em>index.php</em> que veio quando descompactamos o codeIgniter ? Como digo no <a href="http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter">outro post</a>, é ele quem indica o caminho da pasta <em>application</em> do seu site, e também do core do codeIgniter. Logo, vamos precisar de um deles para cada site.<br/>
+<img class="alignnone size-full wp-image-64" title="ex4" src="../../assets/uploads/2009/01/ex4.jpg" alt="ex4" width="139" height="150" /><br/>
+<br style="clear:both;" /><br/>
+Agora precisamos editar esse arquivo index.php. Vamos começar pelo do site1.<br/>
+Procure pela linha</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">$system_folder = "system"
+</pre>
+
+
+
+
+<p>Esta variável indica aonde está o core do seu sistema, a pasta <em>system</em>.<br/>
+No nosso caso ela está um nível acima, então basta mudar para</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">$system_folder = "../system"
+</pre>
+
+
+
+
+<p>Logo na sequência você deve ver a linha</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">$application_folder = "application"
+</pre>
+
+
+
+
+<p>Essa é a variável que indica onde está a pasta application desse site (lembrando&#8230;estamos alterando o site1). O caminho está correto, então, mantemos assim.</p>
+
+
+
+
+<p>Faça o mesmo para o site2, indicando onde está o core do codeIgniter(pasta <em>system</em>) e a pasta <em>application</em>.</p>
+
+
+
+
+<p>Está feito!</p>
+
+
+
+
+<p>Agora, apenas para ficar mais explícito, vamos alterar a view de cada site.<br/>
+Dentro de <em>Application</em> > <em>views</em>, temos o arquivo <em>welcome_message.php</em>.<br/>
+<img class="alignnone size-full wp-image-65" title="ex5" src="../../assets/uploads/2009/01/ex5.jpg" alt="ex5" width="203" height="213" /><br/>
+<br style="clear:both;" /><br/>
+Dentro desse arquivo, vem a mensagem padrão de boas vindas do codeIgniter. Na do site1 tirei tudo que havia (ctrl + a &#8211; del) e coloquei apenas o título</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;::: SITE 1 :::&lt;/h1&gt;
+</pre>
+
+
+
+
+<p>e na do site2 apenas o título</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;::: SITE 2 :::&lt;/h1&gt;
+</pre>
+
+
+
+
+<p>Agora basta acessar as pastas para conferir o resultado.</p>
+
+
+
+
+<p>Para detalhes mais técnicos desse step by step, confira o <a href="http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter">antigo post</a>.</p>
+
+
+
+
+<p>Ainda com dúvida ? <a href="http://www.flaviosilveira.com/assets/uploads/multiplosSitesCI.rar">Faça aqui o download dos arquivos</a>.</p>
+
+
+
+
+<p>Caso ainda tenha sobrado dúvidas&#8230;entre em contato.<br/>
+Abraços !!!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2009/multiplos-sites-com-codeigniter-exemplo-pratico';
+    var disqus_title = 'Múltiplos Sites Com CodeIgniter – Exemplo Prático';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/" title="Previous Post: Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)">&laquo; Anterior: Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)</a>
+        
+
+        
+          <a class="pull-right" href="/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/" title="Next Post: Limitando O SELECT Do SQL Em Diferentes Bancos De Dados">Próximo: Limitando O SELECT Do SQL Em Diferentes Bancos De Dados &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2009/multiplos-sites-com-codeigniter-exemplo-pratico/';
+        var disqus_url = 'http://flaviosilveira.com/2009/multiplos-sites-com-codeigniter-exemplo-pratico/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

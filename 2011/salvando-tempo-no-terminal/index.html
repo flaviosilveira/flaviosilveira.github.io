@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Salvando Tempo No Terminal - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Salvando Tempo No Terminal Categorias: desenvolvimento, shell Fala pessoal! No post anterior (conhecendo melhor seu interpretador de comandos) vimos &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Salvando Tempo No Terminal</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2011-12-02T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/shell/'>shell</a>
+  
+</span>
+
+
+        </div>
+        <p>Fala pessoal!</p>
+
+
+
+
+<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
+
+
+
+
+<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
+
+
+
+
+<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Buscando comandos digitados no terminal</strong></p>
+
+
+
+
+<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
+
+
+
+
+<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
+Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
+Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
+
+
+
+
+<p><strong>Exigindo um pouco mais do histórico</strong></p>
+
+
+
+
+<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
+Uma das maneiras de se fazer isso é com o comando abaixo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">history
+</pre>
+
+
+
+
+<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
+<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
+
+
+
+
+<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!44
+</pre>
+
+
+
+
+<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
+
+
+
+
+<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!-2
+</pre>
+
+
+
+
+<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
+
+
+
+
+<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
+
+
+
+
+<p><strong>O que mais?</strong></p>
+
+
+
+
+<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">man history
+</pre>
+
+
+
+
+<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
+Dúvidas? Sugestões? Estamos aí!<br/>
+Grande Abraço!</p>
+
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = '';
+    var disqus_identifier = '/2011/salvando-tempo-no-terminal';
+    var disqus_title = 'Salvando Tempo No Terminal';
+    var disqus_url = '';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2011/conhecendo-melhor-seu-interpretador-de-comandos/" title="Previous Post: Conhecendo Melhor Seu Interpretador De Comandos">&laquo; Anterior: Conhecendo Melhor Seu Interpretador De Comandos</a>
+        
+
+        
+          <a class="pull-right" href="/2011/screencast-comecando-bem-com-zend-framework/" title="Next Post: Screencast – Começando Bem Com Zend Framework">Próximo: Screencast – Começando Bem Com Zend Framework &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flavioaugustosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'disqus_flavio';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2011/salvando-tempo-no-terminal/';
+        var disqus_url = 'http://flaviosilveira.com/2011/salvando-tempo-no-terminal/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

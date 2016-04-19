@@ -1,0 +1,821 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
+  <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-19T00:17:08+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
+  <author>
+    <name><![CDATA[Flávio Silveira]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
+    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
+    <updated>2013-09-15T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
+    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
+
+
+
+
+<p><strong>O que é Vagrant?</strong><br/>
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Alguns pontos do Vagrant:<br/>
+&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
+&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
+Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
+&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
+&#8211; Muito mais.</p>
+
+
+
+
+<p><strong>PuPHPet: Arquivos puppet</strong><br/>
+Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
+Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
+
+
+
+
+<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
+Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
+
+
+
+
+<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
+É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
+Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
+
+
+
+
+<p><strong>O que é PHP Built In?</strong><br/>
+Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
+É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
+Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
+Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
+
+
+
+
+<p><strong>Mãos a Obra</strong><br/>
+Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
+Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
+
+
+
+
+<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
+Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
+
+
+
+
+<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
+Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
+
+
+
+
+<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
+Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
+
+
+
+
+<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
+mkdir teste
+cd teste
+</pre>
+
+
+
+
+<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
+
+
+
+
+<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
+</pre>
+
+
+
+
+<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
+8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
+** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
+
+
+
+
+<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
+Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
+</pre>
+
+
+
+
+<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
+
+
+
+
+<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
+Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
+
+
+
+
+<p><strong>Resumindo</strong><br/>
+Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Vagrant: Fácil E útil]]></title>
+    <link href="http://flaviosilveira.com/2012/vagrant-facil-e-util/"/>
+    <updated>2012-11-07T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/vagrant-facil-e-util</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Hoje eu quero passar uma dica para fazer você parar com aquela desculpa &#8220;Na minha máquina tá funcionando&#8221;. Para isso vou apresentar para vocês o Vagrant <a href="http://vagrantup.com/">http://vagrantup.com/</a>.</p>
+
+
+
+
+<p>O Vagrant é uma ferramenta que te ajuda na criação da infraestrutura para o seu projeto, usando para isso uma máquina virtual. Mas aí você pensa: &#8220;Uma máquina virtual para cada projeto?? Isso vai dar trabalho&#8221;. A grande jogada é que o Vagrant deixa muita coisa invísivel, deixando com que você se preocupe apenas com seu código. É uma máquina virtual reduzida e portável facilmente. Para cada projeto você pode deixar um ambiente diferente rodando, um com PHP 4, outro com PHP 5, um em Debian outro em CentOS, você escolhe.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong><br/>
+Instalação</strong></p>
+
+
+
+
+<p>Para criar suas máquinas vituais o Vagrant precisa do Virtual Box, um cliente de máquinas virtuais da Oracle bastante conhecido. Basta instalar! Você não precisa deixar o programa aberto para usar o Vagrant. Você pode fazer o download do Virtual box no seguinte link <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</p>
+
+
+
+
+<p>Instalado o Virtual Box, faça o download do Vagrant e o instale. Procure pela versão do seu sistema operacional no seguinte link <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.</p>
+
+
+
+
+<p><strong><br/>
+Configurando e rodando</strong></p>
+
+
+
+
+<p>Outra coisa que o Vagrant utiliza para criar suas máquinas virtuais são Boxes, ou no singular uma Box. Essa Box funciona como uma imagem, uma iso do sistema operacional que você quer instalar. Então antes de qualquer coisa vamos adicionar uma box, para que você a tenha disponível para criar seu primeiro teste com vagrant.</p>
+
+
+
+
+<p>Abra o console do seu sistema operacional, seja o cmd no windows ou o terminal no linux ou mac e entre com o comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
+</pre>
+
+
+
+
+<p>Essa é a box de exemplo que o Quick Start do Vagrant traz para a gente, onde o primeiro parâmetro que vem após add é o nome que estamos dando a nossa box e o segundo o caminho da onde faremos o download. Esse comando vai trazer uma Box do Ubuntu Lucid. Aqui eu recomendo que caso esteja começando com o Vagrant faça um teste usando essa box, mas caso queira avançar um pouco mais, aqui está uma lista de algumas boxes disponíveis por aí <a href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a>.</p>
+
+
+
+
+<p>Box preparada, que tal colocar nosso ambiente para rodar?</p>
+
+
+
+
+<p>Crie uma pasta para o seu projeto no seu ambiente de trabalho e acesse ela via console.<br/>
+Entre com o seguinte comando:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant init lucid32
+</pre>
+
+
+
+
+<p>Caso tenha usado outro nome para a sua box no passo anterior, substitua no lugar de lucid32 no comando acima.</p>
+
+
+
+
+<p>Como o próprio comando se explica, ele prepara uma configuração inicial para você usando um arquivo que ele cria em seu diretório chamada Vagrantfile. Dentro desse arquivo existe algumas configurações como a box a ser usada entre outros.</p>
+
+
+
+
+<p>Agora é só subir o ambiente.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant up
+</pre>
+
+
+
+
+<p>Ao subir o ambiente o vagrant irá realmente criar sua máquina virtual e configurar as coisas para você. Acompanhe as saídas dos comandos para detalhes.</p>
+
+
+
+
+<p>Tudo pronto!</p>
+
+
+
+
+<p><strong><br/>
+Testando</strong></p>
+
+
+
+
+<p>Chegou a hora da verdade. Crie um arquivo html com qualquer conteúdo dentro da pasta do seu projeto.</p>
+
+
+
+
+<p>Por exemplo vamos criar um arquivo chamado teste.html com o seguinte conteúdo</p>
+
+
+
+
+<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;Teste&lt;/h1&gt;
+</pre>
+
+
+
+
+<p>Agora acesse via browser a pasta do seu projeto e o arquivo que criou.<br/>
+<a href="../../assets/uploads/2012/11/imagem1.png"><img class="alignleft size-full wp-image-587" title="Vagrant - Rodando" src="../../assets/uploads/2012/11/imagem1.png" alt="Vagrant - Rodando" width="394" height="101" /></a><br/>
+<br style="clear: both;" /><br/>
+Esse HTML está dentro da sua máquina virtual e você está rodando a partir do seu localhost. Muito bom não?</p>
+
+
+
+
+<p>Alguns pontos:</p>
+
+
+
+
+<ul>
+<li>Note que você nem abriu essa máquina virtual para trabalhar dentro dela. Você está trabalhando como se ela fosse uma pasta local em sua máquina, essa é a beleza da coisa. Você pode deixar isso melhor organizado usando a opção share_folder do arquivo de configuração Vagrantfile</li>
+<li>Mostrei aqui um teste com HTML como também é mostrado no Quick Start do Vagrant, mas você pode instalar o que quiser dentro da sua máquina virtual seja PHP, Java, Python e rodar o que bem entender. Apenas atente para fazer direcionamento das portas para que isso funcione de acordo. Veja a opção forward_port do arquivo de configuração Vagrantfile</li>
+<li>Detalhes com todas as opções disponíveis para o Vagrantfile você encontra na documentação oficial <a href="http://vagrantup.com/v1/docs/vagrantfile.html">http://vagrantup.com/v1/docs/vagrantfile.html</a></li>
+</ul>
+
+
+
+
+<p><strong><br/>
+SSH</strong></p>
+
+
+
+
+<p>E que tal um acesso SSH na sua máquina virtual?<br/>
+Sim, o Vagrant te traz isso!<br/>
+Se você está no Mac ou Unix apenas entre com o comando abaixo e você está dentro.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
+</pre>
+
+
+
+
+<p>Para usuários do windows será necessário o uso do puttygen, putty e algumas configurações em cima deles. Nada muito complicado para quem já trabalha com SSH no seu dia a dia.</p>
+
+
+
+
+<p>Após acesar o ssh via vagrant, você sai no seu home <em>/home/vagrant</em>.<br/>
+Os arquivos que você criou dentro da pasta do seu projeto podem ser encontrados em <em>/vagrant</em>.</p>
+
+
+
+
+<p><strong><br/>
+Distribuindo seu ambiente</strong></p>
+
+
+
+
+<p>Está trabalhando com alguém em um projeto? Que tal enviar esse ambiente que você criou no Vagrant para essa pessoa, para que vocês trabalhem em cima do mesmo ambiente?</p>
+
+
+
+
+<p>Para isso basta criar um pacote da sua máquina virtual com o seguinte comando</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">vagrant package
+</pre>
+
+
+
+
+<p>Ao final do processo você terá um arquivo chamado package.box.<br/>
+Para que alguém ou você mesmo o utilize, basta seguir os passos apresentados aqui como se esse arquivo fosse uma box que você vai fazer o download. Sem mais.</p>
+
+
+
+
+<p><strong><br/>
+Resumo</strong></p>
+
+
+
+
+<p>Apresentei aqui uma geral sobre o Vagrant, porque ele é útil, porque é interessante usá-lo e etc. Fizemos um exemplo e vimos como distribuir esse ambiente com mais pessoas. Cobri aqui o básico dessa sensacional ferramenta para você configurar o ambiente de seus projetos individualmente.</p>
+
+
+
+
+<p>Você pode ir mais além e criar várias máquinas virtuais que se comunicam entre si e outros. Para isso leia a documentação <a href="http://vagrantup.com/v1/docs/index.html">http://vagrantup.com/v1/docs/index.html</a> e se intere do que mais o Vagrant pode fazer por você.</p>
+
+
+
+
+<p>É isso pessoal.<br/>
+Abraços.</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
+    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
+    <updated>2012-10-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.</p>
+
+
+
+
+<p>Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Após instalar e configurar o PHPUnit a primeira coisa a fazer é testar se está tudo ok.<br/>
+Para isso vá até o seu console e digite o comando <em>phpunit</em>.<br/>
+A saída esperada é um helper como na imagem abaixo:<br/>
+<img class="alignleft size-full wp-image-562" title="phpunit 1" src="../../assets/uploads/2012/10/Imagem1.png" alt="testando phpunit" width="487" height="214" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Caso você tenha problemas é hora de checar a sua instalação.<br/>
+Se você usa sistema unix e instalou o PHPUnit via PEAR aqui vão algumas dicas para tentar resolver isso:</p>
+
+
+
+
+<ul>
+<li>Pode ser que esteja tudo instalado corretamente, mas o console não esteja localizando o comando do PHPUnit. Para resolver isso primeiro verifique se a PEAR está instalada tentando digitar o comando <em>pear</em>. Se sim, entre com o comando <em>pear config-get bin_dir</em> para saber o diretório do bin do PHPUnit. Confira se a saída está no seu PATH de comandos, com o comando <em>echo $PATH</em>. Caso não esteja use o comando <em>export</em> para adicionar esse caminho.</li>
+<li>Se você tem certeza que o PEAR está instalado corretamente, execute o seguinte comando para reinstalar o PHPUnit <em>pear install &#8211;alldeps &#8211;force phpunit/PHPUnit</em>.</li>
+</ul>
+
+
+
+
+<p>Com tudo ok podemos seguir em frente.<br/>
+Daqui em diante conto que você saiba pelo menos um mínimo de Orientação a Objetos para que acompanhe os exemplos abaixo.<br/>
+Para que a gente entenda o que esperar do PHPUnit, vamos primeiro criar uma classe com pelo menos um atributo e seus métodos <em>get()</em> e <em>set()</em>.<br/>
+Que tal a tradicional classe Carro com uma propiedade de cor?</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">/**
+ * Classe Carro
+ *
+ **/
+class Carro
+{
+    private $_cor;
+
+    public function getCor()
+    {
+        return $this-&gt;_cor;
+    }
+
+    public function setCor($cor)
+    {
+        $this-&gt;_cor = $cor;
+    }
+
+}
+</pre>
+
+
+
+
+<p>Com a classe principal criada vamos agora preparar nossa classe de testes.<br/>
+Vamos chamar nossa classe de testes de CarroTeste.php.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+
+}
+</pre>
+
+
+
+
+<p>Repare em duas coisas no código acima:</p>
+
+
+
+
+<ul>
+<li>Sua classe de testes deve conhecer a classe que vai ser testada (use require, include ou autoload).</li>
+<li>Sua classe de testes precisa extender o framework PHP_Unit. Para extender o PHPUnit da mesma forma como no código acima, configure corretamente o seu <em>include_path</em> no seu arquivo de configuração do PHP (php.ini). Não sabe onde está seu arquivo php.ini? Utilize o comando <em>php &#8211;ini</em>. Procure por <em>include_path</em> dentro desse arquivo e adicione o caminho para o framework PHPUnit. <em>**A instalação via PEAR constuma adicionar esse caminho para você no php.ini. Confira o arquivo se for caso.</em></li>
+</ul>
+
+
+
+
+<p>Finalmente vamos ao nosso teste em si. Vamos testar se nossos métodos <em>get()</em> e <em>set()</em> estão realmente fazendo o que se espera. <em>Get()</em> tem de retornar o mesmo valor passado para <em>set()</em>. Para verificar isso vamos usar o método assertEquals do PHPUnit, veja o exemplo:</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Azul", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Criamos um método testeCor em nossa classe de testes.<br/>
+Dentro dele instanciamos a classe carro e atribuímos para a propiedade cor o valor Azul.<br/>
+O método AssertEquals do PHPUnit vai comparar se os dois parâmetros passados são iguais.</p>
+
+
+
+
+<p>Vamos rodar nosso teste?<br/>
+Em seu console execute o comando phpunit passando para ele o caminho da sua classe de testes. O resultado deve ser similar a esse:<br/>
+<img class="alignleft size-full wp-image-563" title="Imagem2" src="../../assets/uploads/2012/10/Imagem2.png" alt="Rodando o primeiro teste" width="442" height="171" /><br style="clear: both;" /></p>
+
+
+
+
+<p>Na imagem você percebe abaixo da linha de descrição da versão do PHPUnit um . (ponto). Em seguida uma descrição do tempo de execução e memória utilizada e abaixo um OK. Isso indica que nosso teste teve sucesso. O ponto que falamos acima indica que um teste teve sucesso, em caso de falha teremos um F no lugar do ponto. Para cada teste irá ser adicionado um <em>. ponto</em>ou um <em>F</em>.</p>
+
+
+
+
+<p>Vamos forçar um erro no teste para ver o que acontece? Vamos trocar os parâmetros do nosso <em>AssertEquals</em> e dizer que estamos esperando o resultado <em>Amarelo</em> invés de <em>Azul</em>.</p>
+
+
+
+
+<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
+
+/**
+ * Classe Carro Teste
+ **/
+class CarroTeste extends PHPUnit_Framework_Testcase
+{
+    public function testeCor()
+    {
+        $carro = new Carro();
+        $carro-&gt;setCor("Azul");
+
+        $this-&gt;assertEquals("Amarelo", $carro-&gt;getCor());
+    }
+}
+</pre>
+
+
+
+
+<p>Rodando nosso teste agora temos a seguinte saída:<br/>
+<img class="alignleft size-full wp-image-564" title="Imagem3" src="../../assets/uploads/2012/10/Imagem3.png" alt="Falha no PHPUnit" width="427" height="317" /><br style="clear: both;" /><br/>
+No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indicando a falha. Junto a isso o PHPUnit nos traz detalhes da falha com o nome do teste que falhou, o que era esperado e o que foi retornado.</p>
+
+
+
+
+<p>A ideia por trás do PHPUnit e suas funções é bem similar ao que foi demonstrado acima, com o detalhe que algumas funções podem ter mais parâmetros ou esperar tipos diferentes de dados. Que tal descobrir mais métodos do PHPUnit e criar novos testes? Visite o capítulo 4 do manual do PHPUnit e teste outras funções do framework. Segue o link para o manual: <a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html" title="PHPUnit Manual Cap4">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Global Game Jam 2012]]></title>
+    <link href="http://flaviosilveira.com/2012/global-game-jam-2012/"/>
+    <updated>2012-01-06T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2012/global-game-jam-2012</id>
+    <content type="html"><![CDATA[<p>Salve pessoal!</p>
+
+
+
+
+<p>Na minha palestra <a href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/" title="Palestra Quero ser um desenvolvedor de jogos">Quero ser um desenvolvedor de jogos</a> que estive apresentando durante o ano de 2011, eu comento sobre a Global Game Jam.</p>
+
+
+
+
+<p>A Global Game Jam é um evento que acontece todo ano e ocorre simultâneamente em todo o mundo. Funciona da seguinte maneira:<br/>
+Através do site que organiza o evento (<a href="http://globalgamejam.org" title="Global Game Jam">http://globalgamejam.org</a>) é divulgado um tema. Com esse tema em mãos, equipes de desenvolvedores de jogos (programadores, artistas, músicos, roteiristas, etc) unem forças para desenvolver o seu próprio game. O prazo máximo é de 48 horas e pode ser usado qualquer tecnologia.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p>Em muitas cidades, as faculdades, empresas e outras instituições reúnem e organizam pessoas que tem interesse em participar, dividindo as equipes para que elas fiquem mais competitivas e também cedendo um local de trabalho para essas equipes. Alguns locais também colaboram com a alimentação dos participantes e, como o prazo é curto, também pode ser um bom abrigo para o seu colchonete. Mas cuidado! As vagas nesses locais geralmente são limitadas.</p>
+
+
+
+
+<p>O Evento é uma excelente porta de entrada para você que quer conhecer o processo de desenvolvimento de jogos, além do grande networking e distribuição de conhecimento que esse evento gera. Em 2011 foram mais de 1500 jogos criados, com participação de mais de 6.500 pessoas em mais de 44 países.</p>
+
+
+
+
+<p>As inscrições para esse ano já estão quase acabando. O que você está esperando para participar?<br/>
+Acesse já o <a href="http://globalgamejam.org" title="Site Global Game Jam">site da Global Game Jam</a>, veja as cidades inscritas e participe. Caso sua cidade não esteja participando, ou os locais na sua cidade estejam com vagas esgotadas, junte seus amigos e monte sua equipe. Veja informações de como se cadastrar nesse wiki feito pela organização <a href="http://globalgamejam.org/wiki/how-register-ggj-2012" title="Como se registrar na Global Game Jam 2012">http://globalgamejam.org/wiki/how-register-ggj-2012</a></p>
+
+
+
+
+<p>Uma dica: Se você for participar através de alguma faculdade, empresa ou instituição na sua cidade, não deixe de entrar em contato com os organizadores e se informar sobre o que terá no local, o que precisa ser levado, etc. Não seja pego de surpresa, principalmente no que diz respeito a comida, sono e emocional. Levante também a necessidade de se cadastrar em um site do local onde você irá participar. Geralmente isso é feito para um controle dos organizadores.</p>
+
+
+
+
+<p>O evento esse ano começa no dia 27 de janeiro no período da noite e vai até o domingo dia 29.<br/>
+Não deixe de participar.</p>
+
+
+
+
+<p>Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
+    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
+    <updated>2011-12-02T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!</p>
+
+
+
+
+<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
+
+
+
+
+<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
+
+
+
+
+<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
+
+
+
+
+<!--more-->
+
+
+
+
+<p><strong>Buscando comandos digitados no terminal</strong></p>
+
+
+
+
+<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
+
+
+
+
+<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
+Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
+Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
+
+
+
+
+<p><strong>Exigindo um pouco mais do histórico</strong></p>
+
+
+
+
+<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
+Uma das maneiras de se fazer isso é com o comando abaixo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">history
+</pre>
+
+
+
+
+<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
+<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
+
+
+
+
+<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!44
+</pre>
+
+
+
+
+<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
+
+
+
+
+<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">!-2
+</pre>
+
+
+
+
+<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
+
+
+
+
+<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
+
+
+
+
+<p><strong>O que mais?</strong></p>
+
+
+
+
+<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
+
+
+
+
+<pre class="brush: bash; title: ; notranslate" title="">man history
+</pre>
+
+
+
+
+<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
+Dúvidas? Sugestões? Estamos aí!<br/>
+Grande Abraço!</p>
+
+]]></content>
+  </entry>
+  
+</feed>
