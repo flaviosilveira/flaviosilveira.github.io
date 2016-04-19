@@ -1,0 +1,88 @@
+---
+layout: post
+title: "Coding Dojo – O Que é ? E Como Participar ?"
+date: 2011-04-14 00:00:00
+comments: true
+categories: [desenvolvimento]
+permalink: ":year/coding-dojo-o-que-e-e-como-participar/"
+---
+
+<p>Fala pessoal.<br/>
+Para quem não conhece, Coding dojo não se refere a um framework de linguagem ou a uma sessão de treinos do Bruce Lee.<br/>
+Coding Dojo é simplesmente uma reunião de programadores para treinar e aperfeiçoar seus talentos com algoritmos.<br/>
+Uma reunião para resolver um algoritmo.<br/>
+Estas reuniões estão sendo cada vez mais frequentes no Brasil e no mundo.<br/>
+Veja abaixo porque isso está acontecendo e porque elas são interessantes.</p>
+
+<h3>Porque participar?</h3>
+
+<p><br style="clear: both;" /><br/>
+Os Dojos de programação foram criados para desafiar programadores com algoritmos complexos, diferente de algumas empresas ou trabalhos onde você acostuma com as lógicas e regras de negócio e com o tempo acaba apenas replicando aquilo onde você teve que pensar uma única vez.</p>
+
+<p>Ele leva esse nome por ser baseado nos Dojos de artes marciais, onde no tatâme é feito um círculo e enquanto dois lutadores aprendem na prática, os demais aprendem olhando.<br/>
+Nos dojos de programação a idéia é a mesma, enquanto duas pessoas estão codificando na máquina as demais aprendem olhando o raciocínio e o caminho que essas pessoas estão seguindo.</p>
+
+<p>É muito importante ressaltar que os dojos não são competições de quem programa melhor ou de quem resolve problemas mais rápidos.<br/>
+O espírito da coisa toda é ser colaborativo e se divertir. E claro aprender.</p>
+
+<h3>Em que linguagem é programado e quais são os problemas propostos?</h3>
+
+<p><br style="clear: both;" /><!--more--></p>
+
+<p>Há Dojos de vários tipos e maneiras por aí.<br/>
+Algumas empresas estão montando Dojos internos para seus funcionários, nesses casos sempre seguindo a linguagem de desenvolvimento usada na empresa.</p>
+
+<p>Outros Dojos específicos estão por aí, como de Java, Rails e etc.</p>
+
+<p>Mas onde há programadores de várias linguagens, pode se decidir no dia do Dojo que linguagem utilizar, desde que tenha um especialista da linguagem presente para evitar maiores impasses do tipo <em>&#8220;como faz um if aqui?&#8221;</em>.<br/>
+Isso é bom para você se desligar daquela linguagem que você trabalha todo dia e olhar para alguma sintaxe diferente um pouco.</p>
+
+<p>Os problemas de lógica são propostos por colaboradores de todo o mundo.<br/>
+Você pode ver alguns exemplo no <a href="http://dojopuzzles.com/">Dojo Puzzles</a>.<br/>
+Os problemas devem ser escolhidos minutos antes de começar o Dojo, evitando que ao escolher um dia ou dois antes, você começe a resolver o desafio na sua cabeça sem perceber.</p>
+
+<h3>Como funciona?</h3>
+
+<p><br style="clear: both;" /><br/>
+Cada dojo pode ter suas regras específicas de tempo ou funcionamento. Mas no geral eles seguem as seguintes premissas:</p>
+
+<p><strong>Programação baseada em testes</strong></p>
+
+<p>Antes de ser escrito uma implementação de código é escrito um teste. Isso é programação baseada em testes. TDD (Test-Driven Development).<br/>
+Se você não conhece  ou não imagina como é testar um resultado de uma função que ainda não foi criada, o Dojo pode ser uma forma de você se iniciar nessa metodologia e ver quais as vantagens ou desvantagens dela.</p>
+
+<p><strong>Passos de bebê</strong></p>
+
+<p>Quando um bebê está aprendendo a caminhar ele não arrisca dar passos grandes por aí. No Dojo acontece da mesma forma.<br/>
+O código vai saindo devagar, ajudando para que todos estejam entendendo o que está acontecendo e que rumo tudo está tomando.<br/>
+Sempre que alguém não estiver entendendo o que está acontecendo, esse tem o direito de perguntar e se encaixar nos trilhos novamente.</p>
+
+<p><strong>Pair Programming &#8211; Programação em duplas</strong></p>
+
+<p>A programação é feita em dupla. Um piloto e um co-piloto.<br/>
+O piloto, obviamente, coloca a mão na massa, digitando e identando código e testes.<br/>
+O co-piloto palpita ajuda olhando e apontando onde pode melhorar, o que está errado, etc.<br/>
+Quando esse piloto volta para a platéia após alguns minutos, o co-piloto se torna  piloto e alguém da platéia vem para ajudá-lo no papel de co-piloto.<br/>
+E assim segue.</p>
+
+<p><strong>Fases</strong></p>
+
+<p>Quando piloto e co-piloto estão sem idéias de como resolver o problema, é liberado que a platéia interaja e opine a respeito do código. Para demais casos há  fases onde a platéia pode opinar ou não. Quem dita essas fases são os testes.</p>
+
+<p>Quando algum teste não estiver passando, não estiver dando um resultado correto, a dupla deve se concentrar em corrigir isso. Nessa fase a platéia não deve opinar, a menos que seja pedido.<br/>
+Quando os testes estão passando e tudo está ok, é liberado que a platéia de opiniões e sugestões para o piloto e co-piloto.</p>
+
+<h3>Onde Acontece?</h3>
+
+<p><br style="clear: both;" /><br/>
+Os Dojos tem se espalhado por toda parte e com certeza há um perto de você.<br/>
+O <a href="http://Codingdojo.org">Codingdojo.org</a> traz uma listagem de Dojos pelo mundo que você pode conferir <a href="http://maps.google.com/maps/ms?ie=UTF&amp;msa=0&amp;msid=116400871369678060090.000453a8d6ee3a6d3b8fe">clicando aqui</a>.<br/>
+Outra fonte de pesquisa, claro, é o <a href="http://www.google.com">google</a>. Pesquisando por Coding Dojo + o nome da sua cidade com certeza irá pintar alguma coisa.</p>
+
+<p>Não encontrou nada?<br/>
+Ao Invés de reclamar que sua cidade é fraca e não tem nada, porque você não monta um grupo de dojo e chama seus conhecidos?</p>
+
+<p>Então é isso pessoal. Quer se aperfeiçoar? Conhecer novas pessoas? Participar de um grupo bacana?<br/>
+Procure e participe dos Dojos.</p>
+
+<p>Abraço!</p>
