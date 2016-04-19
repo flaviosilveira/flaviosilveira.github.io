@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Php | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.com/blog/categories/php/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-19T00:17:08+00:00</updated>
-  <id>http://flaviosilveira.com/</id>
+  <link href="http://flaviosilveira.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.github.io/"/>
+  <updated>2016-04-19T00:57:34+00:00</updated>
+  <id>http://flaviosilveira.github.io/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
-    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
+    <link href="http://flaviosilveira.github.io/2013/vagrant-puphpet-e-php-built-in/"/>
     <updated>2013-09-15T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
+    <id>http://flaviosilveira.github.io/2013/vagrant-puphpet-e-php-built-in</id>
     <content type="html"><![CDATA[<p>Fala pessoal.<br/>
 Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
 
@@ -194,9 +194,9 @@ Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma apl
   
   <entry>
     <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
-    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
+    <link href="http://flaviosilveira.github.io/2012/primeiros-passos-no-phpunit/"/>
     <updated>2012-10-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
+    <id>http://flaviosilveira.github.io/2012/primeiros-passos-no-phpunit</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -392,9 +392,9 @@ No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indic
   
   <entry>
     <title type="html"><![CDATA[Codeigniter 2 – Templates E Layouts]]></title>
-    <link href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/"/>
+    <link href="http://flaviosilveira.github.io/2011/codeigniter-2-templates-e-layouts/"/>
     <updated>2011-05-26T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts</id>
+    <id>http://flaviosilveira.github.io/2011/codeigniter-2-templates-e-layouts</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -460,9 +460,9 @@ Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2ex
   
   <entry>
     <title type="html"><![CDATA[O for Além Do for – PHP]]></title>
-    <link href="http://flaviosilveira.com/2010/o-for-alem-do-for-php/"/>
+    <link href="http://flaviosilveira.github.io/2010/o-for-alem-do-for-php/"/>
     <updated>2010-11-20T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2010/o-for-alem-do-for-php</id>
+    <id>http://flaviosilveira.github.io/2010/o-for-alem-do-for-php</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -653,9 +653,9 @@ Devemos conhecer as possibilidades que a linguagem nos dá, e assim ficamos prep
   
   <entry>
     <title type="html"><![CDATA[Habilitando Layouts No CodeIgniter (Template Engine) – Parte 2]]></title>
-    <link href="http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/"/>
+    <link href="http://flaviosilveira.github.io/2010/habilitando-layouts-no-codeigniter-template-engine-2/"/>
     <updated>2010-02-18T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2</id>
+    <id>http://flaviosilveira.github.io/2010/habilitando-layouts-no-codeigniter-template-engine-2</id>
     <content type="html"><![CDATA[<div id="atencao">
   <p>
     Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework <a href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts">clique aqui</a>.

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Expressão Regular | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.com/blog/categories/expressao-regular/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-19T00:17:08+00:00</updated>
-  <id>http://flaviosilveira.com/</id>
+  <link href="http://flaviosilveira.github.io/blog/categories/expressao-regular/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.github.io/"/>
+  <updated>2016-04-19T00:57:34+00:00</updated>
+  <id>http://flaviosilveira.github.io/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Formatando CPF No SQL Com Expressões Regulares – RegexReplace]]></title>
-    <link href="http://flaviosilveira.com/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/"/>
+    <link href="http://flaviosilveira.github.io/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/"/>
     <updated>2010-05-21T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace</id>
+    <id>http://flaviosilveira.github.io/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace</id>
     <content type="html"><![CDATA[<p>Que as expressões regulares são bacanas e divertidas todo mundo já sabe.<br/>
 Elas estão presentes em várias linguagens e no SQL Server não poderia ser diferente.</p>
 

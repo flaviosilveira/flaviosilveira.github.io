@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-19T00:17:08+00:00</updated>
-  <id>http://flaviosilveira.com/</id>
+  <link href="http://flaviosilveira.github.io/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.github.io/"/>
+  <updated>2016-04-19T00:57:34+00:00</updated>
+  <id>http://flaviosilveira.github.io/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Evoluindo Seu Primeiro Jogo Em HTML5]]></title>
-    <link href="http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5/"/>
+    <link href="http://flaviosilveira.github.io/2014/evoluindo-seu-primeiro-jogo-em-html5/"/>
     <updated>2014-02-17T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5</id>
+    <id>http://flaviosilveira.github.io/2014/evoluindo-seu-primeiro-jogo-em-html5</id>
     <content type="html"><![CDATA[<p>O post de hoje é uma continuação do anteriormente escrito Seu primeiro jogo em HTML5. O objetivo dessa continuação é aprender mais alguns conceitos de desenvolvimento de jogos e animar um pouco o nosso game que não estava lá essas coisas de divertido. Você acompanha a primeira parte no seguinte link <a href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/" title="Seu primeiro jogo em HTML5 - Parte 1">http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/</a>.</p>
 
 
@@ -389,9 +389,9 @@ Você pode aplicar o conceito de orientação a objetos para tudo o que for obje
   
   <entry>
     <title type="html"><![CDATA[Erros No Vagrant No Mavericks OSX?]]></title>
-    <link href="http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx/"/>
+    <link href="http://flaviosilveira.github.io/2014/erros-com-vagrant-no-mavericks-osx/"/>
     <updated>2014-01-17T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx</id>
+    <id>http://flaviosilveira.github.io/2014/erros-com-vagrant-no-mavericks-osx</id>
     <content type="html"><![CDATA[<p>Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.</p>
 
 
@@ -449,9 +449,9 @@ Abrindo o script você vê um código bem simples, checando se o <em>vagrant</em
   
   <entry>
     <title type="html"><![CDATA[Seu Primeiro Jogo Em HTML5]]></title>
-    <link href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/"/>
+    <link href="http://flaviosilveira.github.io/2013/seu-primeiro-jogo-em-html5/"/>
     <updated>2013-09-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5</id>
+    <id>http://flaviosilveira.github.io/2013/seu-primeiro-jogo-em-html5</id>
     <content type="html"><![CDATA[<p>Hoje quero ajudar você a desenvolver seu primeiro jogo, que talvez não fique aquele delírio de diversão, mas é o primeiro passo para você começar a entrar nesse mundo de desenvolvimento de jogos. E para isso vamos usar tecnologias que você tem em mãos no seu navegador. HTML5 e javascript.</p>
 
 
@@ -1115,9 +1115,9 @@ A partir daqui pode surgir muita coisa. Quem sabe não continuamos desenvolvendo
   
   <entry>
     <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
-    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
+    <link href="http://flaviosilveira.github.io/2013/vagrant-puphpet-e-php-built-in/"/>
     <updated>2013-09-15T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
+    <id>http://flaviosilveira.github.io/2013/vagrant-puphpet-e-php-built-in</id>
     <content type="html"><![CDATA[<p>Fala pessoal.<br/>
 Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
 
@@ -1294,9 +1294,9 @@ Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma apl
   
   <entry>
     <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 2]]></title>
-    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/"/>
+    <link href="http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/"/>
     <updated>2013-04-13T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2</id>
+    <id>http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2</id>
     <content type="html"><![CDATA[<p>[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS.<br/>
 <span style="line-height: 1.6em;">Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
 
@@ -1587,9 +1587,9 @@ Esse é o caminho nesse estágio.</p>
   
   <entry>
     <title type="html"><![CDATA[Montando a Tela Do Seu Aplicativo – Parte 1]]></title>
-    <link href="http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1/"/>
+    <link href="http://flaviosilveira.github.io/2013/montando-a-tela-do-seu-aplicativo-parte-1/"/>
     <updated>2013-03-06T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1</id>
+    <id>http://flaviosilveira.github.io/2013/montando-a-tela-do-seu-aplicativo-parte-1</id>
     <content type="html"><![CDATA[<p><span style="line-height: 1.6em;">[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS. Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
 
 
@@ -1743,9 +1743,9 @@ Esse é o caminho nesse estágio.</p>
   
   <entry>
     <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 1]]></title>
-    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
+    <link href="http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
     <updated>2013-02-21T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
+    <id>http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -1978,9 +1978,9 @@ printf("Ano: %d", ano);
   
   <entry>
     <title type="html"><![CDATA[Comece a Programar Para iOS]]></title>
-    <link href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/"/>
+    <link href="http://flaviosilveira.github.io/2013/comece-a-programar-para-ios/"/>
     <updated>2013-02-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/comece-a-programar-para-ios</id>
+    <id>http://flaviosilveira.github.io/2013/comece-a-programar-para-ios</id>
     <content type="html"><![CDATA[<p><strong style="line-height: 1.6em;">Sem blá blá blá</strong></p>
 
 
@@ -2117,9 +2117,9 @@ Compilando seu projeto</strong></p>
   
   <entry>
     <title type="html"><![CDATA[Hangout – Começando Bem Com Zend Framework 1]]></title>
-    <link href="http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1/"/>
+    <link href="http://flaviosilveira.github.io/2012/hangout-comecando-bem-com-zend-framework-1/"/>
     <updated>2012-11-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1</id>
+    <id>http://flaviosilveira.github.io/2012/hangout-comecando-bem-com-zend-framework-1</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -2153,9 +2153,9 @@ Compilando seu projeto</strong></p>
   
   <entry>
     <title type="html"><![CDATA[Vagrant: Fácil E útil]]></title>
-    <link href="http://flaviosilveira.com/2012/vagrant-facil-e-util/"/>
+    <link href="http://flaviosilveira.github.io/2012/vagrant-facil-e-util/"/>
     <updated>2012-11-07T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/vagrant-facil-e-util</id>
+    <id>http://flaviosilveira.github.io/2012/vagrant-facil-e-util</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -2393,9 +2393,9 @@ Abraços.</p>
   
   <entry>
     <title type="html"><![CDATA[Hangout PHP in Rio]]></title>
-    <link href="http://flaviosilveira.com/2012/hangout-php-in-rio/"/>
+    <link href="http://flaviosilveira.github.io/2012/hangout-php-in-rio/"/>
     <updated>2012-11-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/hangout-php-in-rio</id>
+    <id>http://flaviosilveira.github.io/2012/hangout-php-in-rio</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -2431,9 +2431,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
-    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
+    <link href="http://flaviosilveira.github.io/2012/primeiros-passos-no-phpunit/"/>
     <updated>2012-10-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
+    <id>http://flaviosilveira.github.io/2012/primeiros-passos-no-phpunit</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -2629,9 +2629,9 @@ No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indic
   
   <entry>
     <title type="html"><![CDATA[Global Game Jam 2012]]></title>
-    <link href="http://flaviosilveira.com/2012/global-game-jam-2012/"/>
+    <link href="http://flaviosilveira.github.io/2012/global-game-jam-2012/"/>
     <updated>2012-01-06T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/global-game-jam-2012</id>
+    <id>http://flaviosilveira.github.io/2012/global-game-jam-2012</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -2687,9 +2687,9 @@ Não deixe de participar.</p>
   
   <entry>
     <title type="html"><![CDATA[Screencast – Começando Bem Com Zend Framework]]></title>
-    <link href="http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework/"/>
+    <link href="http://flaviosilveira.github.io/2011/screencast-comecando-bem-com-zend-framework/"/>
     <updated>2011-12-29T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework</id>
+    <id>http://flaviosilveira.github.io/2011/screencast-comecando-bem-com-zend-framework</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -2738,9 +2738,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
-    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
+    <link href="http://flaviosilveira.github.io/2011/salvando-tempo-no-terminal/"/>
     <updated>2011-12-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
+    <id>http://flaviosilveira.github.io/2011/salvando-tempo-no-terminal</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -2868,9 +2868,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Conhecendo Melhor Seu Interpretador De Comandos]]></title>
-    <link href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
+    <link href="http://flaviosilveira.github.io/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
     <updated>2011-10-30T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
+    <id>http://flaviosilveira.github.io/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
     <content type="html"><![CDATA[<p>Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.</p>
 
 
@@ -3009,9 +3009,9 @@ Perdeu a tecla <em>enter</em> ou cansou dela? Use <em>ctrl + j</em></p>
   
   <entry>
     <title type="html"><![CDATA[Palestra – Quero Ser Um Desenvolvedor De Jogos]]></title>
-    <link href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
+    <link href="http://flaviosilveira.github.io/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
     <updated>2011-09-01T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
+    <id>http://flaviosilveira.github.io/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
     <content type="html"><![CDATA[<p>Olá pessoal!</p>
 
 
@@ -3057,9 +3057,9 @@ Espero que gostem! Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!]]></title>
-    <link href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
+    <link href="http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
     <updated>2011-07-25T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
+    <id>http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -3427,9 +3427,9 @@ else {
   
   <entry>
     <title type="html"><![CDATA[Codeigniter 2 – Templates E Layouts]]></title>
-    <link href="http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts/"/>
+    <link href="http://flaviosilveira.github.io/2011/codeigniter-2-templates-e-layouts/"/>
     <updated>2011-05-26T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts</id>
+    <id>http://flaviosilveira.github.io/2011/codeigniter-2-templates-e-layouts</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -3495,9 +3495,9 @@ Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2ex
   
   <entry>
     <title type="html"><![CDATA[Coding Dojo – O Que é ? E Como Participar ?]]></title>
-    <link href="http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar/"/>
+    <link href="http://flaviosilveira.github.io/2011/coding-dojo-o-que-e-e-como-participar/"/>
     <updated>2011-04-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar</id>
+    <id>http://flaviosilveira.github.io/2011/coding-dojo-o-que-e-e-como-participar</id>
     <content type="html"><![CDATA[<p>Fala pessoal.<br/>
 Para quem não conhece, Coding dojo não se refere a um framework de linguagem ou a uma sessão de treinos do Bruce Lee.<br/>
 Coding Dojo é simplesmente uma reunião de programadores para treinar e aperfeiçoar seus talentos com algoritmos.<br/>

@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Vídeos E Casts | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.com/blog/categories/videos-e-casts/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-19T00:17:08+00:00</updated>
-  <id>http://flaviosilveira.com/</id>
+  <link href="http://flaviosilveira.github.io/blog/categories/videos-e-casts/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.github.io/"/>
+  <updated>2016-04-19T00:57:34+00:00</updated>
+  <id>http://flaviosilveira.github.io/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hangout – Começando Bem Com Zend Framework 1]]></title>
-    <link href="http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1/"/>
+    <link href="http://flaviosilveira.github.io/2012/hangout-comecando-bem-com-zend-framework-1/"/>
     <updated>2012-11-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/hangout-comecando-bem-com-zend-framework-1</id>
+    <id>http://flaviosilveira.github.io/2012/hangout-comecando-bem-com-zend-framework-1</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -51,9 +51,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hangout PHP in Rio]]></title>
-    <link href="http://flaviosilveira.com/2012/hangout-php-in-rio/"/>
+    <link href="http://flaviosilveira.github.io/2012/hangout-php-in-rio/"/>
     <updated>2012-11-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/hangout-php-in-rio</id>
+    <id>http://flaviosilveira.github.io/2012/hangout-php-in-rio</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -89,9 +89,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Screencast – Começando Bem Com Zend Framework]]></title>
-    <link href="http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework/"/>
+    <link href="http://flaviosilveira.github.io/2011/screencast-comecando-bem-com-zend-framework/"/>
     <updated>2011-12-29T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/screencast-comecando-bem-com-zend-framework</id>
+    <id>http://flaviosilveira.github.io/2011/screencast-comecando-bem-com-zend-framework</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -140,9 +140,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Palestra – Quero Ser Um Desenvolvedor De Jogos]]></title>
-    <link href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
+    <link href="http://flaviosilveira.github.io/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/"/>
     <updated>2011-09-01T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
+    <id>http://flaviosilveira.github.io/2011/palestra-quero-ser-um-desenvolvedor-de-jogos</id>
     <content type="html"><![CDATA[<p>Olá pessoal!</p>
 
 
@@ -188,9 +188,9 @@ Espero que gostem! Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[PodCast – Desenvolvimento Mobile Web]]></title>
-    <link href="http://flaviosilveira.com/2010/podcast-desenvolvimento-mobile-web/"/>
+    <link href="http://flaviosilveira.github.io/2010/podcast-desenvolvimento-mobile-web/"/>
     <updated>2010-09-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2010/podcast-desenvolvimento-mobile-web</id>
+    <id>http://flaviosilveira.github.io/2010/podcast-desenvolvimento-mobile-web</id>
     <content type="html"><![CDATA[<p>Salve Galera!<br/>
 Hoje deixo aqui o meu podcast relatando minha ida ao <a href="http://www.phpsc.com.br/">PHP SC Conf</a> (<a href="http://www.phpsc.com.br/">http://www.phpsc.com.br/</a>) neste ano de 2010, falando principalmente dos assuntos colocados pelo <a href="http://www.porkaria.com.br/">Bruno Fernandes</a> (@porkaria) em sua palestra <em>Desenvolvimento Mobile Web</em>.</p>
 

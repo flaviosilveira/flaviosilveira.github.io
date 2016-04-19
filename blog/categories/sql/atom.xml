@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Sql | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.com/blog/categories/sql/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-19T00:17:08+00:00</updated>
-  <id>http://flaviosilveira.com/</id>
+  <link href="http://flaviosilveira.github.io/blog/categories/sql/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.github.io/"/>
+  <updated>2016-04-19T00:57:34+00:00</updated>
+  <id>http://flaviosilveira.github.io/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Função Para Contar Palavras (Padrão De Caracteres) Em Uma String Microsoft SQL Server]]></title>
-    <link href="http://flaviosilveira.com/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/"/>
+    <link href="http://flaviosilveira.github.io/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/"/>
     <updated>2009-11-06T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server</id>
+    <id>http://flaviosilveira.github.io/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server</id>
     <content type="html"><![CDATA[<p>Salve galera!</p>
 
 
@@ -137,9 +137,9 @@ Até a Próxima! Abraços!</p>
   
   <entry>
     <title type="html"><![CDATA[Limitando O SELECT Do SQL Em Diferentes Bancos De Dados]]></title>
-    <link href="http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/"/>
+    <link href="http://flaviosilveira.github.io/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/"/>
     <updated>2009-02-27T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados</id>
+    <id>http://flaviosilveira.github.io/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados</id>
     <content type="html"><![CDATA[<p>Olá pessoal&#8230;</p>
 
 
@@ -215,9 +215,9 @@ Traduzindo este exemplo acima ficaria mais ou menos assim:<br/>
   
   <entry>
     <title type="html"><![CDATA[Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)]]></title>
-    <link href="http://flaviosilveira.com/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/"/>
+    <link href="http://flaviosilveira.github.io/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/"/>
     <updated>2009-01-21T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre</id>
+    <id>http://flaviosilveira.github.io/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre</id>
     <content type="html"><![CDATA[<p>Olhando para os códigos php no trabalho, como tem sido de costume para averiguar erros e algoritmos que possa melhorar, me deparo em vários controllers com uma série de <a href="http://br.php.net/manual/pt_BR/function.split.php">splits</a> e loops para horas tratar o cpf, horas tratar o cnpj que vem do banco de dados.</p>
 
 
