@@ -2,7 +2,7 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://flaviosilveira.github.io
+url: http://flaviosilveira.com
 title: Flávio Silveira
 subtitle: Vida e Tecnologia
 author: Flávio Silveira
@@ -94,7 +94,7 @@ delicious_user:
 delicious_count: 3
 
 # Disqus Comments
-disqus_short_name: disqus_flavio
+disqus_short_name: flaviosilveira
 disqus_show_comment_count: true
 
 # Google Analytics
