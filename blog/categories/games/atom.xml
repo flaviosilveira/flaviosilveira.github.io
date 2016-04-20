@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Games | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.github.io/blog/categories/games/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.github.io/"/>
-  <updated>2016-04-19T02:23:35+00:00</updated>
-  <id>http://flaviosilveira.github.io/</id>
+  <link href="http://flaviosilveira.com/blog/categories/games/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-20T01:49:23+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Evoluindo Seu Primeiro Jogo Em HTML5]]></title>
-    <link href="http://flaviosilveira.github.io/2014/evoluindo-seu-primeiro-jogo-em-html5/"/>
+    <link href="http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5/"/>
     <updated>2014-02-17T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2014/evoluindo-seu-primeiro-jogo-em-html5</id>
+    <id>http://flaviosilveira.com/2014/evoluindo-seu-primeiro-jogo-em-html5</id>
     <content type="html"><![CDATA[<p>O post de hoje é uma continuação do anteriormente escrito Seu primeiro jogo em HTML5. O objetivo dessa continuação é aprender mais alguns conceitos de desenvolvimento de jogos e animar um pouco o nosso game que não estava lá essas coisas de divertido. Você acompanha a primeira parte no seguinte link <a href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/" title="Seu primeiro jogo em HTML5 - Parte 1">http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/</a>.</p>
 
 
@@ -389,9 +389,9 @@ Você pode aplicar o conceito de orientação a objetos para tudo o que for obje
   
   <entry>
     <title type="html"><![CDATA[Seu Primeiro Jogo Em HTML5]]></title>
-    <link href="http://flaviosilveira.github.io/2013/seu-primeiro-jogo-em-html5/"/>
+    <link href="http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/"/>
     <updated>2013-09-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2013/seu-primeiro-jogo-em-html5</id>
+    <id>http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5</id>
     <content type="html"><![CDATA[<p>Hoje quero ajudar você a desenvolver seu primeiro jogo, que talvez não fique aquele delírio de diversão, mas é o primeiro passo para você começar a entrar nesse mundo de desenvolvimento de jogos. E para isso vamos usar tecnologias que você tem em mãos no seu navegador. HTML5 e javascript.</p>
 
 

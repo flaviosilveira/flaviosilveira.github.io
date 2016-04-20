@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Html | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.github.io/blog/categories/html/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.github.io/"/>
-  <updated>2016-04-19T02:23:35+00:00</updated>
-  <id>http://flaviosilveira.github.io/</id>
+  <link href="http://flaviosilveira.com/blog/categories/html/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-20T01:49:23+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!]]></title>
-    <link href="http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
+    <link href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
     <updated>2011-07-25T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
+    <id>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 

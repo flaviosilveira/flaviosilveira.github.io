@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Shell | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.github.io/blog/categories/shell/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.github.io/"/>
-  <updated>2016-04-19T02:23:35+00:00</updated>
-  <id>http://flaviosilveira.github.io/</id>
+  <link href="http://flaviosilveira.com/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-20T01:49:23+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Erros No Vagrant No Mavericks OSX?]]></title>
-    <link href="http://flaviosilveira.github.io/2014/erros-com-vagrant-no-mavericks-osx/"/>
+    <link href="http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx/"/>
     <updated>2014-01-17T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2014/erros-com-vagrant-no-mavericks-osx</id>
+    <id>http://flaviosilveira.com/2014/erros-com-vagrant-no-mavericks-osx</id>
     <content type="html"><![CDATA[<p>Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.</p>
 
 
@@ -75,9 +75,9 @@ Abrindo o script você vê um código bem simples, checando se o <em>vagrant</em
   
   <entry>
     <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
-    <link href="http://flaviosilveira.github.io/2011/salvando-tempo-no-terminal/"/>
+    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
     <updated>2011-12-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2011/salvando-tempo-no-terminal</id>
+    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -205,9 +205,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[Conhecendo Melhor Seu Interpretador De Comandos]]></title>
-    <link href="http://flaviosilveira.github.io/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
+    <link href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
     <updated>2011-10-30T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
+    <id>http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
     <content type="html"><![CDATA[<p>Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.</p>
 
 
@@ -346,9 +346,9 @@ Perdeu a tecla <em>enter</em> ou cansou dela? Use <em>ctrl + j</em></p>
   
   <entry>
     <title type="html"><![CDATA[CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)]]></title>
-    <link href="http://flaviosilveira.github.io/2009/codeigniter-metido-a-ruby/"/>
+    <link href="http://flaviosilveira.com/2009/codeigniter-metido-a-ruby/"/>
     <updated>2009-04-16T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2009/codeigniter-metido-a-ruby</id>
+    <id>http://flaviosilveira.com/2009/codeigniter-metido-a-ruby</id>
     <content type="html"><![CDATA[<p>Salve Galera&#8230;</p>
 
 

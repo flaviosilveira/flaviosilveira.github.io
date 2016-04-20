@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Mobile | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.github.io/blog/categories/mobile/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.github.io/"/>
-  <updated>2016-04-19T02:23:35+00:00</updated>
-  <id>http://flaviosilveira.github.io/</id>
+  <link href="http://flaviosilveira.com/blog/categories/mobile/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-20T01:49:23+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 2]]></title>
-    <link href="http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/"/>
+    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/"/>
     <updated>2013-04-13T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2</id>
+    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2</id>
     <content type="html"><![CDATA[<p>[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS.<br/>
 <span style="line-height: 1.6em;">Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
 
@@ -308,9 +308,9 @@ Esse é o caminho nesse estágio.</p>
   
   <entry>
     <title type="html"><![CDATA[Montando a Tela Do Seu Aplicativo – Parte 1]]></title>
-    <link href="http://flaviosilveira.github.io/2013/montando-a-tela-do-seu-aplicativo-parte-1/"/>
+    <link href="http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1/"/>
     <updated>2013-03-06T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2013/montando-a-tela-do-seu-aplicativo-parte-1</id>
+    <id>http://flaviosilveira.com/2013/montando-a-tela-do-seu-aplicativo-parte-1</id>
     <content type="html"><![CDATA[<p><span style="line-height: 1.6em;">[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS. Você pode ver os demais artigos da série através da categoria Mobile]</span></p>
 
 
@@ -464,9 +464,9 @@ Esse é o caminho nesse estágio.</p>
   
   <entry>
     <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 1]]></title>
-    <link href="http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
+    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
     <updated>2013-02-21T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
+    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
     <content type="html"><![CDATA[<p>Fala pessoal!</p>
 
 
@@ -699,9 +699,9 @@ printf("Ano: %d", ano);
   
   <entry>
     <title type="html"><![CDATA[Comece a Programar Para iOS]]></title>
-    <link href="http://flaviosilveira.github.io/2013/comece-a-programar-para-ios/"/>
+    <link href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/"/>
     <updated>2013-02-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2013/comece-a-programar-para-ios</id>
+    <id>http://flaviosilveira.com/2013/comece-a-programar-para-ios</id>
     <content type="html"><![CDATA[<p><strong style="line-height: 1.6em;">Sem blá blá blá</strong></p>
 
 
@@ -838,9 +838,9 @@ Compilando seu projeto</strong></p>
   
   <entry>
     <title type="html"><![CDATA[Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript]]></title>
-    <link href="http://flaviosilveira.github.io/2009/redirecionando-para-versao-mobile/"/>
+    <link href="http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/"/>
     <updated>2009-07-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2009/redirecionando-para-versao-mobile</id>
+    <id>http://flaviosilveira.com/2009/redirecionando-para-versao-mobile</id>
     <content type="html"><![CDATA[<div id="atencao">
   Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
 </div>

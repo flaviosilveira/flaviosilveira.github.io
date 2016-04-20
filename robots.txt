@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://flaviosilveira.github.io/sitemap.xml 
+Sitemap: http://flaviosilveira.com/sitemap.xml 

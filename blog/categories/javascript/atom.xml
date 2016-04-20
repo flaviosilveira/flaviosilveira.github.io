@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Javascript | Flávio Silveira]]></title>
-  <link href="http://flaviosilveira.github.io/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://flaviosilveira.github.io/"/>
-  <updated>2016-04-19T02:23:35+00:00</updated>
-  <id>http://flaviosilveira.github.io/</id>
+  <link href="http://flaviosilveira.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://flaviosilveira.com/"/>
+  <updated>2016-04-20T01:49:23+00:00</updated>
+  <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
     
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!]]></title>
-    <link href="http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
+    <link href="http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/"/>
     <updated>2011-07-25T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
+    <id>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos</id>
     <content type="html"><![CDATA[<p>Salve pessoal!</p>
 
 
@@ -385,9 +385,9 @@ else {
   
   <entry>
     <title type="html"><![CDATA[JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery]]></title>
-    <link href="http://flaviosilveira.github.io/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/"/>
+    <link href="http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/"/>
     <updated>2010-11-17T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery</id>
+    <id>http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery</id>
     <content type="html"><![CDATA[<p>Salve pessoal.</p>
 
 
@@ -790,9 +790,9 @@ Grande Abraço!</p>
   
   <entry>
     <title type="html"><![CDATA[JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário]]></title>
-    <link href="http://flaviosilveira.github.io/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/"/>
+    <link href="http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/"/>
     <updated>2010-10-15T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario</id>
+    <id>http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario</id>
     <content type="html"><![CDATA[<p>Salve pessoal.</p>
 
 
@@ -1004,9 +1004,9 @@ Abraços!</p>
   
   <entry>
     <title type="html"><![CDATA[Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript]]></title>
-    <link href="http://flaviosilveira.github.io/2009/redirecionando-para-versao-mobile/"/>
+    <link href="http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/"/>
     <updated>2009-07-19T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.github.io/2009/redirecionando-para-versao-mobile</id>
+    <id>http://flaviosilveira.com/2009/redirecionando-para-versao-mobile</id>
     <content type="html"><![CDATA[<div id="atencao">
   Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
 </div>
