@@ -4,7 +4,7 @@
   <title><![CDATA[Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-04-20T01:49:23+00:00</updated>
+  <updated>2016-04-23T00:37:10+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,30 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Não Existem Pessoas Sem Tempo]]></title>
+    <link href="http://flaviosilveira.com/2016/nao-existem-pessoas-sem-tempo/"/>
+    <updated>2016-04-22T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/nao-existem-pessoas-sem-tempo</id>
+    <content type="html"><![CDATA[<p>Você não é uma pessoa que não tem tempo, e sim uma pessoa que prioriza certas coisas, e outras não. Se você está priorizando coisas importantes, cabe a você entender o que melhor define essa palavra, quais seus objetivos de/com/pela vida e o que está lhe ajudando a alcançá-los.</p>
+
+<!--more-->
+
+
+<p>Meu último post nesse Blog foi em 17 de fevereiro de 2014. Estava eu sem tempo? Os vários filmes que vi ajudam a responder que, NÃO! E meu projeto Open Source, o <a href="http://jquerypriceformat.com/">JQuery Price Format</a> que não tem uma versão atualizada desde Janeiro do mesmo ano. Sem tempo? O movimento de translação não mudou muito, e o dia continua tendo 24 horas, então, NÃO.</p>
+
+<p>O que fiz com minhas horas? Em uns momentos priorizei carreira, em outros priorizei casamento, em outros família, investimentos, em alguns a insanidade e em outras a saúde.</p>
+
+<p>Se você tem algo que sabe que é importante, mas ainda usa a desculpa do tempo, sugiro que comece pequeno. Faça um teste e veja se é isso mesmo que você está buscando. Por exemplo: Você quer começar a fazer um exercício, mas &ldquo;não tem tempo&rdquo; para começar. Comece com 5 minutos. Isso mesmo, 5 minutos! 5 minutos não vão interferir na sua agenda e antes de vc pensar que correr 5 minutos não faz diferença para nada, se aquilo realmente criar valor para você, você já vai ter aumentado para 20 minutos, meia hora por dia. Se não criar valor, você tentou, viu que não é a sua e pode gastar seus 5 minutos em outro investimento.</p>
+
+<p><em>Max Gunther</em> autor do livro <em>Os Axiomas de Zurique</em> diz: &ldquo;Tudo na vida é um investimento. Qualquer espécie de ganho você tem que arriscar, seja um bem material, dinheiro ou emocional&rdquo;. Então, não deixe de tentar se você está buscando ganhos.</p>
+
+<p>Depois de ter tentado, você pode trocar o &ldquo;Não tenho tempo&rdquo; para um belo &ldquo;Estou priorizando outras coisas no momento&rdquo;.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Evoluindo Seu Primeiro Jogo Em HTML5]]></title>
@@ -3489,172 +3513,6 @@ Está com dificuldades ou preguiça? <a href="../../assets/uploads/2011/05/ci2ex
 
 
 <p>É isso galera. Abraço!!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Coding Dojo – O Que é ? E Como Participar ?]]></title>
-    <link href="http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar/"/>
-    <updated>2011-04-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/coding-dojo-o-que-e-e-como-participar</id>
-    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
-Para quem não conhece, Coding dojo não se refere a um framework de linguagem ou a uma sessão de treinos do Bruce Lee.<br/>
-Coding Dojo é simplesmente uma reunião de programadores para treinar e aperfeiçoar seus talentos com algoritmos.<br/>
-Uma reunião para resolver um algoritmo.<br/>
-Estas reuniões estão sendo cada vez mais frequentes no Brasil e no mundo.<br/>
-Veja abaixo porque isso está acontecendo e porque elas são interessantes.</p>
-
-
-
-
-<h3>Porque participar?</h3>
-
-
-
-
-<p><br style="clear: both;" /><br/>
-Os Dojos de programação foram criados para desafiar programadores com algoritmos complexos, diferente de algumas empresas ou trabalhos onde você acostuma com as lógicas e regras de negócio e com o tempo acaba apenas replicando aquilo onde você teve que pensar uma única vez.</p>
-
-
-
-
-<p>Ele leva esse nome por ser baseado nos Dojos de artes marciais, onde no tatâme é feito um círculo e enquanto dois lutadores aprendem na prática, os demais aprendem olhando.<br/>
-Nos dojos de programação a idéia é a mesma, enquanto duas pessoas estão codificando na máquina as demais aprendem olhando o raciocínio e o caminho que essas pessoas estão seguindo.</p>
-
-
-
-
-<p>É muito importante ressaltar que os dojos não são competições de quem programa melhor ou de quem resolve problemas mais rápidos.<br/>
-O espírito da coisa toda é ser colaborativo e se divertir. E claro aprender.</p>
-
-
-
-
-<h3>Em que linguagem é programado e quais são os problemas propostos?</h3>
-
-
-
-
-<p><br style="clear: both;" /><!--more--></p>
-
-
-
-
-<p>Há Dojos de vários tipos e maneiras por aí.<br/>
-Algumas empresas estão montando Dojos internos para seus funcionários, nesses casos sempre seguindo a linguagem de desenvolvimento usada na empresa.</p>
-
-
-
-
-<p>Outros Dojos específicos estão por aí, como de Java, Rails e etc.</p>
-
-
-
-
-<p>Mas onde há programadores de várias linguagens, pode se decidir no dia do Dojo que linguagem utilizar, desde que tenha um especialista da linguagem presente para evitar maiores impasses do tipo <em>&#8220;como faz um if aqui?&#8221;</em>.<br/>
-Isso é bom para você se desligar daquela linguagem que você trabalha todo dia e olhar para alguma sintaxe diferente um pouco.</p>
-
-
-
-
-<p>Os problemas de lógica são propostos por colaboradores de todo o mundo.<br/>
-Você pode ver alguns exemplo no <a href="http://dojopuzzles.com/">Dojo Puzzles</a>.<br/>
-Os problemas devem ser escolhidos minutos antes de começar o Dojo, evitando que ao escolher um dia ou dois antes, você começe a resolver o desafio na sua cabeça sem perceber.</p>
-
-
-
-
-<h3>Como funciona?</h3>
-
-
-
-
-<p><br style="clear: both;" /><br/>
-Cada dojo pode ter suas regras específicas de tempo ou funcionamento. Mas no geral eles seguem as seguintes premissas:</p>
-
-
-
-
-<p><strong>Programação baseada em testes</strong></p>
-
-
-
-
-<p>Antes de ser escrito uma implementação de código é escrito um teste. Isso é programação baseada em testes. TDD (Test-Driven Development).<br/>
-Se você não conhece  ou não imagina como é testar um resultado de uma função que ainda não foi criada, o Dojo pode ser uma forma de você se iniciar nessa metodologia e ver quais as vantagens ou desvantagens dela.</p>
-
-
-
-
-<p><strong>Passos de bebê</strong></p>
-
-
-
-
-<p>Quando um bebê está aprendendo a caminhar ele não arrisca dar passos grandes por aí. No Dojo acontece da mesma forma.<br/>
-O código vai saindo devagar, ajudando para que todos estejam entendendo o que está acontecendo e que rumo tudo está tomando.<br/>
-Sempre que alguém não estiver entendendo o que está acontecendo, esse tem o direito de perguntar e se encaixar nos trilhos novamente.</p>
-
-
-
-
-<p><strong>Pair Programming &#8211; Programação em duplas</strong></p>
-
-
-
-
-<p>A programação é feita em dupla. Um piloto e um co-piloto.<br/>
-O piloto, obviamente, coloca a mão na massa, digitando e identando código e testes.<br/>
-O co-piloto palpita ajuda olhando e apontando onde pode melhorar, o que está errado, etc.<br/>
-Quando esse piloto volta para a platéia após alguns minutos, o co-piloto se torna  piloto e alguém da platéia vem para ajudá-lo no papel de co-piloto.<br/>
-E assim segue.</p>
-
-
-
-
-<p><strong>Fases</strong></p>
-
-
-
-
-<p>Quando piloto e co-piloto estão sem idéias de como resolver o problema, é liberado que a platéia interaja e opine a respeito do código. Para demais casos há  fases onde a platéia pode opinar ou não. Quem dita essas fases são os testes.</p>
-
-
-
-
-<p>Quando algum teste não estiver passando, não estiver dando um resultado correto, a dupla deve se concentrar em corrigir isso. Nessa fase a platéia não deve opinar, a menos que seja pedido.<br/>
-Quando os testes estão passando e tudo está ok, é liberado que a platéia de opiniões e sugestões para o piloto e co-piloto.</p>
-
-
-
-
-<h3>Onde Acontece?</h3>
-
-
-
-
-<p><br style="clear: both;" /><br/>
-Os Dojos tem se espalhado por toda parte e com certeza há um perto de você.<br/>
-O <a href="http://Codingdojo.org">Codingdojo.org</a> traz uma listagem de Dojos pelo mundo que você pode conferir <a href="http://maps.google.com/maps/ms?ie=UTF&amp;msa=0&amp;msid=116400871369678060090.000453a8d6ee3a6d3b8fe">clicando aqui</a>.<br/>
-Outra fonte de pesquisa, claro, é o <a href="http://www.google.com">google</a>. Pesquisando por Coding Dojo + o nome da sua cidade com certeza irá pintar alguma coisa.</p>
-
-
-
-
-<p>Não encontrou nada?<br/>
-Ao Invés de reclamar que sua cidade é fraca e não tem nada, porque você não monta um grupo de dojo e chama seus conhecidos?</p>
-
-
-
-
-<p>Então é isso pessoal. Quer se aperfeiçoar? Conhecer novas pessoas? Participar de um grupo bacana?<br/>
-Procure e participe dos Dojos.</p>
-
-
-
-
-<p>Abraço!</p>
 
 ]]></content>
   </entry>
