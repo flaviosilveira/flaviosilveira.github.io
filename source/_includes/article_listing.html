@@ -5,8 +5,7 @@
     {{ content | excerpt | markdownify }}
   </p>
   <span class="meta">
-    written {% include post/date.html %}{% if updated %}{{ updated }}{% else %}{{ time }}{% endif %}
-    {% include post/categories.html %}
+    <a href="{{ root_url }}{{ post.url }}">Continue lendo...</a>
   </span>
 
   {% if excerpted == 'true' %}
