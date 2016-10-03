@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-09-26T11:03:25+00:00</updated>
+  <updated>2016-10-03T03:56:14+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,163 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Comece Com Docker]]></title>
+    <link href="http://flaviosilveira.com/2016/comece-com-docker/"/>
+    <updated>2016-10-03T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/comece-com-docker</id>
+    <content type="html"><![CDATA[<p>Tenho dois posts envolvendo <a href="https://www.vagrantup.com/">vagrant</a> aqui no blog que ainda são certo sucesso de acessos. <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util">Vagrant Fácil e Útil</a> que dá uma introdução ao Vagrant com um exemplo simples e <a href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/">Vagrant, PuPHPet E PHP Built In</a> que apresenta o PuPHPet como um facilitador para criar ambientes e um experimento com o PHP Built In. O primeiro artigo é de 2012, o segundo de 2013. Passados três anos e vendo a busca disso não diminuir, quero trazer para quem ainda não conhece o <a href="https://www.docker.com/">Docker</a>.</p>
+
+<!--more-->
+
+
+<h3>Containers VS Virtual Machines</h3>
+
+<p>Muita coisa me anima no Vagrant: ser uma máquina virtual leve, poder deixar minha máquina limpa sem ter que instalar várias coisas, poder trabalhar com várias versões de software com facilidade, se aproximar bastante do ambiente de produção e poder experimentar sem medo.</p>
+
+<p>Não vou entrar aqui na discussão filosófica sobre docker vs vagrant, quero apenas trazer uma alternativa a tudo que eu coloquei acima e, em um futuro, mostrar como o docker pode nos ajudar a experimentar ainda mais novas tecnologias.</p>
+
+<p>Docker trabalha com containers, Vagrant com máquinas virtuais. Qual a diferença se você está começando com tudo isso? Não muita! Você pode pensar no container como uma máquina virtual se você está começando mas tenha em mente que todo o conceito e funcionamento é diferente. Ná prática você vai continuar com um mundo paralelo onde vai poder criar e experimentar suas coisas.</p>
+
+<h3>O velho que é novo</h3>
+
+<p>Containers já existem há algum tempo dentro da nossa área com o que chamavamos de Linux Containers ou LXC. O que aparece com o Docker agora é uma maneira mais fácil de trabalhar com tudo isso e um engajamento da comunidade e das empresas de software gigantesco, trazendo uma gama de várias ferramentas prontas em formato de imagens. Com isso não vamos perder muito tempo com configurações e testar e descobrir tecnologias fica mais fácil.</p>
+
+<p>Marque na agenda para pesquisar sobre libvirt, LXC e a história por trás da criação do Docker na França. Vale a pena!</p>
+
+<h3>Instalação e não só para Linux</h3>
+
+<p>Diferente dos antigos, o docker trouxe maneiras de trabalharmos com containers em qualquer sistema operacional. A maneira como ele faz isso está sempre evoluindo a cada versão. Pesquise como está para o seu sistema operacional.</p>
+
+<p>Eu não vou tratar aqui como instalar o Docker nem sua arquitetura básica, quero ir direto aos pontos mesmo que ainda ficando muito parecido com os primeiros passos da documentação oficial. A ideia é explicar as coisas um pouquinho diferente para quem não pegou da maneira que ficou lá e trazer umas maneiras diferentes de pensar.</p>
+
+<h3>Hello World</h3>
+
+<p>Cada um tem a sua maneira de aprender as coisas, sujiro muito que você descubra a sua. Eu gosto de Hello World, começar do ultra básico e ir evoluindo e tentando entender passo a passo. Vamos fazer juntos e já vou explicando algumas coisas.</p>
+
+<p>O Hello World com docker fica da seguinte maneira. Rode:</p>
+
+<pre><code>docker run hello-world
+</code></pre>
+
+<h4>Imagens</h4>
+
+<p>O docker vai buscar uma imagem chamada hello-world. Imagens são a base dos containers, são como um cenário pronto que pode conter um sistema operacional e um conjunto de softwares por exemplo.</p>
+
+<p>Você não tem a imagem localmente, então o docker vai fazer o download dela. Para algumas imagens você vai ver o docker fazendo vários downloads paralelos para deixar as coisas mais rápidas.</p>
+
+<h4>Saída</h4>
+
+<p>Uma vez que foi feito o download da imagem o docker vai subir o container e rodar o programa hello-world sozinho.</p>
+
+<pre><code>Hello from Docker!
+This message shows that your installation appears to be working correctly.
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+</code></pre>
+
+<p>Se é isso que aparece para você, está feito! Tudo funcionando! O docker já te provoca a tentar algo mais ambicioso e é para esse caminho que vamos:</p>
+
+<h3>CentOS</h3>
+
+<p>A saída do Hello World te desafia a fazer um container Ubuntu. Como muita gente usa Ubuntu como máquina principal, pessoalmente sugiro tentar outra distro no container. Que tal CentOS?</p>
+
+<pre><code>docker run -it centos bash
+</code></pre>
+
+<p>Novamente aqui o docker vai buscar por uma imagem, dessa vez do CentOS, se não tiver vai fazer download dela.</p>
+
+<p>Novidades no comando:</p>
+
+<ul>
+<li>-i é o comando para interagir, vai manter o STDIN aberto.</li>
+<li>-t é para alocar um TTY(Talk to you) que é um terminal.</li>
+</ul>
+
+
+<p>Com a imagem em mãos, o docker vai subir o container e executar o comando bash.</p>
+
+<p>Note que a linha do seu terminal mudou e você deve estar dentro do container. Todo comando que você executar agora está sendo executado dentro do seu container com Ubuntu.</p>
+
+<p>Experimente alguns comandos para comprovar. Por exemplo: <strong>yum</strong>.</p>
+
+<h3>Attached</h3>
+
+<p>Vamos sair do nosso container sem matar ele. Segure CTRL e pressione P e em sequida Q.
+Você está de volta para sua máquina principal. Vamos ver os containers que temos rodando?</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>O comando ps vai nos mostrar os containers que estão rodando com um id, o processo que estão executando, quando foram criados, seu status, portas e nome do container.</p>
+
+<p>Como não passamos nenhum nome para nosso container, o docker deu um de seus nomes padrão.</p>
+
+<p>Vamos voltar para nosso container CentOS? Para isso vamos fazer o seguinte comando:</p>
+
+<pre><code>docker attach [id ou nome do container]
+</code></pre>
+
+<p>Com o ID ou nome do container, você consegue voltar para ele, o que chamam de attach.</p>
+
+<p>Pense no Attach como você dentro do container. O padrão quando se cria um container é attach, e foi isso que aconteceu quando passamos o comando run, entramos no container.</p>
+
+<h3>Detach</h3>
+
+<p>De dentro do container, digite exit. Isso vai matar o container e ele não vai existir mais. O mesmo vai acontecer se você fizer um CTRL+C por exemplo.</p>
+
+<pre><code>docker ps -a
+</code></pre>
+
+<p>Com o comando acima, além de ver seus containers ativos (se houver) ele mostra também os containers inativos. Se você deu exit em seu container do CentOS, essa mensagem vai ser mostrada em status.</p>
+
+<p>Agora vamos criar o container novamente, mas dessa vez passando uma opção detached, ou seja, vamos criar o container mas não vamos entrar nele. Vamos também dar um nome para nosso container</p>
+
+<pre><code>docker run --name meu-centos -itd centos bash
+</code></pre>
+
+<p>Ao rodar docker ps você vê que seu container está rodando, com o comando <strong>bash</strong> e com o nome <strong>meu-centos</strong></p>
+
+<p><strong>Nesse ponto faça o exercício de entrar e sair de containers, criar outros e etc. Use Attach e CTRL+P+Q</strong></p>
+
+<h3>Exec</h3>
+
+<p>As vezes precisamos apenas executar apenas um comando dentro de um container e entrar e sair dele seria muito chato e demorado. Para isso temos o Exec:</p>
+
+<pre><code>docker exec meu-centos echo teste
+</code></pre>
+
+<p>Aqui o docker entrou no container, executou o comando <strong>echo teste</strong> em meu-centos e retornou a sua máquina.</p>
+
+<h3>Comandos que você talvez precise</h3>
+
+<pre><code>#Para listar as imagens que você tem: docker images
+#Para remover containers: docker rm
+#Para remover imagens: docker rmi
+#Parar e reiniciar container: docker start / docker stop 
+</code></pre>
+
+<h3>Fechando</h3>
+
+<p>Aqui fizemos os pequenos primeiros passos com containers. Muito parecido com o proposto pela documentação oficial.</p>
+
+<p>Te convido a explorar o <a href="https://hub.docker.com/">DockerHUB</a> repositório oficial de imagens para criarmos containers. Procure ferramentas que você já trabalha, ferramentas que você quer experimentar, o uso de containers vai te ajudar a fazer testes rápidos e estudar qualquer coisa.</p>
+
+<p>Com isso acredito que sua cabeça já começe a fervilhar de ideias de para onde podemos ir.
+Me comprometo a evoluir esses exemplos aqui nas próximas semanas.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
@@ -684,136 +841,6 @@ Não deixe de participar.</p>
 
 
 <p>Grande Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
-    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
-    <updated>2011-12-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
-    <content type="html"><![CDATA[<p>Fala pessoal!</p>
-
-
-
-
-<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
-
-
-
-
-<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
-
-
-
-
-<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p><strong>Buscando comandos digitados no terminal</strong></p>
-
-
-
-
-<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
-
-
-
-
-<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
-Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
-Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
-
-
-
-
-<p><strong>Exigindo um pouco mais do histórico</strong></p>
-
-
-
-
-<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
-Uma das maneiras de se fazer isso é com o comando abaixo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">history
-</pre>
-
-
-
-
-<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
-<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
-
-
-
-
-<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">!44
-</pre>
-
-
-
-
-<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
-
-
-
-
-<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">!-2
-</pre>
-
-
-
-
-<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
-
-
-
-
-<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
-
-
-
-
-<p><strong>O que mais?</strong></p>
-
-
-
-
-<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">man history
-</pre>
-
-
-
-
-<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
-Dúvidas? Sugestões? Estamos aí!<br/>
-Grande Abraço!</p>
 
 ]]></content>
   </entry>
