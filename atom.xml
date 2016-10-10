@@ -4,7 +4,7 @@
   <title><![CDATA[Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-10-10T00:14:43+00:00</updated>
+  <updated>2016-10-10T03:32:26+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,59 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[4 Drops of Life - One]]></title>
+    <link href="http://flaviosilveira.com/2016/4-drops-of-life-1/"/>
+    <updated>2016-10-10T08:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/4-drops-of-life-1</id>
+    <content type="html"><![CDATA[<p>Continuando com a série 4 drops of life, essa é a edição 1. Segue meus pontos da quinzena:</p>
+
+<h3>1 - Aplicativo - Pocket</h3>
+
+<p>Começando hoje com tecnologia. Para quem não conhece vou falar do <a href="https://getpocket.com/">pocket</a>. Um aplicativo simples que te ajuda a organizar links, vídeos e programas para ler, assistir e usar mais tarde.</p>
+
+<p>Você já viu ou é daquelas pessoas que fica abrindo várias abas no navegador e não fecha para ver depois? Pocket pode ser para você.</p>
+
+<!--more-->
+
+
+<p>Instale em seus navegadores a extensão do pocket e sempre que se deparar com algo interessante mas não for o momento para aquilo, salve no pocket. Mais tarde, em um momento mais adequado você abre o pocket e lá está tudo que você salvou. Seja no celular, no tablet ou no notebook.</p>
+
+<p>Além de manter suas abas mais limpas te ajuda a manter o foco quando por exemplo você está trabalhando e alguém te manda um link. Pocket nele!</p>
+
+<p>Sempre reserve um tempo do dia para ler o que está no pocket e você estará usando a ferramenta da melhor maneira.</p>
+
+<h3>2 - Documentário - Cidade 40</h3>
+
+<p>Assisti esse documentário chamado <a href="http://www.imdb.com/title/tt2721744/">City 40</a> nos últimos dias e estou boquiaberto.</p>
+
+<p>O documentário conta a história da cidade de Ozersk, que só tem esse nome desde 1994, antes disso ela era conhecida como a Cidade 40. É uma cidade fechada até hoje. Isso mesmo! Portões para entrar e sair e cercas com arame em suas extremidades.</p>
+
+<p>Ao final os cineastas te mostram que essas cidades são mais comuns do que parecem. Recomendadíssimo para nos lembrar que o mundo é sempre mundo.</p>
+
+<p>Enquanto escrevo esse documentário está disponível no Netflix.</p>
+
+<h3>3 - Uma frase - O corpo é capaz de qualquer coisa, não deixe a mente lhe dizer o contrário.</h3>
+
+<p>Essa frase aparece de várias maneiras em vários lugares. Poderíamos creditar ela a vários autores. Deixo aqui essa minha versão e sugiro você a ter ela sempre contigo.</p>
+
+<p>Domine a mente e você viverá bem e melhor. Lembrando que viver bem não é viver muito.</p>
+
+<p>Medite a sua maneira e coloque sua mente no lugar dela, a trate com autoridade e você alcançara mais.</p>
+
+<h3>4 - Uma colher de mel para dormir melhor</h3>
+
+<p>Um dos lifehackers que sigo é <a href="https://twitter.com/bulletproofexec">Dave Asprey</a>. Confesso que para mim ele virou muito marketeiro nos últimos tempos, vendendo mais do que experimentando. Mass&hellip; há alguns meses venho aplicando uma dica que li em seus materiais.</p>
+
+<p>Uma colher de mel antes de dormir.</p>
+
+<p>Simples assim! Para quem como eu tem muita dificuldade em dormir recomendo a dica que em sua explicação coloca o açucar do mel como energia necessária para um bom sono. Experimente!</p>
+
+<p>Fechamos por hoje. Espero que tenham curtido as dicas. Mandem sugestões.
+Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Docker, PHP7 E PHP Built In]]></title>
@@ -3163,136 +3216,6 @@ Grande Abraço!</p>
 </strong></li>
 <li><a href="http://www.slideshare.net/flavioaugustosilveira/minicurso-zend" title="SlideShare Flávio Silveira">Slideshare.net &#8211; http://www.slideshare.net/flavioaugustosilveira/minicurso-zend</a></li>
 </ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Salvando Tempo No Terminal]]></title>
-    <link href="http://flaviosilveira.com/2011/salvando-tempo-no-terminal/"/>
-    <updated>2011-12-02T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/salvando-tempo-no-terminal</id>
-    <content type="html"><![CDATA[<p>Fala pessoal!</p>
-
-
-
-
-<p>No post anterior (<a href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/">conhecendo melhor seu interpretador de comandos</a>) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.</p>
-
-
-
-
-<p>Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.</p>
-
-
-
-
-<p>Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p><strong>Buscando comandos digitados no terminal</strong></p>
-
-
-
-
-<p>Com o comando <em>back search</em>, executado através de <em>ctrl + r</em>, você faz uma busca pelos comandos que executou que estão presentes no seu histórico. Você digita algumas letras ou trecho do comando que está buscando e o resultado vai aparecendo para você na linha de comando.</p>
-
-
-
-
-<p>Para usar, basta apertar a tecla <em>enter</em>.<br/>
-Para editar o comando, mudar algum parâmetro por exemplo, digite <em>ctrl + j</em> ou <em>esc</em>.<br/>
-Para cancelar, <em>ctrl + c</em>ou <em>ctrl + g</em>.</p>
-
-
-
-
-<p><strong>Exigindo um pouco mais do histórico</strong></p>
-
-
-
-
-<p>Você pode explorar mais do histórico de comandos e usar ele a seu favor durante o trabalho.<br/>
-Uma das maneiras de se fazer isso é com o comando abaixo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">history
-</pre>
-
-
-
-
-<p>O comando exibe para você tudo que está presente no seu histórico.<br/>
-<img src="../../assets/uploads/2011/12/Captura-de-Tela-2011-12-02-às-5.19.56-AM.png" alt="" title="Bash history" width="342" height="129" class="alignnone size-full wp-image-438" /></p>
-
-
-
-
-<p>Uma maneira rápida de executar novamente esses comandos é pegar a referência deles no histórico, ou seja, pegar esse número que aparece ao lado esquerdo dos comandos (veja imagem acima) e passar ele após um ponto de exclamação, por exemplo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">!44
-</pre>
-
-
-
-
-<p>Dessa forma, eu irei executar o comando de referência 44 do meu histórico, que no meu caso aqui é um <em>clear</em>.</p>
-
-
-
-
-<p>Seguindo a mesma linha, podemos por exemplo executar o comando digitado a dois comandos atrás, da seguinte forma:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">!-2
-</pre>
-
-
-
-
-<p>Sinta-se à vontade para substituir esse 2 pelo número de vezes que quer voltar no histórico.</p>
-
-
-
-
-<p>Para executar o comando anterior, basta colocar o 1, no lugar do 2 no comando acima, ou ainda substituir o número por uma exclamação (ficando duas exclamações).</p>
-
-
-
-
-<p><strong>O que mais?</strong></p>
-
-
-
-
-<p>Há muito mais a se desvendar e ganhar com o uso do history, como por exemplo: usar palavras chaves para busca, pegar parâmetros de comandos anteriores para um novo comando, entre outros. Aqui tivemos apenas uma pequena prévia das coisas. Mais sobre tudo isso você consegue no próprio manual do history.</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">man history
-</pre>
-
-
-
-
-<p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
-Dúvidas? Sugestões? Estamos aí!<br/>
-Grande Abraço!</p>
 
 ]]></content>
   </entry>
