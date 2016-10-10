@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-10-03T03:56:14+00:00</updated>
+  <updated>2016-10-10T00:14:43+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Docker, PHP7 E PHP Built In]]></title>
+    <link href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/"/>
+    <updated>2016-10-10T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/docker-php7-e-php-built-in</id>
+    <content type="html"><![CDATA[<p>No artigo anterior (<a href="http://flaviosilveira.com/2016/comece-com-docker/">Comece com Docker!</a>) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.</p>
+
+<p>Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.</p>
+
+<!--more-->
+
+
+<h3>PHP no DockerHub</h3>
+
+<p>No final do artigo anterior falamos sobre o <a href="https://hub.docker.com/">DockerHUB</a>, repositório oficial de imagens para criarmos nossos containers.</p>
+
+<p>O <a href="https://hub.docker.com/_/php/">PHP tem um reposítorio oficial no Docker hub</a> e é de lá que vamos começar. Nessa página temos várias informações desde o que é PHP até como usar a imagem, contribuir, instalar extensões e etc.</p>
+
+<p>Nos comandos que usamos, fizemos <strong><em>Docker Run</em></strong> que verifica se já temos a imagem em nossa máquina e caso não tenha faz o download dela. Vamos aprender um comando novo.</p>
+
+<pre><code>docker pull php
+</code></pre>
+
+<p>Com docker pull vamos fazer apenas o download da imagem, ele não vai iniciar um container para a gente direto como <strong><em>docker run</em></strong> faz, apenas o download.</p>
+
+<p>Nesse comando temos a opção de especificar a versão que queremos do PHP. Não passando nada, vai vir para a gente a última. Exatamente o que estamos querendo aqui certo?</p>
+
+<h3>Subindo Container PHP</h3>
+
+<p>Uma vez que a imagem está em nossa máquina, é hora de rodar o container. Vamos ver em que versão estamos?</p>
+
+<pre><code>docker run php php --version
+</code></pre>
+
+<p><strong>Docker run</strong> é nosso comando. <strong>php</strong> é o nome da nossa imagem e em seguida o comando que queremos executar no nosso container, <strong>php &ndash;version</strong>.</p>
+
+<p>Ao final desse comando o container terá subido, executado <strong>php &ndash;version</strong>, mostra uma saída e mata o container. A saída dada para mim na data de hoje foi versão <strong>PHP7.0.11</strong>.</p>
+
+<p>O Container morre, porque o comando que passamos executou e finalizou. Comprovamos isso rodando <strong>docker ps</strong>.</p>
+
+<h3>PHP CLI</h3>
+
+<p>Na mesma pegada, vamos testar o PHP CLI com nosso container. PHP CLI é o php em linha de comando.</p>
+
+<p>Mas antes vamos criar um script php para rodar no CLI. Criei uma pasta chamada <strong>php</strong> no meu diretório de desenvolvimento e dentro dele vou criar um script chamado <strong>spaceship.php</strong>.</p>
+
+<pre><code>&lt;?php
+
+// Testing Spaceship Operator
+echo 2 &lt;=&gt; 2; // 0
+echo 5 &lt;=&gt; 6; // -1
+echo 6 &lt;=&gt; 5; // 1
+
+echo "a" &lt;=&gt; "a"; // 0
+echo "a" &lt;=&gt; "b"; // -1
+echo "b" &lt;=&gt; "a"; // 1
+</code></pre>
+
+<p>O objetivo desse script é simplesmente testarmos o Spaceship, novo operador que veio com o PHP7. Vamos rodar ele em um container?</p>
+
+<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php spaceship.php
+</code></pre>
+
+<p><strong>Docker run</strong> é nosso comando. Com <strong>-v</strong> vamos fazer share do nosso diretório da nossa máquina local com um diretório de nosso container. Os dois vão estar espelhados. Com <strong>-w</strong> vamos dizer para nosso container php qual é nosso Working directory, nosso diretório de trabalho. Repare que coloquei o mesmo diretório que em nosso container é equivalente ao diretório em nossa máquina.</p>
+
+<p><strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container e <strong>php spaceship.php</strong> é nosso comando que vai rodar em nosso working directory.</p>
+
+<p>A saída esperada é <strong>0-110-11</strong>, como nos comentários do script acima.
+Já conhecia o Spaceship? Vale uma lida na documentação em <a href="http://php.net/manual/en/migration70.new-features.php">novas features PHP7</a>.</p>
+
+<h3>PHP Built In</h3>
+
+<p>Finalmente, vamos finalizar com o PHP Built In.</p>
+
+<p>Vamos primeiro lembrar como é o comando do PHP Built In. Para consultar o help do PHP Cli podemos fazer</p>
+
+<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php --help
+</code></pre>
+
+<p>Com -S maiúsculo, temos o que procuramos:</p>
+
+<pre><code>php -S 127.0.0.1:8080
+</code></pre>
+
+<p>Simples não? -S, IP e a porta para acessar.</p>
+
+<p>Dessa vez vou explicar o comando que vamos fazer antes:
+<strong>Docker run</strong> que é nosso comando para subir o container. <strong>-p</strong> vai mapear a porta 8080 da nossa máquina para a porta 8080 do container. <strong>-v</strong> como vimos anteriormente vai fazer o share do nosso diretório. <strong>-w</strong> especifica onde vai ser o working directory do container php. <strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container. E o comando que vamos executar dentro do container será <strong>php -S 0.0.0.0:8080</strong>.</p>
+
+<pre><code>docker run -p 8080:8080 -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php -S 0.0.0.0:8080
+</code></pre>
+
+<p>Em meu exemplo eu estou usando uma docker machine que tem um IP <strong>192.168.99.100</strong>, quando passo para o comando do container um IP <strong>0.0.0.0</strong> ele é traduzido para o IP da minha docker machine.</p>
+
+<p>Ao executar o comando, ele vai ficar esperando.</p>
+
+<p>Acesso no navegador o seu IP passando a porta 8080, e acrescente <strong>/spaceship.php</strong>. O mesmo resultado visto anteriormente no terminal, agora está no seu navegador.</p>
+
+<p>Para matar o container basta retornar ao terminal e dar um <strong>CTRL+C</strong>.</p>
+
+<h3>Fechando</h3>
+
+<p>Hoje usamos a imagem do PHP. Para quem nunca havia provado o PHP7, fica a sugestão de fazer esse experimento bem facilmente usando containers e Docker. Aprendemos o comando para simplesmente fazer download de uma imagem e exploramos a imagem do PHP usando CLI e Built In.</p>
+
+<p>Espero que sua cabeça esteja com ideias em cima do que foi passado aqui.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Comece Com Docker]]></title>
@@ -778,64 +888,6 @@ No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indic
 
 
 <p>A ideia por trás do PHPUnit e suas funções é bem similar ao que foi demonstrado acima, com o detalhe que algumas funções podem ter mais parâmetros ou esperar tipos diferentes de dados. Que tal descobrir mais métodos do PHPUnit e criar novos testes? Visite o capítulo 4 do manual do PHPUnit e teste outras funções do framework. Segue o link para o manual: <a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html" title="PHPUnit Manual Cap4">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>.</p>
-
-
-
-
-<p>Grande Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Global Game Jam 2012]]></title>
-    <link href="http://flaviosilveira.com/2012/global-game-jam-2012/"/>
-    <updated>2012-01-06T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/global-game-jam-2012</id>
-    <content type="html"><![CDATA[<p>Salve pessoal!</p>
-
-
-
-
-<p>Na minha palestra <a href="http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/" title="Palestra Quero ser um desenvolvedor de jogos">Quero ser um desenvolvedor de jogos</a> que estive apresentando durante o ano de 2011, eu comento sobre a Global Game Jam.</p>
-
-
-
-
-<p>A Global Game Jam é um evento que acontece todo ano e ocorre simultâneamente em todo o mundo. Funciona da seguinte maneira:<br/>
-Através do site que organiza o evento (<a href="http://globalgamejam.org" title="Global Game Jam">http://globalgamejam.org</a>) é divulgado um tema. Com esse tema em mãos, equipes de desenvolvedores de jogos (programadores, artistas, músicos, roteiristas, etc) unem forças para desenvolver o seu próprio game. O prazo máximo é de 48 horas e pode ser usado qualquer tecnologia.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p>Em muitas cidades, as faculdades, empresas e outras instituições reúnem e organizam pessoas que tem interesse em participar, dividindo as equipes para que elas fiquem mais competitivas e também cedendo um local de trabalho para essas equipes. Alguns locais também colaboram com a alimentação dos participantes e, como o prazo é curto, também pode ser um bom abrigo para o seu colchonete. Mas cuidado! As vagas nesses locais geralmente são limitadas.</p>
-
-
-
-
-<p>O Evento é uma excelente porta de entrada para você que quer conhecer o processo de desenvolvimento de jogos, além do grande networking e distribuição de conhecimento que esse evento gera. Em 2011 foram mais de 1500 jogos criados, com participação de mais de 6.500 pessoas em mais de 44 países.</p>
-
-
-
-
-<p>As inscrições para esse ano já estão quase acabando. O que você está esperando para participar?<br/>
-Acesse já o <a href="http://globalgamejam.org" title="Site Global Game Jam">site da Global Game Jam</a>, veja as cidades inscritas e participe. Caso sua cidade não esteja participando, ou os locais na sua cidade estejam com vagas esgotadas, junte seus amigos e monte sua equipe. Veja informações de como se cadastrar nesse wiki feito pela organização <a href="http://globalgamejam.org/wiki/how-register-ggj-2012" title="Como se registrar na Global Game Jam 2012">http://globalgamejam.org/wiki/how-register-ggj-2012</a></p>
-
-
-
-
-<p>Uma dica: Se você for participar através de alguma faculdade, empresa ou instituição na sua cidade, não deixe de entrar em contato com os organizadores e se informar sobre o que terá no local, o que precisa ser levado, etc. Não seja pego de surpresa, principalmente no que diz respeito a comida, sono e emocional. Levante também a necessidade de se cadastrar em um site do local onde você irá participar. Geralmente isso é feito para um controle dos organizadores.</p>
-
-
-
-
-<p>O evento esse ano começa no dia 27 de janeiro no período da noite e vai até o domingo dia 29.<br/>
-Não deixe de participar.</p>
 
 
 

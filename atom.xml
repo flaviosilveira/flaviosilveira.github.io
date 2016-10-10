@@ -4,7 +4,7 @@
   <title><![CDATA[Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-10-03T03:56:14+00:00</updated>
+  <updated>2016-10-10T00:14:43+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,116 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Docker, PHP7 E PHP Built In]]></title>
+    <link href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/"/>
+    <updated>2016-10-10T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/docker-php7-e-php-built-in</id>
+    <content type="html"><![CDATA[<p>No artigo anterior (<a href="http://flaviosilveira.com/2016/comece-com-docker/">Comece com Docker!</a>) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.</p>
+
+<p>Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.</p>
+
+<!--more-->
+
+
+<h3>PHP no DockerHub</h3>
+
+<p>No final do artigo anterior falamos sobre o <a href="https://hub.docker.com/">DockerHUB</a>, repositório oficial de imagens para criarmos nossos containers.</p>
+
+<p>O <a href="https://hub.docker.com/_/php/">PHP tem um reposítorio oficial no Docker hub</a> e é de lá que vamos começar. Nessa página temos várias informações desde o que é PHP até como usar a imagem, contribuir, instalar extensões e etc.</p>
+
+<p>Nos comandos que usamos, fizemos <strong><em>Docker Run</em></strong> que verifica se já temos a imagem em nossa máquina e caso não tenha faz o download dela. Vamos aprender um comando novo.</p>
+
+<pre><code>docker pull php
+</code></pre>
+
+<p>Com docker pull vamos fazer apenas o download da imagem, ele não vai iniciar um container para a gente direto como <strong><em>docker run</em></strong> faz, apenas o download.</p>
+
+<p>Nesse comando temos a opção de especificar a versão que queremos do PHP. Não passando nada, vai vir para a gente a última. Exatamente o que estamos querendo aqui certo?</p>
+
+<h3>Subindo Container PHP</h3>
+
+<p>Uma vez que a imagem está em nossa máquina, é hora de rodar o container. Vamos ver em que versão estamos?</p>
+
+<pre><code>docker run php php --version
+</code></pre>
+
+<p><strong>Docker run</strong> é nosso comando. <strong>php</strong> é o nome da nossa imagem e em seguida o comando que queremos executar no nosso container, <strong>php &ndash;version</strong>.</p>
+
+<p>Ao final desse comando o container terá subido, executado <strong>php &ndash;version</strong>, mostra uma saída e mata o container. A saída dada para mim na data de hoje foi versão <strong>PHP7.0.11</strong>.</p>
+
+<p>O Container morre, porque o comando que passamos executou e finalizou. Comprovamos isso rodando <strong>docker ps</strong>.</p>
+
+<h3>PHP CLI</h3>
+
+<p>Na mesma pegada, vamos testar o PHP CLI com nosso container. PHP CLI é o php em linha de comando.</p>
+
+<p>Mas antes vamos criar um script php para rodar no CLI. Criei uma pasta chamada <strong>php</strong> no meu diretório de desenvolvimento e dentro dele vou criar um script chamado <strong>spaceship.php</strong>.</p>
+
+<pre><code>&lt;?php
+
+// Testing Spaceship Operator
+echo 2 &lt;=&gt; 2; // 0
+echo 5 &lt;=&gt; 6; // -1
+echo 6 &lt;=&gt; 5; // 1
+
+echo "a" &lt;=&gt; "a"; // 0
+echo "a" &lt;=&gt; "b"; // -1
+echo "b" &lt;=&gt; "a"; // 1
+</code></pre>
+
+<p>O objetivo desse script é simplesmente testarmos o Spaceship, novo operador que veio com o PHP7. Vamos rodar ele em um container?</p>
+
+<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php spaceship.php
+</code></pre>
+
+<p><strong>Docker run</strong> é nosso comando. Com <strong>-v</strong> vamos fazer share do nosso diretório da nossa máquina local com um diretório de nosso container. Os dois vão estar espelhados. Com <strong>-w</strong> vamos dizer para nosso container php qual é nosso Working directory, nosso diretório de trabalho. Repare que coloquei o mesmo diretório que em nosso container é equivalente ao diretório em nossa máquina.</p>
+
+<p><strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container e <strong>php spaceship.php</strong> é nosso comando que vai rodar em nosso working directory.</p>
+
+<p>A saída esperada é <strong>0-110-11</strong>, como nos comentários do script acima.
+Já conhecia o Spaceship? Vale uma lida na documentação em <a href="http://php.net/manual/en/migration70.new-features.php">novas features PHP7</a>.</p>
+
+<h3>PHP Built In</h3>
+
+<p>Finalmente, vamos finalizar com o PHP Built In.</p>
+
+<p>Vamos primeiro lembrar como é o comando do PHP Built In. Para consultar o help do PHP Cli podemos fazer</p>
+
+<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php --help
+</code></pre>
+
+<p>Com -S maiúsculo, temos o que procuramos:</p>
+
+<pre><code>php -S 127.0.0.1:8080
+</code></pre>
+
+<p>Simples não? -S, IP e a porta para acessar.</p>
+
+<p>Dessa vez vou explicar o comando que vamos fazer antes:
+<strong>Docker run</strong> que é nosso comando para subir o container. <strong>-p</strong> vai mapear a porta 8080 da nossa máquina para a porta 8080 do container. <strong>-v</strong> como vimos anteriormente vai fazer o share do nosso diretório. <strong>-w</strong> especifica onde vai ser o working directory do container php. <strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container. E o comando que vamos executar dentro do container será <strong>php -S 0.0.0.0:8080</strong>.</p>
+
+<pre><code>docker run -p 8080:8080 -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php -S 0.0.0.0:8080
+</code></pre>
+
+<p>Em meu exemplo eu estou usando uma docker machine que tem um IP <strong>192.168.99.100</strong>, quando passo para o comando do container um IP <strong>0.0.0.0</strong> ele é traduzido para o IP da minha docker machine.</p>
+
+<p>Ao executar o comando, ele vai ficar esperando.</p>
+
+<p>Acesso no navegador o seu IP passando a porta 8080, e acrescente <strong>/spaceship.php</strong>. O mesmo resultado visto anteriormente no terminal, agora está no seu navegador.</p>
+
+<p>Para matar o container basta retornar ao terminal e dar um <strong>CTRL+C</strong>.</p>
+
+<h3>Fechando</h3>
+
+<p>Hoje usamos a imagem do PHP. Para quem nunca havia provado o PHP7, fica a sugestão de fazer esse experimento bem facilmente usando containers e Docker. Aprendemos o comando para simplesmente fazer download de uma imagem e exploramos a imagem do PHP usando CLI e Built In.</p>
+
+<p>Espero que sua cabeça esteja com ideias em cima do que foi passado aqui.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Comece Com Docker]]></title>
@@ -3183,147 +3293,6 @@ Uma das maneiras de se fazer isso é com o comando abaixo:</p>
 <p>Espero que esse pequeno post ajude você a agilizar um pouco mais de tempo com as coisas no terminal.<br/>
 Dúvidas? Sugestões? Estamos aí!<br/>
 Grande Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Conhecendo Melhor Seu Interpretador De Comandos]]></title>
-    <link href="http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/"/>
-    <updated>2011-10-30T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos</id>
-    <content type="html"><![CDATA[<p>Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.</p>
-
-
-
-
-<p>Quem faz essa ligação entre você e o coração do sistema operacional, permitindo executar esses comandos, é o Shell. Quem interpreta e processa os comandos para você, é uma implementação do Shell, que é o que vamos conhecer melhor aqui hoje.</p>
-
-
-
-
-<p>Este termo Shell, deve ter feito você lembrar sobre Shell Script, que escutamos falar muito e nada mais é do que um script com vários comandos Shell dentro dele.</p>
-
-
-
-
-<p>Dentre as implementações de Shell, aquilo que interpreta seus comandos, a mais famosa hoje é o Bash (Bourne-again shell, fazendo uma referência ao Bourne Shell que você pode pesquisar sobre). Para conferir qual o interpretador padrão de seus comandos, em seu terminal digite o seguinte comando</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">echo $SHELL
-</pre>
-
-
-
-
-<p>Se seu interpretador for o Bash, como a maioria, você vai ver a saída <em>/bin/bash</em>.</p>
-
-
-
-
-<p>Entre outras implementações de Shell podemos ter <em>csh</em>, <em>tcsh</em>, <em>sh</em>, <em>ksh</em>, e várias outras. Para conferir se essas implementações estão instaladas no seu sistema operacional, basta digitar o nome delas. Por exemplo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">bash
-</pre>
-
-
-
-
-<p>Caso esteja instalada, o terminal irá permitir que execute comandos naquela implementação, caso contrário apontará como comando inexistente. Você também consegue uma listagem das implementações shell disponíveis em seu sistema operacional abrindo o arquivo shells, geralmente localizado em <em>/etc/shells</em>.</p>
-
-
-
-
-<p>Acredito que se você usar outras implementações apenas por algum tempo, vai achar todas muito parecidas pois uma deriva ou usa a outra, e assim nem vai notar diferença entre elas.</p>
-
-
-
-
-<p><strong>Usando o Bash</strong></p>
-
-
-
-
-<p>O bash traz alguns atalhos que podem facilitar a sua vida, sendo um dos principais a tecla <em>TAB</em> (ou <em>ctrl + i</em>) para completar comandos, nomes de arquivos ou nomes de variáveis.</p>
-
-
-
-
-<p>Para buscar por comandos que você tenha digitado anteriormente use <em>ctrl + r</em>.<br/>
-Para anular a busca use <em>ctrl + c</em>, que também é usado para abortar outros comandos, scripts e as vezes loops infinitos.</p>
-
-
-
-
-<p><em>ctrl + a</em> para ir ao início da linha do comando (também obtido com a tecla <em>home</em>, se houver), <em>ctrl + e</em> para ir ao final dela (equivalente a tecla <em>end</em>).<br/>
-Perdeu a tecla <em>enter</em> ou cansou dela? Use <em>ctrl + j</em></p>
-
-
-
-
-<p>Esses atalhos tendem a funcionar melhor quando se está definido o padrão de teclas <em>Emacs</em>, embora grande maioria deles funcione em outros padrões.</p>
-
-
-
-
-<p>Você pode mudar esse padrão com o comando</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">set -o emacs
-</pre>
-
-
-
-
-<p>Você poderia usar o padrão <em>VI</em>, da seguinte maneira</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">set -o vi
-</pre>
-
-
-
-
-<p>Como exemplo para essa situação, temos os atalhos <em>ctrl + p</em> (equivalente a seta para cima) e <em>ctrl + n</em> (equivalente a seta para baixo) para trazer os últimos comandos executados. Eles funcionam apenas no padrão <em>emacs</em>.</p>
-
-
-
-
-<p><strong>Preciso saber esses comandos?</strong></p>
-
-
-
-
-<p>Muito provavelmente um marginal não vai encostar uma arma na sua cabeça lhe cobrando esses comandos no meio da rua. Mas talvez algum dia na sua carreira, você vai entrar em algum Data Center, e ter de mexer diretamente em uma máquina que estiver dentro de um hack enorme.</p>
-
-
-
-
-<p>Você irá puxar uma pequena gaveta, que irá se tornar um monitor e um simples teclado. Esse teclado pode conter apenas teclas básicas, excluindo assim as suas tão usadas setas para navegar entre os caracteres e palavras, e as vezes até sem a tecla enter. Esteja preparado conhecendo alguns desses comandos. Lembre-se que o google pode não estar por perto.</p>
-
-
-
-
-<p>Em breve trarei para vocês uma alternativa bem legal para o Bash, e como ela pode ajudar na produtividade de pessoas que trabalham diretamente com o terminal.</p>
-
-
-
-
-<p>Até lá!</p>
 
 ]]></content>
   </entry>
