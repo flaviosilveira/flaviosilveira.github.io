@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ansible - Desperte a Automação Em Você - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Ansible - Desperte a Automação Em Você Categorias: desenvolvimento Automação vem se tornando um tema essencial em empresas que querem crescer com &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Ansible - Desperte a Automação Em Você</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-10-17T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>
+  
+</span>
+
+
+        </div>
+        <p>Automação vem se tornando um tema essencial em empresas que querem crescer com mais cérebro e menos braço. Aquela tarefa que você repete mais de duas vezes já deve ser pensada em uma maneira de ser automática, concorda?</p>
+
+<p>No universo do desenvolvimento, quantas são as tarefas que repetimos quando se trata de máquinas? Deploys, extração de logs, instalação e configuração de ferramentas, etc. Ansible pode ser a ferramenta que vai te ajudar a automatizar tudo isso.</p>
+
+<!--more-->
+
+
+<p>Durante esse ano de 2016 apresentei a palestra <strong><em>Automações com Ansible</em></strong> onde o objetivo principal foi uma iniciação ao Ansible. Como usar ele de maneira bem básica e se iniciar na automação. Estrutura de um projeto básico, como criar as primeiras tarefas, passar argumentos, variáveis, e usar includes. Essa vai ser a agenda desse longo post técnico e assim também encerrando as apresentações dessa palestra para dar lugar a outras :-).</p>
+
+<h4>Ansible</h4>
+
+<p>Ansible (<a href="https://www.ansible.com/">https://www.ansible.com/</a>) é uma ferramenta Open Source em Python para automatizar ações em máquinas. Ela é super simples, e esse é sempre um dos meus lemas quando se trata de desenvolvimento e tecnologia. Se está difícil, tem alguma coisa errada. Pare e analise. Tecnologia não é mágica, tem que fazer sentido.</p>
+
+<p>Não vou falar da instalação do Ansible. É fácil você fazer download dele e sair rodando ou ainda usar <strong>yum install</strong> ou <strong>apt-get install</strong>.</p>
+
+<h4>Um projeto básico</h4>
+
+<p>Há várias maneiras de estruturar um projeto ansible. Algumas sugestão com arquiteturas de pastas super elaboradas, onde podem fazer sentido para algumas soluções. Para agora, para começarmos, dois arquivos vão resolver nosso problema.</p>
+
+<pre><code>- projeto.yml
+- hosts
+</code></pre>
+
+<p>Um arquivo com extensão .yml (yet another markup language) e um arquivo hosts, sem extensão.
+No arquivo yml você vai colocar o passo a passo da sua automação. Tecnicamente ele tem o nome de playbook. No arquivo hosts vamos apontar as máquinas onde as tarefas serão executadas.</p>
+
+<h4>Arquivo hosts</h4>
+
+<p>Vamos primeiro configurar as máquinas que serão afetadas pelas nossas tarefas.</p>
+
+<pre><code>#This is the Host File.
+
+[projeto]
+192.168.5.6 ansible_ssh_user=user ansible_ssh_pass=pass
+</code></pre>
+
+<p>É isso que vocês precisam no arquivo hosts quando falamos de acesso que o ansible vai fazer usando ssh. O IP da máquina, seguido de um usuário e senha. Esse nome em colchetes vai te ajudar a gerenciar as coisas em um futuro, mantenha ele ali.</p>
+
+<p>Vai fazer uso de portas? Acesso a máquinas com chave? Chamar mais de uma máquina?</p>
+
+<pre><code>#This is the Host File.
+
+###################
+# Projeto servers #
+###################
+[projeto-homologacao]
+222.222.222.222:2123 ansible_ssh_private_key_file=/.ssh/chave.pem ansible_ssh_pass=pass
+123.123.123.123:2123 ansible_ssh_private_key_file=/.ssh/chave.pem ansible_ssh_pass=pass
+
+[projeto-local]
+192.168.5.6 ansible_ssh_user=user ansible_ssh_pass=pass
+</code></pre>
+
+<p>Para acessar as máquinas usando chaves use <strong>ansible_ssh_private_key_file</strong>. Se seu acesso tem portas diferentes, basta adicionar elas ao final do IP.</p>
+
+<p>Notem que fiz uma separação entre as máquinas de homologação e a máquina local. Essa organização pode te ajudar no futuro a gerenciar essas máquinas e usar isso em suas automações.</p>
+
+<h4>Rodando o Ansible</h4>
+
+<p>Para rodar o ansible o comando é fácil</p>
+
+<pre><code>ansible-playbook -i hosts projeto.yml
+</code></pre>
+
+<p>Ansible-playbook é o comando. -i  é o parâmetro que significa inventory, para inventário, onde passaremos nosso arquivo hosts. Por último nosso arquivo de tarefas. Sim! Não temos nenhuma tarefa, já vamos chegar lá.</p>
+
+<p>Caso precise rodar o ansible com mais saidas de log, em um momento para resolver problemas por exemplo, você pode usar -v, de verbose.</p>
+
+<pre><code>ansible-playbook -i hosts projeto.yml -v
+ansible-playbook -i hosts projeto.yml -vv
+ansible-playbook -i hosts projeto.yml -vvv
+ansible-playbook -i hosts projeto.yml -vvvv
+</code></pre>
+
+<p>As opções vão até 4 Vs. Onde cada um a mais, te mostra mais detalhes dos comandos e dos erros se houver.</p>
+
+<h4>Criando tasks</h4>
+
+<p>Vamos começar com um exemplo bem simples de tarefa, um hello world por assim dizer.</p>
+
+<pre><code>--
+# Projeto
+- hosts: "projeto"
+
+tasks:
+- name: "Vamos dar echo"
+  shell: 'echo teste'
+</code></pre>
+
+<p>Lembra no nosso arquivo hosts a separação que fizemos com os colchetes? Use o nome que você definiu lá, aqui na opção hosts.</p>
+
+<p>Em seguida criamos uma tarefa com o nome <strong>Vamos dar echo</strong>. E é isso que ela se dispõe a fazer. Rodando o playbook acima, ele vai acessar as máquinas presente no seu host e executar um <strong>echo teste</strong>.</p>
+
+<p>Reparem que usamos o módulo <strong>shell</strong> do ansible para executar o comando. Vamos falar mais disso depois.</p>
+
+<p>Vamos criar uma nova tarefa, agora usando o módulo <strong>script</strong> do ansible. Você deve ir aninhando as suas tarefas uma abaixo da outra como segue:</p>
+
+<pre><code>--
+# Projeto
+- hosts: "projeto"
+
+tasks:
+  - name: "Vamos dar echo"
+    shell: 'echo teste'
+
+  - name: "Executar um script"
+    script: '/bin/usr/meu.sh'
+</code></pre>
+
+<p>Adicionamos a tarefa chamada <strong>Executar um script</strong>, que vai executar o .sh presente no caminho passado.</p>
+
+<h4>Módulos</h4>
+
+<p>Ansible tem vários módulos como você pode conferir na documentação em <a href="http://docs.ansible.com/ansible/modules_by_category.html">http://docs.ansible.com/ansible/modules_by_category.html</a>.</p>
+
+<p>Esses módulos vem para te ajudar a criar tarefas das mais diferentes naturezas que você imaginar. Execução de linhas de comando, criação de arquivos, acesso a repositórios de versionamento, filas (rabbit, sqs, kafka), checar acesso a outras redes, instalação de programas, acesso a Amazon, Azure, Google Cloud, etc. Esses exemplos são poucos. Dê uma boa navegada na página acima para conferir a real gama de facilidades que o ansible nos dá.</p>
+
+<p>Retorne os olhos nas tasks que fizemos acima e veja os módulos em ação. Usamos Shell e Script que fazem parte da categoria <strong>Commands Modules</strong> (<a href="http://docs.ansible.com/ansible/list_of_commands_modules.html">http://docs.ansible.com/ansible/list_of_commands_modules.html</a>).</p>
+
+<p>Para efeitos didáticos, não vamos usar em nossos exemplos aqui módulos muito diferentes e ousados. Mas não se limite! A documentação do Ansible é excelente e fácil de compreender e vai te ajudar com toda certeza.</p>
+
+<h4>Argumentos</h4>
+
+<p>Os módulos podem ter argumentos / parâmetros. Alguns são nativos a todos os módulos do Ansible, outros são específicos. Confira a documentação para ir ficando a par disso.</p>
+
+<pre><code>tasks:
+  - name: "Ver se existe a pasta do projeto criada"
+    shell: 'mkdir projeto'
+    args:
+      chdir: '/home'
+      creates: 'projeto'
+</code></pre>
+
+<p>Aqui com <strong>args</strong>. Usamos <strong>chdir</strong> para dizer aonde queremos executar nossa tarefa.
+Também usamos <strong>creates</strong>, que nos ajuda checando se o mkdir vai ser necessário mesmo ou não.</p>
+
+<h4>Variáveis</h4>
+
+<p>Podemos e devemos definir variáveis no topo de nossos playbooks para usá-las em nossas tasks.</p>
+
+<pre><code>---
+# Projeto
+- hosts: "projeto"
+
+vars:
+    repo: git@bitbucket.org/flaviosilveira/primeiro-jogo-html5.git
+    document_root: /var/www
+    releases_folder: releases
+
+- name: "Clone/Update projeto"
+  git: 'repo=ssh://{{repo}} dest={{document_root}}/{{releases_folder}} clone=yes update=yes accept_hostkey=yes force=yes'   
+</code></pre>
+
+<p>Usamos as variáveis com seus nomes entre chaves duplas <strong>{{nome_da_variavel}}</strong>.</p>
+
+<p>Repare como se compõe o comando para clonar ou atualizar nosso projeto usando o módulo git do ansible. Esse módulo faz clone se o projeto git não existir na máquina ou atualiza se ele já estiver lá.</p>
+
+<h4>Passando variáveis pela linha de comando</h4>
+
+<p>Você consegue passar variáveis através da chamada do ansible, o que pode te dar ainda mais ideas em suas automações.</p>
+
+<pre><code>ansible-playbook -i hosts projeto.yml -e "env=homologacao"
+</code></pre>
+
+<p>Com -e, passamos a variável <strong>env</strong> para nosso playbook. De dentro dele, vamos usar {{env}} para resgatar.</p>
+
+<pre><code>---
+# Projeto
+- hosts: "projeto-{{env}}"
+</code></pre>
+
+<p>Lembram na definição de nossos hosts, quando fizemos uma variação com máquinas de homologação e uma máquina local? Aqui está um uso para essa organização, facilitando em você não ter de ficar alterando seus playbooks todo o tempo.</p>
+
+<h4>Salvando saídas de tarefas como variável</h4>
+
+<p>Outra coisa legal é armazenar saídas de tarefas para variáveis e assim poder usá-las posteriormente.</p>
+
+<pre><code>- name: "Contar pastas"
+  shell: 'ls | wc -l'
+  args:
+    chdir: '{{document_root}}/{{releases_folder}}'
+  register: to_remove
+</code></pre>
+
+<p>Na tarefa acima, usamos um comando Shell para contar um número de pastas.
+Estamos usando argumentos para o módulo e também variáveis. Coisas que já vimos acima.</p>
+
+<p>Em seguida registramos a saída desse comando para a variável <strong>count</strong>.
+Para usá-la? {{count}}.</p>
+
+<p>As vezes o que você coloca na variável é um objeto. Confira a saída em verbose (-vvvv) caso tenha problemas usando como acima. Talvez você precise de alternativas:</p>
+
+<pre><code>{{count.stdout}} #Saída do ansible
+{{count.stdout | int}} #Mesmo que acima, mas convertendo para inteiro
+</code></pre>
+
+<h4>Condicionais</h4>
+
+<p>Uma task pode ser executada ou não baseado em uma condional.</p>
+
+<pre><code>- name: "Remove pastas"
+  shell: 'ls -t | tail -n $(($(ls | wc -l)-3)) | xargs rm -rf'
+  args:
+    chdir: '{{document_root}}/{{releases_folder}}'
+  when: '{{count.stdout | int}} &gt; 3'
+</code></pre>
+
+<p>Reparem na última linha, no <strong>when</strong>. Se a variável nos trouxer um resultado maior que 3, executaremos a tarefa, caso contrário não.</p>
+
+<p>Para curiosidade, esse comando ordena as pastas por data, e deixa apenas as últimas 3, removendo o restante.</p>
+
+<h4>Ignorando erros</h4>
+
+<p>As vezes algumas tarefas nos trarão erros, mas que por algum motivo não precisamos nos preocupar. Para isso, use <strong>ignore_errors</strong>.</p>
+
+<pre><code>--
+# Projeto
+- hosts: "projeto"
+
+tasks:
+  - name: "Vamos dar echo"
+    shell: 'echo teste'
+    args:
+       chdir: '{{document_root}}/{{releases_folder}}'
+    ignore_errors: true
+</code></pre>
+
+<p>Pronto, erros serão ignorados e seu playbook continuará em execução.</p>
+
+<p>Isso pode ser útil também para algum comando que tem uma saída de comando muito grande. O ansible as vezes considera isso como um erro.</p>
+
+<h4>Usando Includes</h4>
+
+<p>Alguma tarefa que vai ser executada em mais de um playbook? Use Includes.
+Crie uma pasta chamada <strong>includes</strong> e dentro dela crie um arquivo chamado <strong>outro.yml</strong>.</p>
+
+<p>Dentro do seu arquivo <strong>outro.yml</strong>, você trabalha como se ele fosse uma tarefa normal</p>
+
+<pre><code>---
+# Include responsavel pela criacao da pasta
+
+- name: "Ver se existe a pasta do projeto criada"
+  shell: 'mkdir projeto'
+  args:
+    chdir: '/home'
+    creates: 'projeto'
+</code></pre>
+
+<p>Para usar o include em outros playbooks faça:</p>
+
+<pre><code>tasks:
+  - include: 'includes/outro.yml'
+</code></pre>
+
+<p>Quer passar variáveis para seus includes?</p>
+
+<pre><code>tasks:
+  - include: 'includes/outro.yml variavel=3 variavel2={{document_root}}'
+</code></pre>
+
+<p>Reparem que definimos uma variável no momento de chamar o include e para a variável chamada <strong>variavel2</strong>, usamos uma variável que pode ter sido definida no topo de nosso playbook ou ainda que pode ter vindo da saída de uma task.</p>
+
+<h4>That&rsquo;s It</h4>
+
+<p>É isso por hoje pessoal! Cobrimos aqui o bé-a-bá no ansible, criamos tarefas, definimos nossas máquinas afetadas, aprendemos sobre módulos, argumentos, variáveis e includes.</p>
+
+<p>Exercite em sua infraestrutura. Se não tem uma infraestrutura para testar, experimente com máquinas virtuais ou ainda com containers em Docker, tema que viemos discutindo aqui no Blog recentemente (<a href="http://flaviosilveira.com/2016/comece-com-docker/">http://flaviosilveira.com/2016/comece-com-docker/</a>, <a href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/">http://flaviosilveira.com/2016/docker-php7-e-php-built-in/</a>).</p>
+
+<p>Desperte a automação em você! Grande Abraço!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2016/ansible-desperte-a-automacao-em-voce';
+    var disqus_title = 'Ansible - Desperte a automação em você';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2016/4-drops-of-life-1/" title="Previous Post: 4 Drops of Life - One">&laquo; Anterior: 4 Drops of Life - One</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/';
+        var disqus_url = 'http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
