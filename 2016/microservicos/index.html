@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Microserviços - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Microserviços Categorias: desenvolvimento Muito anda se falando sobre microserviços e trago para vocês minha experiência de como começamos a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2016/microservicos">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Microserviços</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2016-11-07T08:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>
+  
+</span>
+
+
+        </div>
+        <p>Muito anda se falando sobre microserviços e trago para vocês minha experiência de como começamos a trabalhar dessa forma aqui na <a href="https://www.lojaskd.com.br">LojasKD</a>.</p>
+
+<p>Assim como meu post anterior sobre <a href="http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/">Ansible e automação</a>, esse assunto também faz parte de uma palestra que apresentei durante 2016, um dos meus grandes orgulhos desse ano que encerro com esse post.</p>
+
+<h3>Microserviços - O que é?</h3>
+
+<p>Para falar sobre microserviços eu sempre empresto a frase do <a href="https://twitter.com/tiagodolphine">@tiagodolphine</a>: &ldquo;O menor possível, porém grande o suficiente para representar seu domínio&rdquo;.</p>
+
+<!--more-->
+
+
+<p>Pequenas aplicações que representem seus domínios. Parece fácil ah?
+Mas a linha para que isso se torne um <strong>macroserviço</strong> é tênue. Se você descuidar da organização dos seus serviços eles podem começar a dar mais trabalho do que você gostaria.</p>
+
+<h3>Seus problemas não acabaram</h3>
+
+<p>Não existe solução perfeita, tudo tem seu uso ideal, seu lado bom e seu lado ruim.</p>
+
+<p>Microserviços não são uma bala de prata que vai resolver todos os problemas de seus projetos. Assim como você escolhe uma linguagem para desenvolver um projeto, qual banco de dados vai usar e etc, o mesmo deve servir para sua arquitetura.</p>
+
+<p><strong>Não vá de microserviços simplesmente pelo modismo!</strong></p>
+
+<p>Aliás, microserviços pode ser comparado ao que acontecia com APIs em SOAP (Simple Object Access Protocol) com seus WSDLs para lá e para cá, que tem seus primeiros registros de uso no fim dos anos 90. Tecnologia tem muito disso, coisas que voltam com nomes diferentes ou um buzz que surge com coisas que já fazemos.</p>
+
+<p>Acompanhem comigo os prós e contras de uma arquitetura monolítica versus uma de microserviços.</p>
+
+<h3>Monolítico</h3>
+
+<p>Há não tantos anos atrás, na hora de iniciar nossos projetos era certo que eles seriam de uma forma única. Como estamos falando da KD aqui, vamos pegar o exemplo de ECommerce.</p>
+
+<p>Um banco de dados, uma aplicação MVC em cima de uma linguagem. Um controller para a Vitrine, outro para o Carrinho, outro para o Checkout. Tudo em um lugar só.</p>
+
+<p>Mas então quando seu serviço cai? Tudo cai, tudo fica fora. <strong>-1 aqui para o monolítico</strong>. Mas, na hora de colocar isso em produção? Demais! Tudo em um só lugar, um único deploy. <strong>+1 para o monolítico</strong>.</p>
+
+<p>Se uma das partes do seu sistema ficava lento, grande chance de ele ficar lento por inteiro. E a parte que está deixando lento, que digamos seja lá na visualização de produtos, está impedindo que pessoas fechem suas compras. <strong>-1 para o monolítico</strong>.</p>
+
+<p>Vamos monitorar para que não caia novamente? Vamos ter que monitorar uma única aplicação, Ótimo! <strong>+1 para o monolítico</strong>.</p>
+
+<p>Achar desenvolvedores para um projeto com uma linguagem só é um outro ponto positivo aqui e também o conhecimento em cima de como servir uma única aplicação. <strong>+2 para o monolítico</strong>. Mas a curva de aprendizagem em cima de regras de negócio que estão todas juntas e misturadas podem complicar. <strong>-1 para o monolítico</strong>.</p>
+
+<h3>Os Microserviços</h3>
+
+<p>Em microserviços não vamos pensar como uma coisa só, vamos pensar como várias pequenas partes para formar um objetivo comum. Nosso Carrinho, nossa Vitrine, nosso Checkout que estavam todos juntos, aqui se separam em pequenas aplicações cada uma com sua função.</p>
+
+<p>Se um dos nossos serviços caírem, outros serviços continuam funcionando e nosso ECommerce não fica totalmente fora. <strong>+1 para os microserviços</strong>.</p>
+
+<p>Mas fazer deploy de tudo, várias aplicações. E se uma depender de outra em determinada funcionalidade? E se&hellip; É, a orquestração de entregas com microserviços pode não ser simples. <strong>-1 para os microserviços</strong>.</p>
+
+<p>Lentidão em um dos serviços? Não deve afetar o restante. <strong>+1 para os microserviços</strong>. Ainda você pode escalar as funcionalidades de uma maneira mais flexível. Exemplo: Você tem muito mais acessos na vitrine do que no carrinho? Coloque mais máquinas para servir sua parte de vitrines, deixe a parte do carrinho com menos máquinas. É uma maneira de otimizar custos usando microserviços.</p>
+
+<p>Agora, monitorar várias aplicações, ter uma arquitetura maior para cuidar. <strong>-1 para os microserviços</strong>.</p>
+
+<h3>Tecnologias Agnósticas</h3>
+
+<p>Dei a entender em um dos pontos acima que com microserviços teremos várias linguagens. Isso não é regra, claro! Mas com uma arquitetura em microserviços fica muito mais fácil você experimentar uma nova linguagem para solucionar algum problema. Se não der certo, tudo bem! O Serviço está pequeno o suficiente para você rescrever ele em uma linguagem do seu domínio em pouco tempo.</p>
+
+<p>Coloco isso como dois pontos positivos dos microserviços: Você poder experimentar novas linguagens, poder colocar junto linguagens que não acreditam umas nas outras, descobrir novos conceitos de programação de maneira fácil sem complicar todo um negócio. E a facilidade em reescrever se for necessário. É pequeno, é rápido reescrever. <strong>+2 para os microserviços</strong>.</p>
+
+<p>Mas, na hora de contratar pessoal para mexer com várias linguagens você pode ter um problema. <strong>-1 para os microserviços</strong>.</p>
+
+<h3>Quem ganhou?</h3>
+
+<p>Se você está fazendo a matemática dos pontos acima, você está perdendo. Veja o que se aplica melhor para sua necessidade e o que você pode ganhar com cada uma. Novamente, não há melhor ou pior, são soluções distintas.</p>
+
+<p>O que você usaria para provar um conceito de uma ideia para startup? Para um hot site? Um portal de notícias? Um site institucional? Um sistema administrativo?</p>
+
+<p>Recomendo aqui a audição do Episódio #1 do Hipsters ponto tech, <a href="http://hipsters.tech/tecnologias-no-nubank-hipsters-01/">http://hipsters.tech/tecnologias-no-nubank-hipsters-01/</a> onde o pessoal do NuBank comenta sobre a escolha de microserviços desde o início, e suposições do que poderia ter acontecido se não tivessem ido por esse caminho.</p>
+
+<h3>Comunicação entre microserviços</h3>
+
+<p>Várias aplicações, várias linguagens, como uma vai conversar com a outra?</p>
+
+<p>Estamos em 2016 e para comunicar linguagens diferentes hoje temos padrões como REST, JSON que são simples de trabalhar e estão presentes em todo o lugar. Diferente dos antigos e trabalhosos XMLs com WSDLs que infelizmente ainda encontramos por aí.</p>
+
+<h3>Bancos de dados Agnósticos</h3>
+
+<p>Muito do que falamos acima para aplicações e linguagens, podem vir de encontro também ao pensar em banco de dados. Porque um banco de dados monolítico? Se ele ficar comprometido pode comprometer todo seu negócio.</p>
+
+<p>Você poder experimentar bancos de dados diferentes em busca de soluções diferentes, performances de cada um e etc. Um banco de dados para produtos, outro banco de dados para pedidos e assim por diante.</p>
+
+<p>Ah, mas como vou tirar relatórios para os meus diretores com várias bases? Como vou unir os dados de uma base com a outra? A resposta aqui pode ser BI. Business Inteligence. Una as informações que sua empresa precisa para seus KPIs e OKRs em um único ponto, onde eles possam montar seus relatórios em uma única ferramenta.</p>
+
+<h3>Na KD</h3>
+
+<p>Agora que já comentamos alguns pontos gerais de microserviços e estruturas monolíticas. Segue alguns pontos da nossa experiência com microserviços aqui na LojasKD:</p>
+
+<ul>
+<li><p>Os Microserviços chegaram na KD para resolver um problema de software legado. Foi a maneira que encontramos para ir substituindo as funcionalidades de uma grande aplicação monolítica aos poucos, até que não tenhamos mais ela. Estamos nesse rumo.</p></li>
+<li><p>Como não tinhamos nenhuma experiência com microserviços, começamos com algo minúsculo. Um serviço que apenas trazia as informações de um pedido quando passado seu ID.</p></li>
+<li><p>Começamos a experimentar linguagens e bases de dados diferentes em busca de soluções melhores para problemas conhecidos.</p></li>
+<li><p>Já erramos e tivemos que reescrever microserviços inteiros novamente, mas não levou mais que uma semana.</p></li>
+<li><p>Para serviços mais críticos, mantemos em nossa linguagem de maior domínio hoje, PHP.</p></li>
+<li><p>Sofremos um pouco com monitoramento. É bastante coisa  para monitorar, disparar alertas e ficar de olho. Custo e trabalho em cima disso são altos.</p></li>
+<li><p>A manutenção dos servers não é tão crítica, temos receitas em puppet e dockerfiles que nos ajudam nessa área.</p></li>
+<li><p>Os deploys estão automatizados, mas as vezes precisamos fazer uma orquestração verbal para evitar conflitos.</p></li>
+<li><p>Nosso time de desenvolvedores trabalham em cima de todos os microserviços e em suas diferentes linguagens. Temos Node, Python, Ruby, Java, GOLang e o já citado PHP. Sofremos um pouquinho na hora de contratar pessoas hoje. Não queremos desenvolvedores que saibam todas essas linguagens, mas o que acontece é que os candidatos acabam assustados com a diversidade.</p></li>
+</ul>
+
+
+<p>-É natural que um desenvolvedor entenda mais de uma linguagem do que de outra e vá guiando o time.</p>
+
+<ul>
+<li><p>Não descuide do tamanho dos microserviços. Mantenha uma documentação básica no mínimo.</p></li>
+<li><p>Estude sobre API Gateway.</p></li>
+</ul>
+
+
+<p>Espero que minha abordagem para explicar microserviços tenha ajudado.
+Mas e vocês, como estão usando microserviços? Ou como estão pretendendo usar?
+Dúvidas? Outras ideias? Só comentar.
+Grande Abraço!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2016/microservicos';
+    var disqus_title = 'Microserviços';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2016/4-drops-of-life-2/" title="Previous Post: 4 Drops of Life - Two">&laquo; Anterior: 4 Drops of Life - Two</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2016/microservicos/';
+        var disqus_url = 'http://flaviosilveira.com/2016/microservicos/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

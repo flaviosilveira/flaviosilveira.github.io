@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-10-23T18:38:10+00:00</updated>
+  <updated>2016-11-08T00:23:35+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,125 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Microserviços]]></title>
+    <link href="http://flaviosilveira.com/2016/microservicos/"/>
+    <updated>2016-11-07T08:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2016/microservicos</id>
+    <content type="html"><![CDATA[<p>Muito anda se falando sobre microserviços e trago para vocês minha experiência de como começamos a trabalhar dessa forma aqui na <a href="https://www.lojaskd.com.br">LojasKD</a>.</p>
+
+<p>Assim como meu post anterior sobre <a href="http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/">Ansible e automação</a>, esse assunto também faz parte de uma palestra que apresentei durante 2016, um dos meus grandes orgulhos desse ano que encerro com esse post.</p>
+
+<h3>Microserviços - O que é?</h3>
+
+<p>Para falar sobre microserviços eu sempre empresto a frase do <a href="https://twitter.com/tiagodolphine">@tiagodolphine</a>: &ldquo;O menor possível, porém grande o suficiente para representar seu domínio&rdquo;.</p>
+
+<!--more-->
+
+
+<p>Pequenas aplicações que representem seus domínios. Parece fácil ah?
+Mas a linha para que isso se torne um <strong>macroserviço</strong> é tênue. Se você descuidar da organização dos seus serviços eles podem começar a dar mais trabalho do que você gostaria.</p>
+
+<h3>Seus problemas não acabaram</h3>
+
+<p>Não existe solução perfeita, tudo tem seu uso ideal, seu lado bom e seu lado ruim.</p>
+
+<p>Microserviços não são uma bala de prata que vai resolver todos os problemas de seus projetos. Assim como você escolhe uma linguagem para desenvolver um projeto, qual banco de dados vai usar e etc, o mesmo deve servir para sua arquitetura.</p>
+
+<p><strong>Não vá de microserviços simplesmente pelo modismo!</strong></p>
+
+<p>Aliás, microserviços pode ser comparado ao que acontecia com APIs em SOAP (Simple Object Access Protocol) com seus WSDLs para lá e para cá, que tem seus primeiros registros de uso no fim dos anos 90. Tecnologia tem muito disso, coisas que voltam com nomes diferentes ou um buzz que surge com coisas que já fazemos.</p>
+
+<p>Acompanhem comigo os prós e contras de uma arquitetura monolítica versus uma de microserviços.</p>
+
+<h3>Monolítico</h3>
+
+<p>Há não tantos anos atrás, na hora de iniciar nossos projetos era certo que eles seriam de uma forma única. Como estamos falando da KD aqui, vamos pegar o exemplo de ECommerce.</p>
+
+<p>Um banco de dados, uma aplicação MVC em cima de uma linguagem. Um controller para a Vitrine, outro para o Carrinho, outro para o Checkout. Tudo em um lugar só.</p>
+
+<p>Mas então quando seu serviço cai? Tudo cai, tudo fica fora. <strong>-1 aqui para o monolítico</strong>. Mas, na hora de colocar isso em produção? Demais! Tudo em um só lugar, um único deploy. <strong>+1 para o monolítico</strong>.</p>
+
+<p>Se uma das partes do seu sistema ficava lento, grande chance de ele ficar lento por inteiro. E a parte que está deixando lento, que digamos seja lá na visualização de produtos, está impedindo que pessoas fechem suas compras. <strong>-1 para o monolítico</strong>.</p>
+
+<p>Vamos monitorar para que não caia novamente? Vamos ter que monitorar uma única aplicação, Ótimo! <strong>+1 para o monolítico</strong>.</p>
+
+<p>Achar desenvolvedores para um projeto com uma linguagem só é um outro ponto positivo aqui e também o conhecimento em cima de como servir uma única aplicação. <strong>+2 para o monolítico</strong>. Mas a curva de aprendizagem em cima de regras de negócio que estão todas juntas e misturadas podem complicar. <strong>-1 para o monolítico</strong>.</p>
+
+<h3>Os Microserviços</h3>
+
+<p>Em microserviços não vamos pensar como uma coisa só, vamos pensar como várias pequenas partes para formar um objetivo comum. Nosso Carrinho, nossa Vitrine, nosso Checkout que estavam todos juntos, aqui se separam em pequenas aplicações cada uma com sua função.</p>
+
+<p>Se um dos nossos serviços caírem, outros serviços continuam funcionando e nosso ECommerce não fica totalmente fora. <strong>+1 para os microserviços</strong>.</p>
+
+<p>Mas fazer deploy de tudo, várias aplicações. E se uma depender de outra em determinada funcionalidade? E se&hellip; É, a orquestração de entregas com microserviços pode não ser simples. <strong>-1 para os microserviços</strong>.</p>
+
+<p>Lentidão em um dos serviços? Não deve afetar o restante. <strong>+1 para os microserviços</strong>. Ainda você pode escalar as funcionalidades de uma maneira mais flexível. Exemplo: Você tem muito mais acessos na vitrine do que no carrinho? Coloque mais máquinas para servir sua parte de vitrines, deixe a parte do carrinho com menos máquinas. É uma maneira de otimizar custos usando microserviços.</p>
+
+<p>Agora, monitorar várias aplicações, ter uma arquitetura maior para cuidar. <strong>-1 para os microserviços</strong>.</p>
+
+<h3>Tecnologias Agnósticas</h3>
+
+<p>Dei a entender em um dos pontos acima que com microserviços teremos várias linguagens. Isso não é regra, claro! Mas com uma arquitetura em microserviços fica muito mais fácil você experimentar uma nova linguagem para solucionar algum problema. Se não der certo, tudo bem! O Serviço está pequeno o suficiente para você rescrever ele em uma linguagem do seu domínio em pouco tempo.</p>
+
+<p>Coloco isso como dois pontos positivos dos microserviços: Você poder experimentar novas linguagens, poder colocar junto linguagens que não acreditam umas nas outras, descobrir novos conceitos de programação de maneira fácil sem complicar todo um negócio. E a facilidade em reescrever se for necessário. É pequeno, é rápido reescrever. <strong>+2 para os microserviços</strong>.</p>
+
+<p>Mas, na hora de contratar pessoal para mexer com várias linguagens você pode ter um problema. <strong>-1 para os microserviços</strong>.</p>
+
+<h3>Quem ganhou?</h3>
+
+<p>Se você está fazendo a matemática dos pontos acima, você está perdendo. Veja o que se aplica melhor para sua necessidade e o que você pode ganhar com cada uma. Novamente, não há melhor ou pior, são soluções distintas.</p>
+
+<p>O que você usaria para provar um conceito de uma ideia para startup? Para um hot site? Um portal de notícias? Um site institucional? Um sistema administrativo?</p>
+
+<p>Recomendo aqui a audição do Episódio #1 do Hipsters ponto tech, <a href="http://hipsters.tech/tecnologias-no-nubank-hipsters-01/">http://hipsters.tech/tecnologias-no-nubank-hipsters-01/</a> onde o pessoal do NuBank comenta sobre a escolha de microserviços desde o início, e suposições do que poderia ter acontecido se não tivessem ido por esse caminho.</p>
+
+<h3>Comunicação entre microserviços</h3>
+
+<p>Várias aplicações, várias linguagens, como uma vai conversar com a outra?</p>
+
+<p>Estamos em 2016 e para comunicar linguagens diferentes hoje temos padrões como REST, JSON que são simples de trabalhar e estão presentes em todo o lugar. Diferente dos antigos e trabalhosos XMLs com WSDLs que infelizmente ainda encontramos por aí.</p>
+
+<h3>Bancos de dados Agnósticos</h3>
+
+<p>Muito do que falamos acima para aplicações e linguagens, podem vir de encontro também ao pensar em banco de dados. Porque um banco de dados monolítico? Se ele ficar comprometido pode comprometer todo seu negócio.</p>
+
+<p>Você poder experimentar bancos de dados diferentes em busca de soluções diferentes, performances de cada um e etc. Um banco de dados para produtos, outro banco de dados para pedidos e assim por diante.</p>
+
+<p>Ah, mas como vou tirar relatórios para os meus diretores com várias bases? Como vou unir os dados de uma base com a outra? A resposta aqui pode ser BI. Business Inteligence. Una as informações que sua empresa precisa para seus KPIs e OKRs em um único ponto, onde eles possam montar seus relatórios em uma única ferramenta.</p>
+
+<h3>Na KD</h3>
+
+<p>Agora que já comentamos alguns pontos gerais de microserviços e estruturas monolíticas. Segue alguns pontos da nossa experiência com microserviços aqui na LojasKD:</p>
+
+<ul>
+<li><p>Os Microserviços chegaram na KD para resolver um problema de software legado. Foi a maneira que encontramos para ir substituindo as funcionalidades de uma grande aplicação monolítica aos poucos, até que não tenhamos mais ela. Estamos nesse rumo.</p></li>
+<li><p>Como não tinhamos nenhuma experiência com microserviços, começamos com algo minúsculo. Um serviço que apenas trazia as informações de um pedido quando passado seu ID.</p></li>
+<li><p>Começamos a experimentar linguagens e bases de dados diferentes em busca de soluções melhores para problemas conhecidos.</p></li>
+<li><p>Já erramos e tivemos que reescrever microserviços inteiros novamente, mas não levou mais que uma semana.</p></li>
+<li><p>Para serviços mais críticos, mantemos em nossa linguagem de maior domínio hoje, PHP.</p></li>
+<li><p>Sofremos um pouco com monitoramento. É bastante coisa  para monitorar, disparar alertas e ficar de olho. Custo e trabalho em cima disso são altos.</p></li>
+<li><p>A manutenção dos servers não é tão crítica, temos receitas em puppet e dockerfiles que nos ajudam nessa área.</p></li>
+<li><p>Os deploys estão automatizados, mas as vezes precisamos fazer uma orquestração verbal para evitar conflitos.</p></li>
+<li><p>Nosso time de desenvolvedores trabalham em cima de todos os microserviços e em suas diferentes linguagens. Temos Node, Python, Ruby, Java, GOLang e o já citado PHP. Sofremos um pouquinho na hora de contratar pessoas hoje. Não queremos desenvolvedores que saibam todas essas linguagens, mas o que acontece é que os candidatos acabam assustados com a diversidade.</p></li>
+</ul>
+
+
+<p>-É natural que um desenvolvedor entenda mais de uma linguagem do que de outra e vá guiando o time.</p>
+
+<ul>
+<li><p>Não descuide do tamanho dos microserviços. Mantenha uma documentação básica no mínimo.</p></li>
+<li><p>Estude sobre API Gateway.</p></li>
+</ul>
+
+
+<p>Espero que minha abordagem para explicar microserviços tenha ajudado.
+Mas e vocês, como estão usando microserviços? Ou como estão pretendendo usar?
+Dúvidas? Outras ideias? Só comentar.
+Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Ansible - Desperte a Automação Em Você]]></title>
@@ -734,246 +853,6 @@ Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma apl
 
 
 <p>Grande Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vagrant: Fácil E útil]]></title>
-    <link href="http://flaviosilveira.com/2012/vagrant-facil-e-util/"/>
-    <updated>2012-11-07T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/vagrant-facil-e-util</id>
-    <content type="html"><![CDATA[<p>Salve pessoal!</p>
-
-
-
-
-<p>Hoje eu quero passar uma dica para fazer você parar com aquela desculpa &#8220;Na minha máquina tá funcionando&#8221;. Para isso vou apresentar para vocês o Vagrant <a href="http://vagrantup.com/">http://vagrantup.com/</a>.</p>
-
-
-
-
-<p>O Vagrant é uma ferramenta que te ajuda na criação da infraestrutura para o seu projeto, usando para isso uma máquina virtual. Mas aí você pensa: &#8220;Uma máquina virtual para cada projeto?? Isso vai dar trabalho&#8221;. A grande jogada é que o Vagrant deixa muita coisa invísivel, deixando com que você se preocupe apenas com seu código. É uma máquina virtual reduzida e portável facilmente. Para cada projeto você pode deixar um ambiente diferente rodando, um com PHP 4, outro com PHP 5, um em Debian outro em CentOS, você escolhe.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p><strong><br/>
-Instalação</strong></p>
-
-
-
-
-<p>Para criar suas máquinas vituais o Vagrant precisa do Virtual Box, um cliente de máquinas virtuais da Oracle bastante conhecido. Basta instalar! Você não precisa deixar o programa aberto para usar o Vagrant. Você pode fazer o download do Virtual box no seguinte link <a href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a>.</p>
-
-
-
-
-<p>Instalado o Virtual Box, faça o download do Vagrant e o instale. Procure pela versão do seu sistema operacional no seguinte link <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.</p>
-
-
-
-
-<p><strong><br/>
-Configurando e rodando</strong></p>
-
-
-
-
-<p>Outra coisa que o Vagrant utiliza para criar suas máquinas virtuais são Boxes, ou no singular uma Box. Essa Box funciona como uma imagem, uma iso do sistema operacional que você quer instalar. Então antes de qualquer coisa vamos adicionar uma box, para que você a tenha disponível para criar seu primeiro teste com vagrant.</p>
-
-
-
-
-<p>Abra o console do seu sistema operacional, seja o cmd no windows ou o terminal no linux ou mac e entre com o comando</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant box add lucid32 http://files.vagrantup.com/lucid32.box
-</pre>
-
-
-
-
-<p>Essa é a box de exemplo que o Quick Start do Vagrant traz para a gente, onde o primeiro parâmetro que vem após add é o nome que estamos dando a nossa box e o segundo o caminho da onde faremos o download. Esse comando vai trazer uma Box do Ubuntu Lucid. Aqui eu recomendo que caso esteja começando com o Vagrant faça um teste usando essa box, mas caso queira avançar um pouco mais, aqui está uma lista de algumas boxes disponíveis por aí <a href="http://www.vagrantbox.es/">http://www.vagrantbox.es/</a>.</p>
-
-
-
-
-<p>Box preparada, que tal colocar nosso ambiente para rodar?</p>
-
-
-
-
-<p>Crie uma pasta para o seu projeto no seu ambiente de trabalho e acesse ela via console.<br/>
-Entre com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant init lucid32
-</pre>
-
-
-
-
-<p>Caso tenha usado outro nome para a sua box no passo anterior, substitua no lugar de lucid32 no comando acima.</p>
-
-
-
-
-<p>Como o próprio comando se explica, ele prepara uma configuração inicial para você usando um arquivo que ele cria em seu diretório chamada Vagrantfile. Dentro desse arquivo existe algumas configurações como a box a ser usada entre outros.</p>
-
-
-
-
-<p>Agora é só subir o ambiente.</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant up
-</pre>
-
-
-
-
-<p>Ao subir o ambiente o vagrant irá realmente criar sua máquina virtual e configurar as coisas para você. Acompanhe as saídas dos comandos para detalhes.</p>
-
-
-
-
-<p>Tudo pronto!</p>
-
-
-
-
-<p><strong><br/>
-Testando</strong></p>
-
-
-
-
-<p>Chegou a hora da verdade. Crie um arquivo html com qualquer conteúdo dentro da pasta do seu projeto.</p>
-
-
-
-
-<p>Por exemplo vamos criar um arquivo chamado teste.html com o seguinte conteúdo</p>
-
-
-
-
-<pre class="brush: xml; title: ; notranslate" title="">&lt;h1&gt;Teste&lt;/h1&gt;
-</pre>
-
-
-
-
-<p>Agora acesse via browser a pasta do seu projeto e o arquivo que criou.<br/>
-<a href="../../assets/uploads/2012/11/imagem1.png"><img class="alignleft size-full wp-image-587" title="Vagrant - Rodando" src="../../assets/uploads/2012/11/imagem1.png" alt="Vagrant - Rodando" width="394" height="101" /></a><br/>
-<br style="clear: both;" /><br/>
-Esse HTML está dentro da sua máquina virtual e você está rodando a partir do seu localhost. Muito bom não?</p>
-
-
-
-
-<p>Alguns pontos:</p>
-
-
-
-
-<ul>
-<li>Note que você nem abriu essa máquina virtual para trabalhar dentro dela. Você está trabalhando como se ela fosse uma pasta local em sua máquina, essa é a beleza da coisa. Você pode deixar isso melhor organizado usando a opção share_folder do arquivo de configuração Vagrantfile</li>
-<li>Mostrei aqui um teste com HTML como também é mostrado no Quick Start do Vagrant, mas você pode instalar o que quiser dentro da sua máquina virtual seja PHP, Java, Python e rodar o que bem entender. Apenas atente para fazer direcionamento das portas para que isso funcione de acordo. Veja a opção forward_port do arquivo de configuração Vagrantfile</li>
-<li>Detalhes com todas as opções disponíveis para o Vagrantfile você encontra na documentação oficial <a href="http://vagrantup.com/v1/docs/vagrantfile.html">http://vagrantup.com/v1/docs/vagrantfile.html</a></li>
-</ul>
-
-
-
-
-<p><strong><br/>
-SSH</strong></p>
-
-
-
-
-<p>E que tal um acesso SSH na sua máquina virtual?<br/>
-Sim, o Vagrant te traz isso!<br/>
-Se você está no Mac ou Unix apenas entre com o comando abaixo e você está dentro.</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
-</pre>
-
-
-
-
-<p>Para usuários do windows será necessário o uso do puttygen, putty e algumas configurações em cima deles. Nada muito complicado para quem já trabalha com SSH no seu dia a dia.</p>
-
-
-
-
-<p>Após acesar o ssh via vagrant, você sai no seu home <em>/home/vagrant</em>.<br/>
-Os arquivos que você criou dentro da pasta do seu projeto podem ser encontrados em <em>/vagrant</em>.</p>
-
-
-
-
-<p><strong><br/>
-Distribuindo seu ambiente</strong></p>
-
-
-
-
-<p>Está trabalhando com alguém em um projeto? Que tal enviar esse ambiente que você criou no Vagrant para essa pessoa, para que vocês trabalhem em cima do mesmo ambiente?</p>
-
-
-
-
-<p>Para isso basta criar um pacote da sua máquina virtual com o seguinte comando</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant package
-</pre>
-
-
-
-
-<p>Ao final do processo você terá um arquivo chamado package.box.<br/>
-Para que alguém ou você mesmo o utilize, basta seguir os passos apresentados aqui como se esse arquivo fosse uma box que você vai fazer o download. Sem mais.</p>
-
-
-
-
-<p><strong><br/>
-Resumo</strong></p>
-
-
-
-
-<p>Apresentei aqui uma geral sobre o Vagrant, porque ele é útil, porque é interessante usá-lo e etc. Fizemos um exemplo e vimos como distribuir esse ambiente com mais pessoas. Cobri aqui o básico dessa sensacional ferramenta para você configurar o ambiente de seus projetos individualmente.</p>
-
-
-
-
-<p>Você pode ir mais além e criar várias máquinas virtuais que se comunicam entre si e outros. Para isso leia a documentação <a href="http://vagrantup.com/v1/docs/index.html">http://vagrantup.com/v1/docs/index.html</a> e se intere do que mais o Vagrant pode fazer por você.</p>
-
-
-
-
-<p>É isso pessoal.<br/>
-Abraços.</p>
 
 ]]></content>
   </entry>
