@@ -1,0 +1,371 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Criando Seu Container NGinx + PHP (Parte 1) - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Criando Seu Container NGinx + PHP (Parte 1) Categorias: desenvolvimento, php Fala pessoal!Esse já é nosso terceiro artigo sobre docker: Já vimos &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Criando Seu Container NGinx + PHP (Parte 1)</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2017-01-14T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Fala pessoal!<br/>Esse já é nosso terceiro artigo sobre docker:</p>
+
+<ul>
+<li>Já vimos como podemos iniciar com o Docker no artigo <a href="http://flaviosilveira.com/2016/comece-com-docker/">http://flaviosilveira.com/2016/comece-com-docker</a>.</li>
+<li>Em seguida vimos como iniciar um Container com PHP 7 e usar seu servidor embutido (built in) em <a href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/">http://flaviosilveira.com/2016/docker-php7-e-php-built-in</a>.</li>
+</ul>
+
+
+<p>Com isso já conseguimos trabalhar com o PHP, mas o servidor Built-in não é a maneira ideal para isso. Como podemos colocar o PHP como um todo rodando em um container Docker para a gente? Vamos responder a isso.</p>
+
+<p>Para quem não leu os primeiros dois artigos citados acima, recomendo. Acredito que vá ficar melhor de entender o que vem abaixo. Temos bastante <em>tecnês</em>.</p>
+
+<!--more-->
+
+
+<h3>Sim, tem pronto por aí!</h3>
+
+<p>Nos artigos anteriores falamos sobre o DockerHub, repositório oficial de imagens para criarmos nossos containers. Estamos buscando um container que tenha para a gente um PHP e um NGinx, e claro que tem várias imagens prontas disso por aí.</p>
+
+<p>Inclusive a que criamos nesse tutorial <a href="https://hub.docker.com/r/flaviosilveira/php-nginx/">https://hub.docker.com/r/flaviosilveira/php-nginx</a>.</p>
+
+<p>Mas, para aprendermos algo novo, vamos construir nosso próprio container e com ele criar nossa imagem. Se você entendeu o conceito de containers e o que ele pode te trazer, pare e pense as maneiras que você teria para fazer isso.</p>
+
+<p>Conseguiu pensar em algumas?</p>
+
+<h3>Nossa maneira</h3>
+
+<p>Que tal partirmos de um sistema operacional? Vamos de Debian. Acredito que é o meio caminho entre o que muitos conhecem, que é o Ubuntu, e legal para sair um pouco do mesmo.</p>
+
+<p>Todos os comandos abaixo já foram explicados nos artigos anteriores. Volta lá se perdeu algo!</p>
+
+<p>Lembrem-se do que sempre digo: <strong><em>Não é complicado! Se ficar complicado demais tem algo errado, volte e leia novamente, com mais calma</em></strong>.</p>
+
+<h4>SO</h4>
+
+<p>Rodando um container Debian, vmaos chamar ele de <strong><em>server</em></strong>:</p>
+
+<pre><code>docker run --name server -itd -p 80:80 debian
+</code></pre>
+
+<p>Confira seu container rodando</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Vamos dar um update no Debian para dessa maneira ele atualizar os caminhos dos pacotes:</p>
+
+<pre><code>docker exec server apt-get update
+</code></pre>
+
+<h4>NGinx</h4>
+
+<p>Terminado, podemos partir para a instalação do NGinx:<br/><strong>ATENÇÃO:</strong> não esqueça do -y abaixo, ele serve para confirmar que você quer instalar o pacote. As vezes sem essa opção a saída não vem corretamente do container para sua máquina.</p>
+
+<pre><code>docker exec server apt-get install nginx -y
+</code></pre>
+
+<p>Vamos checar se instalou tudo certo?</p>
+
+<pre><code>docker exec server nginx -v
+</code></pre>
+
+<p>A saída deve ser algo como:</p>
+
+<pre><code>nginx version: nginx/1.6.2
+</code></pre>
+
+<p>O NGinx está instalado, mas ainda não está rodando. Vamos iniciar ele?</p>
+
+<pre><code>docker exec server service nginx start
+</code></pre>
+
+<p>Agora que o NGinx está rodando, você já é capaz de ir ao seu localhost e ver a página inicial do NGinx.</p>
+
+<h4>PHP</h4>
+
+<p>Vamos agora instalar o PHP. Antes disso, vamos checar quais versões do PHP temos disponível para o Debian nessa versão.</p>
+
+<pre><code>docker exec server apt-cache search php | grep fpm
+</code></pre>
+
+<p>Aqui retornou a versão 5 do FPM. Vamos com ela.<br/><strong>ATENÇÃO:</strong> não esqueça do -y.</p>
+
+<pre><code>docker exec server apt-get install php5-fpm -y
+</code></pre>
+
+<p>Vamos checar se instalou tudo certo?</p>
+
+<pre><code>docker exec server php --version
+</code></pre>
+
+<p>A saída deve ser algo como:</p>
+
+<pre><code>PHP 5.6.29-0+deb8u1 (cli) (built: Dec 13 2016 16:02:08) 
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
+</code></pre>
+
+<p>Para fechar igual a instalação do NGinx que fizemos acima, vamos iniciar o php-fpm?</p>
+
+<pre><code>docker exec server service php5-fpm start
+</code></pre>
+
+<p>Feito!</p>
+
+<p>Sim! Você pode adicioanar os caminhos no debian para instalar a versão 7 do PHP. Aqui fizemos com a versão que havia disponível para facilitar esse tutorial.</p>
+
+<h3>Hora de Configurar</h3>
+
+<p>Sistema Operacional, NGinx e PHP ok. Hora de configurar as coisas para rodarem.
+Acima executamos todos os comandos de fora do container com <strong><em>docker exec</em></strong>. Agora como vamos editar arquivos de configuração, acho que é melhor irmos para dentro do container.</p>
+
+<pre><code>docker attach server
+</code></pre>
+
+<p>Seu terminal deve ter ficado com algo como <strong><em>root@id-do-seu-container</em></strong>. Estamos dentro do container!</p>
+
+<p>Para editar arquivos vamos precisar de um editor. Vou de <strong><em>Vim</em></strong>, e vocês? Instalem o editor que você tiverem facilidade.</p>
+
+<p><strong><em>ATENÇÃO:</em></strong> Lembra do -y nos comandos acima? Aqui não passamos esse parâmetro. Então você terá que responder com <strong><em>Y</em></strong> se você deseja instalar o pacote quando for questionado por isso. Ou adicione o <strong><em>-Y</em></strong> no comando abaixo ;-)</p>
+
+<pre><code>apt-get install vim
+</code></pre>
+
+<p>Com o editor em mãos, vamos configurar o NGinx.
+Vamos ao arquivo default de configuração. Nessa versão ele está no seguinte caminho:</p>
+
+<pre><code>vim /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O Arquivo vem com várias linhas comentadas para facilitar o seu entendimento.
+Segue o meu arquivo abaixo. Deixei o mais enxuto para ele funcionar na porta 80.</p>
+
+<pre><code>server {
+    listen   80;
+
+    root /var/www/app;
+    index index.php index.html;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+</code></pre>
+
+<p>Após editar o arquivo, reinicie o <strong><em>NGinx</em></strong></p>
+
+<pre><code>service nginx restart
+</code></pre>
+
+<p>Repare que colocamos como raiz o caminho <strong><em>/var/www/app</em></strong>.
+Vamos até <strong><em>/var/www</em></strong></p>
+
+<pre><code>cd /var/www
+</code></pre>
+
+<p>Agora criamos a pasta app</p>
+
+<pre><code>mkdir app
+</code></pre>
+
+<p>Vamos criar um arquivo <strong><em>index.php</em></strong> com uma função <strong><em>phpinfo</em></strong> dentro dele para fazermos um teste.</p>
+
+<pre><code>&lt;?php phpinfo(); ?&gt;
+</code></pre>
+
+<p>Acesse localhost e veja o resultado.</p>
+
+<h3>Hmm.. mas quando eu derrubar esse container?</h3>
+
+<p>É, você vai ter que fazer tudo novamente. Mas não entre em pânico! Que tal criarmos nossa própria imagem, e sempre que quisermos um container com NGinx+PHP, podemos usar nossa própria imagem. Como te parece?</p>
+
+<p>Vamos para a parte 2 desse artigo para pegar essa ideia <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2">http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2</a>.</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2017/criando-seu-container-nginx-php-1';
+    var disqus_title = 'Criando seu Container NGinx + PHP (Parte 1)';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2016/microservicos/" title="Previous Post: Microserviços">&laquo; Anterior: Microserviços</a>
+        
+
+        
+          <a class="pull-right" href="/2017/criando-seu-container-nginx-php-2/" title="Next Post: Criando seu Container NGinx + PHP (Parte 2)">Próximo: Criando seu Container NGinx + PHP (Parte 2) &raquo;</a>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/';
+        var disqus_url = 'http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

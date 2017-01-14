@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2016-11-08T01:08:33+00:00</updated>
+  <updated>2017-01-14T22:05:19+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,330 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Seu Container NGinx + PHP (Parte 2)]]></title>
+    <link href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/"/>
+    <updated>2017-01-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2</id>
+    <content type="html"><![CDATA[<p>No final da <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1">parte 1 desse artigo</a>, onde montamos um container com Debian, NGinx e PHP, nos deparamos com o seguinte: Se pararmos nosso container e precisar novamente de NGinx + PHP, teremos que partir do zero.</p>
+
+<p>Para evitar isso, vamos criar nossa própria imagem, uma imagem que vai guardar o que fizemos até agora.</p>
+
+<!--more-->
+
+
+<h3>Saia do container</h3>
+
+<p>Primeiro vamos sair de nosso container com <strong><em>ctrl+p</em></strong> e em seguida <strong><em>ctrl+q</em></strong>.<br/><strong><em>Dica:</em></strong> Não precisa soltar o ctrl.</p>
+
+<h3>Conta no DockerHub</h3>
+
+<p>Vá até o DockerHub <a href="https://hub.docker.com/">https://hub.docker.com</a> e crie sua conta.</p>
+
+<p>Após isso volte para o terminal e faço o comando de login</p>
+
+<pre><code>docker login
+</code></pre>
+
+<p>Irá pedir seu usuário e senha e feito!</p>
+
+<h3>Criando Imagem</h3>
+
+<p>Para criar sua imagem, você vai precisar do <strong><em>ID</em></strong> do seu container, use <strong><em>docker ps</em></strong> para consultar. A primeira coluna vai te mostrar seu <strong><em>CONTAINER ID</em></strong>.</p>
+
+<p>Em seguida, execute o commit com o comando abaixo:</p>
+
+<pre><code>docker commit id-do-seu-container flaviosilveira/php-nginx
+</code></pre>
+
+<p>Substitua no comando acima <strong><em>id-do-seu-container</em></strong> pelo id mostrado em <strong><em>docker ps</em></strong>.</p>
+
+<p>Fora o id, colocamos o nome que desejamos para nossa imagem. Escolhi php-nginx.</p>
+
+<p>Repare que coloquei meu nome de usuário do DockerHub na frente do nome que quero para a imagem. Isso será necessário na hora do envio para o DockerHub.</p>
+
+<p>O comando vai te retornar um hash SHA-256.</p>
+
+<p>Confira sua imagem criada</p>
+
+<pre><code>docker images
+</code></pre>
+
+<p>Sua imagem deve estar no topo dessa lista.</p>
+
+<h3>Usando sua imagem localmente</h3>
+
+<p>Uma vez que vemos a imagem no comando <strong><em>docker images</em></strong>, você já pode usar ela localmente.
+<strong><em>ATENÇÃO:</em></strong> Altere o meu nome de usuário abaixo pelo seu.</p>
+
+<pre><code>docker run --name usando-imagem -itd -p 8080:80 flaviosilveira/php-nginx
+</code></pre>
+
+<p>Pontos de atenção:</p>
+
+<ul>
+<li>Como nossa imagem é baseada na do Debian, rodamos ela de maneira igual. Compare o comando run executado aqui com o da parte 1 desse artigo.</li>
+<li>Coloquei a porta 8080 do nosso host para apontar para a 80 do container (-p 8080:80), para não conflitar com a porta 80 do outro container (-p 80:80).</li>
+</ul>
+
+
+<p>Outra coisa. O serviço do NGinx e do PHP5-FPM estão parados!</p>
+
+<p>Você precisa iniciar eles para ver as coisas funcionando.</p>
+
+<pre><code>docker exec minha-imagem service nginx start
+docker exec minha-imagem service php5-fpm start
+</code></pre>
+
+<p>Agora confira o resultado em <strong><em>localhost:8080</em></strong>.</p>
+
+<h3>Enviando sua imagem para o DockerHub</h3>
+
+<p>Já vimos em outros artigos o comando <strong><em>docker pull</em></strong> que serve para fazermos download de imagens para nossa máquina. Por padrão ele busca imagens do DockerHub, repositório padrão do docker.</p>
+
+<p>Agora para enviarmos imagens para ele, temos o <strong><em>push</em></strong></p>
+
+<pre><code>docker push flaviosilveira/php-nginx
+</code></pre>
+
+<h3>Testando</h3>
+
+<p>Antes de testar, vamos eliminar tudo que temos localmente. Parar o container e remover a imagem.</p>
+
+<pre><code>docker stop usando-imagem
+docker rm usando-imagem
+docker rmi flaviosilveira/php-nginx
+</code></pre>
+
+<p>Agora basta tentar executar o mesmo run que fizemos acima.</p>
+
+<pre><code>docker run --name usando-dockerhub -itd -p 8080:80 flaviosilveira/php-nginx
+</code></pre>
+
+<p>A imagem não será encontrada localmente e será feito download dela diretamente do docker hub.</p>
+
+<p>Veja seu container rodando</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Ou dê start no NGinx e no PHP-FOM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
+
+<h3>Compartilhando seus arquivos php com o container</h3>
+
+<p>Para compartilhar seus arquivos locais de PHP com o container, use o parâmetro de volume, como fizemos no artigo de <a href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/">docker com PHP Built in</a>.</p>
+
+<pre><code>docker run --name usando-dockerhub -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx
+</code></pre>
+
+<p>No parâmetro -v, você coloca o caminho da sua pasta local e separado por : (dois pontos) temos a pasta root que definimos no nosso NGinx.</p>
+
+<p>Acesse o navegador para constatar.</p>
+
+<h3>Resumo e Próximos passos?</h3>
+
+<p>Nesse artigo dividido em duas partes fizemos bastante coisa:
+<br/>Usamos uma imagem debian, instalamos NGinx e PHP de fora do container com <strong><em>exec</em></strong> e depois entramos nele para configurar as coisas.</p>
+
+<p>Criamos um login no dockerHub, criamos uma imagem nossa e agora ela está disponível para quem precisar.</p>
+
+<p>Mas a maneira como fizemos não deixa claro de que imagem partimos ou ainda caso a gente desista de usar Debian e queira usar CentOS, você vai ter que novamente partir do zero dessa maneira que fizemos.</p>
+
+<p>Nossos próximos passos são aprender um pouco sobre tags e criar nossa imagem usando DockerFile, que também vai nos ajudar a parar com a chatisse de ter que iniciar o php e o NGinx manualmente.</p>
+
+<p>Vamos para um post sobre isso?</p>
+
+<p>Até lá! Grande Abraço!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Seu Container NGinx + PHP (Parte 1)]]></title>
+    <link href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/"/>
+    <updated>2017-01-14T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1</id>
+    <content type="html"><![CDATA[<p>Fala pessoal!<br/>Esse já é nosso terceiro artigo sobre docker:</p>
+
+<ul>
+<li>Já vimos como podemos iniciar com o Docker no artigo <a href="http://flaviosilveira.com/2016/comece-com-docker/">http://flaviosilveira.com/2016/comece-com-docker</a>.</li>
+<li>Em seguida vimos como iniciar um Container com PHP 7 e usar seu servidor embutido (built in) em <a href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/">http://flaviosilveira.com/2016/docker-php7-e-php-built-in</a>.</li>
+</ul>
+
+
+<p>Com isso já conseguimos trabalhar com o PHP, mas o servidor Built-in não é a maneira ideal para isso. Como podemos colocar o PHP como um todo rodando em um container Docker para a gente? Vamos responder a isso.</p>
+
+<p>Para quem não leu os primeiros dois artigos citados acima, recomendo. Acredito que vá ficar melhor de entender o que vem abaixo. Temos bastante <em>tecnês</em>.</p>
+
+<!--more-->
+
+
+<h3>Sim, tem pronto por aí!</h3>
+
+<p>Nos artigos anteriores falamos sobre o DockerHub, repositório oficial de imagens para criarmos nossos containers. Estamos buscando um container que tenha para a gente um PHP e um NGinx, e claro que tem várias imagens prontas disso por aí.</p>
+
+<p>Inclusive a que criamos nesse tutorial <a href="https://hub.docker.com/r/flaviosilveira/php-nginx/">https://hub.docker.com/r/flaviosilveira/php-nginx</a>.</p>
+
+<p>Mas, para aprendermos algo novo, vamos construir nosso próprio container e com ele criar nossa imagem. Se você entendeu o conceito de containers e o que ele pode te trazer, pare e pense as maneiras que você teria para fazer isso.</p>
+
+<p>Conseguiu pensar em algumas?</p>
+
+<h3>Nossa maneira</h3>
+
+<p>Que tal partirmos de um sistema operacional? Vamos de Debian. Acredito que é o meio caminho entre o que muitos conhecem, que é o Ubuntu, e legal para sair um pouco do mesmo.</p>
+
+<p>Todos os comandos abaixo já foram explicados nos artigos anteriores. Volta lá se perdeu algo!</p>
+
+<p>Lembrem-se do que sempre digo: <strong><em>Não é complicado! Se ficar complicado demais tem algo errado, volte e leia novamente, com mais calma</em></strong>.</p>
+
+<h4>SO</h4>
+
+<p>Rodando um container Debian, vmaos chamar ele de <strong><em>server</em></strong>:</p>
+
+<pre><code>docker run --name server -itd -p 80:80 debian
+</code></pre>
+
+<p>Confira seu container rodando</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Vamos dar um update no Debian para dessa maneira ele atualizar os caminhos dos pacotes:</p>
+
+<pre><code>docker exec server apt-get update
+</code></pre>
+
+<h4>NGinx</h4>
+
+<p>Terminado, podemos partir para a instalação do NGinx:<br/><strong>ATENÇÃO:</strong> não esqueça do -y abaixo, ele serve para confirmar que você quer instalar o pacote. As vezes sem essa opção a saída não vem corretamente do container para sua máquina.</p>
+
+<pre><code>docker exec server apt-get install nginx -y
+</code></pre>
+
+<p>Vamos checar se instalou tudo certo?</p>
+
+<pre><code>docker exec server nginx -v
+</code></pre>
+
+<p>A saída deve ser algo como:</p>
+
+<pre><code>nginx version: nginx/1.6.2
+</code></pre>
+
+<p>O NGinx está instalado, mas ainda não está rodando. Vamos iniciar ele?</p>
+
+<pre><code>docker exec server service nginx start
+</code></pre>
+
+<p>Agora que o NGinx está rodando, você já é capaz de ir ao seu localhost e ver a página inicial do NGinx.</p>
+
+<h4>PHP</h4>
+
+<p>Vamos agora instalar o PHP. Antes disso, vamos checar quais versões do PHP temos disponível para o Debian nessa versão.</p>
+
+<pre><code>docker exec server apt-cache search php | grep fpm
+</code></pre>
+
+<p>Aqui retornou a versão 5 do FPM. Vamos com ela.<br/><strong>ATENÇÃO:</strong> não esqueça do -y.</p>
+
+<pre><code>docker exec server apt-get install php5-fpm -y
+</code></pre>
+
+<p>Vamos checar se instalou tudo certo?</p>
+
+<pre><code>docker exec server php --version
+</code></pre>
+
+<p>A saída deve ser algo como:</p>
+
+<pre><code>PHP 5.6.29-0+deb8u1 (cli) (built: Dec 13 2016 16:02:08) 
+Copyright (c) 1997-2016 The PHP Group
+Zend Engine v2.6.0, Copyright (c) 1998-2016 Zend Technologies
+    with Zend OPcache v7.0.6-dev, Copyright (c) 1999-2016, by Zend Technologies
+</code></pre>
+
+<p>Para fechar igual a instalação do NGinx que fizemos acima, vamos iniciar o php-fpm?</p>
+
+<pre><code>docker exec server service php5-fpm start
+</code></pre>
+
+<p>Feito!</p>
+
+<p>Sim! Você pode adicioanar os caminhos no debian para instalar a versão 7 do PHP. Aqui fizemos com a versão que havia disponível para facilitar esse tutorial.</p>
+
+<h3>Hora de Configurar</h3>
+
+<p>Sistema Operacional, NGinx e PHP ok. Hora de configurar as coisas para rodarem.
+Acima executamos todos os comandos de fora do container com <strong><em>docker exec</em></strong>. Agora como vamos editar arquivos de configuração, acho que é melhor irmos para dentro do container.</p>
+
+<pre><code>docker attach server
+</code></pre>
+
+<p>Seu terminal deve ter ficado com algo como <strong><em>root@id-do-seu-container</em></strong>. Estamos dentro do container!</p>
+
+<p>Para editar arquivos vamos precisar de um editor. Vou de <strong><em>Vim</em></strong>, e vocês? Instalem o editor que você tiverem facilidade.</p>
+
+<p><strong><em>ATENÇÃO:</em></strong> Lembra do -y nos comandos acima? Aqui não passamos esse parâmetro. Então você terá que responder com <strong><em>Y</em></strong> se você deseja instalar o pacote quando for questionado por isso. Ou adicione o <strong><em>-Y</em></strong> no comando abaixo ;-)</p>
+
+<pre><code>apt-get install vim
+</code></pre>
+
+<p>Com o editor em mãos, vamos configurar o NGinx.
+Vamos ao arquivo default de configuração. Nessa versão ele está no seguinte caminho:</p>
+
+<pre><code>vim /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O Arquivo vem com várias linhas comentadas para facilitar o seu entendimento.
+Segue o meu arquivo abaixo. Deixei o mais enxuto para ele funcionar na porta 80.</p>
+
+<pre><code>server {
+    listen   80;
+
+    root /var/www/app;
+    index index.php index.html;
+
+    location ~ \.php$ {
+        try_files $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php5-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+}
+</code></pre>
+
+<p>Após editar o arquivo, reinicie o <strong><em>NGinx</em></strong></p>
+
+<pre><code>service nginx restart
+</code></pre>
+
+<p>Repare que colocamos como raiz o caminho <strong><em>/var/www/app</em></strong>.
+Vamos até <strong><em>/var/www</em></strong></p>
+
+<pre><code>cd /var/www
+</code></pre>
+
+<p>Agora criamos a pasta app</p>
+
+<pre><code>mkdir app
+</code></pre>
+
+<p>Vamos criar um arquivo <strong><em>index.php</em></strong> com uma função <strong><em>phpinfo</em></strong> dentro dele para fazermos um teste.</p>
+
+<pre><code>&lt;?php phpinfo(); ?&gt;
+</code></pre>
+
+<p>Acesse localhost e veja o resultado.</p>
+
+<h3>Hmm.. mas quando eu derrubar esse container?</h3>
+
+<p>É, você vai ter que fazer tudo novamente. Mas não entre em pânico! Que tal criarmos nossa própria imagem, e sempre que quisermos um container com NGinx+PHP, podemos usar nossa própria imagem. Como te parece?</p>
+
+<p>Vamos para a parte 2 desse artigo para pegar essa ideia <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2">http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Microserviços]]></title>
@@ -518,342 +842,6 @@ Já conhecia o Spaceship? Vale uma lida na documentação em <a href="http://php
 <p>Espero que sua cabeça esteja com ideias em cima do que foi passado aqui.</p>
 
 <p>Grande Abraço!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Comece Com Docker]]></title>
-    <link href="http://flaviosilveira.com/2016/comece-com-docker/"/>
-    <updated>2016-10-03T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2016/comece-com-docker</id>
-    <content type="html"><![CDATA[<p>Tenho dois posts envolvendo <a href="https://www.vagrantup.com/">vagrant</a> aqui no blog que ainda são certo sucesso de acessos. <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util">Vagrant Fácil e Útil</a> que dá uma introdução ao Vagrant com um exemplo simples e <a href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/">Vagrant, PuPHPet E PHP Built In</a> que apresenta o PuPHPet como um facilitador para criar ambientes e um experimento com o PHP Built In. O primeiro artigo é de 2012, o segundo de 2013. Passados três anos e vendo a busca disso não diminuir, quero trazer para quem ainda não conhece o <a href="https://www.docker.com/">Docker</a>.</p>
-
-<!--more-->
-
-
-<h3>Containers VS Virtual Machines</h3>
-
-<p>Muita coisa me anima no Vagrant: ser uma máquina virtual leve, poder deixar minha máquina limpa sem ter que instalar várias coisas, poder trabalhar com várias versões de software com facilidade, se aproximar bastante do ambiente de produção e poder experimentar sem medo.</p>
-
-<p>Não vou entrar aqui na discussão filosófica sobre docker vs vagrant, quero apenas trazer uma alternativa a tudo que eu coloquei acima e, em um futuro, mostrar como o docker pode nos ajudar a experimentar ainda mais novas tecnologias.</p>
-
-<p>Docker trabalha com containers, Vagrant com máquinas virtuais. Qual a diferença se você está começando com tudo isso? Não muita! Você pode pensar no container como uma máquina virtual se você está começando mas tenha em mente que todo o conceito e funcionamento é diferente. Ná prática você vai continuar com um mundo paralelo onde vai poder criar e experimentar suas coisas.</p>
-
-<h3>O velho que é novo</h3>
-
-<p>Containers já existem há algum tempo dentro da nossa área com o que chamavamos de Linux Containers ou LXC. O que aparece com o Docker agora é uma maneira mais fácil de trabalhar com tudo isso e um engajamento da comunidade e das empresas de software gigantesco, trazendo uma gama de várias ferramentas prontas em formato de imagens. Com isso não vamos perder muito tempo com configurações e testar e descobrir tecnologias fica mais fácil.</p>
-
-<p>Marque na agenda para pesquisar sobre libvirt, LXC e a história por trás da criação do Docker na França. Vale a pena!</p>
-
-<h3>Instalação e não só para Linux</h3>
-
-<p>Diferente dos antigos, o docker trouxe maneiras de trabalharmos com containers em qualquer sistema operacional. A maneira como ele faz isso está sempre evoluindo a cada versão. Pesquise como está para o seu sistema operacional.</p>
-
-<p>Eu não vou tratar aqui como instalar o Docker nem sua arquitetura básica, quero ir direto aos pontos mesmo que ainda ficando muito parecido com os primeiros passos da documentação oficial. A ideia é explicar as coisas um pouquinho diferente para quem não pegou da maneira que ficou lá e trazer umas maneiras diferentes de pensar.</p>
-
-<h3>Hello World</h3>
-
-<p>Cada um tem a sua maneira de aprender as coisas, sujiro muito que você descubra a sua. Eu gosto de Hello World, começar do ultra básico e ir evoluindo e tentando entender passo a passo. Vamos fazer juntos e já vou explicando algumas coisas.</p>
-
-<p>O Hello World com docker fica da seguinte maneira. Rode:</p>
-
-<pre><code>docker run hello-world
-</code></pre>
-
-<h4>Imagens</h4>
-
-<p>O docker vai buscar uma imagem chamada hello-world. Imagens são a base dos containers, são como um cenário pronto que pode conter um sistema operacional e um conjunto de softwares por exemplo.</p>
-
-<p>Você não tem a imagem localmente, então o docker vai fazer o download dela. Para algumas imagens você vai ver o docker fazendo vários downloads paralelos para deixar as coisas mais rápidas.</p>
-
-<h4>Saída</h4>
-
-<p>Uma vez que foi feito o download da imagem o docker vai subir o container e rodar o programa hello-world sozinho.</p>
-
-<pre><code>Hello from Docker!
-This message shows that your installation appears to be working correctly.
-To generate this message, Docker took the following steps:
- 1. The Docker client contacted the Docker daemon.
- 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
- 3. The Docker daemon created a new container from that image which runs the
-    executable that produces the output you are currently reading.
- 4. The Docker daemon streamed that output to the Docker client, which sent it
-    to your terminal.
-
-To try something more ambitious, you can run an Ubuntu container with:
- $ docker run -it ubuntu bash
-</code></pre>
-
-<p>Se é isso que aparece para você, está feito! Tudo funcionando! O docker já te provoca a tentar algo mais ambicioso e é para esse caminho que vamos:</p>
-
-<h3>CentOS</h3>
-
-<p>A saída do Hello World te desafia a fazer um container Ubuntu. Como muita gente usa Ubuntu como máquina principal, pessoalmente sugiro tentar outra distro no container. Que tal CentOS?</p>
-
-<pre><code>docker run -it centos bash
-</code></pre>
-
-<p>Novamente aqui o docker vai buscar por uma imagem, dessa vez do CentOS, se não tiver vai fazer download dela.</p>
-
-<p>Novidades no comando:</p>
-
-<ul>
-<li>-i é o comando para interagir, vai manter o STDIN aberto.</li>
-<li>-t é para alocar um TTY(Talk to you) que é um terminal.</li>
-</ul>
-
-
-<p>Com a imagem em mãos, o docker vai subir o container e executar o comando bash.</p>
-
-<p>Note que a linha do seu terminal mudou e você deve estar dentro do container. Todo comando que você executar agora está sendo executado dentro do seu container com Ubuntu.</p>
-
-<p>Experimente alguns comandos para comprovar. Por exemplo: <strong>yum</strong>.</p>
-
-<h3>Attached</h3>
-
-<p>Vamos sair do nosso container sem matar ele. Segure CTRL e pressione P e em sequida Q.
-Você está de volta para sua máquina principal. Vamos ver os containers que temos rodando?</p>
-
-<pre><code>docker ps
-</code></pre>
-
-<p>O comando ps vai nos mostrar os containers que estão rodando com um id, o processo que estão executando, quando foram criados, seu status, portas e nome do container.</p>
-
-<p>Como não passamos nenhum nome para nosso container, o docker deu um de seus nomes padrão.</p>
-
-<p>Vamos voltar para nosso container CentOS? Para isso vamos fazer o seguinte comando:</p>
-
-<pre><code>docker attach [id ou nome do container]
-</code></pre>
-
-<p>Com o ID ou nome do container, você consegue voltar para ele, o que chamam de attach.</p>
-
-<p>Pense no Attach como você dentro do container. O padrão quando se cria um container é attach, e foi isso que aconteceu quando passamos o comando run, entramos no container.</p>
-
-<h3>Detach</h3>
-
-<p>De dentro do container, digite exit. Isso vai matar o container e ele não vai existir mais. O mesmo vai acontecer se você fizer um CTRL+C por exemplo.</p>
-
-<pre><code>docker ps -a
-</code></pre>
-
-<p>Com o comando acima, além de ver seus containers ativos (se houver) ele mostra também os containers inativos. Se você deu exit em seu container do CentOS, essa mensagem vai ser mostrada em status.</p>
-
-<p>Agora vamos criar o container novamente, mas dessa vez passando uma opção detached, ou seja, vamos criar o container mas não vamos entrar nele. Vamos também dar um nome para nosso container</p>
-
-<pre><code>docker run --name meu-centos -itd centos bash
-</code></pre>
-
-<p>Ao rodar docker ps você vê que seu container está rodando, com o comando <strong>bash</strong> e com o nome <strong>meu-centos</strong></p>
-
-<p><strong>Nesse ponto faça o exercício de entrar e sair de containers, criar outros e etc. Use Attach e CTRL+P+Q</strong></p>
-
-<h3>Exec</h3>
-
-<p>As vezes precisamos apenas executar apenas um comando dentro de um container e entrar e sair dele seria muito chato e demorado. Para isso temos o Exec:</p>
-
-<pre><code>docker exec meu-centos echo teste
-</code></pre>
-
-<p>Aqui o docker entrou no container, executou o comando <strong>echo teste</strong> em meu-centos e retornou a sua máquina.</p>
-
-<h3>Comandos que você talvez precise</h3>
-
-<pre><code>#Para listar as imagens que você tem: docker images
-#Para remover containers: docker rm
-#Para remover imagens: docker rmi
-#Parar e reiniciar container: docker start / docker stop 
-</code></pre>
-
-<h3>Fechando</h3>
-
-<p>Aqui fizemos os pequenos primeiros passos com containers. Muito parecido com o proposto pela documentação oficial.</p>
-
-<p>Te convido a explorar o <a href="https://hub.docker.com/">DockerHUB</a> repositório oficial de imagens para criarmos containers. Procure ferramentas que você já trabalha, ferramentas que você quer experimentar, o uso de containers vai te ajudar a fazer testes rápidos e estudar qualquer coisa.</p>
-
-<p>Com isso acredito que sua cabeça já começe a fervilhar de ideias de para onde podemos ir.
-Me comprometo a evoluir esses exemplos aqui nas próximas semanas.</p>
-
-<p>Grande Abraço!</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
-    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
-    <updated>2013-09-15T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
-    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
-Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
-
-
-
-
-<p><strong>O que é Vagrant?</strong><br/>
-Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
-Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p>Alguns pontos do Vagrant:<br/>
-&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
-&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
-Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
-&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
-&#8211; Muito mais.</p>
-
-
-
-
-<p><strong>PuPHPet: Arquivos puppet</strong><br/>
-Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
-Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
-
-
-
-
-<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
-Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
-
-
-
-
-<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
-É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
-Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
-
-
-
-
-<p><strong>O que é PHP Built In?</strong><br/>
-Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
-É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
-Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
-Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
-
-
-
-
-<p><strong>Mãos a Obra</strong><br/>
-Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
-Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
-
-
-
-
-<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
-Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
-
-
-
-
-<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant up
-</pre>
-
-
-
-
-<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
-Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
-
-
-
-
-<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
-Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
-</pre>
-
-
-
-
-<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
-
-
-
-
-<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
-mkdir teste
-cd teste
-</pre>
-
-
-
-
-<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
-
-
-
-
-<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
-</pre>
-
-
-
-
-<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
-8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
-** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
-
-
-
-
-<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
-Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
-</pre>
-
-
-
-
-<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
-
-
-
-
-<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
-Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
-
-
-
-
-<p><strong>Resumindo</strong><br/>
-Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
-
-
-
-
-<p>Grande Abraço!</p>
-
 ]]></content>
   </entry>
   
