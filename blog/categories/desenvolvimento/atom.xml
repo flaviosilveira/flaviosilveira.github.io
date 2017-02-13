@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2017-02-06T01:30:00+00:00</updated>
+  <updated>2017-02-13T01:04:47+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Seu Container Com Dockerfile]]></title>
+    <link href="http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile/"/>
+    <updated>2017-02-12T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile</id>
+    <content type="html"><![CDATA[<p>Foi uma longa jornada até criarmos nosso container da maneira que queríamos <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/">flaviosilveira.com/2017/criando-seu-container-nginx-php-1/</a> e <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/">flaviosilveira.com/2017/criando-seu-container-nginx-php-2/</a>. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.</p>
+
+<p>Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!</p>
+
+<p>Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.</p>
+
+<p>Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.</p>
+
+<p>No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.</p>
+
+<!--more-->
+
+
+<h3>Preparação</h3>
+
+<p>Crie uma pasta chamada <em>docker-test</em>, e dentro dela crie um arquivo chamado <em>Dockerfile</em>. Com a inicial maiúscula e sem extensão.</p>
+
+<p>Isso é tudo que vamos precisar.</p>
+
+<h3>Container de origem</h3>
+
+<p>No começo da parte 1 do artigo falamos sobre de qual container partiríamos. Entre Ubuntu e Debian, ficamos com o Debian.</p>
+
+<p>Para dizer isso para o Dockerfile, usamos <strong>FROM</strong></p>
+
+<pre><code>FROM debian
+</code></pre>
+
+<p>Com essa diretiva, estamos partindo da última imagem do debian presente no DockerHub.</p>
+
+<h3>Assine sua imagem</h3>
+
+<p>Use <em>MAINTENER</em> para assinar sua imagem, dizer aos outros quem é o mantenedor dela.
+No meu caso:</p>
+
+<pre><code>MAINTAINER Flavio Silveira
+</code></pre>
+
+<h3>Atualização e instalações</h3>
+
+<p>Passamos algum tempo atualizando o sistema e em seguida instalando o NGinx e o PHP-FPM. Fizemos isso de fora do container usando o comando <em>docker exec</em>.</p>
+
+<p>No Dockerfile usamos RUN para criar o ambiente da nossa imagem</p>
+
+<pre><code>RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+</code></pre>
+
+<p>Essas 3 linhas resumem muito do trabalho que foi feito na parte 1 do artigo. Elas indicam respectivamente que queremos atualizar o sistema operacional e em seguida instalar o NGinx e o php5-fpm. Simples assim!</p>
+
+<h3>Configurações</h3>
+
+<p>Para configurar nosso container, entramos nele com o comando <em>docker attach</em> e criamos e alteramos o arquivo <em>/etc/nginx/sites-available/default</em>. Fizemos um arquivo bem enxuto funcionando na porta <em>80</em> e apontando para <em>/var/www/app</em>.</p>
+
+<p>Copie o trabalho que fizemos com o arquivo default dentro do container para um arquivo local, dentro de nossa pasta <em>docker-test</em>, chame ele de <em>default</em>.</p>
+
+<p>Agora vamos dizer para o Dockerfile que queremos copiar esse arquivo para a configuração do Nginx.</p>
+
+<pre><code>COPY default /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O primeiro parâmetro é o arquivo em nossa máquina, e o segundo é o lugar que ele vai parar em nossa imagem.</p>
+
+<p>Os passos de criar a pasta app, não serão necessários. Você vai ver como o container vai se virar com isso sem trazer a dor de cabeça para você.</p>
+
+<h3>Fechando sua imagem</h3>
+
+<p>Na parte 2 do artigo anterior criamos a imagem a partir do container que estavamos rodando. Infelizmente tinhamos de iniciar o NGinx e o PHP-FPM manualmente após fazer download da imagem para fazer as coisas acontecerem.</p>
+
+<p>Aqui no Dockerfile vamos resolver esse problema.</p>
+
+<p>Uma vez que nosso ambiente foi preparado com os comandos anteriores, agora vamos usar <em>CMD</em> para dizer como nosso container vai rodar.</p>
+
+<pre><code>CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<p>Repare que diferente da diretiva <em>RUN</em>, com <em>CMD</em> concatenamos os comandos usando <em>&amp;&amp;</em>. Precisamos disso pois só podemos ter um <em>CMD</em> no Dockerfile.</p>
+
+<p>Aqui respectivamente iniciarmos o Nginx, em seguida o PHP-FPM e executamos <em>/bin/bash</em> para que o container fique de pé quando iniciado.</p>
+
+<p>Caso a gente não use esse <em>/bin/bash</em> aqui, teremos que passar ele quando rodarmos a imagem com <em>docker run</em>.</p>
+
+<h3>Nosso Dockerfile</h3>
+
+<p>É isso! Já temos tudo o que precisamos no nosso <em>Dockerfile</em>.
+Vejam como ficou:</p>
+
+<pre><code>FROM debian
+
+MAINTAINER Flavio Silveira
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+
+COPY default /etc/nginx/sites-available/default
+
+CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<h3>Construindo a imagem</h3>
+
+<p>Para construir a imagem a partir do Dockerfile vamos executar o comando docker build.</p>
+
+<pre><code>docker build -t flaviosilveira/php-nginx-2 .
+</code></pre>
+
+<p>Usamos o parâmetro -t para dar a nossa imagem um apelido, uma tag para que fique mais fácil levantar ela depois. Assim como no artigo anterior, coloque seu nome de usuário do DockerHub na frente da tag da imagem. Isso será necessário na hora do envio da imagem. No meu caso ficou <em>flaviosilveira/php-nginx-2</em>.</p>
+
+<p>O ponto no final, indica o diretório aonde está o Dockerfile que você criou.</p>
+
+<p>Você verá o docker executar passo a passo do seu Dockerfile em detalhes, acompanhe no seu terminal.</p>
+
+<h3>Checando sua imagem e dando run</h3>
+
+<p>Com o comando <em>docker images</em> você vê sua imagem criada localmente. Vamos testa-lá?</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Coloquei um nome para meu container de <em>usando-dockerfile</em>.</p>
+
+<p>Passamos a referência de portas, a 8080 de nossa máquina vai bater na 80 do container.</p>
+
+<p>Compartilhei uma pasta local minha <em>~/dev/php</em> para a pasta <em>/var/www/app</em> do container. Tudo que que for feito na pasta local, vai refletir na pasta dentro do container. <em>/var/www/app</em> é o local para onde nosso config do NGinx aponta como diretório raiz.</p>
+
+<p>Faça os testes com seus arquivos PHP e veja em funcionamento.</p>
+
+<p>Caso queira, acesse o container e confirme que seus serviços estão rodando e que o arquivo de configuração do NGinx foi copiado.</p>
+
+<h3>Enviando ao Dockerhub</h3>
+
+<p>Para enviar a imagem para o DockerHub, vamos fazer o mesmo processo do artigo anterior.</p>
+
+<pre><code>docker login
+</code></pre>
+
+<p>Caso não tenha usuário no DockerHub, não esqueça de criar antes.</p>
+
+<p>E para enviar a imagem</p>
+
+<pre><code>docker push flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Use com a tag que deu para sua imagem, com seu nome de usuário.</p>
+
+<p>É isso! Acesse o DockerHub para conferir.</p>
+
+<h3>Testando</h3>
+
+<p>Seguindo o mesmo que fizemos no final do último artigo vamos testar.</p>
+
+<p>Antes de testar, vamos eliminar tudo que temos localmente, parar o container e remover a imagem.</p>
+
+<pre><code>docker stop usando-dockerfile
+docker rm usando-dockerfile
+docker rmi flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Agora executamos o mesmo run que fizemos acima.</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>A imagem não será encontrada localmente e será feito download dela diretamente do DockerHub.</p>
+
+<p>Veja seu container rodando:</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Viram como foi muito mais fácil usar o Dockerfile para criar nosso container? Por hoje é isso!</p>
+
+<p>Grande abraço e até a próxima.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Criando Seu Container NGinx + PHP (Parte 2)]]></title>
@@ -120,7 +303,7 @@ docker rmi flaviosilveira/php-nginx
 <pre><code>docker ps
 </code></pre>
 
-<p>Ou dê start no NGinx e no PHP-FOM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
+<p>Ou dê start no NGinx e no PHP-FPM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
 
 <h3>Compartilhando seus arquivos php com o container</h3>
 
@@ -732,116 +915,6 @@ Crie uma pasta chamada <strong>includes</strong> e dentro dela crie um arquivo c
 
 <p>Desperte a automação em você! Grande Abraço!
 </p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Docker, PHP7 E PHP Built In]]></title>
-    <link href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/"/>
-    <updated>2016-10-10T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2016/docker-php7-e-php-built-in</id>
-    <content type="html"><![CDATA[<p>No artigo anterior (<a href="http://flaviosilveira.com/2016/comece-com-docker/">Comece com Docker!</a>) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.</p>
-
-<p>Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.</p>
-
-<!--more-->
-
-
-<h3>PHP no DockerHub</h3>
-
-<p>No final do artigo anterior falamos sobre o <a href="https://hub.docker.com/">DockerHUB</a>, repositório oficial de imagens para criarmos nossos containers.</p>
-
-<p>O <a href="https://hub.docker.com/_/php/">PHP tem um reposítorio oficial no Docker hub</a> e é de lá que vamos começar. Nessa página temos várias informações desde o que é PHP até como usar a imagem, contribuir, instalar extensões e etc.</p>
-
-<p>Nos comandos que usamos, fizemos <strong><em>Docker Run</em></strong> que verifica se já temos a imagem em nossa máquina e caso não tenha faz o download dela. Vamos aprender um comando novo.</p>
-
-<pre><code>docker pull php
-</code></pre>
-
-<p>Com docker pull vamos fazer apenas o download da imagem, ele não vai iniciar um container para a gente direto como <strong><em>docker run</em></strong> faz, apenas o download.</p>
-
-<p>Nesse comando temos a opção de especificar a versão que queremos do PHP. Não passando nada, vai vir para a gente a última. Exatamente o que estamos querendo aqui certo?</p>
-
-<h3>Subindo Container PHP</h3>
-
-<p>Uma vez que a imagem está em nossa máquina, é hora de rodar o container. Vamos ver em que versão estamos?</p>
-
-<pre><code>docker run php php --version
-</code></pre>
-
-<p><strong>Docker run</strong> é nosso comando. <strong>php</strong> é o nome da nossa imagem e em seguida o comando que queremos executar no nosso container, <strong>php &ndash;version</strong>.</p>
-
-<p>Ao final desse comando o container terá subido, executado <strong>php &ndash;version</strong>, mostra uma saída e mata o container. A saída dada para mim na data de hoje foi versão <strong>PHP7.0.11</strong>.</p>
-
-<p>O Container morre, porque o comando que passamos executou e finalizou. Comprovamos isso rodando <strong>docker ps</strong>.</p>
-
-<h3>PHP CLI</h3>
-
-<p>Na mesma pegada, vamos testar o PHP CLI com nosso container. PHP CLI é o php em linha de comando.</p>
-
-<p>Mas antes vamos criar um script php para rodar no CLI. Criei uma pasta chamada <strong>php</strong> no meu diretório de desenvolvimento e dentro dele vou criar um script chamado <strong>spaceship.php</strong>.</p>
-
-<pre><code>&lt;?php
-
-// Testing Spaceship Operator
-echo 2 &lt;=&gt; 2; // 0
-echo 5 &lt;=&gt; 6; // -1
-echo 6 &lt;=&gt; 5; // 1
-
-echo "a" &lt;=&gt; "a"; // 0
-echo "a" &lt;=&gt; "b"; // -1
-echo "b" &lt;=&gt; "a"; // 1
-</code></pre>
-
-<p>O objetivo desse script é simplesmente testarmos o Spaceship, novo operador que veio com o PHP7. Vamos rodar ele em um container?</p>
-
-<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php spaceship.php
-</code></pre>
-
-<p><strong>Docker run</strong> é nosso comando. Com <strong>-v</strong> vamos fazer share do nosso diretório da nossa máquina local com um diretório de nosso container. Os dois vão estar espelhados. Com <strong>-w</strong> vamos dizer para nosso container php qual é nosso Working directory, nosso diretório de trabalho. Repare que coloquei o mesmo diretório que em nosso container é equivalente ao diretório em nossa máquina.</p>
-
-<p><strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container e <strong>php spaceship.php</strong> é nosso comando que vai rodar em nosso working directory.</p>
-
-<p>A saída esperada é <strong>0-110-11</strong>, como nos comentários do script acima.
-Já conhecia o Spaceship? Vale uma lida na documentação em <a href="http://php.net/manual/en/migration70.new-features.php">novas features PHP7</a>.</p>
-
-<h3>PHP Built In</h3>
-
-<p>Finalmente, vamos finalizar com o PHP Built In.</p>
-
-<p>Vamos primeiro lembrar como é o comando do PHP Built In. Para consultar o help do PHP Cli podemos fazer</p>
-
-<pre><code>docker run -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php --help
-</code></pre>
-
-<p>Com -S maiúsculo, temos o que procuramos:</p>
-
-<pre><code>php -S 127.0.0.1:8080
-</code></pre>
-
-<p>Simples não? -S, IP e a porta para acessar.</p>
-
-<p>Dessa vez vou explicar o comando que vamos fazer antes:
-<strong>Docker run</strong> que é nosso comando para subir o container. <strong>-p</strong> vai mapear a porta 8080 da nossa máquina para a porta 8080 do container. <strong>-v</strong> como vimos anteriormente vai fazer o share do nosso diretório. <strong>-w</strong> especifica onde vai ser o working directory do container php. <strong>php</strong> é o nome da nossa imagem que vai servir de base para nosso container. E o comando que vamos executar dentro do container será <strong>php -S 0.0.0.0:8080</strong>.</p>
-
-<pre><code>docker run -p 8080:8080 -v ~/dev/php:/usr/src/wd -w /usr/src/wd php php -S 0.0.0.0:8080
-</code></pre>
-
-<p>Em meu exemplo eu estou usando uma docker machine que tem um IP <strong>192.168.99.100</strong>, quando passo para o comando do container um IP <strong>0.0.0.0</strong> ele é traduzido para o IP da minha docker machine.</p>
-
-<p>Ao executar o comando, ele vai ficar esperando.</p>
-
-<p>Acesso no navegador o seu IP passando a porta 8080, e acrescente <strong>/spaceship.php</strong>. O mesmo resultado visto anteriormente no terminal, agora está no seu navegador.</p>
-
-<p>Para matar o container basta retornar ao terminal e dar um <strong>CTRL+C</strong>.</p>
-
-<h3>Fechando</h3>
-
-<p>Hoje usamos a imagem do PHP. Para quem nunca havia provado o PHP7, fica a sugestão de fazer esse experimento bem facilmente usando containers e Docker. Aprendemos o comando para simplesmente fazer download de uma imagem e exploramos a imagem do PHP usando CLI e Built In.</p>
-
-<p>Espero que sua cabeça esteja com ideias em cima do que foi passado aqui.</p>
-
-<p>Grande Abraço!</p>
 ]]></content>
   </entry>
   

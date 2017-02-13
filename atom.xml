@@ -4,7 +4,7 @@
   <title><![CDATA[Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2017-02-06T01:30:00+00:00</updated>
+  <updated>2017-02-13T01:04:47+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Seu Container Com Dockerfile]]></title>
+    <link href="http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile/"/>
+    <updated>2017-02-12T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile</id>
+    <content type="html"><![CDATA[<p>Foi uma longa jornada até criarmos nosso container da maneira que queríamos <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/">flaviosilveira.com/2017/criando-seu-container-nginx-php-1/</a> e <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/">flaviosilveira.com/2017/criando-seu-container-nginx-php-2/</a>. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.</p>
+
+<p>Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!</p>
+
+<p>Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.</p>
+
+<p>Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.</p>
+
+<p>No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.</p>
+
+<!--more-->
+
+
+<h3>Preparação</h3>
+
+<p>Crie uma pasta chamada <em>docker-test</em>, e dentro dela crie um arquivo chamado <em>Dockerfile</em>. Com a inicial maiúscula e sem extensão.</p>
+
+<p>Isso é tudo que vamos precisar.</p>
+
+<h3>Container de origem</h3>
+
+<p>No começo da parte 1 do artigo falamos sobre de qual container partiríamos. Entre Ubuntu e Debian, ficamos com o Debian.</p>
+
+<p>Para dizer isso para o Dockerfile, usamos <strong>FROM</strong></p>
+
+<pre><code>FROM debian
+</code></pre>
+
+<p>Com essa diretiva, estamos partindo da última imagem do debian presente no DockerHub.</p>
+
+<h3>Assine sua imagem</h3>
+
+<p>Use <em>MAINTENER</em> para assinar sua imagem, dizer aos outros quem é o mantenedor dela.
+No meu caso:</p>
+
+<pre><code>MAINTAINER Flavio Silveira
+</code></pre>
+
+<h3>Atualização e instalações</h3>
+
+<p>Passamos algum tempo atualizando o sistema e em seguida instalando o NGinx e o PHP-FPM. Fizemos isso de fora do container usando o comando <em>docker exec</em>.</p>
+
+<p>No Dockerfile usamos RUN para criar o ambiente da nossa imagem</p>
+
+<pre><code>RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+</code></pre>
+
+<p>Essas 3 linhas resumem muito do trabalho que foi feito na parte 1 do artigo. Elas indicam respectivamente que queremos atualizar o sistema operacional e em seguida instalar o NGinx e o php5-fpm. Simples assim!</p>
+
+<h3>Configurações</h3>
+
+<p>Para configurar nosso container, entramos nele com o comando <em>docker attach</em> e criamos e alteramos o arquivo <em>/etc/nginx/sites-available/default</em>. Fizemos um arquivo bem enxuto funcionando na porta <em>80</em> e apontando para <em>/var/www/app</em>.</p>
+
+<p>Copie o trabalho que fizemos com o arquivo default dentro do container para um arquivo local, dentro de nossa pasta <em>docker-test</em>, chame ele de <em>default</em>.</p>
+
+<p>Agora vamos dizer para o Dockerfile que queremos copiar esse arquivo para a configuração do Nginx.</p>
+
+<pre><code>COPY default /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O primeiro parâmetro é o arquivo em nossa máquina, e o segundo é o lugar que ele vai parar em nossa imagem.</p>
+
+<p>Os passos de criar a pasta app, não serão necessários. Você vai ver como o container vai se virar com isso sem trazer a dor de cabeça para você.</p>
+
+<h3>Fechando sua imagem</h3>
+
+<p>Na parte 2 do artigo anterior criamos a imagem a partir do container que estavamos rodando. Infelizmente tinhamos de iniciar o NGinx e o PHP-FPM manualmente após fazer download da imagem para fazer as coisas acontecerem.</p>
+
+<p>Aqui no Dockerfile vamos resolver esse problema.</p>
+
+<p>Uma vez que nosso ambiente foi preparado com os comandos anteriores, agora vamos usar <em>CMD</em> para dizer como nosso container vai rodar.</p>
+
+<pre><code>CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<p>Repare que diferente da diretiva <em>RUN</em>, com <em>CMD</em> concatenamos os comandos usando <em>&amp;&amp;</em>. Precisamos disso pois só podemos ter um <em>CMD</em> no Dockerfile.</p>
+
+<p>Aqui respectivamente iniciarmos o Nginx, em seguida o PHP-FPM e executamos <em>/bin/bash</em> para que o container fique de pé quando iniciado.</p>
+
+<p>Caso a gente não use esse <em>/bin/bash</em> aqui, teremos que passar ele quando rodarmos a imagem com <em>docker run</em>.</p>
+
+<h3>Nosso Dockerfile</h3>
+
+<p>É isso! Já temos tudo o que precisamos no nosso <em>Dockerfile</em>.
+Vejam como ficou:</p>
+
+<pre><code>FROM debian
+
+MAINTAINER Flavio Silveira
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+
+COPY default /etc/nginx/sites-available/default
+
+CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<h3>Construindo a imagem</h3>
+
+<p>Para construir a imagem a partir do Dockerfile vamos executar o comando docker build.</p>
+
+<pre><code>docker build -t flaviosilveira/php-nginx-2 .
+</code></pre>
+
+<p>Usamos o parâmetro -t para dar a nossa imagem um apelido, uma tag para que fique mais fácil levantar ela depois. Assim como no artigo anterior, coloque seu nome de usuário do DockerHub na frente da tag da imagem. Isso será necessário na hora do envio da imagem. No meu caso ficou <em>flaviosilveira/php-nginx-2</em>.</p>
+
+<p>O ponto no final, indica o diretório aonde está o Dockerfile que você criou.</p>
+
+<p>Você verá o docker executar passo a passo do seu Dockerfile em detalhes, acompanhe no seu terminal.</p>
+
+<h3>Checando sua imagem e dando run</h3>
+
+<p>Com o comando <em>docker images</em> você vê sua imagem criada localmente. Vamos testa-lá?</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Coloquei um nome para meu container de <em>usando-dockerfile</em>.</p>
+
+<p>Passamos a referência de portas, a 8080 de nossa máquina vai bater na 80 do container.</p>
+
+<p>Compartilhei uma pasta local minha <em>~/dev/php</em> para a pasta <em>/var/www/app</em> do container. Tudo que que for feito na pasta local, vai refletir na pasta dentro do container. <em>/var/www/app</em> é o local para onde nosso config do NGinx aponta como diretório raiz.</p>
+
+<p>Faça os testes com seus arquivos PHP e veja em funcionamento.</p>
+
+<p>Caso queira, acesse o container e confirme que seus serviços estão rodando e que o arquivo de configuração do NGinx foi copiado.</p>
+
+<h3>Enviando ao Dockerhub</h3>
+
+<p>Para enviar a imagem para o DockerHub, vamos fazer o mesmo processo do artigo anterior.</p>
+
+<pre><code>docker login
+</code></pre>
+
+<p>Caso não tenha usuário no DockerHub, não esqueça de criar antes.</p>
+
+<p>E para enviar a imagem</p>
+
+<pre><code>docker push flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Use com a tag que deu para sua imagem, com seu nome de usuário.</p>
+
+<p>É isso! Acesse o DockerHub para conferir.</p>
+
+<h3>Testando</h3>
+
+<p>Seguindo o mesmo que fizemos no final do último artigo vamos testar.</p>
+
+<p>Antes de testar, vamos eliminar tudo que temos localmente, parar o container e remover a imagem.</p>
+
+<pre><code>docker stop usando-dockerfile
+docker rm usando-dockerfile
+docker rmi flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Agora executamos o mesmo run que fizemos acima.</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>A imagem não será encontrada localmente e será feito download dela diretamente do DockerHub.</p>
+
+<p>Veja seu container rodando:</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Viram como foi muito mais fácil usar o Dockerfile para criar nosso container? Por hoje é isso!</p>
+
+<p>Grande abraço e até a próxima.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[4 Drops of Life - Four]]></title>
@@ -180,7 +363,7 @@ docker rmi flaviosilveira/php-nginx
 <pre><code>docker ps
 </code></pre>
 
-<p>Ou dê start no NGinx e no PHP-FOM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
+<p>Ou dê start no NGinx e no PHP-FPM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
 
 <h3>Compartilhando seus arquivos php com o container</h3>
 
@@ -3142,241 +3325,6 @@ Esse é o caminho nesse estágio.</p>
 
 <p>  <iframe src="https://player.vimeo.com/video/61175405" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 <p><a href="https://vimeo.com/61175405">Montando a tela do seu aplicativo - Parte 1</a> from <a href="https://vimeo.com/user9814221">Fl&aacute;vio Silveira</a> on <a href="https://vimeo.com">Vimeo</a>.</p></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Objective-C: A Linguagem Por Trás Do iOS – Parte 1]]></title>
-    <link href="http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/"/>
-    <updated>2013-02-21T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1</id>
-    <content type="html"><![CDATA[<p>Fala pessoal!</p>
-
-
-
-
-<p>Este é segundo artigo, que faz parte da série sobre desenvolvimento para iOS que estou fazendo. Se você perdeu o primeiro post siga esse link <a href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/">http://flaviosilveira.com/2013/comece-a-programar-para-ios/</a> para acompanhar nossos passos desde o início.<span style="line-height: 1.6em;"> </span></p>
-
-
-
-
-<p>Em nosso primeiro post criamos um projeto simples e entendemos a sua estrutura de pastas. Partindo desse ponto, vamos hoje conhecer um pouco da linguagem que vamos usar para desenvolver para iOS. É! XCode não é só arrastar e soltar, tem que codificar. E para isso usamos a linguagem Objective-C.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p><strong>Rápida História</strong></p>
-
-
-
-
-<p>Você deve achar que o Objective-C não é tão antigo, já que não faz tanto tempo que temos pessoas com IPhones desfilando por aí não é mesmo? Mas não, o Objective-C está na área desde o início dos anos 80 e foi idealizado e criado pelo PHD em Matemática biológica Brad Cox e pelo (também) PHD em Ciência cognitiva Tom Love.</p>
-
-
-
-
-<p>Como com esses títulos eles caíram na programação eu não sei, mas outros detalhes da história deles, de como eles estavam preocupados com a falta de reutilização de código em cima do Smaltalk dentro da ITT e de como eles começaram a criação de um processador em C para resolver esses problemas, você pode encontrar dando aquela rápida pesquisada no Google. Se você está com seu listening de inglês em dia você pode conferir o próprio Tom Love falando sobre o assunto nesse vídeo no Youtube <a href="http://youtu.be/adI6-liGXqE">http://youtu.be/adI6-liGXqE</a> (Há outros vídeos e keynotes de Tom que você pode encontrar no youtube).</p>
-
-
-
-
-<p>No vídeo, Love também comenta sobre como o Objective-C sobreviveu através dos anos até ele ser popularizado pela NeXT, empresa de Steve Jobs. A NeXT extendeu o GCC para compilar Objective-C e também criou as primeiras ferramentas de desenvolvimento para ele que vão evoluindo até chegar no XCode que temos em mãos hoje.</p>
-
-
-
-
-<p>E aproveitando que comentei sobre o XCode, vale dizer que visto que o Objective-C é uma linguagem que já vem de algum tempo, você encontra vários compiladores para ela de modo que consiga estudar ela em separado. Mas como aqui vamos focar em IPhones, IPads e em ambiente Apple, nada melhor que o XCode na hora de te ajudar a desenvolver para esses fins.<span style="line-height: 1.6em;"> </span></p>
-
-
-
-
-<p><strong>C</strong></p>
-
-
-
-
-<p>Tom Love comenta que apesar de tudo que eles desenvolveram, o C continua lá sem nenhuma alteração. E é verdade. Os tipos prímarios de dados em cima de Objective-C são exatamente os mesmos que no C puro. Para experimentar isso abra em seu projeto o arquivo <em>ViewController.m</em> e procure pelo método <em>viewDidLoad</em> (view carregada), dentro dele você pode experimentar alguns tipos de dados no melhor estilo C.</p>
-
-
-
-
-<p>Os principais tipos de dados em C são <em>char</em>, <em>int</em>, <em>float</em>, <em>double</em> e <em>bool</em>. Para definir eles usamos a seguinte sintaxe:</p>
-
-
-
-
-<pre class="brush: cpp; title: ; notranslate" title="">tipo nome_da_variavel;
-tipo nome_da_segunda_variavel = valor_da_variavel;
-</pre>
-
-
-
-
-<p>Repare que no primeiro exemplo de sintaxe apenas iniciamos a variável, sem nenhum valor inicial. Já no segundo exemplo, aproveitamos e já definimos um valor para ela. Vejamos alguns exemplos abaixo:</p>
-
-
-
-
-<pre class="brush: cpp; title: ; notranslate" title="">// Char
-char caracter;
-char letra = 'a';
-char nome[7] = 'Flavio;
-
-// Int
-int idade;
-int ano = 2013;
-
-// Float
-float peso = 81.30;
-
-// Double
-// que tal você pesquisar a diferença do float para o double?
-double pi = 3.1415926535;
-
-// Bool --de booleano
-bool aceite = TRUE;
-</pre>
-
-
-
-
-<p>Certo, certo. Estamos aqui definindo variáveis. Mas que coisa sem graça. Vamos colocar um pouquinho mais de diversão nisso?</p>
-
-
-
-
-<p><span style="line-height: 1.6em;">No XCode vamos abrir nosso console e exibir nossas animadas variáveis. Para exibir o console você pode ir até o menu </span><em style="line-height: 1.6em;">View >> Debug Area >> Active Console</em><span style="line-height: 1.6em;"> ou em </span><em style="line-height: 1.6em;">View >> Debug Area >> Show Debug Area. </em><span style="line-height: 1.6em;">Outra opção é clicar em um pequeno botão no rodapé do XCode que contém uma seta apontando para cima como mostra a figura abaixo:<br /> <a href="../../assets/uploads/2013/02/Imagem-1.png"><img class="alignnone size-full wp-image-617" title="Imagem 1" src="../../assets/uploads/2013/02/Imagem-1.png" alt="" width="174" height="52" /></a></p>
-
-
-<p></p></p>
-
-<p>
-  </span>
-</p>
-
-
-
-
-<p>
-  Seu console deve parecer como na imagem abaixo:<br /> <a href="../../assets/uploads/2013/02/Imagem-2.png"><img class="alignnone size-large wp-image-618" title="Imagem 2" src="../../assets/uploads/2013/02/Imagem-2-1024x102.png" alt="" width="655" height="65" /></a>
-</p>
-
-
-
-
-<p>
-  Console ativado, é hora de exibir as variáveis. Qual a função que exibi variávies no C? A mais conhecida que você já deve ter visto por aí é o printf. Fazendo um teste com o array de char que definimos acima temos o seguinte código:
-</p>
-
-
-
-
-<pre class="brush: cpp; title: ; notranslate" title="">
-
-- (void)viewDidLoad
-{
-[super viewDidLoad];
-
-// Do any additional setup after loading the view, typically from a nib.
-
-// Char
-char nome[7] = "Flavio";
-
-printf("Nome: %s", nome);
-}
-</pre>
-
-
-
-
-<p>
-  </span><span style="line-height: 1.6em;">Compile o seu projeto para ver a variavel sair no output. (Caso não lembre como compilar o projeto, dê uma olhada no final do primeiro post da série </span><a style="line-height: 1.6em;" href="http://flaviosilveira.com/2013/comece-a-programar-para-ios/">http://flaviosilveira.com/2013/comece-a-programar-para-ios/</a><span style="line-height: 1.6em;"> ).<br /> </span>
-</p>
-
-
-
-
-<p>
-  Repare bem na sintaxe do printf. No primeiro parâmetro da função colocamos a string mais um identificador <em>%s</em>. Esse identificador será substituído pelo segundo parâmetro da função, no caso aqui nossa variável nome. Esse <em>s</em> em nosso identificador é um indicador para o tipo da nossa variável, no caso aqui String. Para imprimir um inteiro utilize o identificador <em>%d</em>, onde <em>d</em> se refere a decimal:
-</p>
-
-
-
-
-<pre class="brush: cpp; title: ; notranslate" title="">
-- (void)viewDidLoad
-{
-[super viewDidLoad];
-// Do any additional setup after loading the view, typically from a nib.
-
-// Char
-int ano = 2013;
-
-printf("Ano: %d", ano);
-}
-</pre>
-
-
-
-
-<p>
-  </span><span style="line-height: 1.6em;">Sim, sim. É verdade que </span><em style="line-height: 1.6em;">%i</em><span style="line-height: 1.6em;"> tambem funciona para inteiros, mas em materiais por aí é mais comum ver o </span><em style="line-height: 1.6em;">%d</em><span style="line-height: 1.6em;">.</span>
-</p>
-
-
-
-
-<p>
-  Continue seus testes com floats e doubles. Use o Identificador <em>%f </em>para esses dois tipos. Se quiser formatar seu numero utilize %.3f, onde 3 é o numero de casas decimais que você quer. <em>%lf </em>ou <em>%g</em> também servem para esses tipos.
-</p>
-
-
-
-
-<p>
-  <strong>Lição de casa</strong>
-</p>
-
-
-
-
-<p>
-  O que? Quer só ler o artigo com os códigos prontos e sair mandando ver? Aqui não! Para aprender tem que ir começando a se virar sozinho certo?
-</p>
-
-
-
-
-<p>
-  A primeira lição que deixo é a de imprimir uma variável do tipo boleana usando o printf. Fácil não? Só dar aquela googada aí ou pegar aquela Barsa da estante.
-</p>
-
-
-
-
-<p>
-  Para aqueles que já tem uma noções de lógica, que tal experimentar alguns IFS, ELSES, WHILE, CASE, DO…WHILE, FOR ??
-</p>
-
-
-
-
-<p>
-  Para os demais, é isso que veremos no próximo post.
-</p>
-
-
-
-
-<p>
-  Grande Abraço!
-</p>
-
 ]]></content>
   </entry>
   

@@ -1,0 +1,365 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Criando Seu Container Com Dockerfile - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Criando Seu Container Com Dockerfile Categorias: desenvolvimento, php Foi uma longa jornada até criarmos nosso container da maneira que queríamos &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Criando Seu Container Com Dockerfile</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2017-02-12T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>, <a class='category' href='/blog/categories/php/'>php</a>
+  
+</span>
+
+
+        </div>
+        <p>Foi uma longa jornada até criarmos nosso container da maneira que queríamos <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/">flaviosilveira.com/2017/criando-seu-container-nginx-php-1/</a> e <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/">flaviosilveira.com/2017/criando-seu-container-nginx-php-2/</a>. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.</p>
+
+<p>Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!</p>
+
+<p>Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.</p>
+
+<p>Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.</p>
+
+<p>No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.</p>
+
+<!--more-->
+
+
+<h3>Preparação</h3>
+
+<p>Crie uma pasta chamada <em>docker-test</em>, e dentro dela crie um arquivo chamado <em>Dockerfile</em>. Com a inicial maiúscula e sem extensão.</p>
+
+<p>Isso é tudo que vamos precisar.</p>
+
+<h3>Container de origem</h3>
+
+<p>No começo da parte 1 do artigo falamos sobre de qual container partiríamos. Entre Ubuntu e Debian, ficamos com o Debian.</p>
+
+<p>Para dizer isso para o Dockerfile, usamos <strong>FROM</strong></p>
+
+<pre><code>FROM debian
+</code></pre>
+
+<p>Com essa diretiva, estamos partindo da última imagem do debian presente no DockerHub.</p>
+
+<h3>Assine sua imagem</h3>
+
+<p>Use <em>MAINTENER</em> para assinar sua imagem, dizer aos outros quem é o mantenedor dela.
+No meu caso:</p>
+
+<pre><code>MAINTAINER Flavio Silveira
+</code></pre>
+
+<h3>Atualização e instalações</h3>
+
+<p>Passamos algum tempo atualizando o sistema e em seguida instalando o NGinx e o PHP-FPM. Fizemos isso de fora do container usando o comando <em>docker exec</em>.</p>
+
+<p>No Dockerfile usamos RUN para criar o ambiente da nossa imagem</p>
+
+<pre><code>RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+</code></pre>
+
+<p>Essas 3 linhas resumem muito do trabalho que foi feito na parte 1 do artigo. Elas indicam respectivamente que queremos atualizar o sistema operacional e em seguida instalar o NGinx e o php5-fpm. Simples assim!</p>
+
+<h3>Configurações</h3>
+
+<p>Para configurar nosso container, entramos nele com o comando <em>docker attach</em> e criamos e alteramos o arquivo <em>/etc/nginx/sites-available/default</em>. Fizemos um arquivo bem enxuto funcionando na porta <em>80</em> e apontando para <em>/var/www/app</em>.</p>
+
+<p>Copie o trabalho que fizemos com o arquivo default dentro do container para um arquivo local, dentro de nossa pasta <em>docker-test</em>, chame ele de <em>default</em>.</p>
+
+<p>Agora vamos dizer para o Dockerfile que queremos copiar esse arquivo para a configuração do Nginx.</p>
+
+<pre><code>COPY default /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O primeiro parâmetro é o arquivo em nossa máquina, e o segundo é o lugar que ele vai parar em nossa imagem.</p>
+
+<p>Os passos de criar a pasta app, não serão necessários. Você vai ver como o container vai se virar com isso sem trazer a dor de cabeça para você.</p>
+
+<h3>Fechando sua imagem</h3>
+
+<p>Na parte 2 do artigo anterior criamos a imagem a partir do container que estavamos rodando. Infelizmente tinhamos de iniciar o NGinx e o PHP-FPM manualmente após fazer download da imagem para fazer as coisas acontecerem.</p>
+
+<p>Aqui no Dockerfile vamos resolver esse problema.</p>
+
+<p>Uma vez que nosso ambiente foi preparado com os comandos anteriores, agora vamos usar <em>CMD</em> para dizer como nosso container vai rodar.</p>
+
+<pre><code>CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<p>Repare que diferente da diretiva <em>RUN</em>, com <em>CMD</em> concatenamos os comandos usando <em>&amp;&amp;</em>. Precisamos disso pois só podemos ter um <em>CMD</em> no Dockerfile.</p>
+
+<p>Aqui respectivamente iniciarmos o Nginx, em seguida o PHP-FPM e executamos <em>/bin/bash</em> para que o container fique de pé quando iniciado.</p>
+
+<p>Caso a gente não use esse <em>/bin/bash</em> aqui, teremos que passar ele quando rodarmos a imagem com <em>docker run</em>.</p>
+
+<h3>Nosso Dockerfile</h3>
+
+<p>É isso! Já temos tudo o que precisamos no nosso <em>Dockerfile</em>.
+Vejam como ficou:</p>
+
+<pre><code>FROM debian
+
+MAINTAINER Flavio Silveira
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+
+COPY default /etc/nginx/sites-available/default
+
+CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<h3>Construindo a imagem</h3>
+
+<p>Para construir a imagem a partir do Dockerfile vamos executar o comando docker build.</p>
+
+<pre><code>docker build -t flaviosilveira/php-nginx-2 .
+</code></pre>
+
+<p>Usamos o parâmetro -t para dar a nossa imagem um apelido, uma tag para que fique mais fácil levantar ela depois. Assim como no artigo anterior, coloque seu nome de usuário do DockerHub na frente da tag da imagem. Isso será necessário na hora do envio da imagem. No meu caso ficou <em>flaviosilveira/php-nginx-2</em>.</p>
+
+<p>O ponto no final, indica o diretório aonde está o Dockerfile que você criou.</p>
+
+<p>Você verá o docker executar passo a passo do seu Dockerfile em detalhes, acompanhe no seu terminal.</p>
+
+<h3>Checando sua imagem e dando run</h3>
+
+<p>Com o comando <em>docker images</em> você vê sua imagem criada localmente. Vamos testa-lá?</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Coloquei um nome para meu container de <em>usando-dockerfile</em>.</p>
+
+<p>Passamos a referência de portas, a 8080 de nossa máquina vai bater na 80 do container.</p>
+
+<p>Compartilhei uma pasta local minha <em>~/dev/php</em> para a pasta <em>/var/www/app</em> do container. Tudo que que for feito na pasta local, vai refletir na pasta dentro do container. <em>/var/www/app</em> é o local para onde nosso config do NGinx aponta como diretório raiz.</p>
+
+<p>Faça os testes com seus arquivos PHP e veja em funcionamento.</p>
+
+<p>Caso queira, acesse o container e confirme que seus serviços estão rodando e que o arquivo de configuração do NGinx foi copiado.</p>
+
+<h3>Enviando ao Dockerhub</h3>
+
+<p>Para enviar a imagem para o DockerHub, vamos fazer o mesmo processo do artigo anterior.</p>
+
+<pre><code>docker login
+</code></pre>
+
+<p>Caso não tenha usuário no DockerHub, não esqueça de criar antes.</p>
+
+<p>E para enviar a imagem</p>
+
+<pre><code>docker push flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Use com a tag que deu para sua imagem, com seu nome de usuário.</p>
+
+<p>É isso! Acesse o DockerHub para conferir.</p>
+
+<h3>Testando</h3>
+
+<p>Seguindo o mesmo que fizemos no final do último artigo vamos testar.</p>
+
+<p>Antes de testar, vamos eliminar tudo que temos localmente, parar o container e remover a imagem.</p>
+
+<pre><code>docker stop usando-dockerfile
+docker rm usando-dockerfile
+docker rmi flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Agora executamos o mesmo run que fizemos acima.</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>A imagem não será encontrada localmente e será feito download dela diretamente do DockerHub.</p>
+
+<p>Veja seu container rodando:</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Viram como foi muito mais fácil usar o Dockerfile para criar nosso container? Por hoje é isso!</p>
+
+<p>Grande abraço e até a próxima.</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2017/criando-seu-container-com-dockerfile';
+    var disqus_title = 'Criando seu Container com Dockerfile';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2017/4-drops-of-life-4/" title="Previous Post: 4 Drops of Life - Four">&laquo; Anterior: 4 Drops of Life - Four</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile/';
+        var disqus_url = 'http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

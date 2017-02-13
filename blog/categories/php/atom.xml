@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Php | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2017-02-06T01:30:00+00:00</updated>
+  <updated>2017-02-13T01:04:47+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,189 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Criando Seu Container Com Dockerfile]]></title>
+    <link href="http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile/"/>
+    <updated>2017-02-12T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2017/criando-seu-container-com-dockerfile</id>
+    <content type="html"><![CDATA[<p>Foi uma longa jornada até criarmos nosso container da maneira que queríamos <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/">flaviosilveira.com/2017/criando-seu-container-nginx-php-1/</a> e <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/">flaviosilveira.com/2017/criando-seu-container-nginx-php-2/</a>. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.</p>
+
+<p>Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!</p>
+
+<p>Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.</p>
+
+<p>Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.</p>
+
+<p>No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.</p>
+
+<!--more-->
+
+
+<h3>Preparação</h3>
+
+<p>Crie uma pasta chamada <em>docker-test</em>, e dentro dela crie um arquivo chamado <em>Dockerfile</em>. Com a inicial maiúscula e sem extensão.</p>
+
+<p>Isso é tudo que vamos precisar.</p>
+
+<h3>Container de origem</h3>
+
+<p>No começo da parte 1 do artigo falamos sobre de qual container partiríamos. Entre Ubuntu e Debian, ficamos com o Debian.</p>
+
+<p>Para dizer isso para o Dockerfile, usamos <strong>FROM</strong></p>
+
+<pre><code>FROM debian
+</code></pre>
+
+<p>Com essa diretiva, estamos partindo da última imagem do debian presente no DockerHub.</p>
+
+<h3>Assine sua imagem</h3>
+
+<p>Use <em>MAINTENER</em> para assinar sua imagem, dizer aos outros quem é o mantenedor dela.
+No meu caso:</p>
+
+<pre><code>MAINTAINER Flavio Silveira
+</code></pre>
+
+<h3>Atualização e instalações</h3>
+
+<p>Passamos algum tempo atualizando o sistema e em seguida instalando o NGinx e o PHP-FPM. Fizemos isso de fora do container usando o comando <em>docker exec</em>.</p>
+
+<p>No Dockerfile usamos RUN para criar o ambiente da nossa imagem</p>
+
+<pre><code>RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+</code></pre>
+
+<p>Essas 3 linhas resumem muito do trabalho que foi feito na parte 1 do artigo. Elas indicam respectivamente que queremos atualizar o sistema operacional e em seguida instalar o NGinx e o php5-fpm. Simples assim!</p>
+
+<h3>Configurações</h3>
+
+<p>Para configurar nosso container, entramos nele com o comando <em>docker attach</em> e criamos e alteramos o arquivo <em>/etc/nginx/sites-available/default</em>. Fizemos um arquivo bem enxuto funcionando na porta <em>80</em> e apontando para <em>/var/www/app</em>.</p>
+
+<p>Copie o trabalho que fizemos com o arquivo default dentro do container para um arquivo local, dentro de nossa pasta <em>docker-test</em>, chame ele de <em>default</em>.</p>
+
+<p>Agora vamos dizer para o Dockerfile que queremos copiar esse arquivo para a configuração do Nginx.</p>
+
+<pre><code>COPY default /etc/nginx/sites-available/default
+</code></pre>
+
+<p>O primeiro parâmetro é o arquivo em nossa máquina, e o segundo é o lugar que ele vai parar em nossa imagem.</p>
+
+<p>Os passos de criar a pasta app, não serão necessários. Você vai ver como o container vai se virar com isso sem trazer a dor de cabeça para você.</p>
+
+<h3>Fechando sua imagem</h3>
+
+<p>Na parte 2 do artigo anterior criamos a imagem a partir do container que estavamos rodando. Infelizmente tinhamos de iniciar o NGinx e o PHP-FPM manualmente após fazer download da imagem para fazer as coisas acontecerem.</p>
+
+<p>Aqui no Dockerfile vamos resolver esse problema.</p>
+
+<p>Uma vez que nosso ambiente foi preparado com os comandos anteriores, agora vamos usar <em>CMD</em> para dizer como nosso container vai rodar.</p>
+
+<pre><code>CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<p>Repare que diferente da diretiva <em>RUN</em>, com <em>CMD</em> concatenamos os comandos usando <em>&amp;&amp;</em>. Precisamos disso pois só podemos ter um <em>CMD</em> no Dockerfile.</p>
+
+<p>Aqui respectivamente iniciarmos o Nginx, em seguida o PHP-FPM e executamos <em>/bin/bash</em> para que o container fique de pé quando iniciado.</p>
+
+<p>Caso a gente não use esse <em>/bin/bash</em> aqui, teremos que passar ele quando rodarmos a imagem com <em>docker run</em>.</p>
+
+<h3>Nosso Dockerfile</h3>
+
+<p>É isso! Já temos tudo o que precisamos no nosso <em>Dockerfile</em>.
+Vejam como ficou:</p>
+
+<pre><code>FROM debian
+
+MAINTAINER Flavio Silveira
+
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN apt-get install -y php5-fpm
+
+COPY default /etc/nginx/sites-available/default
+
+CMD service nginx start &amp;&amp; service php5-fpm start &amp;&amp; /bin/bash
+</code></pre>
+
+<h3>Construindo a imagem</h3>
+
+<p>Para construir a imagem a partir do Dockerfile vamos executar o comando docker build.</p>
+
+<pre><code>docker build -t flaviosilveira/php-nginx-2 .
+</code></pre>
+
+<p>Usamos o parâmetro -t para dar a nossa imagem um apelido, uma tag para que fique mais fácil levantar ela depois. Assim como no artigo anterior, coloque seu nome de usuário do DockerHub na frente da tag da imagem. Isso será necessário na hora do envio da imagem. No meu caso ficou <em>flaviosilveira/php-nginx-2</em>.</p>
+
+<p>O ponto no final, indica o diretório aonde está o Dockerfile que você criou.</p>
+
+<p>Você verá o docker executar passo a passo do seu Dockerfile em detalhes, acompanhe no seu terminal.</p>
+
+<h3>Checando sua imagem e dando run</h3>
+
+<p>Com o comando <em>docker images</em> você vê sua imagem criada localmente. Vamos testa-lá?</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Coloquei um nome para meu container de <em>usando-dockerfile</em>.</p>
+
+<p>Passamos a referência de portas, a 8080 de nossa máquina vai bater na 80 do container.</p>
+
+<p>Compartilhei uma pasta local minha <em>~/dev/php</em> para a pasta <em>/var/www/app</em> do container. Tudo que que for feito na pasta local, vai refletir na pasta dentro do container. <em>/var/www/app</em> é o local para onde nosso config do NGinx aponta como diretório raiz.</p>
+
+<p>Faça os testes com seus arquivos PHP e veja em funcionamento.</p>
+
+<p>Caso queira, acesse o container e confirme que seus serviços estão rodando e que o arquivo de configuração do NGinx foi copiado.</p>
+
+<h3>Enviando ao Dockerhub</h3>
+
+<p>Para enviar a imagem para o DockerHub, vamos fazer o mesmo processo do artigo anterior.</p>
+
+<pre><code>docker login
+</code></pre>
+
+<p>Caso não tenha usuário no DockerHub, não esqueça de criar antes.</p>
+
+<p>E para enviar a imagem</p>
+
+<pre><code>docker push flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Use com a tag que deu para sua imagem, com seu nome de usuário.</p>
+
+<p>É isso! Acesse o DockerHub para conferir.</p>
+
+<h3>Testando</h3>
+
+<p>Seguindo o mesmo que fizemos no final do último artigo vamos testar.</p>
+
+<p>Antes de testar, vamos eliminar tudo que temos localmente, parar o container e remover a imagem.</p>
+
+<pre><code>docker stop usando-dockerfile
+docker rm usando-dockerfile
+docker rmi flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>Agora executamos o mesmo run que fizemos acima.</p>
+
+<pre><code>docker run --name usando-dockerfile -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx-2
+</code></pre>
+
+<p>A imagem não será encontrada localmente e será feito download dela diretamente do DockerHub.</p>
+
+<p>Veja seu container rodando:</p>
+
+<pre><code>docker ps
+</code></pre>
+
+<p>Viram como foi muito mais fácil usar o Dockerfile para criar nosso container? Por hoje é isso!</p>
+
+<p>Grande abraço e até a próxima.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Criando Seu Container NGinx + PHP (Parte 2)]]></title>
@@ -120,7 +303,7 @@ docker rmi flaviosilveira/php-nginx
 <pre><code>docker ps
 </code></pre>
 
-<p>Ou dê start no NGinx e no PHP-FOM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
+<p>Ou dê start no NGinx e no PHP-FPM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
 
 <h3>Compartilhando seus arquivos php com o container</h3>
 
@@ -617,204 +800,6 @@ Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:808
 
 <p><strong>Resumindo</strong><br/>
 Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
-
-
-
-
-<p>Grande Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Primeiros Passos No PHPUnit]]></title>
-    <link href="http://flaviosilveira.com/2012/primeiros-passos-no-phpunit/"/>
-    <updated>2012-10-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2012/primeiros-passos-no-phpunit</id>
-    <content type="html"><![CDATA[<p>Fala pessoal!</p>
-
-
-
-
-<p>Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.</p>
-
-
-
-
-<p>Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p>Após instalar e configurar o PHPUnit a primeira coisa a fazer é testar se está tudo ok.<br/>
-Para isso vá até o seu console e digite o comando <em>phpunit</em>.<br/>
-A saída esperada é um helper como na imagem abaixo:<br/>
-<img class="alignleft size-full wp-image-562" title="phpunit 1" src="../../assets/uploads/2012/10/Imagem1.png" alt="testando phpunit" width="487" height="214" /><br style="clear: both;" /></p>
-
-
-
-
-<p>Caso você tenha problemas é hora de checar a sua instalação.<br/>
-Se você usa sistema unix e instalou o PHPUnit via PEAR aqui vão algumas dicas para tentar resolver isso:</p>
-
-
-
-
-<ul>
-<li>Pode ser que esteja tudo instalado corretamente, mas o console não esteja localizando o comando do PHPUnit. Para resolver isso primeiro verifique se a PEAR está instalada tentando digitar o comando <em>pear</em>. Se sim, entre com o comando <em>pear config-get bin_dir</em> para saber o diretório do bin do PHPUnit. Confira se a saída está no seu PATH de comandos, com o comando <em>echo $PATH</em>. Caso não esteja use o comando <em>export</em> para adicionar esse caminho.</li>
-<li>Se você tem certeza que o PEAR está instalado corretamente, execute o seguinte comando para reinstalar o PHPUnit <em>pear install &#8211;alldeps &#8211;force phpunit/PHPUnit</em>.</li>
-</ul>
-
-
-
-
-<p>Com tudo ok podemos seguir em frente.<br/>
-Daqui em diante conto que você saiba pelo menos um mínimo de Orientação a Objetos para que acompanhe os exemplos abaixo.<br/>
-Para que a gente entenda o que esperar do PHPUnit, vamos primeiro criar uma classe com pelo menos um atributo e seus métodos <em>get()</em> e <em>set()</em>.<br/>
-Que tal a tradicional classe Carro com uma propiedade de cor?</p>
-
-
-
-
-<pre class="brush: php; title: ; notranslate" title="">/**
- * Classe Carro
- *
- **/
-class Carro
-{
-    private $_cor;
-
-    public function getCor()
-    {
-        return $this-&gt;_cor;
-    }
-
-    public function setCor($cor)
-    {
-        $this-&gt;_cor = $cor;
-    }
-
-}
-</pre>
-
-
-
-
-<p>Com a classe principal criada vamos agora preparar nossa classe de testes.<br/>
-Vamos chamar nossa classe de testes de CarroTeste.php.</p>
-
-
-
-
-<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
-
-/**
- * Classe Carro Teste
- **/
-class CarroTeste extends PHPUnit_Framework_Testcase
-{
-
-}
-</pre>
-
-
-
-
-<p>Repare em duas coisas no código acima:</p>
-
-
-
-
-<ul>
-<li>Sua classe de testes deve conhecer a classe que vai ser testada (use require, include ou autoload).</li>
-<li>Sua classe de testes precisa extender o framework PHP_Unit. Para extender o PHPUnit da mesma forma como no código acima, configure corretamente o seu <em>include_path</em> no seu arquivo de configuração do PHP (php.ini). Não sabe onde está seu arquivo php.ini? Utilize o comando <em>php &#8211;ini</em>. Procure por <em>include_path</em> dentro desse arquivo e adicione o caminho para o framework PHPUnit. <em>**A instalação via PEAR constuma adicionar esse caminho para você no php.ini. Confira o arquivo se for caso.</em></li>
-</ul>
-
-
-
-
-<p>Finalmente vamos ao nosso teste em si. Vamos testar se nossos métodos <em>get()</em> e <em>set()</em> estão realmente fazendo o que se espera. <em>Get()</em> tem de retornar o mesmo valor passado para <em>set()</em>. Para verificar isso vamos usar o método assertEquals do PHPUnit, veja o exemplo:</p>
-
-
-
-
-<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
-
-/**
- * Classe Carro Teste
- **/
-class CarroTeste extends PHPUnit_Framework_Testcase
-{
-    public function testeCor()
-    {
-        $carro = new Carro();
-        $carro-&gt;setCor("Azul");
-
-        $this-&gt;assertEquals("Azul", $carro-&gt;getCor());
-    }
-}
-</pre>
-
-
-
-
-<p>Criamos um método testeCor em nossa classe de testes.<br/>
-Dentro dele instanciamos a classe carro e atribuímos para a propiedade cor o valor Azul.<br/>
-O método AssertEquals do PHPUnit vai comparar se os dois parâmetros passados são iguais.</p>
-
-
-
-
-<p>Vamos rodar nosso teste?<br/>
-Em seu console execute o comando phpunit passando para ele o caminho da sua classe de testes. O resultado deve ser similar a esse:<br/>
-<img class="alignleft size-full wp-image-563" title="Imagem2" src="../../assets/uploads/2012/10/Imagem2.png" alt="Rodando o primeiro teste" width="442" height="171" /><br style="clear: both;" /></p>
-
-
-
-
-<p>Na imagem você percebe abaixo da linha de descrição da versão do PHPUnit um . (ponto). Em seguida uma descrição do tempo de execução e memória utilizada e abaixo um OK. Isso indica que nosso teste teve sucesso. O ponto que falamos acima indica que um teste teve sucesso, em caso de falha teremos um F no lugar do ponto. Para cada teste irá ser adicionado um <em>. ponto</em>ou um <em>F</em>.</p>
-
-
-
-
-<p>Vamos forçar um erro no teste para ver o que acontece? Vamos trocar os parâmetros do nosso <em>AssertEquals</em> e dizer que estamos esperando o resultado <em>Amarelo</em> invés de <em>Azul</em>.</p>
-
-
-
-
-<pre class="brush: php; title: ; notranslate" title="">require_once "Carro.php";
-
-/**
- * Classe Carro Teste
- **/
-class CarroTeste extends PHPUnit_Framework_Testcase
-{
-    public function testeCor()
-    {
-        $carro = new Carro();
-        $carro-&gt;setCor("Azul");
-
-        $this-&gt;assertEquals("Amarelo", $carro-&gt;getCor());
-    }
-}
-</pre>
-
-
-
-
-<p>Rodando nosso teste agora temos a seguinte saída:<br/>
-<img class="alignleft size-full wp-image-564" title="Imagem3" src="../../assets/uploads/2012/10/Imagem3.png" alt="Falha no PHPUnit" width="427" height="317" /><br style="clear: both;" /><br/>
-No lugar do ponto anterior que indicava sucesso, temos agora um <em>F</em> indicando a falha. Junto a isso o PHPUnit nos traz detalhes da falha com o nome do teste que falhou, o que era esperado e o que foi retornado.</p>
-
-
-
-
-<p>A ideia por trás do PHPUnit e suas funções é bem similar ao que foi demonstrado acima, com o detalhe que algumas funções podem ter mais parâmetros ou esperar tipos diferentes de dados. Que tal descobrir mais métodos do PHPUnit e criar novos testes? Visite o capítulo 4 do manual do PHPUnit e teste outras funções do framework. Segue o link para o manual: <a href="http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html" title="PHPUnit Manual Cap4">http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html</a>.</p>
 
 
 
