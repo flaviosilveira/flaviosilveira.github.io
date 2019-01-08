@@ -13,7 +13,7 @@ categories: [desenvolvimento, php]
 
 <p>Porém pediram para mim e meu amigo <a href="http://twitter.com/RonieNeubauer">Ronie</a>, que já tinhamos experiência com a ferramenta, para deixar ela configurada para múltiplos sites. Já tinhamos visto isso antes. Vamos lá! Pesquisar no segundo cérebro (<a href="http://www.google.com">Google</a>)!</p>
 
-<p>Um <a href="http://codeigniter.com/wiki/Multiple_Applications/">Wiki </a>no site oficial propõe duas maneiras para se trabalhar com múltiplos sites em CodeIgniter. A primeira seria criando as pastas principais dos sites dentro de Application (Application é onde fica a estrutura do site). Funciona como se cada pasta dessa, fosse um application. Logo, você deve replicar o conteúdo da pasta application que vem por padrão no CodeIgniter para cada site que for ter, renomeando para um nome de acordo (No exemplo abaixo a pasta site1 e a pasta site2).<br/>
+<p>O site oficial propõe duas maneiras para se trabalhar com múltiplos sites em CodeIgniter. A primeira seria criando as pastas principais dos sites dentro de Application (Application é onde fica a estrutura do site). Funciona como se cada pasta dessa, fosse um application. Logo, você deve replicar o conteúdo da pasta application que vem por padrão no CodeIgniter para cada site que for ter, renomeando para um nome de acordo (No exemplo abaixo a pasta site1 e a pasta site2).<br/>
 <img class="alignnone size-full wp-image-54" title="ci1" src="../../assets/uploads/2009/01/ci1.jpg" alt="ci1" width="148" height="139" /><br/>
 <br style='clear: both' /></p>
 
