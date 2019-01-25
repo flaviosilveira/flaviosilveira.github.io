@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2019-01-08T14:25:52+00:00</updated>
+  <updated>2019-01-25T19:47:36+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Quer Estudar Uma Coisa Nova? Docker Te Ajuda!]]></title>
+    <link href="http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda"/>
+    <updated>2019-01-25T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda</id>
+    <content type="html"><![CDATA[<p>Sempre que vamos estudar algo em tecnologia, em programação temos a complexidade do ambiente para resolver. Para um simples <strong>Hello World</strong> precisamos de um ambiente e a complexidade da criação dele pode desanimar os iniciantes (Por isso o JavaScript vem a ser execelente para os iniciantes!).</p>
+
+<p>Mas para ajudar com isso temos os containers e uma ferramenta excelente para trabalhar com eles, o Docker. Diferente de uma máquina virtual, o container vai abranger apenas o que é necessário para rodar sua aplicação, sem precisar de um SO completo.</p>
+
+<p>Vamos dizer então que você quer estudar algo diferente, um banco de dados de grafos e vamos entender como o Docker vai te ajudar com isso.</p>
+
+<!--more-->
+
+
+<h2>Pesquise</h2>
+
+<p>Então até aqui já temos alguns nomes que podem ser novos para alguns.</p>
+
+<h3>Docker</h3>
+
+<p>Se você não conhece docker, dê uma buscada sobre. É uma ferramenta que pode mudar sua maneira de pensar em ambientes, arquiteturas e até sua maneira de desenvolver.</p>
+
+<h3>Banco de dados de Grafos</h3>
+
+<p>Outro ponto são bancos de dados de Grafos. Pesquise, veja suas aplicações, leia os conceitos. Busque pela solução do problema do caminho mínimo, do caixeiro viajante e outros similares.</p>
+
+<h2>Neo4J</h2>
+
+<p>O Neo4J se tornou um bancos de dados de grafos muito conhecido. Pode ser pela sua interface gráfica ou pelo seu tutorial passo a passo que te mostra algumas coisas legais de entender com grafos.</p>
+
+<p>Ele não é o foco desse artigo mas espero que traga algo para bater na cabeça de vocês.</p>
+
+<h2>O Docker te ajudando a estudar qualquer coisa</h2>
+
+<p>Então vamos dizer que você escolheu que quer estudar grafos e chegou a conclusão que o Neo4J é bom para iniciar. Vamos ver como o docker vai te ajudar nisso.</p>
+
+<p>Massssss&hellip;&hellip; Esse é um exemplo, o que quero mostrar é a facilidade que ele traz seja lá o que você quer estudar. Go, Java, NodeJS, PhantomJS, ferramentas, bancos de dados e outras tantas coisas. Siga os passos que vou descrever abaixo e você encontrará seu caminho.</p>
+
+<h2>Dockerhub</h2>
+
+<p>O Docker funciona com imagens. Uma imagem é um arquivo que contém todas (ou quase todas) as instruções para a rodar a aplicação que você precisa.</p>
+
+<p>O <a href="https://hub.docker.com/">Dockerhub</a> é um repositório dessas imagens, e lá você pode procurar pelo o que você precisa.</p>
+
+<p>Repare que você encontrará imagens oficiais, produzidas pelas empresas dos softwares e imagens criados por outros usuários. As oficiais, geralmente, vem com uma extensa documentação que são de grande ajuda para fazer tudo rodar certinho. Mas, um usuário pode ter tido um insight legal e acrescentado ou facilitado ainda mais o processo, então vale ficar de olho nos dois.</p>
+
+<p>Para um futuro, vale você ver como subir suas imagens</p>
+
+<h2>Subindo um Neo4J</h2>
+
+<p>No Dockerhub procure por Neo4J.</p>
+
+<p>Nos resultados da pesquisa você deve chegar na imagem oficial que está no seguinte endereço <a href="https://hub.docker.com/_/neo4j">https://hub.docker.com/_/neo4j</a>.</p>
+
+<p>Dentrp desse repositório oficial do Neo4J você tem as versões, uma explicação do que é o Neo4J, como usar, documentacão e licença.</p>
+
+<p>Em <strong><em>como usar essa imagem</em></strong>, você vê o comando <strong>docker run</strong> para rodar a aplicação.</p>
+
+<p><strong><strong><em> Sim!! Você já deve ter o docker instalado em sua máquina antes de seguir em diante. Não será difícil achar tutoriais de como fazer isso par aseu sistema operacional internet a fora.</em></strong></strong></p>
+
+<p>Vamos executar:</p>
+
+<pre><code>docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Explicando esse comando temos:</p>
+
+<ul>
+<li>&ndash;publish está expondo sua porta 7474 e encaminhando ela para a porta 7474 do container.</li>
+<li>O mesmo acontece com a porta 7687.</li>
+<li>&ndash;volume é um caminho na sua máquina que será compatilhado com o container. Ele armazenará as mudanças de dados que você fizer, e quando você erguer novamente esse container suas alterações estarão lá.</li>
+<li>Neo4J no final é o nome da imagem.</li>
+</ul>
+
+
+<p>A instrução &ndash;publish pode ser abreviado para -p e a instrução &ndash;volume para -v.
+Você pode tirar o sinal de igual, manter, tanto faz.</p>
+
+<p>Eu uso como abaixo:</p>
+
+<pre><code>docker run -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Essa é a saída que começa a aparecer aqui:</p>
+
+<pre><code>Unable to find image 'neo4j:latest' locally
+latest: Pulling from library/neo4j
+cd784148e348: Downloading [========================================&gt;          ]  1.785MB/2.207MB
+35920a071f91: Download complete 
+1a5149a464dd: Downloading [=&gt;                                                 ]  1.621MB/54.87MB
+15bb04bfc35a: Waiting 
+...
+</code></pre>
+
+<ul>
+<li>O Docker viu que eu não tinha a imagem, então foi buscar o caminho dela para fazer o download.</li>
+<li>Layers, é a maneira que o docker usa para fazer o download das imagens.</li>
+</ul>
+
+
+<p>Na sequência disso ele vai subir a aplicação, até te dizer o seguinte:</p>
+
+<pre><code>....
+INFO  ======== Neo4j 3.5.2 ========
+INFO  Starting...
+INFO  Bolt enabled on 0.0.0.0:7687.
+INFO  Started.
+INFO  Remote interface available at http://localhost:7474/
+</code></pre>
+
+<p>Acesse conforme a saída sugere o endereço <a href="http://localhost:7474">http://localhost:7474</a> e você está na interface do Neo4J.</p>
+
+<p>Viu como é fácil?</p>
+
+<h2>Teste com outras ferramentas / tecnologias</h2>
+
+<p>Acredito que não houve nenhuma dor em seguir os passos acima. É muito simples!</p>
+
+<p>Buscar no dockerhub a tecnologia, dar uma lida em como a imagem se comporta e executar um docker run.</p>
+
+<p>Teste com outras ferramentas, bancos de dados, sistemas, frameworks e se apaixone pelo docker assim como eu.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Como Foi 2018 E O Que Você Pode Esperar De Mim Para 2019]]></title>
@@ -594,125 +720,6 @@ Vamos até <strong><em>/var/www</em></strong></p>
 <p>É, você vai ter que fazer tudo novamente. Mas não entre em pânico! Que tal criarmos nossa própria imagem, e sempre que quisermos um container com NGinx+PHP, podemos usar nossa própria imagem. Como te parece?</p>
 
 <p>Vamos para a parte 2 desse artigo para pegar essa ideia <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2">http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2</a>.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Microserviços]]></title>
-    <link href="http://flaviosilveira.com/2016/microservicos/"/>
-    <updated>2016-11-07T08:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2016/microservicos</id>
-    <content type="html"><![CDATA[<p>Muito anda se falando sobre microserviços e trago para vocês minha experiência de como começamos a trabalhar dessa forma aqui na <a href="https://www.lojaskd.com.br">LojasKD</a>.</p>
-
-<p>Assim como meu post anterior sobre <a href="http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/">Ansible e automação</a>, esse assunto também faz parte de uma palestra que apresentei durante 2016, um dos meus grandes orgulhos desse ano que encerro com esse post.</p>
-
-<h3>Microserviços - O que é?</h3>
-
-<p>Para falar sobre microserviços eu sempre empresto a frase do <a href="https://twitter.com/tiagodolphine">@tiagodolphine</a>: &ldquo;O menor possível, porém grande o suficiente para representar seu domínio&rdquo;.</p>
-
-<!--more-->
-
-
-<p>Pequenas aplicações que representem seus domínios. Parece fácil ah?
-Mas a linha para que isso se torne um <strong>macroserviço</strong> é tênue. Se você descuidar da organização dos seus serviços eles podem começar a dar mais trabalho do que você gostaria.</p>
-
-<h3>Seus problemas não acabaram</h3>
-
-<p>Não existe solução perfeita, tudo tem seu uso ideal, seu lado bom e seu lado ruim.</p>
-
-<p>Microserviços não são uma bala de prata que vai resolver todos os problemas de seus projetos. Assim como você escolhe uma linguagem para desenvolver um projeto, qual banco de dados vai usar e etc, o mesmo deve servir para sua arquitetura.</p>
-
-<p><strong>Não vá de microserviços simplesmente pelo modismo!</strong></p>
-
-<p>Aliás, microserviços pode ser comparado ao que acontecia com APIs em SOAP (Simple Object Access Protocol) com seus WSDLs para lá e para cá, que tem seus primeiros registros de uso no fim dos anos 90. Tecnologia tem muito disso, coisas que voltam com nomes diferentes ou um buzz que surge com coisas que já fazemos.</p>
-
-<p>Acompanhem comigo os prós e contras de uma arquitetura monolítica versus uma de microserviços.</p>
-
-<h3>Monolítico</h3>
-
-<p>Há não tantos anos atrás, na hora de iniciar nossos projetos era certo que eles seriam de uma forma única. Como estamos falando da KD aqui, vamos pegar o exemplo de ECommerce.</p>
-
-<p>Um banco de dados, uma aplicação MVC em cima de uma linguagem. Um controller para a Vitrine, outro para o Carrinho, outro para o Checkout. Tudo em um lugar só.</p>
-
-<p>Mas então quando seu serviço cai? Tudo cai, tudo fica fora. <strong>-1 aqui para o monolítico</strong>. Mas, na hora de colocar isso em produção? Demais! Tudo em um só lugar, um único deploy. <strong>+1 para o monolítico</strong>.</p>
-
-<p>Se uma das partes do seu sistema ficava lento, grande chance de ele ficar lento por inteiro. E a parte que está deixando lento, que digamos seja lá na visualização de produtos, está impedindo que pessoas fechem suas compras. <strong>-1 para o monolítico</strong>.</p>
-
-<p>Vamos monitorar para que não caia novamente? Vamos ter que monitorar uma única aplicação, Ótimo! <strong>+1 para o monolítico</strong>.</p>
-
-<p>Achar desenvolvedores para um projeto com uma linguagem só é um outro ponto positivo aqui e também o conhecimento em cima de como servir uma única aplicação. <strong>+2 para o monolítico</strong>. Mas a curva de aprendizagem em cima de regras de negócio que estão todas juntas e misturadas podem complicar. <strong>-1 para o monolítico</strong>.</p>
-
-<h3>Os Microserviços</h3>
-
-<p>Em microserviços não vamos pensar como uma coisa só, vamos pensar como várias pequenas partes para formar um objetivo comum. Nosso Carrinho, nossa Vitrine, nosso Checkout que estavam todos juntos, aqui se separam em pequenas aplicações cada uma com sua função.</p>
-
-<p>Se um dos nossos serviços caírem, outros serviços continuam funcionando e nosso ECommerce não fica totalmente fora. <strong>+1 para os microserviços</strong>.</p>
-
-<p>Mas fazer deploy de tudo, várias aplicações. E se uma depender de outra em determinada funcionalidade? E se&hellip; É, a orquestração de entregas com microserviços pode não ser simples. <strong>-1 para os microserviços</strong>.</p>
-
-<p>Lentidão em um dos serviços? Não deve afetar o restante. <strong>+1 para os microserviços</strong>. Ainda você pode escalar as funcionalidades de uma maneira mais flexível. Exemplo: Você tem muito mais acessos na vitrine do que no carrinho? Coloque mais máquinas para servir sua parte de vitrines, deixe a parte do carrinho com menos máquinas. É uma maneira de otimizar custos usando microserviços.</p>
-
-<p>Agora, monitorar várias aplicações, ter uma arquitetura maior para cuidar. <strong>-1 para os microserviços</strong>.</p>
-
-<h3>Tecnologias Agnósticas</h3>
-
-<p>Dei a entender em um dos pontos acima que com microserviços teremos várias linguagens. Isso não é regra, claro! Mas com uma arquitetura em microserviços fica muito mais fácil você experimentar uma nova linguagem para solucionar algum problema. Se não der certo, tudo bem! O Serviço está pequeno o suficiente para você rescrever ele em uma linguagem do seu domínio em pouco tempo.</p>
-
-<p>Coloco isso como dois pontos positivos dos microserviços: Você poder experimentar novas linguagens, poder colocar junto linguagens que não acreditam umas nas outras, descobrir novos conceitos de programação de maneira fácil sem complicar todo um negócio. E a facilidade em reescrever se for necessário. É pequeno, é rápido reescrever. <strong>+2 para os microserviços</strong>.</p>
-
-<p>Mas, na hora de contratar pessoal para mexer com várias linguagens você pode ter um problema. <strong>-1 para os microserviços</strong>.</p>
-
-<h3>Quem ganhou?</h3>
-
-<p>Se você está fazendo a matemática dos pontos acima, você está perdendo. Veja o que se aplica melhor para sua necessidade e o que você pode ganhar com cada uma. Novamente, não há melhor ou pior, são soluções distintas.</p>
-
-<p>O que você usaria para provar um conceito de uma ideia para startup? Para um hot site? Um portal de notícias? Um site institucional? Um sistema administrativo?</p>
-
-<p>Recomendo aqui a audição do Episódio #1 do Hipsters ponto tech, <a href="http://hipsters.tech/tecnologias-no-nubank-hipsters-01/">http://hipsters.tech/tecnologias-no-nubank-hipsters-01/</a> onde o pessoal do NuBank comenta sobre a escolha de microserviços desde o início, e suposições do que poderia ter acontecido se não tivessem ido por esse caminho.</p>
-
-<h3>Comunicação entre microserviços</h3>
-
-<p>Várias aplicações, várias linguagens, como uma vai conversar com a outra?</p>
-
-<p>Estamos em 2016 e para comunicar linguagens diferentes hoje temos padrões como REST, JSON que são simples de trabalhar e estão presentes em todo o lugar. Diferente dos antigos e trabalhosos XMLs com WSDLs que infelizmente ainda encontramos por aí.</p>
-
-<h3>Bancos de dados Agnósticos</h3>
-
-<p>Muito do que falamos acima para aplicações e linguagens, podem vir de encontro também ao pensar em banco de dados. Porque um banco de dados monolítico? Se ele ficar comprometido pode comprometer todo seu negócio.</p>
-
-<p>Você poder experimentar bancos de dados diferentes em busca de soluções diferentes, performances de cada um e etc. Um banco de dados para produtos, outro banco de dados para pedidos e assim por diante.</p>
-
-<p>Ah, mas como vou tirar relatórios para os meus diretores com várias bases? Como vou unir os dados de uma base com a outra? A resposta aqui pode ser BI. Business Inteligence. Una as informações que sua empresa precisa para seus KPIs e OKRs em um único ponto, onde eles possam montar seus relatórios em uma única ferramenta.</p>
-
-<h3>Na KD</h3>
-
-<p>Agora que já comentamos alguns pontos gerais de microserviços e estruturas monolíticas. Segue alguns pontos da nossa experiência com microserviços aqui na LojasKD:</p>
-
-<ul>
-<li><p>Os Microserviços chegaram na KD para resolver um problema de software legado. Foi a maneira que encontramos para ir substituindo as funcionalidades de uma grande aplicação monolítica aos poucos, até que não tenhamos mais ela. Estamos nesse rumo.</p></li>
-<li><p>Como não tinhamos nenhuma experiência com microserviços, começamos com algo minúsculo. Um serviço que apenas trazia as informações de um pedido quando passado seu ID.</p></li>
-<li><p>Começamos a experimentar linguagens e bases de dados diferentes em busca de soluções melhores para problemas conhecidos.</p></li>
-<li><p>Já erramos e tivemos que reescrever microserviços inteiros novamente, mas não levou mais que uma semana.</p></li>
-<li><p>Para serviços mais críticos, mantemos em nossa linguagem de maior domínio hoje, PHP.</p></li>
-<li><p>Sofremos um pouco com monitoramento. É bastante coisa  para monitorar, disparar alertas e ficar de olho. Custo e trabalho em cima disso são altos.</p></li>
-<li><p>A manutenção dos servers não é tão crítica, temos receitas em puppet e dockerfiles que nos ajudam nessa área.</p></li>
-<li><p>Os deploys estão automatizados, mas as vezes precisamos fazer uma orquestração verbal para evitar conflitos.</p></li>
-<li><p>Nosso time de desenvolvedores trabalham em cima de todos os microserviços e em suas diferentes linguagens. Temos Node, Python, Ruby, Java, GOLang e o já citado PHP. Sofremos um pouquinho na hora de contratar pessoas hoje. Não queremos desenvolvedores que saibam todas essas linguagens, mas o que acontece é que os candidatos acabam assustados com a diversidade.</p></li>
-</ul>
-
-
-<p>-É natural que um desenvolvedor entenda mais de uma linguagem do que de outra e vá guiando o time.</p>
-
-<ul>
-<li><p>Não descuide do tamanho dos microserviços. Mantenha uma documentação básica no mínimo.</p></li>
-<li><p>Estude sobre API Gateway.</p></li>
-</ul>
-
-
-<p>Espero que minha abordagem para explicar microserviços tenha ajudado.
-Mas e vocês, como estão usando microserviços? Ou como estão pretendendo usar?
-Dúvidas? Outras ideias? Só comentar.
-Grande Abraço!</p>
 ]]></content>
   </entry>
   

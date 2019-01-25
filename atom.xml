@@ -4,7 +4,7 @@
   <title><![CDATA[Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2019-01-08T14:25:52+00:00</updated>
+  <updated>2019-01-25T19:47:36+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -12,6 +12,132 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Quer Estudar Uma Coisa Nova? Docker Te Ajuda!]]></title>
+    <link href="http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda"/>
+    <updated>2019-01-25T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda</id>
+    <content type="html"><![CDATA[<p>Sempre que vamos estudar algo em tecnologia, em programação temos a complexidade do ambiente para resolver. Para um simples <strong>Hello World</strong> precisamos de um ambiente e a complexidade da criação dele pode desanimar os iniciantes (Por isso o JavaScript vem a ser execelente para os iniciantes!).</p>
+
+<p>Mas para ajudar com isso temos os containers e uma ferramenta excelente para trabalhar com eles, o Docker. Diferente de uma máquina virtual, o container vai abranger apenas o que é necessário para rodar sua aplicação, sem precisar de um SO completo.</p>
+
+<p>Vamos dizer então que você quer estudar algo diferente, um banco de dados de grafos e vamos entender como o Docker vai te ajudar com isso.</p>
+
+<!--more-->
+
+
+<h2>Pesquise</h2>
+
+<p>Então até aqui já temos alguns nomes que podem ser novos para alguns.</p>
+
+<h3>Docker</h3>
+
+<p>Se você não conhece docker, dê uma buscada sobre. É uma ferramenta que pode mudar sua maneira de pensar em ambientes, arquiteturas e até sua maneira de desenvolver.</p>
+
+<h3>Banco de dados de Grafos</h3>
+
+<p>Outro ponto são bancos de dados de Grafos. Pesquise, veja suas aplicações, leia os conceitos. Busque pela solução do problema do caminho mínimo, do caixeiro viajante e outros similares.</p>
+
+<h2>Neo4J</h2>
+
+<p>O Neo4J se tornou um bancos de dados de grafos muito conhecido. Pode ser pela sua interface gráfica ou pelo seu tutorial passo a passo que te mostra algumas coisas legais de entender com grafos.</p>
+
+<p>Ele não é o foco desse artigo mas espero que traga algo para bater na cabeça de vocês.</p>
+
+<h2>O Docker te ajudando a estudar qualquer coisa</h2>
+
+<p>Então vamos dizer que você escolheu que quer estudar grafos e chegou a conclusão que o Neo4J é bom para iniciar. Vamos ver como o docker vai te ajudar nisso.</p>
+
+<p>Massssss&hellip;&hellip; Esse é um exemplo, o que quero mostrar é a facilidade que ele traz seja lá o que você quer estudar. Go, Java, NodeJS, PhantomJS, ferramentas, bancos de dados e outras tantas coisas. Siga os passos que vou descrever abaixo e você encontrará seu caminho.</p>
+
+<h2>Dockerhub</h2>
+
+<p>O Docker funciona com imagens. Uma imagem é um arquivo que contém todas (ou quase todas) as instruções para a rodar a aplicação que você precisa.</p>
+
+<p>O <a href="https://hub.docker.com/">Dockerhub</a> é um repositório dessas imagens, e lá você pode procurar pelo o que você precisa.</p>
+
+<p>Repare que você encontrará imagens oficiais, produzidas pelas empresas dos softwares e imagens criados por outros usuários. As oficiais, geralmente, vem com uma extensa documentação que são de grande ajuda para fazer tudo rodar certinho. Mas, um usuário pode ter tido um insight legal e acrescentado ou facilitado ainda mais o processo, então vale ficar de olho nos dois.</p>
+
+<p>Para um futuro, vale você ver como subir suas imagens</p>
+
+<h2>Subindo um Neo4J</h2>
+
+<p>No Dockerhub procure por Neo4J.</p>
+
+<p>Nos resultados da pesquisa você deve chegar na imagem oficial que está no seguinte endereço <a href="https://hub.docker.com/_/neo4j">https://hub.docker.com/_/neo4j</a>.</p>
+
+<p>Dentrp desse repositório oficial do Neo4J você tem as versões, uma explicação do que é o Neo4J, como usar, documentacão e licença.</p>
+
+<p>Em <strong><em>como usar essa imagem</em></strong>, você vê o comando <strong>docker run</strong> para rodar a aplicação.</p>
+
+<p><strong><strong><em> Sim!! Você já deve ter o docker instalado em sua máquina antes de seguir em diante. Não será difícil achar tutoriais de como fazer isso par aseu sistema operacional internet a fora.</em></strong></strong></p>
+
+<p>Vamos executar:</p>
+
+<pre><code>docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Explicando esse comando temos:</p>
+
+<ul>
+<li>&ndash;publish está expondo sua porta 7474 e encaminhando ela para a porta 7474 do container.</li>
+<li>O mesmo acontece com a porta 7687.</li>
+<li>&ndash;volume é um caminho na sua máquina que será compatilhado com o container. Ele armazenará as mudanças de dados que você fizer, e quando você erguer novamente esse container suas alterações estarão lá.</li>
+<li>Neo4J no final é o nome da imagem.</li>
+</ul>
+
+
+<p>A instrução &ndash;publish pode ser abreviado para -p e a instrução &ndash;volume para -v.
+Você pode tirar o sinal de igual, manter, tanto faz.</p>
+
+<p>Eu uso como abaixo:</p>
+
+<pre><code>docker run -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Essa é a saída que começa a aparecer aqui:</p>
+
+<pre><code>Unable to find image 'neo4j:latest' locally
+latest: Pulling from library/neo4j
+cd784148e348: Downloading [========================================&gt;          ]  1.785MB/2.207MB
+35920a071f91: Download complete 
+1a5149a464dd: Downloading [=&gt;                                                 ]  1.621MB/54.87MB
+15bb04bfc35a: Waiting 
+...
+</code></pre>
+
+<ul>
+<li>O Docker viu que eu não tinha a imagem, então foi buscar o caminho dela para fazer o download.</li>
+<li>Layers, é a maneira que o docker usa para fazer o download das imagens.</li>
+</ul>
+
+
+<p>Na sequência disso ele vai subir a aplicação, até te dizer o seguinte:</p>
+
+<pre><code>....
+INFO  ======== Neo4j 3.5.2 ========
+INFO  Starting...
+INFO  Bolt enabled on 0.0.0.0:7687.
+INFO  Started.
+INFO  Remote interface available at http://localhost:7474/
+</code></pre>
+
+<p>Acesse conforme a saída sugere o endereço <a href="http://localhost:7474">http://localhost:7474</a> e você está na interface do Neo4J.</p>
+
+<p>Viu como é fácil?</p>
+
+<h2>Teste com outras ferramentas / tecnologias</h2>
+
+<p>Acredito que não houve nenhuma dor em seguir os passos acima. É muito simples!</p>
+
+<p>Buscar no dockerhub a tecnologia, dar uma lida em como a imagem se comporta e executar um docker run.</p>
+
+<p>Teste com outras ferramentas, bancos de dados, sistemas, frameworks e se apaixone pelo docker assim como eu.</p>
+
+<p>Grande Abraço!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Como Foi 2018 E O Que Você Pode Esperar De Mim Para 2019]]></title>
@@ -2843,185 +2969,6 @@ A partir daqui pode surgir muita coisa. Quem sabe não continuamos desenvolvendo
 
 
 <p>Abraço!</p>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Vagrant, PuPHPet E PHP Built In]]></title>
-    <link href="http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/"/>
-    <updated>2013-09-15T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in</id>
-    <content type="html"><![CDATA[<p>Fala pessoal.<br/>
-Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.</p>
-
-
-
-
-<p><strong>O que é Vagrant?</strong><br/>
-Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.<br/>
-Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: <a href="http://flaviosilveira.com/2012/vagrant-facil-e-util/">http://flaviosilveira.com/2012/vagrant-facil-e-util/</a>.</p>
-
-
-
-
-<!--more-->
-
-
-
-
-<p>Alguns pontos do Vagrant:<br/>
-&#8211; Com o Vagrant você não precisa instalar apache e outras ferramentas e poluir sua máquina.<br/>
-&#8211; Você pode criar uma máquina virtual para cada projeto e com isso ter uma versão igual ao seu servidor de produção, com a mesma versão de PHP, de MySQL e etc.<br/>
-Com isso acaba aquela desculpa de &#8220;Na minha máquina funciona!&#8221;.<br/>
-&#8211; Com o Vagrant você pode distribuir o mesmo ambiente para todo seu time de desenvolvimento, evitando funcionamentos diferentes entre pessoas do mesmo time.<br/>
-&#8211; Muito mais.</p>
-
-
-
-
-<p><strong>PuPHPet: Arquivos puppet</strong><br/>
-Com arquivos puppet (.pp) você pode definir pacotes, programas e extensões a serem instaladas na sua máquina virtual.<br/>
-Geralmente são coisas complicadas e sempre acaba surgindo um problema quando são feitos esses arquivos na mão.</p>
-
-
-
-
-<p>Felizmente surge o PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>, uma ferramenta online que cria o puppet para você. Você seleciona tudo o que você quer, incluindo pacotes PEAR, pacotes PECL, etc.<br/>
-Permite também setar o XDebug, timezone, escolher versão do PHP, do MySQL, incluir o composer, muito mais.</p>
-
-
-
-
-<p>Dê uma atenção especial na opção BOX IP Address. Nesse campo você define o ip da sua máquina virtual.<br/>
-É esse IP que você vai digitar no browser da sua máquina e acessar o seu projeto.<br/>
-Por padrão o PuPHPet traz o IP 192.168.56.101.</p>
-
-
-
-
-<p><strong>O que é PHP Built In?</strong><br/>
-Com a versão 5.4, o PHP trouxe uma novidade para os ambientes de desenvolvimento. O PHP Buitl In.<br/>
-É um web server rodando direto em cima do PHP, mas apenas com propósitos de desenvolvimento.<br/>
-Com um simples comando você define a porta da onde quer rodar o servidor, e pronto. Sem precisar de Apache, NGinx ou o que for.<br/>
-Uma coisa rápida para testar seu projeto. Veja detalhes na documentação: <a href="http://www.php.net/manual/pt_BR/features.commandline.webserver.php">http://www.php.net/manual/pt_BR/features.commandline.webserver.php</a></p>
-
-
-
-
-<p><strong>Mãos a Obra</strong><br/>
-Instale a versão mais recente do Vagrant acessando a página de downloads em <a href="http://downloads.vagrantup.com/">http://downloads.vagrantup.com/</a>.<br/>
-Uma dica é ter instalado o Virtual Box para que tudo corra bem. A instalação não tem segredos.</p>
-
-
-
-
-<p>Um segundo passo é configurar a sua máquina com a ajuda do PuPHPet <a href="https://puphpet.com/">https://puphpet.com/</a>.<br/>
-Escolha no mínimo uma versão 5.4 do PHP. Faça o download do arquivo e posicione onde melhor julgar na sua máquina.</p>
-
-
-
-
-<p>Via console, acesse essa pasta e vamos subir a sua máquina virtual com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant up
-</pre>
-
-
-
-
-<p>Esse comando irá fazer o download de tudo que você selecionou de configuração via PuPHPet e deixar a máquina online para você.<br/>
-Ao final da configuração, você já é capaz de acessar a sua máquina via porta 80 por exemplo, digite em seu navegador o ip que foi setado no campo BOX IP Address no PuPHPet.</p>
-
-
-
-
-<p>Mas que tal testar essa funcionalidade que veio com o PHP 5.4? Vamos colocar o PHP Built In para rodar.<br/>
-Vamos acessar sua máquina virtual via ssh, com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">vagrant ssh
-</pre>
-
-
-
-
-<p>Caso você precise do root para qualquer coisa, basta colocar um sudo na frente do que precisar.</p>
-
-
-
-
-<p>Vamos configurar um pequeno projeto PHP apenas para ocasião de teste. Por exemplo:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">cd /var/www
-mkdir teste
-cd teste
-</pre>
-
-
-
-
-<p>Dentro dessa pasta teste que criamos, crie um arquivo PHP simples, com um echo por exemplo.</p>
-
-
-
-
-<p>Você será capaz de acessar isso digitando seu BOX IP/teste, mas, para testar o PHP Built In, entre com o seguinte comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">sudo php -S 192.168.56.101:8080
-</pre>
-
-
-
-
-<p>Não esqueça de substituir 192.168.56.101 pelo seu BOX IP.<br/>
-8080 é a porta que escolhemos aqui. Você pode definir a porta que quiser, com exceção das que já estão em uso.<br/>
-** Qualquer comando executado nessa mesma janela, ou um ctrl+c irá derrubar o server.</p>
-
-
-
-
-<p>Pronto, o PHP Built In está escutando na porta definida.<br/>
-Você pode conferir isso abrindo um outro terminal e consultando os listenings com o comando:</p>
-
-
-
-
-<pre class="brush: bash; title: ; notranslate" title="">netstat -ln
-</pre>
-
-
-
-
-<p>Lembrando que esse comando pode variar de acordo com a distribuição que você selecionou na sua BOX.</p>
-
-
-
-
-<p>Pronto. Você pode acessar do seu browser o seu BOX IP:PORTA e acessar o seu projeto diretamente, sem barras nem nada.<br/>
-Aqui eu acessei <a href="http://192.168.56.101:8080/.">http://192.168.56.101:8080/.</a></p>
-
-
-
-
-<p><strong>Resumindo</strong><br/>
-Escrevi esse post apenas como curiosidade. Sei que ele pode não ter nenhuma aplicação prática, mas de repente é uma para o pessoal conhecer o PHP Built In e ver até onde ele vai e porque ele está apenas disponível para desenvolvimento.</p>
-
-
-
-
-<p>Grande Abraço!</p>
 
 ]]></content>
   </entry>

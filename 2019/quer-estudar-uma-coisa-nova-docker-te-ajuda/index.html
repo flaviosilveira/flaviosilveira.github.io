@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Quer Estudar Uma Coisa Nova? Docker Te Ajuda! - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Quer Estudar Uma Coisa Nova? Docker Te Ajuda! Categorias: desenvolvimento Sempre que vamos estudar algo em tecnologia, em programação temos a &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Quer Estudar Uma Coisa Nova? Docker Te Ajuda!</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2019-01-25T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>
+  
+</span>
+
+
+        </div>
+        <p>Sempre que vamos estudar algo em tecnologia, em programação temos a complexidade do ambiente para resolver. Para um simples <strong>Hello World</strong> precisamos de um ambiente e a complexidade da criação dele pode desanimar os iniciantes (Por isso o JavaScript vem a ser execelente para os iniciantes!).</p>
+
+<p>Mas para ajudar com isso temos os containers e uma ferramenta excelente para trabalhar com eles, o Docker. Diferente de uma máquina virtual, o container vai abranger apenas o que é necessário para rodar sua aplicação, sem precisar de um SO completo.</p>
+
+<p>Vamos dizer então que você quer estudar algo diferente, um banco de dados de grafos e vamos entender como o Docker vai te ajudar com isso.</p>
+
+<!--more-->
+
+
+<h2>Pesquise</h2>
+
+<p>Então até aqui já temos alguns nomes que podem ser novos para alguns.</p>
+
+<h3>Docker</h3>
+
+<p>Se você não conhece docker, dê uma buscada sobre. É uma ferramenta que pode mudar sua maneira de pensar em ambientes, arquiteturas e até sua maneira de desenvolver.</p>
+
+<h3>Banco de dados de Grafos</h3>
+
+<p>Outro ponto são bancos de dados de Grafos. Pesquise, veja suas aplicações, leia os conceitos. Busque pela solução do problema do caminho mínimo, do caixeiro viajante e outros similares.</p>
+
+<h2>Neo4J</h2>
+
+<p>O Neo4J se tornou um bancos de dados de grafos muito conhecido. Pode ser pela sua interface gráfica ou pelo seu tutorial passo a passo que te mostra algumas coisas legais de entender com grafos.</p>
+
+<p>Ele não é o foco desse artigo mas espero que traga algo para bater na cabeça de vocês.</p>
+
+<h2>O Docker te ajudando a estudar qualquer coisa</h2>
+
+<p>Então vamos dizer que você escolheu que quer estudar grafos e chegou a conclusão que o Neo4J é bom para iniciar. Vamos ver como o docker vai te ajudar nisso.</p>
+
+<p>Massssss&hellip;&hellip; Esse é um exemplo, o que quero mostrar é a facilidade que ele traz seja lá o que você quer estudar. Go, Java, NodeJS, PhantomJS, ferramentas, bancos de dados e outras tantas coisas. Siga os passos que vou descrever abaixo e você encontrará seu caminho.</p>
+
+<h2>Dockerhub</h2>
+
+<p>O Docker funciona com imagens. Uma imagem é um arquivo que contém todas (ou quase todas) as instruções para a rodar a aplicação que você precisa.</p>
+
+<p>O <a href="https://hub.docker.com/">Dockerhub</a> é um repositório dessas imagens, e lá você pode procurar pelo o que você precisa.</p>
+
+<p>Repare que você encontrará imagens oficiais, produzidas pelas empresas dos softwares e imagens criados por outros usuários. As oficiais, geralmente, vem com uma extensa documentação que são de grande ajuda para fazer tudo rodar certinho. Mas, um usuário pode ter tido um insight legal e acrescentado ou facilitado ainda mais o processo, então vale ficar de olho nos dois.</p>
+
+<p>Para um futuro, vale você ver como subir suas imagens</p>
+
+<h2>Subindo um Neo4J</h2>
+
+<p>No Dockerhub procure por Neo4J.</p>
+
+<p>Nos resultados da pesquisa você deve chegar na imagem oficial que está no seguinte endereço <a href="https://hub.docker.com/_/neo4j">https://hub.docker.com/_/neo4j</a>.</p>
+
+<p>Dentrp desse repositório oficial do Neo4J você tem as versões, uma explicação do que é o Neo4J, como usar, documentacão e licença.</p>
+
+<p>Em <strong><em>como usar essa imagem</em></strong>, você vê o comando <strong>docker run</strong> para rodar a aplicação.</p>
+
+<p><strong><strong><em> Sim!! Você já deve ter o docker instalado em sua máquina antes de seguir em diante. Não será difícil achar tutoriais de como fazer isso par aseu sistema operacional internet a fora.</em></strong></strong></p>
+
+<p>Vamos executar:</p>
+
+<pre><code>docker run --publish=7474:7474 --publish=7687:7687 --volume=$HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Explicando esse comando temos:</p>
+
+<ul>
+<li>&ndash;publish está expondo sua porta 7474 e encaminhando ela para a porta 7474 do container.</li>
+<li>O mesmo acontece com a porta 7687.</li>
+<li>&ndash;volume é um caminho na sua máquina que será compatilhado com o container. Ele armazenará as mudanças de dados que você fizer, e quando você erguer novamente esse container suas alterações estarão lá.</li>
+<li>Neo4J no final é o nome da imagem.</li>
+</ul>
+
+
+<p>A instrução &ndash;publish pode ser abreviado para -p e a instrução &ndash;volume para -v.
+Você pode tirar o sinal de igual, manter, tanto faz.</p>
+
+<p>Eu uso como abaixo:</p>
+
+<pre><code>docker run -p 7474:7474 -p 7687:7687 -v $HOME/neo4j/data:/data neo4j
+</code></pre>
+
+<p>Essa é a saída que começa a aparecer aqui:</p>
+
+<pre><code>Unable to find image 'neo4j:latest' locally
+latest: Pulling from library/neo4j
+cd784148e348: Downloading [========================================&gt;          ]  1.785MB/2.207MB
+35920a071f91: Download complete 
+1a5149a464dd: Downloading [=&gt;                                                 ]  1.621MB/54.87MB
+15bb04bfc35a: Waiting 
+...
+</code></pre>
+
+<ul>
+<li>O Docker viu que eu não tinha a imagem, então foi buscar o caminho dela para fazer o download.</li>
+<li>Layers, é a maneira que o docker usa para fazer o download das imagens.</li>
+</ul>
+
+
+<p>Na sequência disso ele vai subir a aplicação, até te dizer o seguinte:</p>
+
+<pre><code>....
+INFO  ======== Neo4j 3.5.2 ========
+INFO  Starting...
+INFO  Bolt enabled on 0.0.0.0:7687.
+INFO  Started.
+INFO  Remote interface available at http://localhost:7474/
+</code></pre>
+
+<p>Acesse conforme a saída sugere o endereço <a href="http://localhost:7474">http://localhost:7474</a> e você está na interface do Neo4J.</p>
+
+<p>Viu como é fácil?</p>
+
+<h2>Teste com outras ferramentas / tecnologias</h2>
+
+<p>Acredito que não houve nenhuma dor em seguir os passos acima. É muito simples!</p>
+
+<p>Buscar no dockerhub a tecnologia, dar uma lida em como a imagem se comporta e executar um docker run.</p>
+
+<p>Teste com outras ferramentas, bancos de dados, sistemas, frameworks e se apaixone pelo docker assim como eu.</p>
+
+<p>Grande Abraço!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda';
+    var disqus_title = 'Quer estudar uma coisa nova? Docker te ajuda!';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019" title="Previous Post: Como foi 2018 e o que você pode esperar de mim para 2019">&laquo; Anterior: Como foi 2018 e o que você pode esperar de mim para 2019</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda';
+        var disqus_url = 'http://flaviosilveira.com/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
