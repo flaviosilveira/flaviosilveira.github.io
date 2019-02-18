@@ -1,0 +1,269 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Ferramentas De Otimização De Imagem via Linha De Comando - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Ferramentas De Otimização De Imagem via Linha De Comando Categorias: desenvolvimento Na última semana durante um trabalho de otimização de &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Ferramentas De Otimização De Imagem via Linha De Comando</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2019-02-18T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>
+  
+</span>
+
+
+        </div>
+        <p>Na última semana durante um trabalho de otimização de performance para um site, chegou a hora das imagens. Muitas imagens antigas de produtos e também peças de layout que tinham bom espaço para ganho.</p>
+
+<p>Eu estava procurando por ferramentas para otimizar as imagens de uma maneira que eu pudesse fazer diretamente no servidor, via terminal. Dessa forma eu não precisaria fazer o download de tudo para minha máquina, depois subir novamente e nem nada similar. Apenas um Backup no próprio servidor e rodar os comandos.</p>
+
+<!--more-->
+
+
+<p>Haviam imagens das famílias PNG, GIF e JPG e acabei chegando nas seguintes ferramentas:</p>
+
+<ul>
+<li>jpegoptim</li>
+<li>optiPNG</li>
+<li>gifsicle</li>
+</ul>
+
+
+<p>Todas as três instaladas via apt-get e similares, super leves, fácéis de instalar e também de usar, como mostro a seguir:</p>
+
+<h3>jpegoptim</h3>
+
+<p>Uso simples:</p>
+
+<p><code>jpegoptim filename.jpg</code></p>
+
+<p>Seu arquivo pode ser jpg, jpeg, JPG, JPEG, &hellip;</p>
+
+<p>O comando acima, faz a otimização mantendo a qualidade da imagem, o que queremos. Mas você pode também passar um parâmetro para controlar isso.</p>
+
+<p>Tive excelentes resultados sem muita perda de qualidade e com excelentes ganhos de compressão com o seguinte comando:</p>
+
+<p><code>jpegoptim --max=80 filename.jpg</code></p>
+
+<h3>optiPNG</h3>
+
+<p>Uso simples:</p>
+
+<p><code>optipng filename.png</code></p>
+
+<p>Seu arquivo pode ser png, PNG, &hellip;</p>
+
+<p>Diferente da ferramenta anterior para jpg, essa não permite parâmetros considerando perda de qualidade por conta do formato PNG e como ele foi concebido.</p>
+
+<h3>gifsicle</h3>
+
+<p>Uso simples:</p>
+
+<p><code>gifsicle --batch --optimize=3 filename.gif</code></p>
+
+<p><strong>&ndash;batch</strong> é o parâmetro para dizer que você quer manter o arquivo no mesmo lugar e com o mesmo nome.</p>
+
+<p><strong>&ndash;optimize</strong> é um parâmtro que determina o nível de otimização. 3 é uma opção que tenta vários métodos em cima da imagem. Consulte o manual para as outras opções.</p>
+
+<p>Seu arquivo pode ser gif, GIF, ..</p>
+
+<p>Em caso de gifs animados, dê uma lida no manual. Existem alguns parâmetros adicionais para otimização de animações.</p>
+
+<h3>Várias imagens de uma vez só</h3>
+
+<p>Para rodar os comandos acima em várias imagens, dentro de vários diretórios, use a opção <strong>-exec</strong> do comando <strong>find</strong></p>
+
+<p><code>find -name '*.png' -exec optipng {} \;</code></p>
+
+<p><strong>-name</strong> para buscar por nome dos arquivos</p>
+
+<p><strong>*.png</strong> irá buscar por arquivos com a extensão .png. Não esqueça das aspas.</p>
+
+<p>Após o <strong>-exec</strong> adicione o comando que você quer executar para todas as ocorrências que serão encontradas.</p>
+
+<p><strong>{}</strong> As chaves representam as ocorrências encontradas.</p>
+
+<p>Feche com <strong>\;</strong></p>
+
+<p>Antes de sair executando essa combinação, teste com um <em>ls -l</em> no lugar do comando. Assim você verá o que o <strong>find</strong> vai retornar. E claro, faço um backup das imagens em outra pasta para evitar maiores problemas.</p>
+
+<h3>man</h3>
+
+<p>Todas as ferramentas acima possuem um manual bem completo e fácil de compreender. Basta digitar <strong>man</strong> e o nome da ferramenta para acessar.</p>
+
+<p>É isso por hoje pessoal! Grande Abraço!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando';
+    var disqus_title = 'Ferramentas de otimização de imagem via linha de comando';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda" title="Previous Post: Quer estudar uma coisa nova? Docker te ajuda!">&laquo; Anterior: Quer estudar uma coisa nova? Docker te ajuda!</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando';
+        var disqus_url = 'http://flaviosilveira.com/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>
