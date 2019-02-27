@@ -1,0 +1,472 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Entenda Como Funciona O PHP! (Do Código Fonte até a Renderização) - Flávio Silveira</title>
+  <meta name="author" content="Flávio Silveira">
+
+  
+  <meta name="description" content="Entenda Como Funciona O PHP! (Do Código Fonte até a Renderização) Categorias: desenvolvimento Esse artigo é quase uma tradução fiel do artigo How &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://flaviosilveira.com/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="http://feeds.feedburner.com/flaviosilveira" rel="alternate" title="Flávio Silveira" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-2775631-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Entenda Como Funciona O PHP! (Do Código Fonte até a Renderização)</h1>
+        <div class="meta">
+          
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2019-02-27T00:00:00+00:00" pubdate data-updated="true"></time>
+          
+
+Categorias: 
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/desenvolvimento/'>desenvolvimento</a>
+  
+</span>
+
+
+        </div>
+        <p>Esse artigo é quase uma tradução fiel do artigo <a href="https://www.sitepoint.com/how-php-executes-from-source-code-to-render">How PHP Executes from Source Code to Render</a> de <a href="https://twitter.com/tpunt94">Thomas Punt</a>, revisado por <a href="https://twitter.com/rafieyounes">Younes Rafie</a>.</p>
+
+<p>No original o autor coloca os pedaços de códigos para você testar por conta. Aqui, além disso, adicionei como rodar os mesmos com um único comando, usando docker. Assim você não precisa de muito esforço para ver os exemplos.</p>
+
+<p>Criei uma imagem no dockerhub com tudo necessário para rodar os exemplos desse artigo. Basta ter o docker instalado e rodar os comandos como mostrados.</p>
+
+<p>Acaba não sendo uma tradução fiel, pois tomei a liberdade de adicionar e tirar algumas partes de texto em relação ao original. E por ter muitos termos técnicos, posso ter pisado na bola ao traduzir ou manter no inglês algum termo em específico. Fiz isso para tentar deixar mais didático do meu ponto de vista. E isso não foi tão simples. Então, não deixe de comentar caso veja algo errado / estranho&hellip;</p>
+
+<!-- more -->
+
+
+<h2>4 etapas</h2>
+
+<p>Bastante coisa acontece quando você executa um pequeno trecho de código PHP. De maneira geral podemos dizer que o Interpretador do PHP passa por 4 etapas quando o código é executado:</p>
+
+<ul>
+<li>Tokenização (Ou Lexing ou Scanning)</li>
+<li>Parsing</li>
+<li>Compilação</li>
+<li>Interpretação</li>
+</ul>
+
+
+<p>Abaixo vamos passar por cada um dessas etapas e ver como podemos checar a saída de cada um deles para entender o que realmente acontece. Para isso vamos usar algumas extensões que já vem com PHP nativamente (como Tokenizer e o OPCache) e outras que não (como php-ast e o VLD).</p>
+
+<h2>Tokenização</h2>
+
+<p>Também chamada de Lexing ou de Scanning por alguns outros autores.</p>
+
+<p>Essa etapa faz um processo de pegar um texto (um código PHP nesse caso) e transformar ele em uma sequência de tokens. Um token é simplesmente um identificador, e esse identificador vai indicar um valor.</p>
+
+<p>O PHP usa o <a href="http://re2c.org/">re2c</a> para gerar esses tokens a partir do arquivo de configuração <a href="https://github.com/php/php-src/blob/master/Zend/zend_language_scanner.l">zend_language_scanner.l</a>.</p>
+
+<p>Vamos ver a saída dessa etapa usando a extensão <a href="http://php.net/manual/en/book.tokenizer.php">Tokenizer</a>, nativa no PHP.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$code = &lt;&lt;&lt;'code'
+</span><span class='line'>&lt;?php
+</span><span class='line'>$a = 1;
+</span><span class='line'>code;
+</span><span class='line'>
+</span><span class='line'>$tokens = token_get_all($code);
+</span><span class='line'>
+</span><span class='line'>foreach ($tokens as $token) {
+</span><span class='line'>    if (is_array($token)) {
+</span><span class='line'>        echo "Line {$token[2]}: ", token_name($token[0]), " ('{$token[1]}')", PHP_EOL;
+</span><span class='line'>    } else {
+</span><span class='line'>        var_dump($token);
+</span><span class='line'>    }
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Salve o código acima em um arquivo (por exemplo, tokenizer.php), em seguida rode o container para executar ele.</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php tokenizer.php</code></p>
+
+<p>Explicando rapidamente o comando docker acima:</p>
+
+<ul>
+<li><strong>&ndash;rm</strong> para remover o container automaticamente.</li>
+<li><strong>-v &ldquo;$PWD&rdquo;:/myapp</strong> para compartilhar seu diretório atual com o diretório &lsquo;myapp&rsquo; do container.</li>
+<li><strong>-w /myapp</strong> é uma opção para indicar o local de trabalho para o php, workspace, o document root.</li>
+<li><strong>flaviosilveira/php-source-to-render</strong> é a imagem para construir o container.</li>
+</ul>
+
+
+<p>Saída:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>Line 1: T_OPEN_TAG ('&lt;?php
+</span><span class='line'>')
+</span><span class='line'>Line 2: T_VARIABLE ('$a')
+</span><span class='line'>Line 2: T_WHITESPACE (' ')
+</span><span class='line'>string(1) "="
+</span><span class='line'>Line 2: T_WHITESPACE (' ')
+</span><span class='line'>Line 2: T_LNUMBER ('1')
+</span><span class='line'>string(1) ";"</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Coisas para considerarmos da saída acima:</p>
+
+<ul>
+<li>Nem todos os pedaços do código se transformam em Tokens. Alguns símbolos já são considerados tokens por si só (=, ;, :, ?, e outros).</li>
+<li>Será armazenado o valor correspondente do token e o número da linha desse token para o stack trace. Aquele mesmo que vemos em algumas mensagens de erro tentando nos ajudar quando temos problemas.</li>
+</ul>
+
+
+<h2>Parsing</h2>
+
+<p>Essa etapa de parsing, pega a saÃ­da da etapa de tokenização e executa duas tarefas:</p>
+
+<p>A primeira tarefa: Valida a ordem dos tokens com as regras da linguagem definidas no <a href="https://github.com/php/php-src/blob/master/Zend/zend_language_parser.y">BNF grammar file</a>. Isso garante que as regras de sintaxe da linguagem estão sendo seguidas. Essa etapa conta com o <a href="https://www.gnu.org/software/bison/">Bison</a> (Não é Street Fighter, é Open Source) e usa o contexto <strong>LARL</strong>, Look Ahead, Left to right, ou seja, faz a leitura em frente, enquanto achar tokens, da esquerda para a direita.</p>
+
+<p>A segunda tarefa: Gerar uma árvore de sintaxe abstrata, no inglês AST (Abstract Sintaxe Tree), uma árvore do código fonte que será usada durante a próxima etapa.</p>
+
+<p>Podemos ver a forma dessa AST produzida pelo parser usando a extensão <a href="https://github.com/nikic/php-ast">php-ast</a> do excelente <a href="https://github.com/nikic">Nikita Popov</a>.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$code = &lt;&lt;&lt;'code'
+</span><span class='line'>&lt;?php
+</span><span class='line'>$a = 1;
+</span><span class='line'>code;
+</span><span class='line'>
+</span><span class='line'>print_r(ast\parse_code($code, 60));</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>Importante</h5>
+
+<p>O número 60 dentro do print_r acima, se refere a versão. 60 é a versão no momento de escrita dese artigo (Na versão original em inglês era 30). Caso dê erro, a saída do mesmo te mostrará a versão atual. Basta trocar.</p>
+
+<p>Salve o código acima em um arquivo (por exemplo, parsing.php), em seguida rode o container para executar ele:</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php parsing.php</code></p>
+
+<p>Saída:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>ast\Node Object (
+</span><span class='line'>    [kind] =&gt; 132
+</span><span class='line'>    [flags] =&gt; 0
+</span><span class='line'>    [lineno] =&gt; 1
+</span><span class='line'>    [children] =&gt; Array (
+</span><span class='line'>        [0] =&gt; ast\Node Object (
+</span><span class='line'>            [kind] =&gt; 517
+</span><span class='line'>            [flags] =&gt; 0
+</span><span class='line'>            [lineno] =&gt; 2
+</span><span class='line'>            [children] =&gt; Array (
+</span><span class='line'>                [var] =&gt; ast\Node Object (
+</span><span class='line'>                    [kind] =&gt; 256
+</span><span class='line'>                    [flags] =&gt; 0
+</span><span class='line'>                    [lineno] =&gt; 2
+</span><span class='line'>                    [children] =&gt; Array (
+</span><span class='line'>                        [name] =&gt; a
+</span><span class='line'>                    )
+</span><span class='line'>                )
+</span><span class='line'>                [expr] =&gt; 1
+</span><span class='line'>            )
+</span><span class='line'>        )
+</span><span class='line'>    )
+</span><span class='line'>)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A árvore de nós, que geralmente são do tipo <strong>ast\Node</strong>, tem várias propriedades:</p>
+
+<ul>
+<li>kind - Um valor inteiro para representar o tipo de nó. Cada um tem uma constante correspondente (AST_STMT_LIST => 132, AST_ASSIGN => 517, AST_VAR => 256).</li>
+<li>flags - Um inteiro que específico comportamento de sobrecarga. Por exemplo, um nó ast\AST_BINARY_OP terá flags para diferenciar qual operação binária está ocorrendo.</li>
+<li>lineno - O número da linha, como visto na informação do token anteriormente.</li>
+<li>children - Sub-Nós. Por exemplo uma função vai apresentar como children: parâmetros, tipo do retorno, corpo, etc.</li>
+</ul>
+
+
+<p>Essa saída AST dessa etapa é útil para ferramentas como analisadores de código, por exemplo o <a href="https://github.com/phan/phan">Phan</a>.</p>
+
+<h2>Compilação</h2>
+
+<p>A etapa de compilação consome a AST gerada acima. Gerando Opcodes (Operation Codes) recursivamente enquanto percorre a árvore. Opcodes são operações a serem executadas.</p>
+
+<p>Essa etapa também executa algumas otimizações. Isso inclui resolver algumas chamadas de função com argumentos literais (strlen(&ldquo;abc&rdquo;) para int(3)) e expressões matemáticas (60 * 60 * 24 para int(86400)).</p>
+
+<p>Há algumas maneiras de vermos os Opcodes gerados nessa etapa. Mas hoje vamos de <a href="https://derickrethans.nl/projects.html#vld">VLD</a>, criada pelo <a href="https://twitter.com/derickr">Derick Rethans</a>. Essa ferramenta mostra a saída de uma maneira mais amigável do que as demais, e isso ajuda no nosso entendimento.</p>
+
+<p>Vamos ver a saída para o seguinte código:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>if (PHP_VERSION == '7.2.15') {
+</span><span class='line'>    echo 'Yay', PHP_EOL;
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Salve o código acima em um arquivo (por exemplo, compilation.php), em seguida rode o container para executar ele:</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php -dvld.active=1 compilation.php</code></p>
+
+<p>Saída:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>line     #* E I O op                           fetch          ext  return  operands
+</span><span class='line'>-------------------------------------------------------------------------------------
+</span><span class='line'>   3     0  E &gt; &gt; JMPZ                                                     &lt;true&gt;, -&gt;3
+</span><span class='line'>   4     1    &gt;   ECHO                                                     'Yay'
+</span><span class='line'>         2        ECHO                                                     '%0A'
+</span><span class='line'>   6     3    &gt; &gt; RETURN                                                   1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>De certa forma os Opcodes se parecem com o código fonte original, permitindo acompanhar as operações básicas. (Esse artigo não tem a pretensão de detalhar Opcodes.) Nenhuma otimização foi aplicada no nível do código de operação no script acima, mas podemos ver que essa etapa de compilação resolveu por exemplo a condição (1 == &lsquo;1&rsquo;) para true.</p>
+
+<p>Nessa etapa também, entram em ação ferramentas que fazem o cache dos Opcodes, evitando assim refazer as etapas de tokenização, parsing e compilação com frequência. Entre essas ferramentas temos o apc e o OPCache.</p>
+
+<p>O OPCache, além de fazer isso também tem alguns passos de otimização. Alterando o parâmetro dopcache.optimization_level, podemos aumentar o nível de otimização e ver o que acontece:</p>
+
+<h5>Importante</h5>
+
+<p>Precisamos também habilitar o OPCache para cli, com o parâmetro dopcache.enable_cli para vermos a saída.</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php -dopcache.enable_cli=1 -dopcache.optimization_level=1111 -dvld.active=1 -dvld.execute=0 code/compilation.php</code></p>
+
+<p>Saída:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>line     #* E I O op                           fetch          ext  return  operands
+</span><span class='line'>-------------------------------------------------------------------------------------
+</span><span class='line'>   4     0  E &gt;   ECHO                                                     'Yay%0A'
+</span><span class='line'>   6     1      &gt; RETURN                                                   1</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Vemos que a condicional foi removida e as duas instruções com ECHO se tornaram uma só. Isso é só um gostinho das otimizações que o OPCache aplica. Esse artigo não vai entrar nos detalhes dos níveis de otimização por ser um assunto extenso.</p>
+
+<h5>Importante</h5>
+
+<p>Você pode adicionar os parâmetros -dvld.save_paths e -dvld.save_dir para salvar essa saída com os Opcodes em um arquivo que você poderá abrir com o <a href="http://graphviz.org/">Graphiz</a>. Fica muito legal para estudar!</p>
+
+<h2>Interpretação</h2>
+
+<p>A útima etapa é a interpretação dos Opcodes. Aqui os Opcodes são executados na VM Zend Engine (ZE). Não há muito o que dizer sobre essa etapa (ao menos de um ponto de vista de alto nível). A saída é praticamente igual a saída de seus códigos usando comandos como echo, print, var_dump e etc.</p>
+
+<p>Então, ao invés de entrar em algo muito complexo nessa etapa, aqui está um fato divertido: o PHP chama a si mesmo como uma dependência quando gera sua própria VM. Isso porque a VM é gerada por um script PHP, para ser mais simples de escrever e mais fácil de manter.</p>
+
+<h2>Conclusão</h2>
+
+<p>Demos aqui uma rápida olhada pelas 4 etapas que o interpretador do PHP passa quando executa um código. Isso envolveu o uso de algumas extensões como Tokenizer, OPCache, php-ast e VLD para manipular e ver a saída de cada etapa.</p>
+
+<p>Que esse artigo ajude a espalhar um melhor entendimento sobre o interpretador do PHP, e também que mostre a importância do estágio de cache na etapa de compilação.</p>
+
+<p>Abraço!</p>
+
+
+        <hr class="divider-short"/>
+
+        
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite"><aside id="comments">
+  <h3>Comentários</h3>
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'flaviosilveira';
+    var disqus_identifier = '/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao';
+    var disqus_title = 'Entenda como funciona o PHP! (Do código fonte até a renderização)';
+    var disqus_url = 'http://flaviosilveira.com';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</aside></div>
+        </section>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando" title="Previous Post: Ferramentas de otimização de imagem via linha de comdo">&laquo; Anterior: Ferramentas de otimização de imagem via linha de comdo</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/flaviosilveira"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/flaviosilveira"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+    <a href="https://linkedin.com/in/flaviosilveira"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+    
+      
+
+<script type="text/javascript">
+      var disqus_shortname = 'flaviosilveira';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://flaviosilveira.com/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao';
+        var disqus_url = 'http://flaviosilveira.com/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+    
+  </body>
+</html>

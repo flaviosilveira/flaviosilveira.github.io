@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Desenvolvimento | Flávio Silveira]]></title>
   <link href="http://flaviosilveira.com/blog/categories/desenvolvimento/atom.xml" rel="self"/>
   <link href="http://flaviosilveira.com/"/>
-  <updated>2019-02-18T14:35:28+00:00</updated>
+  <updated>2019-02-27T19:19:05+00:00</updated>
   <id>http://flaviosilveira.com/</id>
   <author>
     <name><![CDATA[Flávio Silveira]]></name>
@@ -14,11 +14,237 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Ferramentas De Otimização De Imagem via Linha De Comando]]></title>
+    <title type="html"><![CDATA[Entenda Como Funciona O PHP! (Do Código Fonte até a Renderização)]]></title>
+    <link href="http://flaviosilveira.com/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao"/>
+    <updated>2019-02-27T00:00:00+00:00</updated>
+    <id>http://flaviosilveira.com/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao</id>
+    <content type="html"><![CDATA[<p>Esse artigo é quase uma tradução fiel do artigo <a href="https://www.sitepoint.com/how-php-executes-from-source-code-to-render">How PHP Executes from Source Code to Render</a> de <a href="https://twitter.com/tpunt94">Thomas Punt</a>, revisado por <a href="https://twitter.com/rafieyounes">Younes Rafie</a>.</p>
+
+<p>No original o autor coloca os pedaços de códigos para você testar por conta. Aqui, além disso, adicionei como rodar os mesmos com um único comando, usando docker. Assim você não precisa de muito esforço para ver os exemplos.</p>
+
+<p>Criei uma imagem no dockerhub com tudo necessário para rodar os exemplos desse artigo. Basta ter o docker instalado e rodar os comandos como mostrados.</p>
+
+<p>Acaba não sendo uma tradução fiel, pois tomei a liberdade de adicionar e tirar algumas partes de texto em relação ao original. E por ter muitos termos técnicos, posso ter pisado na bola ao traduzir ou manter no inglês algum termo em específico. Fiz isso para tentar deixar mais didático do meu ponto de vista. E isso não foi tão simples. Então, não deixe de comentar caso veja algo errado / estranho&hellip;</p>
+
+<!-- more -->
+
+
+<h2>4 etapas</h2>
+
+<p>Bastante coisa acontece quando você executa um pequeno trecho de código PHP. De maneira geral podemos dizer que o Interpretador do PHP passa por 4 etapas quando o código é executado:</p>
+
+<ul>
+<li>Tokenização (Ou Lexing ou Scanning)</li>
+<li>Parsing</li>
+<li>Compilação</li>
+<li>Interpretação</li>
+</ul>
+
+
+<p>Abaixo vamos passar por cada um dessas etapas e ver como podemos checar a saída de cada um deles para entender o que realmente acontece. Para isso vamos usar algumas extensões que já vem com PHP nativamente (como Tokenizer e o OPCache) e outras que não (como php-ast e o VLD).</p>
+
+<h2>Tokenização</h2>
+
+<p>Também chamada de Lexing ou de Scanning por alguns outros autores.</p>
+
+<p>Essa etapa faz um processo de pegar um texto (um código PHP nesse caso) e transformar ele em uma sequência de tokens. Um token é simplesmente um identificador, e esse identificador vai indicar um valor.</p>
+
+<p>O PHP usa o <a href="http://re2c.org/">re2c</a> para gerar esses tokens a partir do arquivo de configuração <a href="https://github.com/php/php-src/blob/master/Zend/zend_language_scanner.l">zend_language_scanner.l</a>.</p>
+
+<p>Vamos ver a saída dessa etapa usando a extensão <a href="http://php.net/manual/en/book.tokenizer.php">Tokenizer</a>, nativa no PHP.</p>
+
+<pre><code>$code = &lt;&lt;&lt;'code'
+&lt;?php
+$a = 1;
+code;
+
+$tokens = token_get_all($code);
+
+foreach ($tokens as $token) {
+    if (is_array($token)) {
+        echo "Line {$token[2]}: ", token_name($token[0]), " ('{$token[1]}')", PHP_EOL;
+    } else {
+        var_dump($token);
+    }
+}
+</code></pre>
+
+<p>Salve o código acima em um arquivo (por exemplo, tokenizer.php), em seguida rode o container para executar ele.</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php tokenizer.php</code></p>
+
+<p>Explicando rapidamente o comando docker acima:</p>
+
+<ul>
+<li><strong>&ndash;rm</strong> para remover o container automaticamente.</li>
+<li><strong>-v &ldquo;$PWD&rdquo;:/myapp</strong> para compartilhar seu diretório atual com o diretório &lsquo;myapp&rsquo; do container.</li>
+<li><strong>-w /myapp</strong> é uma opção para indicar o local de trabalho para o php, workspace, o document root.</li>
+<li><strong>flaviosilveira/php-source-to-render</strong> é a imagem para construir o container.</li>
+</ul>
+
+
+<p>Saída:</p>
+
+<pre><code>Line 1: T_OPEN_TAG ('&lt;?php
+')
+Line 2: T_VARIABLE ('$a')
+Line 2: T_WHITESPACE (' ')
+string(1) "="
+Line 2: T_WHITESPACE (' ')
+Line 2: T_LNUMBER ('1')
+string(1) ";"
+</code></pre>
+
+<p>Coisas para considerarmos da saída acima:</p>
+
+<ul>
+<li>Nem todos os pedaços do código se transformam em Tokens. Alguns símbolos já são considerados tokens por si só (=, ;, :, ?, e outros).</li>
+<li>Será armazenado o valor correspondente do token e o número da linha desse token para o stack trace. Aquele mesmo que vemos em algumas mensagens de erro tentando nos ajudar quando temos problemas.</li>
+</ul>
+
+
+<h2>Parsing</h2>
+
+<p>Essa etapa de parsing, pega a saÃ­da da etapa de tokenização e executa duas tarefas:</p>
+
+<p>A primeira tarefa: Valida a ordem dos tokens com as regras da linguagem definidas no <a href="https://github.com/php/php-src/blob/master/Zend/zend_language_parser.y">BNF grammar file</a>. Isso garante que as regras de sintaxe da linguagem estão sendo seguidas. Essa etapa conta com o <a href="https://www.gnu.org/software/bison/">Bison</a> (Não é Street Fighter, é Open Source) e usa o contexto <strong>LARL</strong>, Look Ahead, Left to right, ou seja, faz a leitura em frente, enquanto achar tokens, da esquerda para a direita.</p>
+
+<p>A segunda tarefa: Gerar uma árvore de sintaxe abstrata, no inglês AST (Abstract Sintaxe Tree), uma árvore do código fonte que será usada durante a próxima etapa.</p>
+
+<p>Podemos ver a forma dessa AST produzida pelo parser usando a extensão <a href="https://github.com/nikic/php-ast">php-ast</a> do excelente <a href="https://github.com/nikic">Nikita Popov</a>.</p>
+
+<pre><code>$code = &lt;&lt;&lt;'code'
+&lt;?php
+$a = 1;
+code;
+
+print_r(ast\parse_code($code, 60));
+</code></pre>
+
+<h5>Importante</h5>
+
+<p>O número 60 dentro do print_r acima, se refere a versão. 60 é a versão no momento de escrita dese artigo (Na versão original em inglês era 30). Caso dê erro, a saída do mesmo te mostrará a versão atual. Basta trocar.</p>
+
+<p>Salve o código acima em um arquivo (por exemplo, parsing.php), em seguida rode o container para executar ele:</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php parsing.php</code></p>
+
+<p>Saída:</p>
+
+<pre><code>ast\Node Object (
+    [kind] =&gt; 132
+    [flags] =&gt; 0
+    [lineno] =&gt; 1
+    [children] =&gt; Array (
+        [0] =&gt; ast\Node Object (
+            [kind] =&gt; 517
+            [flags] =&gt; 0
+            [lineno] =&gt; 2
+            [children] =&gt; Array (
+                [var] =&gt; ast\Node Object (
+                    [kind] =&gt; 256
+                    [flags] =&gt; 0
+                    [lineno] =&gt; 2
+                    [children] =&gt; Array (
+                        [name] =&gt; a
+                    )
+                )
+                [expr] =&gt; 1
+            )
+        )
+    )
+)
+</code></pre>
+
+<p>A árvore de nós, que geralmente são do tipo <strong>ast\Node</strong>, tem várias propriedades:</p>
+
+<ul>
+<li>kind - Um valor inteiro para representar o tipo de nó. Cada um tem uma constante correspondente (AST_STMT_LIST => 132, AST_ASSIGN => 517, AST_VAR => 256).</li>
+<li>flags - Um inteiro que específico comportamento de sobrecarga. Por exemplo, um nó ast\AST_BINARY_OP terá flags para diferenciar qual operação binária está ocorrendo.</li>
+<li>lineno - O número da linha, como visto na informação do token anteriormente.</li>
+<li>children - Sub-Nós. Por exemplo uma função vai apresentar como children: parâmetros, tipo do retorno, corpo, etc.</li>
+</ul>
+
+
+<p>Essa saída AST dessa etapa é útil para ferramentas como analisadores de código, por exemplo o <a href="https://github.com/phan/phan">Phan</a>.</p>
+
+<h2>Compilação</h2>
+
+<p>A etapa de compilação consome a AST gerada acima. Gerando Opcodes (Operation Codes) recursivamente enquanto percorre a árvore. Opcodes são operações a serem executadas.</p>
+
+<p>Essa etapa também executa algumas otimizações. Isso inclui resolver algumas chamadas de função com argumentos literais (strlen(&ldquo;abc&rdquo;) para int(3)) e expressões matemáticas (60 * 60 * 24 para int(86400)).</p>
+
+<p>Há algumas maneiras de vermos os Opcodes gerados nessa etapa. Mas hoje vamos de <a href="https://derickrethans.nl/projects.html#vld">VLD</a>, criada pelo <a href="https://twitter.com/derickr">Derick Rethans</a>. Essa ferramenta mostra a saída de uma maneira mais amigável do que as demais, e isso ajuda no nosso entendimento.</p>
+
+<p>Vamos ver a saída para o seguinte código:</p>
+
+<pre><code>if (PHP_VERSION == '7.2.15') {
+    echo 'Yay', PHP_EOL;
+}
+</code></pre>
+
+<p>Salve o código acima em um arquivo (por exemplo, compilation.php), em seguida rode o container para executar ele:</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php -dvld.active=1 compilation.php</code></p>
+
+<p>Saída:</p>
+
+<pre><code>line     #* E I O op                           fetch          ext  return  operands
+-------------------------------------------------------------------------------------
+   3     0  E &gt; &gt; JMPZ                                                     &lt;true&gt;, -&gt;3
+   4     1    &gt;   ECHO                                                     'Yay'
+         2        ECHO                                                     '%0A'
+   6     3    &gt; &gt; RETURN                                                   1
+</code></pre>
+
+<p>De certa forma os Opcodes se parecem com o código fonte original, permitindo acompanhar as operações básicas. (Esse artigo não tem a pretensão de detalhar Opcodes.) Nenhuma otimização foi aplicada no nível do código de operação no script acima, mas podemos ver que essa etapa de compilação resolveu por exemplo a condição (1 == &lsquo;1&rsquo;) para true.</p>
+
+<p>Nessa etapa também, entram em ação ferramentas que fazem o cache dos Opcodes, evitando assim refazer as etapas de tokenização, parsing e compilação com frequência. Entre essas ferramentas temos o apc e o OPCache.</p>
+
+<p>O OPCache, além de fazer isso também tem alguns passos de otimização. Alterando o parâmetro dopcache.optimization_level, podemos aumentar o nível de otimização e ver o que acontece:</p>
+
+<h5>Importante</h5>
+
+<p>Precisamos também habilitar o OPCache para cli, com o parâmetro dopcache.enable_cli para vermos a saída.</p>
+
+<p><code>docker run --rm -v "$PWD":/myapp -w /myapp flaviosilveira/php-source-to-render php -dopcache.enable_cli=1 -dopcache.optimization_level=1111 -dvld.active=1 -dvld.execute=0 code/compilation.php</code></p>
+
+<p>Saída:</p>
+
+<pre><code>line     #* E I O op                           fetch          ext  return  operands
+-------------------------------------------------------------------------------------
+   4     0  E &gt;   ECHO                                                     'Yay%0A'
+   6     1      &gt; RETURN                                                   1
+</code></pre>
+
+<p>Vemos que a condicional foi removida e as duas instruções com ECHO se tornaram uma só. Isso é só um gostinho das otimizações que o OPCache aplica. Esse artigo não vai entrar nos detalhes dos níveis de otimização por ser um assunto extenso.</p>
+
+<h5>Importante</h5>
+
+<p>Você pode adicionar os parâmetros -dvld.save_paths e -dvld.save_dir para salvar essa saída com os Opcodes em um arquivo que você poderá abrir com o <a href="http://graphviz.org/">Graphiz</a>. Fica muito legal para estudar!</p>
+
+<h2>Interpretação</h2>
+
+<p>A útima etapa é a interpretação dos Opcodes. Aqui os Opcodes são executados na VM Zend Engine (ZE). Não há muito o que dizer sobre essa etapa (ao menos de um ponto de vista de alto nível). A saída é praticamente igual a saída de seus códigos usando comandos como echo, print, var_dump e etc.</p>
+
+<p>Então, ao invés de entrar em algo muito complexo nessa etapa, aqui está um fato divertido: o PHP chama a si mesmo como uma dependência quando gera sua própria VM. Isso porque a VM é gerada por um script PHP, para ser mais simples de escrever e mais fácil de manter.</p>
+
+<h2>Conclusão</h2>
+
+<p>Demos aqui uma rápida olhada pelas 4 etapas que o interpretador do PHP passa quando executa um código. Isso envolveu o uso de algumas extensões como Tokenizer, OPCache, php-ast e VLD para manipular e ver a saída de cada etapa.</p>
+
+<p>Que esse artigo ajude a espalhar um melhor entendimento sobre o interpretador do PHP, e também que mostre a importância do estágio de cache na etapa de compilação.</p>
+
+<p>Abraço!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ferramentas De Otimização De Imagem via Linha De Comdo]]></title>
     <link href="http://flaviosilveira.com/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando"/>
     <updated>2019-02-18T00:00:00+00:00</updated>
     <id>http://flaviosilveira.com/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando</id>
-    <content type="html"><![CDATA[<p>Na última semana durante um trabalho de otimização de performance para um site, chegou a hora das imagens. Muitas imagens antigas de produtos e também peças de layout que tinham bom espaço para ganho.</p>
+    <content type="html"><![CDATA[<p>Na última semana durante um trabalho de otimização de performance para um site, chegou a hora das imagens. Muitas imagens antigas de produtos e também peças de layout que tinham bom espaço para ganho. Diminuir o tamanho dos arquivos sem perder tanto as cores e a qualidade gráfica das imagens.</p>
 
 <p>Eu estava procurando por ferramentas para otimizar as imagens de uma maneira que eu pudesse fazer diretamente no servidor, via terminal. Dessa forma eu não precisaria fazer o download de tudo para minha máquina, depois subir novamente e nem nada similar. Apenas um Backup no próprio servidor e rodar os comandos.</p>
 
@@ -56,7 +282,7 @@
 
 <p><code>optipng filename.png</code></p>
 
-<p>Seu arquivo pode ser png, PNG, &hellip;</p>
+<p>Seu arquivo pode ser png, PNG, etc.</p>
 
 <p>Diferente da ferramenta anterior para jpg, essa não permite parâmetros considerando perda de qualidade por conta do formato PNG e como ele foi concebido.</p>
 
@@ -68,7 +294,8 @@
 
 <p><strong>&ndash;batch</strong> é o parâmetro para dizer que você quer manter o arquivo no mesmo lugar e com o mesmo nome.</p>
 
-<p><strong>&ndash;optimize</strong> é um parâmtro que determina o nível de otimização. 3 é uma opção que tenta vários métodos em cima da imagem. Consulte o manual para as outras opções.</p>
+<p><strong>&ndash;optimize</strong> é um parâmtro que determina o nível de otimização. 3 é uma opção que tenta vários métodos em cima da imagem. Consulte o manual parr
+a as outras opções.</p>
 
 <p>Seu arquivo pode ser gif, GIF, ..</p>
 
@@ -82,7 +309,7 @@
 
 <p><strong>-name</strong> para buscar por nome dos arquivos</p>
 
-<p><strong>*.png</strong> irá buscar por arquivos com a extensão .png. Não esqueça das aspas.</p>
+<p><strong>.png</strong> irá buscar por arquivos com a extensão .png. Não esqueça das aspas.</p>
 
 <p>Após o <strong>-exec</strong> adicione o comando que você quer executar para todas as ocorrências que serão encontradas.</p>
 
@@ -96,7 +323,7 @@
 
 <p>Todas as ferramentas acima possuem um manual bem completo e fácil de compreender. Basta digitar <strong>man</strong> e o nome da ferramenta para acessar.</p>
 
-<p>É isso por hoje pessoal! Grande Abraço!</p>
+<p>Grande Abraço!</p>
 ]]></content>
   </entry>
   
@@ -483,143 +710,6 @@ docker rmi flaviosilveira/php-nginx-2
 <p>Viram como foi muito mais fácil usar o Dockerfile para criar nosso container? Por hoje é isso!</p>
 
 <p>Grande abraço e até a próxima.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Criando Seu Container NGinx + PHP (Parte 2)]]></title>
-    <link href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/"/>
-    <updated>2017-01-14T00:00:00+00:00</updated>
-    <id>http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2</id>
-    <content type="html"><![CDATA[<p>No final da <a href="http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1">parte 1 desse artigo</a>, onde montamos um container com Debian, NGinx e PHP, nos deparamos com o seguinte: Se pararmos nosso container e precisar novamente de NGinx + PHP, teremos que partir do zero.</p>
-
-<p>Para evitar isso, vamos criar nossa própria imagem, uma imagem que vai guardar o que fizemos até agora.</p>
-
-<!--more-->
-
-
-<h3>Saia do container</h3>
-
-<p>Primeiro vamos sair de nosso container com <strong><em>ctrl+p</em></strong> e em seguida <strong><em>ctrl+q</em></strong>.<br/><strong><em>Dica:</em></strong> Não precisa soltar o ctrl.</p>
-
-<h3>Conta no DockerHub</h3>
-
-<p>Vá até o DockerHub <a href="https://hub.docker.com/">https://hub.docker.com</a> e crie sua conta.</p>
-
-<p>Após isso volte para o terminal e faço o comando de login</p>
-
-<pre><code>docker login
-</code></pre>
-
-<p>Irá pedir seu usuário e senha e feito!</p>
-
-<h3>Criando Imagem</h3>
-
-<p>Para criar sua imagem, você vai precisar do <strong><em>ID</em></strong> do seu container, use <strong><em>docker ps</em></strong> para consultar. A primeira coluna vai te mostrar seu <strong><em>CONTAINER ID</em></strong>.</p>
-
-<p>Em seguida, execute o commit com o comando abaixo:</p>
-
-<pre><code>docker commit id-do-seu-container flaviosilveira/php-nginx
-</code></pre>
-
-<p>Substitua no comando acima <strong><em>id-do-seu-container</em></strong> pelo id mostrado em <strong><em>docker ps</em></strong>.</p>
-
-<p>Fora o id, colocamos o nome que desejamos para nossa imagem. Escolhi php-nginx.</p>
-
-<p>Repare que coloquei meu nome de usuário do DockerHub na frente do nome que quero para a imagem. Isso será necessário na hora do envio para o DockerHub.</p>
-
-<p>O comando vai te retornar um hash SHA-256.</p>
-
-<p>Confira sua imagem criada</p>
-
-<pre><code>docker images
-</code></pre>
-
-<p>Sua imagem deve estar no topo dessa lista.</p>
-
-<h3>Usando sua imagem localmente</h3>
-
-<p>Uma vez que vemos a imagem no comando <strong><em>docker images</em></strong>, você já pode usar ela localmente.
-<strong><em>ATENÇÃO:</em></strong> Altere o meu nome de usuário abaixo pelo seu.</p>
-
-<pre><code>docker run --name usando-imagem -itd -p 8080:80 flaviosilveira/php-nginx
-</code></pre>
-
-<p>Pontos de atenção:</p>
-
-<ul>
-<li>Como nossa imagem é baseada na do Debian, rodamos ela de maneira igual. Compare o comando run executado aqui com o da parte 1 desse artigo.</li>
-<li>Coloquei a porta 8080 do nosso host para apontar para a 80 do container (-p 8080:80), para não conflitar com a porta 80 do outro container (-p 80:80).</li>
-</ul>
-
-
-<p>Outra coisa. O serviço do NGinx e do PHP5-FPM estão parados!</p>
-
-<p>Você precisa iniciar eles para ver as coisas funcionando.</p>
-
-<pre><code>docker exec minha-imagem service nginx start
-docker exec minha-imagem service php5-fpm start
-</code></pre>
-
-<p>Agora confira o resultado em <strong><em>localhost:8080</em></strong>.</p>
-
-<h3>Enviando sua imagem para o DockerHub</h3>
-
-<p>Já vimos em outros artigos o comando <strong><em>docker pull</em></strong> que serve para fazermos download de imagens para nossa máquina. Por padrão ele busca imagens do DockerHub, repositório padrão do docker.</p>
-
-<p>Agora para enviarmos imagens para ele, temos o <strong><em>push</em></strong></p>
-
-<pre><code>docker push flaviosilveira/php-nginx
-</code></pre>
-
-<h3>Testando</h3>
-
-<p>Antes de testar, vamos eliminar tudo que temos localmente. Parar o container e remover a imagem.</p>
-
-<pre><code>docker stop usando-imagem
-docker rm usando-imagem
-docker rmi flaviosilveira/php-nginx
-</code></pre>
-
-<p>Agora basta tentar executar o mesmo run que fizemos acima.</p>
-
-<pre><code>docker run --name usando-dockerhub -itd -p 8080:80 flaviosilveira/php-nginx
-</code></pre>
-
-<p>A imagem não será encontrada localmente e será feito download dela diretamente do docker hub.</p>
-
-<p>Veja seu container rodando</p>
-
-<pre><code>docker ps
-</code></pre>
-
-<p>Ou dê start no NGinx e no PHP-FPM e acesse no seu navegador na porta 8080 como colocamos acima.</p>
-
-<h3>Compartilhando seus arquivos php com o container</h3>
-
-<p>Para compartilhar seus arquivos locais de PHP com o container, use o parâmetro de volume, como fizemos no artigo de <a href="http://flaviosilveira.com/2016/docker-php7-e-php-built-in/">docker com PHP Built in</a>.</p>
-
-<pre><code>docker run --name usando-dockerhub -itd -p 8080:80 -v ~/dev/php:/var/www/app flaviosilveira/php-nginx
-</code></pre>
-
-<p>No parâmetro -v, você coloca o caminho da sua pasta local e separado por : (dois pontos) temos a pasta root que definimos no nosso NGinx.</p>
-
-<p>Acesse o navegador para constatar.</p>
-
-<h3>Resumo e Próximos passos?</h3>
-
-<p>Nesse artigo dividido em duas partes fizemos bastante coisa:
-<br/>Usamos uma imagem debian, instalamos NGinx e PHP de fora do container com <strong><em>exec</em></strong> e depois entramos nele para configurar as coisas.</p>
-
-<p>Criamos um login no dockerHub, criamos uma imagem nossa e agora ela está disponível para quem precisar.</p>
-
-<p>Mas a maneira como fizemos não deixa claro de que imagem partimos ou ainda caso a gente desista de usar Debian e queira usar CentOS, você vai ter que novamente partir do zero dessa maneira que fizemos.</p>
-
-<p>Nossos próximos passos são aprender um pouco sobre tags e criar nossa imagem usando DockerFile, que também vai nos ajudar a parar com a chatisse de ter que iniciar o php e o NGinx manualmente.</p>
-
-<p>Vamos para um post sobre isso?</p>
-
-<p>Até lá! Grande Abraço!</p>
 ]]></content>
   </entry>
   
