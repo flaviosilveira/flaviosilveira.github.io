@@ -1,0 +1,1140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vida e Tecnologia</title>
+    <link>/</link>
+    <description>Recent content on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 27 Feb 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Entenda como funciona o PHP! (Do código fonte até a renderização)</title>
+      <link>/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao/</link>
+      <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/entenda-como-funciona-o-php-do-codigo-fonte-ate-a-renderizacao/</guid>
+      <description>Esse artigo é quase uma tradução fiel do artigo How PHP Executes from Source Code to Render de Thomas Punt, revisado por Younes Rafie.
+No original o autor coloca os pedaços de códigos para você testar por conta. Aqui, além disso, adicionei como rodar os mesmos com um único comando, usando docker. Assim você não precisa de muito esforço para ver os exemplos.
+Criei uma imagem no dockerhub com tudo necessário para rodar os exemplos desse artigo.</description>
+    </item>
+    
+    <item>
+      <title>Ferramentas de otimização de imagem via linha de comando</title>
+      <link>/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/ferramentas-de-otimizacao-de-imagem-via-linha-de-comando/</guid>
+      <description>&lt;p&gt;Na última semana durante um trabalho de otimização de performance para um site, chegou a hora das imagens. Muitas imagens antigas de produtos e também peças de layout que tinham bom espaço para ganho. Diminuir o tamanho dos arquivos sem perder tanto as cores e a qualidade gráfica das imagens.&lt;/p&gt;
+
+&lt;p&gt;Eu estava procurando por ferramentas para otimizar as imagens de uma maneira que eu pudesse fazer diretamente no servidor, via terminal. Dessa forma eu não precisaria fazer o download de tudo para minha máquina, depois subir novamente e nem nada similar. Apenas um Backup no próprio servidor e rodar os comandos.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Quer estudar uma coisa nova? Docker te ajuda!</title>
+      <link>/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda/</link>
+      <pubDate>Fri, 25 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/quer-estudar-uma-coisa-nova-docker-te-ajuda/</guid>
+      <description>&lt;p&gt;Sempre que vamos estudar algo em tecnologia, em programação temos a complexidade do ambiente para resolver. Para um simples &lt;strong&gt;Hello World&lt;/strong&gt; precisamos de um ambiente e a complexidade da criação dele pode desanimar os iniciantes (Por isso o JavaScript vem a ser execelente para os iniciantes!).&lt;/p&gt;
+
+&lt;p&gt;Mas para ajudar com isso temos os containers e uma ferramenta excelente para trabalhar com eles, o Docker. Diferente de uma máquina virtual, o container vai abranger apenas o que é necessário para rodar sua aplicação, sem precisar de um SO completo.&lt;/p&gt;
+
+&lt;p&gt;Vamos dizer então que você quer estudar algo diferente, um banco de dados de grafos e vamos entender como o Docker vai te ajudar com isso.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Como foi 2018 e o que você pode esperar de mim para 2019</title>
+      <link>/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</link>
+      <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</guid>
+      <description>&lt;p&gt;Em minha carreira, graças a excelentes mestres e amigos no meu caminho (cito alguns no final), eu acabei evoluindo e subindo de cargo muito rapidamente. Em poucos anos como desenvolvedor eu fui promovido para Analista e assim se seguiu para Líder de desenvolvimento e chegando até Gerente de TI.&lt;/p&gt;
+
+&lt;p&gt;Em uma dessas promoções eu cheguei a pedir demissão, pois queria me preparar melhor antes de liderar ou dar instruções para um time. Mas depois aceitei os desafios.&lt;/p&gt;
+
+&lt;p&gt;Nesses períodos eu acabei colocando a mão em código muito menos do que eu esperava. Sempre senti falta, fazia uma coisinha aqui - ali, mas tinha outras responsabilidades. E ressalto que nunca deixei de buscar sempre fazer um grande trabalho independente da posição.&lt;/p&gt;
+
+&lt;p&gt;Em 2018 muitas coisas estavam acontecendo, minha filha estava crescendo, problemas de saúde do lado da família da minha esposa e o início e crescimento de uma insatisfação no trabalho da época. Isso somado a excelentes conversas com &lt;a href=&#34;https://twitter.com/mhgontijo&#34;&gt;Matheus Gontijo&lt;/a&gt;, me levaram a pedir demissão e partir para um trabalho de casa, remoto, fora do Brasil.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - Five</title>
+      <link>/2017/4-drops-of-life-5/</link>
+      <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/4-drops-of-life-5/</guid>
+      <description>&lt;p&gt;No 4 Drops of life de hoje trago uma sugestão de banda, um ponto de atenção que pode melhorar seu sono, uma dica para focar mais e uma ideia para se manter desafiado.&lt;/p&gt;
+
+&lt;p&gt;Para quem não conhece minha série 4 Drops of Life, visite &lt;a href=&#34;http://flaviosilveira.com/categories/vida/&#34;&gt;http://flaviosilveira.com/categories/vida/&lt;/a&gt; e os artigos com 4 pequenas dicas para você inserir na sua vida e viver melhor.&lt;/p&gt;
+
+&lt;p&gt;###Pain Of Salvation
+A primeira vez que trouxe essa série, trouxe uma banda e hoje quero repetir a dose.&lt;/p&gt;
+
+&lt;p&gt;Ainda dentro do cenário da Suécia e também dentro do Rock/Heavy Metal trago para quem não conhece a banda Pain of Salvation.&lt;/p&gt;
+
+&lt;p&gt;Daniel Gildenlõw é o líder da banda e vai te apresentar uma voz melódica dentro de uma sonoridade diferente, com os instrumentos soando de uma maneira que você não está acostumado.&lt;/p&gt;
+
+&lt;p&gt;Paralelo a isso as letras trazem temáticas fora da caixa, te levando a fazer pesquisas se quiser compreender totalmente as letras.&lt;/p&gt;
+
+&lt;p&gt;Recomendo os álbuns Remedy Lane e The Perfect Element, part I.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Criando seu Container com Dockerfile</title>
+      <link>/2017/criando-seu-container-com-dockerfile/</link>
+      <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-com-dockerfile/</guid>
+      <description>&lt;p&gt;Foi uma longa jornada até criarmos nosso container da maneira que queríamos &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&lt;/a&gt;. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.&lt;/p&gt;
+
+&lt;p&gt;Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!&lt;/p&gt;
+
+&lt;p&gt;Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.&lt;/p&gt;
+
+&lt;p&gt;Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.&lt;/p&gt;
+
+&lt;p&gt;No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - Four</title>
+      <link>/2017/4-drops-of-life-4/</link>
+      <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/4-drops-of-life-4/</guid>
+      <description>&lt;p&gt;No 4 Drops of life de hoje trago uma sugestão para aumentar seu hábito de leitura, um aplicativo, maneiras de se desafiar e a história de uma amiga com uma pele perfeita.&lt;/p&gt;
+
+&lt;p&gt;Para quem não conhece minha série 4 Drops of Life, visite &lt;a href=&#34;http://flaviosilveira.com/categories/vida/&#34;&gt;http://flaviosilveira.com/categories/vida/&lt;/a&gt; e os artigos com 4 pequenas dicas para você inserir na sua vida e viver melhor.&lt;/p&gt;
+
+&lt;p&gt;###Kindle
+Gosto de ler, mas sim, não é um hábito fácil. Seriados e filmes são muito atrativos para mim que sou bastante visual, estou desenhando e rabiscando o tempo todo. Já tentei Audio Books, mas não consegui. Para ouvir, gosto dos podcasts. A leitura sempre no mesmo ritmo dos áudio livros me deixa sonolento.&lt;/p&gt;
+
+&lt;p&gt;Em busca de algo diferente resolvi experimentar o Kindle da Amazon, e deu muito certo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Criando seu Container NGinx &#43; PHP (Parte 1)</title>
+      <link>/2017/criando-seu-container-nginx-php-1/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-nginx-php-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;br/&gt;Esse já é nosso terceiro artigo sobre docker:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Já vimos como podemos iniciar com o Docker no artigo &lt;a href=&#34;http://flaviosilveira.com/2016/comece-com-docker/&#34;&gt;http://flaviosilveira.com/2016/comece-com-docker&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Em seguida vimos como iniciar um Container com PHP 7 e usar seu servidor embutido (built in) em &lt;a href=&#34;http://flaviosilveira.com/2016/docker-php7-e-php-built-in/&#34;&gt;http://flaviosilveira.com/2016/docker-php7-e-php-built-in&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Com isso já conseguimos trabalhar com o PHP, mas o servidor Built-in não é a maneira ideal para isso. Como podemos colocar o PHP como um todo rodando em um container Docker para a gente? Vamos responder a isso.&lt;/p&gt;
+
+&lt;p&gt;Para quem não leu os primeiros dois artigos citados acima, recomendo. Acredito que vá ficar melhor de entender o que vem abaixo. Temos bastante &lt;em&gt;tecnês&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Criando seu Container NGinx &#43; PHP (Parte 2)</title>
+      <link>/2017/criando-seu-container-nginx-php-2/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-nginx-php-2/</guid>
+      <description>&lt;p&gt;No final da &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1&#34;&gt;parte 1 desse artigo&lt;/a&gt;, onde montamos um container com Debian, NGinx e PHP, nos deparamos com o seguinte: Se pararmos nosso container e precisar novamente de NGinx + PHP, teremos que partir do zero.&lt;/p&gt;
+
+&lt;p&gt;Para evitar isso, vamos criar nossa própria imagem, uma imagem que vai guardar o que fizemos até agora.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - Three</title>
+      <link>/2016/4-drops-of-life-3/</link>
+      <pubDate>Mon, 07 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/4-drops-of-life-3/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;No Drops of Life de hoje vamos falar de meditação, como melhorar seu inglês, sobre decisões difíceis e uma dica para aumentar sua produtividade no trabalho.&lt;/p&gt;
+
+&lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
+
+&lt;p&gt;###Inglês Online Podcast
+Tenho um conhecimento bom de mim mesmo, como aprendo e como absorvo melhor as coisas. E se tratando de idiomas o que mais funciona para mim é ouvir.&lt;/p&gt;
+
+&lt;p&gt;Se você quer desenvolver mais seu inglês recomendo demais o &lt;a href=&#34;http://www.inglesonline.com.br/category/podcast-inglesonline/&#34;&gt;Inglês online Podcast&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Microserviços</title>
+      <link>/2016/microservicos/</link>
+      <pubDate>Mon, 07 Nov 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/microservicos/</guid>
+      <description>&lt;p&gt;Muito anda se falando sobre microserviços e trago para vocês minha experiência de como começamos a trabalhar dessa forma aqui na &lt;a href=&#34;https://www.lojaskd.com.br&#34;&gt;LojasKD&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Assim como meu post anterior sobre &lt;a href=&#34;http://flaviosilveira.com/2016/ansible-desperte-a-automacao-em-voce/&#34;&gt;Ansible e automação&lt;/a&gt;, esse assunto também faz parte de uma palestra que apresentei durante 2016, um dos meus grandes orgulhos desse ano que encerro com esse post.&lt;/p&gt;
+
+&lt;p&gt;###Microserviços - O que é?
+Para falar sobre microserviços eu sempre empresto a frase do &lt;a href=&#34;https://twitter.com/tiagodolphine&#34;&gt;@tiagodolphine&lt;/a&gt;: &amp;ldquo;O menor possível, porém grande o suficiente para representar seu domínio&amp;rdquo;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - Two</title>
+      <link>/2016/4-drops-of-life-2/</link>
+      <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/4-drops-of-life-2/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;No Drops of Life de hoje vamos falar de hidratação, exercício para seu cérebro, música para trabalhar e qualidade de sono.&lt;/p&gt;
+
+&lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
+
+&lt;p&gt;###Duas garrafas de 500ml d&amp;rsquo;água
+Vejo muita gente com aplicativos e outras técnicas para lembrar de tomar água. Vou deixar aqui a maneira como faço e que já se tornou um hábito para mim.&lt;/p&gt;
+
+&lt;p&gt;No trabalho e em casa eu tenho duas garrafas de 500ml de água. Pode ser uma garrafa bonita que você tenha ou uma de água mineral que você comprou em qualquer lugar.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Ansible - Desperte a automação em você</title>
+      <link>/2016/ansible-desperte-a-automacao-em-voce/</link>
+      <pubDate>Mon, 17 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/ansible-desperte-a-automacao-em-voce/</guid>
+      <description>&lt;p&gt;{% raw %}
+Automação vem se tornando um tema essencial em empresas que querem crescer com mais cérebro e menos braço. Aquela tarefa que você repete mais de duas vezes já deve ser pensada em uma maneira de ser automática, concorda?&lt;/p&gt;
+
+&lt;p&gt;No universo do desenvolvimento, quantas são as tarefas que repetimos quando se trata de máquinas? Deploys, extração de logs, instalação e configuração de ferramentas, etc. Ansible pode ser a ferramenta que vai te ajudar a automatizar tudo isso.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - One</title>
+      <link>/2016/4-drops-of-life-1/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/4-drops-of-life-1/</guid>
+      <description>&lt;p&gt;Continuando com a série 4 drops of life, essa é a edição 1.&lt;/p&gt;
+
+&lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
+
+&lt;h3 id=&#34;1-aplicativo-pocket&#34;&gt;1 - Aplicativo - Pocket&lt;/h3&gt;
+
+&lt;p&gt;Começando hoje com tecnologia. Para quem não conhece vou falar do &lt;a href=&#34;https://getpocket.com/&#34;&gt;pocket&lt;/a&gt;. Um aplicativo simples que te ajuda a organizar links, vídeos e programas para ler, assistir e usar mais tarde.&lt;/p&gt;
+
+&lt;p&gt;Você já viu ou é daquelas pessoas que fica abrindo várias abas no navegador e não fecha para ver depois? Pocket pode ser para você.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker, PHP7 e PHP Built In</title>
+      <link>/2016/docker-php7-e-php-built-in/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/docker-php7-e-php-built-in/</guid>
+      <description>&lt;p&gt;No artigo anterior (&lt;a href=&#34;http://flaviosilveira.com/2016/comece-com-docker/&#34;&gt;Comece com Docker!&lt;/a&gt;) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.&lt;/p&gt;
+
+&lt;p&gt;Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comece com Docker</title>
+      <link>/2016/comece-com-docker/</link>
+      <pubDate>Mon, 03 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/comece-com-docker/</guid>
+      <description>&lt;p&gt;Tenho dois posts envolvendo &lt;a href=&#34;https://www.vagrantup.com/&#34;&gt;vagrant&lt;/a&gt; aqui no blog que ainda são certo sucesso de acessos. &lt;a href=&#34;http://flaviosilveira.com/2012/vagrant-facil-e-util&#34;&gt;Vagrant Fácil e Útil&lt;/a&gt; que dá uma introdução ao Vagrant com um exemplo simples e &lt;a href=&#34;http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/&#34;&gt;Vagrant, PuPHPet E PHP Built In&lt;/a&gt; que apresenta o PuPHPet como um facilitador para criar ambientes e um experimento com o PHP Built In. O primeiro artigo é de 2012, o segundo de 2013. Passados três anos e vendo a busca disso não diminuir, quero trazer para quem ainda não conhece o &lt;a href=&#34;https://www.docker.com/&#34;&gt;Docker&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>4 Drops of Life - Zero</title>
+      <link>/2016/4-drops-of-life-0/</link>
+      <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/4-drops-of-life-0/</guid>
+      <description>&lt;p&gt;Reavaliando minha lista de metas para 2016, vejo que uma delas era &lt;strong&gt;Escrever mais&lt;/strong&gt;. Olhando aqui no blog coloquei apenas 2 posts esse ano, o que não altera minha péssima métrica dos últimos 730 dias. Procurando mudar isso vou começar essa série que estou chamando de &lt;strong&gt;4 Drops of life&lt;/strong&gt;, que no nosso português seria algo como &lt;strong&gt;4 gotas de vida&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
+
+&lt;p&gt;Vamos começar?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Perdeu a tampa do seu teclado Apple?</title>
+      <link>/2016/perdeu-a-tampa-do-seu-teclado-apple/</link>
+      <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/perdeu-a-tampa-do-seu-teclado-apple/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;../../../../assets/uploads/2016/tampa_teclado.jpg&#34; alt=&#34;Tampa teclado Apple&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Iiii.. perdeu a tampa do seu teclado Apple, seu Magic Keyboard, (ou qualquer outro nome carinhoso que você tenha por ele aqui)? Não se desespere, seus problemas acabaram!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Não Existem Pessoas Sem Tempo</title>
+      <link>/2016/nao-existem-pessoas-sem-tempo/</link>
+      <pubDate>Fri, 22 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/nao-existem-pessoas-sem-tempo/</guid>
+      <description>&lt;p&gt;Você não é uma pessoa que não tem tempo, e sim uma pessoa que prioriza certas coisas, e outras não. Se você está priorizando coisas importantes, cabe a você entender o que melhor define essa palavra, quais seus objetivos de/com/pela vida e o que está lhe ajudando a alcançá-los.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Evoluindo Seu Primeiro Jogo Em HTML5</title>
+      <link>/2014/evoluindo-seu-primeiro-jogo-em-html5/</link>
+      <pubDate>Mon, 17 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/evoluindo-seu-primeiro-jogo-em-html5/</guid>
+      <description>&lt;p&gt;O post de hoje é uma continuação do anteriormente escrito Seu primeiro jogo em HTML5. O objetivo dessa continuação é aprender mais alguns conceitos de desenvolvimento de jogos e animar um pouco o nosso game que não estava lá essas coisas de divertido. Você acompanha a primeira parte no seguinte link &lt;a href=&#34;http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/&#34; title=&#34;Seu primeiro jogo em HTML5 - Parte 1&#34;&gt;http://flaviosilveira.com/2013/seu-primeiro-jogo-em-html5/&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Erros No Vagrant No Mavericks OSX?</title>
+      <link>/2014/erros-com-vagrant-no-mavericks-osx/</link>
+      <pubDate>Fri, 17 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/2014/erros-com-vagrant-no-mavericks-osx/</guid>
+      <description>&lt;p&gt;Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.&lt;/p&gt;
+
+&lt;p&gt;[Ainda não sabe o que é Vagrant? Confira esses meus dois posts: &lt;a href=&#34;http://flaviosilveira.com/2012/vagrant-facil-e-util/&#34; title=&#34;Vagrant fácil e útil&#34;&gt;http://flaviosilveira.com/2012/vagrant-facil-e-util/&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/&#34; title=&#34;Vagrant, PuPHPet e PHP Built In&#34;&gt;http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/&lt;/a&gt;]&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Seu Primeiro Jogo Em HTML5</title>
+      <link>/2013/seu-primeiro-jogo-em-html5/</link>
+      <pubDate>Thu, 19 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/seu-primeiro-jogo-em-html5/</guid>
+      <description>&lt;p&gt;Hoje quero ajudar você a desenvolver seu primeiro jogo, que talvez não fique aquele delírio de diversão, mas é o primeiro passo para você começar a entrar nesse mundo de desenvolvimento de jogos. E para isso vamos usar tecnologias que você tem em mãos no seu navegador. HTML5 e javascript.&lt;/p&gt;
+
+&lt;p&gt;Vou passo a passo, tentando deixar claro o porque de algumas coisas primordiais em desenvolvimento de jogos. Cometendo erros para depois corrigi-los. Isso talvez torne o post um pouco extenso, então busque sua garrafa de água para manter seu cérebro hidratado.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vagrant, PuPHPet E PHP Built In</title>
+      <link>/2013/vagrant-puphpet-e-php-built-in/</link>
+      <pubDate>Sun, 15 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/vagrant-puphpet-e-php-built-in/</guid>
+      <description>&lt;p&gt;Fala pessoal.&lt;br/&gt;
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O que é Vagrant?&lt;/strong&gt;&lt;br/&gt;
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.&lt;br/&gt;
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: &lt;a href=&#34;http://flaviosilveira.com/2012/vagrant-facil-e-util/&#34;&gt;http://flaviosilveira.com/2012/vagrant-facil-e-util/&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Objective-C: A Linguagem Por Trás Do iOS – Parte 2</title>
+      <link>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/</link>
+      <pubDate>Sat, 13 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/</guid>
+      <description>&lt;p&gt;[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS.&lt;br/&gt;
+&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Você pode ver os demais artigos da série através da categoria Mobile]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Nessa parte 2 vamos continuar dando os primeiros passos e criando os primeiros exemplos com a linguagem Objective-C. Como discutido no primeiro artigo, essa linguagem veio evoluindo mas ainda mantém a linguagem C por trás dela, e é com isso que estamos criando nossos primeiros exemplos.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Montando a Tela Do Seu Aplicativo – Parte 1</title>
+      <link>/2013/montando-a-tela-do-seu-aplicativo-parte-1/</link>
+      <pubDate>Wed, 06 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/montando-a-tela-do-seu-aplicativo-parte-1/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS. Você pode ver os demais artigos da série através da categoria Mobile]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;No artigo de hoje vamos conhecer alguns objetos para nos ajudar a criar a tela de nossos aplicativos para iOS. Para conhecer eles vamos usar o projeto que criamos nos artigos anteriores. É um projeto simples do tipo &lt;em&gt;Single View Application&lt;/em&gt;, que ainda não tem nada demais, já que estamos apenas conhecendo algumas coisas. Então nada impede que você crie outro projeto do tipo &lt;em&gt;Single View Application&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Objective-C: A Linguagem Por Trás Do iOS – Parte 1</title>
+      <link>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/</link>
+      <pubDate>Thu, 21 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Este é segundo artigo, que faz parte da série sobre desenvolvimento para iOS que estou fazendo. Se você perdeu o primeiro post siga esse link &lt;a href=&#34;http://flaviosilveira.com/2013/comece-a-programar-para-ios/&#34;&gt;http://flaviosilveira.com/2013/comece-a-programar-para-ios/&lt;/a&gt; para acompanhar nossos passos desde o início.&lt;span style=&#34;line-height: 1.6em;&#34;&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Em nosso primeiro post criamos um projeto simples e entendemos a sua estrutura de pastas. Partindo desse ponto, vamos hoje conhecer um pouco da linguagem que vamos usar para desenvolver para iOS. É! XCode não é só arrastar e soltar, tem que codificar. E para isso usamos a linguagem Objective-C.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comece a Programar Para iOS</title>
+      <link>/2013/comece-a-programar-para-ios/</link>
+      <pubDate>Thu, 14 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/comece-a-programar-para-ios/</guid>
+      <description>&lt;p&gt;&lt;strong style=&#34;line-height: 1.6em;&#34;&gt;Sem blá blá blá&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Sem muito blá blá blá, quero hoje começar uma pequena série sobre desenvolvimento para iOS. &lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Quero ajudar quem deseja conhecer a tecnologia sem a enrolação que vejo em outros materiais sobre o assunto. &lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Paralelo a isso também consigo me manter estudando o assunto e evoluindo junto com quem acompanha os artigos.&lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Vou pular toda aquela parte que você já deve ter lido por aí sobre precisar de um Mac, que há outras maneiras de você conseguir instalar o sistema da Apple em um PC Intel comum, que vamos usar o XCode porque ele facilita nossa vida, instalação do XCode, as camadas de desenvolvimento do iOS, etc, etc. Mas é claro, caso venha a necessidade podemos segurar e detalhar um pouco mais o que surgir.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hangout – Começando Bem Com Zend Framework 1</title>
+      <link>/2012/hangout-comecando-bem-com-zend-framework-1/</link>
+      <pubDate>Mon, 19 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/hangout-comecando-bem-com-zend-framework-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Recentemente estive no Rio de Janeiro para ministrar o curso &lt;em&gt;Começando Bem com Zend Framework&lt;/em&gt;. Curso que mostra um bé-a-bá em cima do Zend Framework 1 usando a ajuda da Zend Tool. Infelizmente por alguns problemas técnicos não consegui realizar o curso completo e por conta disso marquei um hangout com o pessoal que estava inscrito no evento.&lt;/p&gt;
+
+&lt;p&gt;Com esse vídeo fecho essa maneira como o curso é apresentado, sendo que o Zend Framework 2 foi lançado recentemente e vou adaptar o curso para ele. Mas isso não tira a importância de conhecer o Zend 1 visto que ainda teremos manutenções e sistemas legados no mercado, além de servir como base para o próprio Zend 2.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vagrant: Fácil E útil</title>
+      <link>/2012/vagrant-facil-e-util/</link>
+      <pubDate>Wed, 07 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/vagrant-facil-e-util/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Hoje eu quero passar uma dica para fazer você parar com aquela desculpa &amp;#8220;Na minha máquina tá funcionando&amp;#8221;. Para isso vou apresentar para vocês o Vagrant &lt;a href=&#34;http://vagrantup.com/&#34;&gt;http://vagrantup.com/&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;O Vagrant é uma ferramenta que te ajuda na criação da infraestrutura para o seu projeto, usando para isso uma máquina virtual. Mas aí você pensa: &amp;#8220;Uma máquina virtual para cada projeto?? Isso vai dar trabalho&amp;#8221;. A grande jogada é que o Vagrant deixa muita coisa invísivel, deixando com que você se preocupe apenas com seu código. É uma máquina virtual reduzida e portável facilmente. Para cada projeto você pode deixar um ambiente diferente rodando, um com PHP 4, outro com PHP 5, um em Debian outro em CentOS, você escolhe.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hangout PHP in Rio</title>
+      <link>/2012/hangout-php-in-rio/</link>
+      <pubDate>Fri, 02 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/hangout-php-in-rio/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;A organização do PHP n Rio deste ano de 2012 tem realizado um bate papo com os palestrantes do evento via Hangout, a funcionalidade de videoconferência do Google Plus.&lt;/p&gt;
+
+&lt;p&gt;Como palestrante do evento, chegou minha vez de bater um papo ao vivo junto com Anderson Ferreira (&lt;a href=&#34;https://twitter.com/sdfnanderson&#34; title=&#34;Twitter Anderson Ferreira&#34;&gt;@sdfnanderson&lt;/a&gt;) e o pessoal da organização Carlos Carneiro (&lt;a href=&#34;https://twitter.com/hiper4tivo&#34; title=&#34;Twitter Carlos Carneiro&#34;&gt;@hiper4tivo&lt;/a&gt;) e Vinicius Machado (&lt;a href=&#34;https://twitter.com/x4bigboss&#34; title=&#34;Twitter Vinicius Machado&#34;&gt;@x4bigboss&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Durante pouco mais de uma hora falamos sobre dicas de carreira, dicas de estudo e desenvolvimento. No final fizemos um bate bola com perguntas e respostas.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Primeiros Passos No PHPUnit</title>
+      <link>/2012/primeiros-passos-no-phpunit/</link>
+      <pubDate>Sun, 14 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/primeiros-passos-no-phpunit/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.&lt;/p&gt;
+
+&lt;p&gt;Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Global Game Jam 2012</title>
+      <link>/2012/global-game-jam-2012/</link>
+      <pubDate>Fri, 06 Jan 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/global-game-jam-2012/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Na minha palestra &lt;a href=&#34;http://flaviosilveira.com/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/&#34; title=&#34;Palestra Quero ser um desenvolvedor de jogos&#34;&gt;Quero ser um desenvolvedor de jogos&lt;/a&gt; que estive apresentando durante o ano de 2011, eu comento sobre a Global Game Jam.&lt;/p&gt;
+
+&lt;p&gt;A Global Game Jam é um evento que acontece todo ano e ocorre simultâneamente em todo o mundo. Funciona da seguinte maneira:&lt;br/&gt;
+Através do site que organiza o evento (&lt;a href=&#34;http://globalgamejam.org&#34; title=&#34;Global Game Jam&#34;&gt;http://globalgamejam.org&lt;/a&gt;) é divulgado um tema. Com esse tema em mãos, equipes de desenvolvedores de jogos (programadores, artistas, músicos, roteiristas, etc) unem forças para desenvolver o seu próprio game. O prazo máximo é de 48 horas e pode ser usado qualquer tecnologia.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Screencast – Começando Bem Com Zend Framework</title>
+      <link>/2011/screencast-comecando-bem-com-zend-framework/</link>
+      <pubDate>Thu, 29 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/screencast-comecando-bem-com-zend-framework/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Gravei esse screencast baseado no mini-curso/palestra que estive apresentando durante esse ano com o título de &lt;em&gt;Começando bem com Zend Framework&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;O vídeo não tem edição, foi gravado direto, sem roteiro.&lt;br/&gt;
+Por isso peço desculpas se acabei atropelando alguma explicação ou se algo não ficar muito claro para alguém, principalmente para iniciantes. Da forma como foi finalizado acabou ficando mais voltado para quem já tem um conhecimento com outros frameworks ou um conhecimento legal de PHP.&lt;/p&gt;
+
+&lt;p&gt;Dúvidas? Perguntas? Sugestões? Estamos aí.&lt;br/&gt;
+Aguardo o feedback de todos.&lt;br/&gt;
+Grande Abraço!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Salvando Tempo No Terminal</title>
+      <link>/2011/salvando-tempo-no-terminal/</link>
+      <pubDate>Fri, 02 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/salvando-tempo-no-terminal/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;No post anterior (&lt;a href=&#34;http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/&#34;&gt;conhecendo melhor seu interpretador de comandos&lt;/a&gt;) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.&lt;/p&gt;
+
+&lt;p&gt;Seguindo o comentário do meu super brother Daniel Correa, vamos falar rapidamente aqui sobre um alguns comandos que podes salvar alguns minutos (até horas) de trabalho no terminal.&lt;/p&gt;
+
+&lt;p&gt;Quantas vezes você já não precisou daquele comando no terminal que executou há semanas, meses atrás, e não lembra de maneira alguma. O que você faz?? Inevitavelmente fica clicando na tecla da seta para cima por horas até encontrar o seu abençoado comando. Mas você deve saber que essa não é a melhor maneira de resolver isso.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Conhecendo Melhor Seu Interpretador De Comandos</title>
+      <link>/2011/conhecendo-melhor-seu-interpretador-de-comandos/</link>
+      <pubDate>Sun, 30 Oct 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/conhecendo-melhor-seu-interpretador-de-comandos/</guid>
+      <description>&lt;p&gt;Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.&lt;/p&gt;
+
+&lt;p&gt;Quem faz essa ligação entre você e o coração do sistema operacional, permitindo executar esses comandos, é o Shell. Quem interpreta e processa os comandos para você, é uma implementação do Shell, que é o que vamos conhecer melhor aqui hoje.&lt;/p&gt;
+
+&lt;p&gt;Este termo Shell, deve ter feito você lembrar sobre Shell Script, que escutamos falar muito e nada mais é do que um script com vários comandos Shell dentro dele.&lt;/p&gt;
+
+&lt;p&gt;Dentre as implementações de Shell, aquilo que interpreta seus comandos, a mais famosa hoje é o Bash (Bourne-again shell, fazendo uma referência ao Bourne Shell que você pode pesquisar sobre). Para conferir qual o interpretador padrão de seus comandos, em seu terminal digite o seguinte comando&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Palestra – Quero Ser Um Desenvolvedor De Jogos</title>
+      <link>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</link>
+      <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</guid>
+      <description>&lt;p&gt;Olá pessoal!&lt;/p&gt;
+
+&lt;p&gt;Se vocês acompanham minhas notícias, ficaram sabendo que estive em Bento Gonçalves &amp;#8211; Rio Grande do Sul, palestrando sobre desenvolvimento de jogos no evento Tchê Linux.&lt;/p&gt;
+
+&lt;p&gt;A palestra aborda uma visão inicial para quem quer conhecer o desenvolvimento de jogos, apresentando os papéis que fazem parte desse desenvolvimento e como começar a fazer parte deles. Ou seja, dá para assistir com seu Pai e sua mãe na sala sem problemas.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!</title>
+      <link>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
+      <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Vocês já ouviram falar sobre o &lt;a href=&#34;http://initializr.com/&#34; title=&#34;Initializr!&#34;&gt;Initializr!&lt;/a&gt; ?&lt;/p&gt;
+
+&lt;p&gt;Ele é um gerador de código que ajuda você a começar seu projeto em HTML5. Ele é baseado no &lt;a href=&#34;http://html5boilerplate.com/&#34; title=&#34;oilerplate HTML5&#34;&gt;Boilerplate&lt;/a&gt; e foi criado por Jonathan Verrecchia (&lt;a href=&#34;http://twitter.com/#!/verekia&#34; title=&#34;Twitter Jonathan Verrecchia&#34;&gt;@verekia&lt;/a&gt;) com o objetivo de ampliar o uso do HTML5.&lt;/p&gt;
+
+&lt;p&gt;Em contato com o Jonathan, combinei com ele de traduzir a documentação oficial do Initializr do francês para o português, para ajudar a divulgar ainda mais essa tremenda ferramenta e quem sabe com isso ver o uso do HTML5 mais e mais em novos projetos.&lt;/p&gt;
+
+&lt;p&gt;Segue a tradução da documentação abaixo.&lt;br/&gt;
+Você encontra a versão original em francês no seguinte link: &lt;a href=&#34;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&#34; title=&#34;Documentação oficial Initializr Francês&#34;&gt;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Conheça esses projetos e comece já a trabalhar com HTML5!&lt;br/&gt;
+Grande Abraço!&lt;/p&gt;
+
+&lt;h3&gt;Initializr &amp;#8211; Um gerador baseado nos templates Boilerplate HTML5&lt;/h3&gt;
+
+&lt;p&gt;&lt;img class=&#34;aligncenter size-full wp-image-371&#34; title=&#34;logo-initializr&#34; src=&#34;../../assets/uploads/2011/07/logo-initializr.png&#34; alt=&#34;Initializr!&#34; width=&#34;600&#34; height=&#34;285&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codeigniter 2 – Templates E Layouts</title>
+      <link>/2011/codeigniter-2-templates-e-layouts/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/codeigniter-2-templates-e-layouts/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo &lt;em&gt;Habilitando Layouts no CodeIgniter (Template Engine)&lt;/em&gt; que está dividido em &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/&#34;&gt;parte 1&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/&#34;&gt;parte 2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Como esse artigo tem mais de um ano, resolvi dar um upgrade nele com algumas observações.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Coding Dojo – O Que é ? E Como Participar ?</title>
+      <link>/2011/coding-dojo-o-que-e-e-como-participar/</link>
+      <pubDate>Thu, 14 Apr 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/coding-dojo-o-que-e-e-como-participar/</guid>
+      <description>&lt;p&gt;Fala pessoal.&lt;br/&gt;
+Para quem não conhece, Coding dojo não se refere a um framework de linguagem ou a uma sessão de treinos do Bruce Lee.&lt;br/&gt;
+Coding Dojo é simplesmente uma reunião de programadores para treinar e aperfeiçoar seus talentos com algoritmos.&lt;br/&gt;
+Uma reunião para resolver um algoritmo.&lt;br/&gt;
+Estas reuniões estão sendo cada vez mais frequentes no Brasil e no mundo.&lt;br/&gt;
+Veja abaixo porque isso está acontecendo e porque elas são interessantes.&lt;/p&gt;
+
+&lt;h3&gt;Porque participar?&lt;/h3&gt;
+
+&lt;p&gt;&lt;br style=&#34;clear: both;&#34; /&gt;&lt;br/&gt;
+Os Dojos de programação foram criados para desafiar programadores com algoritmos complexos, diferente de algumas empresas ou trabalhos onde você acostuma com as lógicas e regras de negócio e com o tempo acaba apenas replicando aquilo onde você teve que pensar uma única vez.&lt;/p&gt;
+
+&lt;p&gt;Ele leva esse nome por ser baseado nos Dojos de artes marciais, onde no tatâme é feito um círculo e enquanto dois lutadores aprendem na prática, os demais aprendem olhando.&lt;br/&gt;
+Nos dojos de programação a idéia é a mesma, enquanto duas pessoas estão codificando na máquina as demais aprendem olhando o raciocínio e o caminho que essas pessoas estão seguindo.&lt;/p&gt;
+
+&lt;p&gt;É muito importante ressaltar que os dojos não são competições de quem programa melhor ou de quem resolve problemas mais rápidos.&lt;br/&gt;
+O espírito da coisa toda é ser colaborativo e se divertir. E claro aprender.&lt;/p&gt;
+
+&lt;h3&gt;Em que linguagem é programado e quais são os problemas propostos?&lt;/h3&gt;</description>
+    </item>
+    
+    <item>
+      <title>O for Além Do for – PHP</title>
+      <link>/2010/o-for-alem-do-for-php/</link>
+      <pubDate>Sat, 20 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/o-for-alem-do-for-php/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;O Post que trago hoje trata de algo bem simples mas que pode não ser muito comum para algumas pessoas.&lt;br/&gt;
+São usos não muito populares de um de nossos laços de repetição, o FOR.&lt;/p&gt;
+
+&lt;p&gt;Quando estamos aprendendo uma linguagem, bem no início, os manuais parecem mais nos confundir do que ajudar.&lt;br/&gt;
+O que fazemos ?? Saímos em busca de uma comunicação mais direta em Blogs ou Sites.&lt;/p&gt;
+
+&lt;p&gt;Essas fontes resolvem nosso problema mais podem acabar deixando alguns vácuos quando se trata de estruturas básicas, como é o caso do FOR.&lt;/p&gt;
+
+&lt;p&gt;E sobre o FOR eu te pergunto o seguinte:&lt;br/&gt;
+Você sabia que os parâmetros passados para ele são opcionais ??&lt;br/&gt;
+Você sabia que pode passar quantas variáveis quiser para os parâmetros ??&lt;/p&gt;
+
+&lt;p&gt;Se já sabe maravilha, caso não, vamos ver como isso funciona.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery</title>
+      <link>/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</link>
+      <pubDate>Wed, 17 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Hoje trago um artigo pesado e extenso, mas acredito que vá ajudar o pessoal que precisar em várias frentes. Vou Tratar aqui de JQuery, JQuery Validation, a diferença entre síncrono e assíncrono, como fazer ajax síncrono usando JQuery e também soluções para problemas em um dia de trabalho no mundo do desenvolvimento.&lt;/p&gt;
+
+&lt;p&gt;Bom, que o JQuery é um dos frameworks mais usados para javascript e que facilita muito a sua vida você já deve saber. E que o plugin para JQuery, JQuery Validation, é uma excelente maneira de validar seus formulários do lado cliente, você também deveria saber.&lt;/p&gt;
+
+&lt;p&gt;Veja um exemplo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;jquery jquery validation sincrono e assincrono cpf unico no banco de dados ajax sincrono com jquery&amp;rdquo;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo; src=&amp;ldquo;jquery.validate.js&amp;rdquo;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;function init()
+{
+    $(&amp;ldquo;#form&amp;rdquo;).validate({
+        rules:
+        {
+            nome:{required: true},
+            senha:{required: true, minlength: 5}
+                }
+    });
+}&lt;/p&gt;
+
+&lt;p&gt;$(document).ready(init);&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/script&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;form id=&amp;ldquo;form&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;amp;lt;p&amp;amp;gt;
+    &amp;amp;lt;label for=&amp;quot;nome&amp;quot;&amp;amp;gt;Nome&amp;amp;lt;/label&amp;amp;gt;
+    &amp;amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;nome&amp;quot; id=&amp;quot;nome&amp;quot; /&amp;amp;gt;
+&amp;amp;lt;/p&amp;amp;gt;
+
+&amp;amp;lt;p&amp;amp;gt;
+    &amp;amp;lt;label for=&amp;quot;senha&amp;quot;&amp;amp;gt;Senha&amp;amp;lt;/label&amp;amp;gt;
+    &amp;amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;senha&amp;quot; id=&amp;quot;senha&amp;quot; /&amp;amp;gt;
+&amp;amp;lt;/p&amp;amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/form&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário</title>
+      <link>/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</link>
+      <pubDate>Fri, 15 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Muita gente me manda emails ou mensagens no twitter achando que eu escrevi o Plugin JQuery Price para JQuery, que ajuda você a formatar seus campos de texto com valores monetários, valores de preço. Se você ler bem certinho na &lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;página oficial do Plugin&lt;/a&gt; (&lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;http://meiaduzia.com.br/cuducos2/priceformat&lt;/a&gt;), e também no código ao baixar ele, verá que eu apenas colaborei com uma nova função do plugin, uma necessidade minha no início do ano de 2009.&lt;/p&gt;
+
+&lt;p&gt;O Autor do Plugin é o &lt;a href=&#34;http://www.meiaduzia.com.br/cuducos/&#34;&gt;Eduardo Cuducos&lt;/a&gt;, Um tremendo Designer e Desenvolvedor Web do estado de Santa Catarina que conheci por meio desse Plugin. &lt;a href=&#34;http://www.meiaduzia.com.br/cuducos/&#34;&gt;Aqui&lt;/a&gt; você pode conhecer mais dele ou seguir seu &lt;a href=&#34;http://twitter.com/cuducos&#34;&gt;twitter&lt;/a&gt; (&lt;a href=&#34;http://twitter.com/cuducos&#34;&gt;http://twitter.com/cuducos&lt;/a&gt;) para pegar suas idéias, sejam de designer, política ou pensamentos de vida, que também valem a pena.&lt;/p&gt;
+
+&lt;p&gt;Para usar o Plugin é fácil.&lt;br/&gt;
+Na &lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;página oficial&lt;/a&gt; consta alguns exemplos bem explicativos.&lt;br/&gt;
+Mas se você ainda tem dúvidas vou reproduzí-los aqui.&lt;/p&gt;
+
+&lt;p&gt;Primeiro crie seu Html com o campo que quer formatar.&lt;br/&gt;
+Não preciso dizer para você carregar a JQuery e o Plugin JQuery Price preciso ?&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;jquery e jquery price para formatar seus campos de valor monetario&amp;rdquo;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo; src=&amp;ldquo;jprice.js&amp;rdquo;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function init()
+{
+
+}
+
+$(document).ready(init);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/script&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;amp;lt;h1&amp;amp;gt;Exemplo&amp;amp;lt;/h1&amp;amp;gt;
+
+&amp;amp;lt;label for=&amp;quot;price&amp;quot;&amp;amp;gt;Valor:&amp;amp;lt;/label&amp;amp;gt;
+&amp;amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;price&amp;quot; /&amp;amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PodCast – Desenvolvimento Mobile Web</title>
+      <link>/2010/podcast-desenvolvimento-mobile-web/</link>
+      <pubDate>Thu, 02 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/podcast-desenvolvimento-mobile-web/</guid>
+      <description>&lt;p&gt;Salve Galera!&lt;br/&gt;
+Hoje deixo aqui o meu podcast relatando minha ida ao &lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;PHP SC Conf&lt;/a&gt; (&lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;http://www.phpsc.com.br/&lt;/a&gt;) neste ano de 2010, falando principalmente dos assuntos colocados pelo &lt;a href=&#34;http://www.porkaria.com.br/&#34;&gt;Bruno Fernandes&lt;/a&gt; (@porkaria) em sua palestra &lt;em&gt;Desenvolvimento Mobile Web&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;No Podcast:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PHP SC Conf&lt;/li&gt;
+&lt;li&gt;Identificação do dispositivo mobile&lt;/li&gt;
+&lt;li&gt;Disparo de SMS&lt;/li&gt;
+&lt;li&gt;Novo Marketing&lt;/li&gt;
+&lt;li&gt;QR Code&lt;/li&gt;
+&lt;li&gt;Ferramentas Web para Mobile&lt;/li&gt;
+&lt;li&gt;Conteúdo de um site Mobile&lt;/li&gt;
+&lt;li&gt;Outros&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Formatando CPF No SQL Com Expressões Regulares – RegexReplace</title>
+      <link>/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/</link>
+      <pubDate>Fri, 21 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/</guid>
+      <description>&lt;p&gt;Que as expressões regulares são bacanas e divertidas todo mundo já sabe.&lt;br/&gt;
+Elas estão presentes em várias linguagens e no SQL Server não poderia ser diferente.&lt;/p&gt;
+
+&lt;p&gt;Se você é programador e ainda não sabe sobre as expressões regulares, não perca tempo.&lt;br/&gt;
+Você precisa se emocionar com o uso delas em seus códigos.&lt;/p&gt;
+
+&lt;p&gt;Consulte os links abaixo para iniciar já esse aprendizado:&lt;br/&gt;
+Wikipedia &amp;#8211; &lt;a href=&#34;http://pt.wikipedia.org/wiki/Express%C3%A3o_regular&#34;&gt;http://pt.wikipedia.org/wiki/Express%C3%A3o_regular&lt;/a&gt;&lt;br/&gt;
+Um excelente tutorial para começar do Rafael Jaques- &lt;a href=&#34;http://www.phpit.com.br/artigos/entendendo-as-expressoes-regulares.phpit&#34;&gt;http://www.phpit.com.br/artigos/entendendo-as-expressoes-regulares.phpit&lt;/a&gt;&lt;br/&gt;
+Aurélio Marinho Jargas &amp;#8211; O guru das expressões regulares &amp;#8211; &lt;a href=&#34;http://aurelio.net/er/&#34;&gt;http://aurelio.net/er/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Certo mas e o SQL Server ? Vamos voltar para ele..&lt;/p&gt;
+
+&lt;p&gt;Em um post antigo eu mostro como fazer a formatação de campos como CPF direto pelo SQL.&lt;/p&gt;
+
+&lt;p&gt;Mas digamos que alguns campos do CPF estejam com formatação correta com pontuação e dígitos e outras não.&lt;br/&gt;
+E ainda outras mais ou menos. Ex: &lt;em&gt;161.364.708-53, 16136470853, 161364708-53&lt;/em&gt;.&lt;br/&gt;
+Você tem um problema e nesse caso um SubString não iria funcionar corretamente.&lt;/p&gt;
+
+&lt;p&gt;Solução? RegexReplace. Vamos ver como usar isso.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 1</title>
+      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</link>
+      <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  &lt;p&gt;
+    Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vejo muitos desenvolvedores criticarem o CodeIgniter por ele não utilizar o conceito de Layout ou ter um Template Engine dentro dele.&lt;/p&gt;
+
+&lt;p&gt;Template engine ou o conceito Layouts , falando em um exemplo rápido e prático seria mais ou menos o seguinte:&lt;br/&gt;
+Pense que você tem um topo e um rodapé que nunca mudam no seu portal.&lt;br/&gt;
+Ou seja, muda apenas o meio das páginas. Veja a figura abaixo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone size-full wp-image-345&#34; title=&#34;Screen shot 2011-05-20 at 2.22.38 PM&#34; src=&#34;../../assets/uploads/2010/02/Screen-shot-2011-05-20-at-2.22.38-PM.png&#34; alt=&#34;&#34; width=&#34;239&#34; height=&#34;217&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#34;clear: both;&#34; /&gt;&lt;br/&gt;
+E aí? Você vai ter que colocar esse topo e esse rodapé em todas as páginas que você chamar?&lt;br/&gt;
+Ou você é malandro e vai fazer um include dentro das telas?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 2</title>
+      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</link>
+      <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  &lt;p&gt;
+    Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Continuando a parte 1 deste post.&lt;br/&gt;
+Se você perdeu a primeira parte &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1&#34;&gt;clique aqui para ler a primeira parte&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5 &amp;#8211; Construindo sua View&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sua View deve ser feita normalmente, como voce já está acostumado a fazer, com o nome que você colocaria normalmente.&lt;br/&gt;
+Apenas com o conteúdo que muda de uma página para outra.&lt;/p&gt;
+
+&lt;p&gt;O HTML que você colocar aqui na View irá substituir a variável &lt;em&gt;{content_for_layout}&lt;/em&gt; que definimos no layout acima.&lt;br/&gt;
+Vou colocar nessa nossa view de exemplo apenas um título e um parágrafo para demonstrar.&lt;br/&gt;
+Ficando assim:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;habilitando layouts no codeigniter template engine 2&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;p&amp;gt;Paragrafo teste teste teste teste.&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;Chamei essa view de &lt;em&gt;home.php&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 &amp;#8211; Desenvolvendo a Classe&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Quando definimos nosso Hook no passo 2, setamos que a pasta onde ficaria nossa classe seria a pasta hooks que vem por padrão no projeto do CodeIgniter.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar nossa classe dentro dessa pasta, e, com o nome que também especificamos na definição do Hook que foi Layout.php&lt;br/&gt;
+Se você não seguiu o exemplo, faça suas devidas adaptações.&lt;/p&gt;
+
+&lt;p&gt;A classe é um pouco extensa, leia com atenção.&lt;br/&gt;
+Para ajudar ela está com os comentários do próprio &lt;a href=&#34;http://www.mozartpetter.com/pt/&#34;&gt;Mozart Petter&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ScreenCast – Bate Papo Sobre Desenvolvimento De Sites Para IPhone</title>
+      <link>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</link>
+      <pubDate>Tue, 19 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! Este Screencast foi gravado em um momento onde o desenvolvimento para mobile ainda estava se estabelecendo. Não havia técnicas nem material bem definido das coisas ainda. As técnicas apresentadas aqui ainda podem servir para alguns casos, mas recomendo a pesquisa em cima de novas ferramentas.
+&lt;/div&gt;
+
+&lt;p&gt;Salve galera!&lt;/p&gt;
+
+&lt;p&gt;No meio do ano passado fiz um experiência na tentativa de fazer um Screencast com alguns estudos que fiz sobre o desenvolvimento de sites voltados para o IPhone.&lt;/p&gt;
+
+&lt;p&gt;De lá pra cá acabei me envolvendo em outras coisas e nem lembrei de publicar isso.&lt;/p&gt;
+
+&lt;p&gt;Agora está ai! Um bate papo com exemplos de quase 20 minutos de duração para quebrar alguns mitos de se criar sites para Iphone. Também mostro algumas ferramentas, frameworks para facilitar a vida e simuladores para você fazer os devidos testes.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Função Para Contar Palavras (Padrão De Caracteres) Em Uma String Microsoft SQL Server</title>
+      <link>/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/</link>
+      <pubDate>Fri, 06 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/</guid>
+      <description>&lt;p&gt;Salve galera!&lt;/p&gt;
+
+&lt;p&gt;Precisei durante essa semana de uma função que contasse quantas vezes uma palavra aparecia dentro de uma String no SQL Server. Achei que já tivesse algo pelo menos similar, mais após andar pelo MSDN e pelo Books Online vi que o jeito seria fazer uma função.&lt;/p&gt;
+
+&lt;p&gt;A lógica é a seguinte:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recebo via Parâmetro a Palavra que quero buscar e a String toda ou texto.&lt;/li&gt;
+&lt;li&gt;Faço um loop baseado no tamanho do texto.&lt;/li&gt;
+&lt;li&gt;Pego o tamanho da palavra que está sendo procurada e a cada caracter do texto, andamos o tamanho da palavra e comparamos se isso é igual a palavra procurada.&lt;/li&gt;
+&lt;li&gt;Se for, soma um no contador de palavras e continua.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Agora como fica o código disso? Repare abaixo:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comparando Arrays E Trazendo Os Valores Diferentes</title>
+      <link>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Ontem precisei comparar os resultados de dois arrays e deles trazer os valores que estavam em apenas um dos arrays.&lt;/p&gt;
+
+&lt;p&gt;A princípio procurei uma função que fizesse isso pra mim, achei que o &lt;em&gt;array_diff&lt;/em&gt; fizesse isso para a gente. Mas me enganei! Não achei uma função com esse resultado.&lt;/p&gt;
+
+&lt;p&gt;A função &lt;em&gt;array_diff&lt;/em&gt; na verdade traz apenas os valores que constam no primeiro array, mas não constam no segundo.&lt;br/&gt;
+Exemplo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;comparando arrays e trazendo os valores diferentes&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;$array1 = array(&amp;ldquo;bola&amp;rdquo;, &amp;ldquo;quadrado&amp;rdquo;, &amp;ldquo;triangulo&amp;rdquo;);
+$array2 = array(&amp;ldquo;esfera&amp;rdquo;, &amp;ldquo;quadrado&amp;rdquo;, &amp;ldquo;triangulo&amp;rdquo;);&lt;/p&gt;
+
+&lt;p&gt;$result = array_diff($array1, $array2);
+print_r($result);&lt;/p&gt;
+
+&lt;p&gt;?&amp;gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;O resultado do código acima nos retorna um array com o valor &amp;#8220;bola&amp;#8221;.&lt;br/&gt;
+Pois é o único valor que consta no primeiro array e não no segundo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios</title>
+      <link>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</link>
+      <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</guid>
+      <description>&lt;p&gt;Cenário:&lt;/p&gt;
+
+&lt;p&gt;Você compra o domínio principal, &lt;em&gt;www.site.com.br&lt;/em&gt;. E você vai ter duas versões desse site, uma para cada cliente, que vai usar todas as regras de negócio iguais. A única diferença será o layout. Os clientes pediram os subdomínios &lt;em&gt;branco.site.com.br&lt;/em&gt; e &lt;em&gt;preto.site.com.br&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Você pode fazer duas cópias do site em pastas diferentes, mas levando em consideração que eles tem o mesmo CORE, isso não é muito inteligente. Pense se você tiver que fazer uma atualização, você vai ter de mexer em ambos os projetos.&lt;/p&gt;
+
+&lt;p&gt;Porque não fazer os subdomínios como links simbólicos para uma mesma pasta? De lá você pode fazer uma verificação. Se for um site, pega o layout branco, se for o outro pega o layout preto.&lt;/p&gt;
+
+&lt;p&gt;Problema:&lt;/p&gt;
+
+&lt;p&gt;No Codeigniter você define a URL principal do seu projeto nos arquivos de configuração, na variável &lt;em&gt;$config[&amp;#8216;base_url&amp;#8217;]&lt;/em&gt;. Você não vai ter como colocar os subdomínios lá. O que fazer?&lt;/p&gt;
+
+&lt;p&gt;Solução:&lt;br/&gt;
+Usar a Global &lt;em&gt;$_SERVER&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Essa Global traz informações como o host que você está acessando, o email do administrador da máquina, o software usado, a configuração do TimeOut entre outras.&lt;/p&gt;
+
+&lt;p&gt;Para que você mesmo visualize tudo isso faça o seguinte. Abra o seu config.php do CodeIgniter e logo acima de onde está setado a variável &lt;em&gt;$config[&amp;#8216;base_url&amp;#8217;]&lt;/em&gt; de um print_r, como abaixo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;codeigniter use a global _server no config para ganhar dinamismo com subdominios&amp;rdquo;
+| Base Site URL
+|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       &lt;a href=&#34;http://example.com/&#34;&gt;http://example.com/&lt;/a&gt;
+|
+*
+print_r($_SERVER);
+die;
+$config[&amp;lsquo;base_url&amp;rsquo;]     = &amp;ldquo;&lt;a href=&#34;http://www.site.com.br/&amp;quot;&#34;&gt;http://www.site.com.br/&amp;quot;&lt;/a&gt;;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</title>
+      <link>/2009/redirecionando-para-versao-mobile/</link>
+      <pubDate>Sun, 19 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/redirecionando-para-versao-mobile/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
+&lt;/div&gt;
+
+&lt;p&gt;As pessoas que me acompanham sabem que há pouco mais de um mês adquiri um IPhone.&lt;br/&gt;
+A minha operadora me ligou oferecendo alguns pontos que valiam desconto na aquisição do aparelho. Não perdi tempo e corri lá buscar.&lt;/p&gt;
+
+&lt;p&gt;Desde então as minhas leituras diárias começaram a se voltar mais para IPhone.&lt;br/&gt;
+Desenvolvimento de aplicativos, desenvolvimento de sites, &amp;#8216;manhas&amp;#8217; para usar o aparelho, dicas para economizar bateria, e por ai vai.&lt;/p&gt;
+
+&lt;p&gt;O que trago hoje aqui faz parte dos meus estudos para criação de sites para o público que usa IPhone, que é, identificar que seu visitante está usando o aparelho e redirecioná-lo para a versão mobile do seu site.&lt;/p&gt;
+
+&lt;p&gt;A ideia é bem simples, e, para colocar ela em prática usamos JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Primeiro crie um arquivo HTML e o prepare para receber um javaScript dentro das tags do cabeçalho.&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;redirecionando para versao mobile&amp;rdquo;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;::: Teste IPhone :::&amp;lt;/title&amp;gt;
+&amp;lt;script type=&amp;lsquo;text/javascript&amp;rsquo;&amp;gt;
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)</title>
+      <link>/2009/codeigniter-metido-a-ruby/</link>
+      <pubDate>Thu, 16 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-metido-a-ruby/</guid>
+      <description>&lt;p&gt;Salve Galera&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Vocês sabem, muitos projetos em sistemas são similares, sempre aquela mesma coisa&amp;#8230;Listar, Inserir, Editar e Remover.&lt;br/&gt;
+Isso me levou a querer criar algo para facilitar tudo isso.&lt;/p&gt;
+
+&lt;p&gt;Vendo meu Amigo &lt;a href=&#34;http://www.fabiotomio.com&#34; title=&#34;Fábio&#39;s Blogs&#34;&gt;Fábio Tomio&lt;/a&gt; mandando ver no &lt;a href=&#34;http://www.rubyonrails.pro.br/&#34;&gt;Ruby On Rails&lt;/a&gt;, ele me mostrou que criava um cadastro (Listar, Inserir, Editar e Remover) muito facilmente, com apenas um comando no terminal, usando a funcão Scaffold se não me engano.&lt;/p&gt;
+
+&lt;p&gt;Inspirado nisso, resolvi fazer um Shell Script que geraria todas as views, controller e model prontas com essas opções.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Introdução&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chamei de CiForms.&lt;/li&gt;
+&lt;li&gt;Essa é uma versão de teste. É a versão Zero.&lt;/li&gt;
+&lt;li&gt;Fiz esse script como estudo. Não tenho pretensões de lucros, suporte, nem nada com ele.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Porque não usar o Scaffolding do CodeIgniter&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O Scaffolding do CodeIgniter não é aproveitável para o desenvolvimento de um projeto, ele não segue o padrão MVC do Framework. Como consta no manual, ele é apenas uma maneira de popular rapidamente uma tabela.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Limitando O SELECT Do SQL Em Diferentes Bancos De Dados</title>
+      <link>/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/</link>
+      <pubDate>Fri, 27 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/</guid>
+      <description>&lt;p&gt;Olá pessoal&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Atualmente tenho tido o privilégio de trabalhar com vários data bases, e com isso está dando para ver as diferenças de sintaxe, performance, ferramentas e demais coisas de um para outro.&lt;/p&gt;
+
+&lt;p&gt;Tenho trabalhado com Microsoft SQL, Postgres e Oracle.&lt;/p&gt;
+
+&lt;p&gt;Uma coisa que me chamou a atenção foi a maneira de limitar a consulta em cada um deles. Tenho feito bastante consultas limitadas pois ainda estou conhecendo a base de dados da empresa e não sei ao certo quantos registros tem certas tabelas. Para evitar que a coisa caia ou trave, faço consultas limitadas.&lt;/p&gt;
+
+&lt;p&gt;Repare as diferenças de um banco para outro abaixo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;limitando o select do sql em diferentes bancos de dados&amp;rdquo;
+&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Múltiplos Sites Com CodeIgniter – Exemplo Prático</title>
+      <link>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</link>
+      <pubDate>Tue, 27 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</guid>
+      <description>&lt;p&gt;Devido a muita procura do post sobre a restruturação do CodeIgniter para trabalhar com múltiplos sites (&lt;a href=&#34;http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter/&#34;&gt;Múltiplos sites com CodeIgniter&lt;/a&gt;), fiz um passo a passo aqui da estrutura para o pessoal entender melhor.&lt;/p&gt;
+
+&lt;p&gt;Estava recebendo muitas dúvidas, vamos ver se com este exemplo consigo deixar as coisas mais claras para todos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Começando do zero.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Baixei a &lt;a href=&#34;http://codeigniter.com/downloads/&#34;&gt;última versão do CodeIgniter&lt;/a&gt;.&lt;br/&gt;
+Descompacto ela no meu &lt;em&gt;desktop&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dentro dessa pasta veio o &lt;em&gt;system&lt;/em&gt;, o &lt;em&gt;user_guide&lt;/em&gt;, o &lt;em&gt;index.php&lt;/em&gt; e o &lt;em&gt;license.txt&lt;/em&gt;.&lt;br/&gt;
+Costumo deletar o User_guide, pois uso a documentação online.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Atenção agora ! &lt;/strong&gt;&lt;br/&gt;
+Dentro da pasta system temos a pasta &lt;em&gt;application&lt;/em&gt;. É esta pasta que faz o seu site funcionar. Com esta informação em mente vamos em frente.&lt;/p&gt;
+
+&lt;p&gt;Para começar a trabalhar com o servidor. Começe criando uma pasta para cada site. Como exemplo &lt;em&gt;site1&lt;/em&gt; e &lt;em&gt;site2&lt;/em&gt;.&lt;br/&gt;
+&lt;img class=&#34;alignnone size-full wp-image-61&#34; title=&#34;ex1&#34; src=&#34;../../assets/uploads/2009/01/ex1.jpg&#34; alt=&#34;ex1&#34; width=&#34;99&#34; height=&#34;77&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#34;clear: both;&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)</title>
+      <link>/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/</link>
+      <pubDate>Wed, 21 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/</guid>
+      <description>&lt;p&gt;Olhando para os códigos php no trabalho, como tem sido de costume para averiguar erros e algoritmos que possa melhorar, me deparo em vários controllers com uma série de &lt;a href=&#34;http://br.php.net/manual/pt_BR/function.split.php&#34;&gt;splits&lt;/a&gt; e loops para horas tratar o cpf, horas tratar o cnpj que vem do banco de dados.&lt;/p&gt;
+
+&lt;p&gt;No banco de dados estes campos estão salvos em um domínio String, e gravados sem pontuação ou dígitos. Então quando você quer mostrar para o usuário, para não deixar aquele emaranhado de números, você deixa as coisas como ele está acustumado a ver, com os pontos e etc.&lt;/p&gt;
+
+&lt;p&gt;Para não ficar repetindo a mesma rotina em vários locais do sistema, nem mesmo criar um método que eu tenha que chamar sempre que quiser um tratamento desses, já trago a coisa toda pronta no retorno da consulta. Simples, confira&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Trazendo o CPF com a pontuação e o dígito antes dos dois últimos numerais&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;tratando cpf cnpj primeiro nome e data pelo sql postgre&amp;rdquo;
+SUBSTR(cpf, 7, 3) || &amp;lsquo;-&amp;rsquo; || SUBSTR(cpf, 10) AS cpf
+FROM e001_pessoas
+WHERE pessoaid = 33;
+&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codeigniter, Internet Explorer E O Tempo De Expiração Da Sessão</title>
+      <link>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</link>
+      <pubDate>Sat, 17 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</guid>
+      <description>&lt;p&gt;Nesta Quinta-feira antes de sair do trabalho me deparo com uma surpresa no novo sistema que estou trabalhando. O login de acesso havia parado de funcionar no Internet Explorer. No Firefox tudo normal. Chata mania de ficar testando só no Firefox por conta das facilidades como Firebug e WebDeveloper, ai quando vamos testar no browser do usuário acontece essas coisas.&lt;/p&gt;
+
+&lt;p&gt;Sexta pela manhã, foi minha primeira tarefa do dia. Achei que seria algo bobo. Realmente era, mas levei 4 horas para descobrir.&lt;/p&gt;
+
+&lt;p&gt;Comecei pelos arquivos de JavaScript vendo se estava tudo ok.&lt;br/&gt;
+Os retornos via ajax do banco estavam ok.&lt;br/&gt;
+Parti para os controllers que gravam a sessão no browser.&lt;br/&gt;
+Comentei a biblioteca que faz verificação da sessão para deixar eu acessar livremente a aplicação. Dei um print no valor da sessão, que pelo codeIgniter se verifica assim:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;codeigniter internet explorer e o tempo de expiracao da sessao&amp;rdquo;
+// Login é o valor que eu estava gravando na sessão
+print($this-&amp;gt;session-&amp;gt;userdata(&amp;lsquo;login&amp;rsquo;));&lt;/p&gt;
+
+&lt;p&gt;// A tradicional global session não funcionará no codeIgniter
+print($_SESSION[&amp;lsquo;login&amp;rsquo;]);
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;No Firefox tudo ok. No Internet Explorer em branco. Que beleza, o Internet Explorer não está deixando escrever na sessão&amp;#8230;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Firefox Ajudando No Seu Dia De Trabalho</title>
+      <link>/2009/firefox-ajudando-no-seu-dia-de-trabalho/</link>
+      <pubDate>Thu, 08 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/firefox-ajudando-no-seu-dia-de-trabalho/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! Este post foi escrito em uma época onde o Firefox era o principal navegador usado por desenvolvedores web devido a um número alto de ferramentas que esse oferecia. Para hoje, recomendo que você faça uma avaliação dos novos navegadores do mercado. Caso você ainda utilize firefox, ignore e continue sua leitura.
+&lt;/div&gt;
+
+&lt;p&gt;Fui à casa do meu amigo Jean há alguns dias, ajudar com algumas soluções de programação para o seu site. E no vai e vem da programação comecei a apresentar e adicionar umas ferramentas no firefox dele. Ele ficou completamente maravilhado com a coisa toda, e isso me deixou pensando. Porra! A galera que está começando ou quem já programa e não conheçe, precisa saber dessas ferramentas. ****&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Muitas vezes algumas coisas por serem tão naturais para nós, faz parecer que todo mundo conhece aquilo.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;A maioria de programadores e desenvolvedores gostam de Firefox, fato!&lt;br/&gt;
+Talvez em primeiro lugar para ir de encontro com a Microsoft. Segundo porque o Firefox geralmente obedece o que está no seu código, e terceiro, porque ele ajuda muito quando você tem umas ferramentas bacanas adicionadas a ele.&lt;/p&gt;
+
+&lt;p&gt;Para adionar complementos no seu firefox duas opções:&lt;br/&gt;
+&amp;#8211; Você pode ir no Menu: &lt;em&gt;Ferramentas &gt;&gt; Complementos e procurar por ele na aba Adicionar. *&lt;br/&gt;
+&amp;#8211; Ou ir direto no &lt;a href=&#34;https://addons.mozilla.org/pt-BR/firefox/&#34;&gt;site de plugins da Mozilla&lt;/a&gt;, e baixá-los para sua máquina. Para posteriormente instalar as extensões que você baixou, vá no Menu: &lt;/em&gt;Arquivo&gt;&gt;Abrir Arquivo*.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Erro 500, Timeout Apache, Max_execution_time PHP</title>
+      <link>/2008/erro-500-timeout-apache-max_execution_time-php/</link>
+      <pubDate>Fri, 26 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/erro-500-timeout-apache-max_execution_time-php/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Cenário:&lt;/strong&gt; Site que funciona como um painel do cliente, onde ele adiciona produtos que necessita para seu negócio. Há uma área onde de um lado é listado os produtos já adicionados, e do outro os que ele ainda pode adicionar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ocorrência:&lt;/strong&gt; &amp;#8220;Sempre demorou para carregar. Funcionava normal. Mas agora quando um cliente tem muitos produtos, não abre. Dá erro 500.&amp;#8221;&lt;br/&gt;
+&amp;#8220;No servidor de testes está funcionando, no do ar não. &amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pesquisa:&lt;/strong&gt; Fui atrás do tal erro 500. Claro já havia o visto antes, mas não sou daqueles que sabe de cor o significado dos erros de servidor e do apache, e nem dos bips de erro da placa mãe. No &lt;a href=&#34;http://www.google.com&#34;&gt;segundo cérebro&lt;/a&gt; há muitas inconstantes sobre o erro 500. Uns dizem ser erro de permissão, outros de configuração. Felizmente meu &lt;a href=&#34;http://delicious.com/flaviosilveira&#34;&gt;Delicious&lt;/a&gt; me salvou. Eu tinha salvo &lt;a href=&#34;http://suporte.bs2.com.br/questions/83/P%E1ginas+de+erro+de+servidores+Web.&#34;&gt;esse link&lt;/a&gt; com uma lista sobre os erros de servidor há algum tempo.&lt;/p&gt;
+
+&lt;p&gt;Agora sim. Erro 500: Algo não foi compreendido pelo servidor.&lt;br/&gt;
+Certo. Muito bom. Não ajudou muito. Em nada melhor dizendo.&lt;br/&gt;
+&lt;strong&gt;E agora?&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Múltiplos Sites Com Codeigniter</title>
+      <link>/2008/alterando-configuracao-do-codeigniter/</link>
+      <pubDate>Fri, 19 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/alterando-configuracao-do-codeigniter/</guid>
+      <description>&lt;p&gt;Entrei em uma empresa recentemente, e acredito que conquistei a vaga por já ter trabalhado com CodeIgniter antes. Pra quem não sabe o &lt;a href=&#34;http://codeigniter.com/&#34;&gt;CodeIgniter&lt;/a&gt; é um framework PHP com estrutura em &lt;a href=&#34;http://pt.wikipedia.org/wiki/MVC&#34;&gt;MVC&lt;/a&gt;, o que deixa tudo mais organizado. E foi a ferramenta escolhida pela empresa para organizar os seus bagunçados projetos.&lt;/p&gt;
+
+&lt;p&gt;Apesar de já ter trabalhado com CodeIgniter antes, nunca havia me envolvido tanto, entrado em suas configurações principais e etc. Me limitava ao superficial para fazer funcionar. Controler, consulta no banco pelo Model, chama a view para mostrar o conteúdo e fechou. No máximo chamar uma library.&lt;/p&gt;
+
+&lt;p&gt;Porém pediram para mim e meu amigo &lt;a href=&#34;http://twitter.com/RonieNeubauer&#34;&gt;Ronie&lt;/a&gt;, que já tinhamos experiência com a ferramenta, para deixar ela configurada para múltiplos sites. Já tinhamos visto isso antes. Vamos lá! Pesquisar no segundo cérebro (&lt;a href=&#34;http://www.google.com&#34;&gt;Google&lt;/a&gt;)!&lt;/p&gt;
+
+&lt;p&gt;O site oficial propõe duas maneiras para se trabalhar com múltiplos sites em CodeIgniter. A primeira seria criando as pastas principais dos sites dentro de Application (Application é onde fica a estrutura do site). Funciona como se cada pasta dessa, fosse um application. Logo, você deve replicar o conteúdo da pasta application que vem por padrão no CodeIgniter para cada site que for ter, renomeando para um nome de acordo (No exemplo abaixo a pasta site1 e a pasta site2).&lt;br/&gt;
+&lt;img class=&#34;alignnone size-full wp-image-54&#34; title=&#34;ci1&#34; src=&#34;../../assets/uploads/2009/01/ci1.jpg&#34; alt=&#34;ci1&#34; width=&#34;148&#34; height=&#34;139&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#39;clear: both&#39; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

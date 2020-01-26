@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>expressão regular on Vida e Tecnologia</title>
+    <link>/categories/express%C3%A3o-regular/</link>
+    <description>Recent content in expressão regular on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 21 May 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/express%C3%A3o-regular/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Formatando CPF No SQL Com Expressões Regulares – RegexReplace</title>
+      <link>/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/</link>
+      <pubDate>Fri, 21 May 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/formatando-cpf-no-sql-com-expressoes-regulares-regexreplace/</guid>
+      <description>&lt;p&gt;Que as expressões regulares são bacanas e divertidas todo mundo já sabe.&lt;br/&gt;
+Elas estão presentes em várias linguagens e no SQL Server não poderia ser diferente.&lt;/p&gt;
+
+&lt;p&gt;Se você é programador e ainda não sabe sobre as expressões regulares, não perca tempo.&lt;br/&gt;
+Você precisa se emocionar com o uso delas em seus códigos.&lt;/p&gt;
+
+&lt;p&gt;Consulte os links abaixo para iniciar já esse aprendizado:&lt;br/&gt;
+Wikipedia &amp;#8211; &lt;a href=&#34;http://pt.wikipedia.org/wiki/Express%C3%A3o_regular&#34;&gt;http://pt.wikipedia.org/wiki/Express%C3%A3o_regular&lt;/a&gt;&lt;br/&gt;
+Um excelente tutorial para começar do Rafael Jaques- &lt;a href=&#34;http://www.phpit.com.br/artigos/entendendo-as-expressoes-regulares.phpit&#34;&gt;http://www.phpit.com.br/artigos/entendendo-as-expressoes-regulares.phpit&lt;/a&gt;&lt;br/&gt;
+Aurélio Marinho Jargas &amp;#8211; O guru das expressões regulares &amp;#8211; &lt;a href=&#34;http://aurelio.net/er/&#34;&gt;http://aurelio.net/er/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Certo mas e o SQL Server ? Vamos voltar para ele..&lt;/p&gt;
+
+&lt;p&gt;Em um post antigo eu mostro como fazer a formatação de campos como CPF direto pelo SQL.&lt;/p&gt;
+
+&lt;p&gt;Mas digamos que alguns campos do CPF estejam com formatação correta com pontuação e dígitos e outras não.&lt;br/&gt;
+E ainda outras mais ou menos. Ex: &lt;em&gt;161.364.708-53, 16136470853, 161364708-53&lt;/em&gt;.&lt;br/&gt;
+Você tem um problema e nesse caso um SubString não iria funcionar corretamente.&lt;/p&gt;
+
+&lt;p&gt;Solução? RegexReplace. Vamos ver como usar isso.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

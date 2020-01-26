@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>css on Vida e Tecnologia</title>
+    <link>/categories/css/</link>
+    <description>Recent content in css on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 25 Jul 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/css/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!</title>
+      <link>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
+      <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Vocês já ouviram falar sobre o &lt;a href=&#34;http://initializr.com/&#34; title=&#34;Initializr!&#34;&gt;Initializr!&lt;/a&gt; ?&lt;/p&gt;
+
+&lt;p&gt;Ele é um gerador de código que ajuda você a começar seu projeto em HTML5. Ele é baseado no &lt;a href=&#34;http://html5boilerplate.com/&#34; title=&#34;oilerplate HTML5&#34;&gt;Boilerplate&lt;/a&gt; e foi criado por Jonathan Verrecchia (&lt;a href=&#34;http://twitter.com/#!/verekia&#34; title=&#34;Twitter Jonathan Verrecchia&#34;&gt;@verekia&lt;/a&gt;) com o objetivo de ampliar o uso do HTML5.&lt;/p&gt;
+
+&lt;p&gt;Em contato com o Jonathan, combinei com ele de traduzir a documentação oficial do Initializr do francês para o português, para ajudar a divulgar ainda mais essa tremenda ferramenta e quem sabe com isso ver o uso do HTML5 mais e mais em novos projetos.&lt;/p&gt;
+
+&lt;p&gt;Segue a tradução da documentação abaixo.&lt;br/&gt;
+Você encontra a versão original em francês no seguinte link: &lt;a href=&#34;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&#34; title=&#34;Documentação oficial Initializr Francês&#34;&gt;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Conheça esses projetos e comece já a trabalhar com HTML5!&lt;br/&gt;
+Grande Abraço!&lt;/p&gt;
+
+&lt;h3&gt;Initializr &amp;#8211; Um gerador baseado nos templates Boilerplate HTML5&lt;/h3&gt;
+
+&lt;p&gt;&lt;img class=&#34;aligncenter size-full wp-image-371&#34; title=&#34;logo-initializr&#34; src=&#34;../../assets/uploads/2011/07/logo-initializr.png&#34; alt=&#34;Initializr!&#34; width=&#34;600&#34; height=&#34;285&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

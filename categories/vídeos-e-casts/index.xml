@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vídeos e casts on Vida e Tecnologia</title>
+    <link>/categories/v%C3%ADdeos-e-casts/</link>
+    <description>Recent content in vídeos e casts on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 19 Nov 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/v%C3%ADdeos-e-casts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hangout – Começando Bem Com Zend Framework 1</title>
+      <link>/2012/hangout-comecando-bem-com-zend-framework-1/</link>
+      <pubDate>Mon, 19 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/hangout-comecando-bem-com-zend-framework-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Recentemente estive no Rio de Janeiro para ministrar o curso &lt;em&gt;Começando Bem com Zend Framework&lt;/em&gt;. Curso que mostra um bé-a-bá em cima do Zend Framework 1 usando a ajuda da Zend Tool. Infelizmente por alguns problemas técnicos não consegui realizar o curso completo e por conta disso marquei um hangout com o pessoal que estava inscrito no evento.&lt;/p&gt;
+
+&lt;p&gt;Com esse vídeo fecho essa maneira como o curso é apresentado, sendo que o Zend Framework 2 foi lançado recentemente e vou adaptar o curso para ele. Mas isso não tira a importância de conhecer o Zend 1 visto que ainda teremos manutenções e sistemas legados no mercado, além de servir como base para o próprio Zend 2.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Hangout PHP in Rio</title>
+      <link>/2012/hangout-php-in-rio/</link>
+      <pubDate>Fri, 02 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/hangout-php-in-rio/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;A organização do PHP n Rio deste ano de 2012 tem realizado um bate papo com os palestrantes do evento via Hangout, a funcionalidade de videoconferência do Google Plus.&lt;/p&gt;
+
+&lt;p&gt;Como palestrante do evento, chegou minha vez de bater um papo ao vivo junto com Anderson Ferreira (&lt;a href=&#34;https://twitter.com/sdfnanderson&#34; title=&#34;Twitter Anderson Ferreira&#34;&gt;@sdfnanderson&lt;/a&gt;) e o pessoal da organização Carlos Carneiro (&lt;a href=&#34;https://twitter.com/hiper4tivo&#34; title=&#34;Twitter Carlos Carneiro&#34;&gt;@hiper4tivo&lt;/a&gt;) e Vinicius Machado (&lt;a href=&#34;https://twitter.com/x4bigboss&#34; title=&#34;Twitter Vinicius Machado&#34;&gt;@x4bigboss&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Durante pouco mais de uma hora falamos sobre dicas de carreira, dicas de estudo e desenvolvimento. No final fizemos um bate bola com perguntas e respostas.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Screencast – Começando Bem Com Zend Framework</title>
+      <link>/2011/screencast-comecando-bem-com-zend-framework/</link>
+      <pubDate>Thu, 29 Dec 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/screencast-comecando-bem-com-zend-framework/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Gravei esse screencast baseado no mini-curso/palestra que estive apresentando durante esse ano com o título de &lt;em&gt;Começando bem com Zend Framework&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;O vídeo não tem edição, foi gravado direto, sem roteiro.&lt;br/&gt;
+Por isso peço desculpas se acabei atropelando alguma explicação ou se algo não ficar muito claro para alguém, principalmente para iniciantes. Da forma como foi finalizado acabou ficando mais voltado para quem já tem um conhecimento com outros frameworks ou um conhecimento legal de PHP.&lt;/p&gt;
+
+&lt;p&gt;Dúvidas? Perguntas? Sugestões? Estamos aí.&lt;br/&gt;
+Aguardo o feedback de todos.&lt;br/&gt;
+Grande Abraço!&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Palestra – Quero Ser Um Desenvolvedor De Jogos</title>
+      <link>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</link>
+      <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</guid>
+      <description>&lt;p&gt;Olá pessoal!&lt;/p&gt;
+
+&lt;p&gt;Se vocês acompanham minhas notícias, ficaram sabendo que estive em Bento Gonçalves &amp;#8211; Rio Grande do Sul, palestrando sobre desenvolvimento de jogos no evento Tchê Linux.&lt;/p&gt;
+
+&lt;p&gt;A palestra aborda uma visão inicial para quem quer conhecer o desenvolvimento de jogos, apresentando os papéis que fazem parte desse desenvolvimento e como começar a fazer parte deles. Ou seja, dá para assistir com seu Pai e sua mãe na sala sem problemas.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>PodCast – Desenvolvimento Mobile Web</title>
+      <link>/2010/podcast-desenvolvimento-mobile-web/</link>
+      <pubDate>Thu, 02 Sep 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/podcast-desenvolvimento-mobile-web/</guid>
+      <description>&lt;p&gt;Salve Galera!&lt;br/&gt;
+Hoje deixo aqui o meu podcast relatando minha ida ao &lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;PHP SC Conf&lt;/a&gt; (&lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;http://www.phpsc.com.br/&lt;/a&gt;) neste ano de 2010, falando principalmente dos assuntos colocados pelo &lt;a href=&#34;http://www.porkaria.com.br/&#34;&gt;Bruno Fernandes&lt;/a&gt; (@porkaria) em sua palestra &lt;em&gt;Desenvolvimento Mobile Web&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;No Podcast:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;PHP SC Conf&lt;/li&gt;
+&lt;li&gt;Identificação do dispositivo mobile&lt;/li&gt;
+&lt;li&gt;Disparo de SMS&lt;/li&gt;
+&lt;li&gt;Novo Marketing&lt;/li&gt;
+&lt;li&gt;QR Code&lt;/li&gt;
+&lt;li&gt;Ferramentas Web para Mobile&lt;/li&gt;
+&lt;li&gt;Conteúdo de um site Mobile&lt;/li&gt;
+&lt;li&gt;Outros&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>ScreenCast – Bate Papo Sobre Desenvolvimento De Sites Para IPhone</title>
+      <link>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</link>
+      <pubDate>Tue, 19 Jan 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! Este Screencast foi gravado em um momento onde o desenvolvimento para mobile ainda estava se estabelecendo. Não havia técnicas nem material bem definido das coisas ainda. As técnicas apresentadas aqui ainda podem servir para alguns casos, mas recomendo a pesquisa em cima de novas ferramentas.
+&lt;/div&gt;
+
+&lt;p&gt;Salve galera!&lt;/p&gt;
+
+&lt;p&gt;No meio do ano passado fiz um experiência na tentativa de fazer um Screencast com alguns estudos que fiz sobre o desenvolvimento de sites voltados para o IPhone.&lt;/p&gt;
+
+&lt;p&gt;De lá pra cá acabei me envolvendo em outras coisas e nem lembrei de publicar isso.&lt;/p&gt;
+
+&lt;p&gt;Agora está ai! Um bate papo com exemplos de quase 20 minutos de duração para quebrar alguns mitos de se criar sites para Iphone. Também mostro algumas ferramentas, frameworks para facilitar a vida e simuladores para você fazer os devidos testes.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

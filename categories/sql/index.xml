@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sql on Vida e Tecnologia</title>
+    <link>/categories/sql/</link>
+    <description>Recent content in sql on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 06 Nov 2009 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/sql/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Função Para Contar Palavras (Padrão De Caracteres) Em Uma String Microsoft SQL Server</title>
+      <link>/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/</link>
+      <pubDate>Fri, 06 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/funcao-para-contar-palavras-padrao-de-caracteres-em-uma-string-microsoft-sql-server/</guid>
+      <description>&lt;p&gt;Salve galera!&lt;/p&gt;
+
+&lt;p&gt;Precisei durante essa semana de uma função que contasse quantas vezes uma palavra aparecia dentro de uma String no SQL Server. Achei que já tivesse algo pelo menos similar, mais após andar pelo MSDN e pelo Books Online vi que o jeito seria fazer uma função.&lt;/p&gt;
+
+&lt;p&gt;A lógica é a seguinte:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Recebo via Parâmetro a Palavra que quero buscar e a String toda ou texto.&lt;/li&gt;
+&lt;li&gt;Faço um loop baseado no tamanho do texto.&lt;/li&gt;
+&lt;li&gt;Pego o tamanho da palavra que está sendo procurada e a cada caracter do texto, andamos o tamanho da palavra e comparamos se isso é igual a palavra procurada.&lt;/li&gt;
+&lt;li&gt;Se for, soma um no contador de palavras e continua.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Agora como fica o código disso? Repare abaixo:&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Limitando O SELECT Do SQL Em Diferentes Bancos De Dados</title>
+      <link>/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/</link>
+      <pubDate>Fri, 27 Feb 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/limitando-o-select-do-sql-em-diferentes-bancos-de-dados/</guid>
+      <description>&lt;p&gt;Olá pessoal&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Atualmente tenho tido o privilégio de trabalhar com vários data bases, e com isso está dando para ver as diferenças de sintaxe, performance, ferramentas e demais coisas de um para outro.&lt;/p&gt;
+
+&lt;p&gt;Tenho trabalhado com Microsoft SQL, Postgres e Oracle.&lt;/p&gt;
+
+&lt;p&gt;Uma coisa que me chamou a atenção foi a maneira de limitar a consulta em cada um deles. Tenho feito bastante consultas limitadas pois ainda estou conhecendo a base de dados da empresa e não sei ao certo quantos registros tem certas tabelas. Para evitar que a coisa caia ou trave, faço consultas limitadas.&lt;/p&gt;
+
+&lt;p&gt;Repare as diferenças de um banco para outro abaixo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;limitando o select do sql em diferentes bancos de dados&amp;rdquo;
+&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Tratando CPF, CNPJ, Primeiro Nome E Data Pelo SQL (Postgre)</title>
+      <link>/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/</link>
+      <pubDate>Wed, 21 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/tratando-cpf-cnpj-primeiro-nome-e-data-pelo-sql-postgre/</guid>
+      <description>&lt;p&gt;Olhando para os códigos php no trabalho, como tem sido de costume para averiguar erros e algoritmos que possa melhorar, me deparo em vários controllers com uma série de &lt;a href=&#34;http://br.php.net/manual/pt_BR/function.split.php&#34;&gt;splits&lt;/a&gt; e loops para horas tratar o cpf, horas tratar o cnpj que vem do banco de dados.&lt;/p&gt;
+
+&lt;p&gt;No banco de dados estes campos estão salvos em um domínio String, e gravados sem pontuação ou dígitos. Então quando você quer mostrar para o usuário, para não deixar aquele emaranhado de números, você deixa as coisas como ele está acustumado a ver, com os pontos e etc.&lt;/p&gt;
+
+&lt;p&gt;Para não ficar repetindo a mesma rotina em vários locais do sistema, nem mesmo criar um método que eu tenha que chamar sempre que quiser um tratamento desses, já trago a coisa toda pronta no retorno da consulta. Simples, confira&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Trazendo o CPF com a pontuação e o dígito antes dos dois últimos numerais&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;tratando cpf cnpj primeiro nome e data pelo sql postgre&amp;rdquo;
+SUBSTR(cpf, 7, 3) || &amp;lsquo;-&amp;rsquo; || SUBSTR(cpf, 10) AS cpf
+FROM e001_pessoas
+WHERE pessoaid = 33;
+&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

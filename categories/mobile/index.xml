@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mobile on Vida e Tecnologia</title>
+    <link>/categories/mobile/</link>
+    <description>Recent content in mobile on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 13 Apr 2013 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/mobile/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Objective-C: A Linguagem Por Trás Do iOS – Parte 2</title>
+      <link>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/</link>
+      <pubDate>Sat, 13 Apr 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-2/</guid>
+      <description>&lt;p&gt;[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS.&lt;br/&gt;
+&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Você pode ver os demais artigos da série através da categoria Mobile]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Nessa parte 2 vamos continuar dando os primeiros passos e criando os primeiros exemplos com a linguagem Objective-C. Como discutido no primeiro artigo, essa linguagem veio evoluindo mas ainda mantém a linguagem C por trás dela, e é com isso que estamos criando nossos primeiros exemplos.&lt;/span&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Montando a Tela Do Seu Aplicativo – Parte 1</title>
+      <link>/2013/montando-a-tela-do-seu-aplicativo-parte-1/</link>
+      <pubDate>Wed, 06 Mar 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/montando-a-tela-do-seu-aplicativo-parte-1/</guid>
+      <description>&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;[Este artigo faz parte de uma série de artigos para desenvolvimento IPhone, IPad e iOS. Você pode ver os demais artigos da série através da categoria Mobile]&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;No artigo de hoje vamos conhecer alguns objetos para nos ajudar a criar a tela de nossos aplicativos para iOS. Para conhecer eles vamos usar o projeto que criamos nos artigos anteriores. É um projeto simples do tipo &lt;em&gt;Single View Application&lt;/em&gt;, que ainda não tem nada demais, já que estamos apenas conhecendo algumas coisas. Então nada impede que você crie outro projeto do tipo &lt;em&gt;Single View Application&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Objective-C: A Linguagem Por Trás Do iOS – Parte 1</title>
+      <link>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/</link>
+      <pubDate>Thu, 21 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/objective-c-a-linguagem-por-tras-do-ios-parte-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Este é segundo artigo, que faz parte da série sobre desenvolvimento para iOS que estou fazendo. Se você perdeu o primeiro post siga esse link &lt;a href=&#34;http://flaviosilveira.com/2013/comece-a-programar-para-ios/&#34;&gt;http://flaviosilveira.com/2013/comece-a-programar-para-ios/&lt;/a&gt; para acompanhar nossos passos desde o início.&lt;span style=&#34;line-height: 1.6em;&#34;&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Em nosso primeiro post criamos um projeto simples e entendemos a sua estrutura de pastas. Partindo desse ponto, vamos hoje conhecer um pouco da linguagem que vamos usar para desenvolver para iOS. É! XCode não é só arrastar e soltar, tem que codificar. E para isso usamos a linguagem Objective-C.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comece a Programar Para iOS</title>
+      <link>/2013/comece-a-programar-para-ios/</link>
+      <pubDate>Thu, 14 Feb 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/comece-a-programar-para-ios/</guid>
+      <description>&lt;p&gt;&lt;strong style=&#34;line-height: 1.6em;&#34;&gt;Sem blá blá blá&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Sem muito blá blá blá, quero hoje começar uma pequena série sobre desenvolvimento para iOS. &lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Quero ajudar quem deseja conhecer a tecnologia sem a enrolação que vejo em outros materiais sobre o assunto. &lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt;Paralelo a isso também consigo me manter estudando o assunto e evoluindo junto com quem acompanha os artigos.&lt;/span&gt;&lt;span style=&#34;line-height: 1.6em;&#34;&gt; &lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Vou pular toda aquela parte que você já deve ter lido por aí sobre precisar de um Mac, que há outras maneiras de você conseguir instalar o sistema da Apple em um PC Intel comum, que vamos usar o XCode porque ele facilita nossa vida, instalação do XCode, as camadas de desenvolvimento do iOS, etc, etc. Mas é claro, caso venha a necessidade podemos segurar e detalhar um pouco mais o que surgir.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</title>
+      <link>/2009/redirecionando-para-versao-mobile/</link>
+      <pubDate>Sun, 19 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/redirecionando-para-versao-mobile/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
+&lt;/div&gt;
+
+&lt;p&gt;As pessoas que me acompanham sabem que há pouco mais de um mês adquiri um IPhone.&lt;br/&gt;
+A minha operadora me ligou oferecendo alguns pontos que valiam desconto na aquisição do aparelho. Não perdi tempo e corri lá buscar.&lt;/p&gt;
+
+&lt;p&gt;Desde então as minhas leituras diárias começaram a se voltar mais para IPhone.&lt;br/&gt;
+Desenvolvimento de aplicativos, desenvolvimento de sites, &amp;#8216;manhas&amp;#8217; para usar o aparelho, dicas para economizar bateria, e por ai vai.&lt;/p&gt;
+
+&lt;p&gt;O que trago hoje aqui faz parte dos meus estudos para criação de sites para o público que usa IPhone, que é, identificar que seu visitante está usando o aparelho e redirecioná-lo para a versão mobile do seu site.&lt;/p&gt;
+
+&lt;p&gt;A ideia é bem simples, e, para colocar ela em prática usamos JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Primeiro crie um arquivo HTML e o prepare para receber um javaScript dentro das tags do cabeçalho.&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;redirecionando para versao mobile&amp;rdquo;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;::: Teste IPhone :::&amp;lt;/title&amp;gt;
+&amp;lt;script type=&amp;lsquo;text/javascript&amp;rsquo;&amp;gt;
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

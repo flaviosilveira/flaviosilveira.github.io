@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Javascript on Vida e Tecnologia</title>
+    <link>/categories/javascript/</link>
+    <description>Recent content in Javascript on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 25 Jul 2011 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!</title>
+      <link>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
+      <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;Vocês já ouviram falar sobre o &lt;a href=&#34;http://initializr.com/&#34; title=&#34;Initializr!&#34;&gt;Initializr!&lt;/a&gt; ?&lt;/p&gt;
+
+&lt;p&gt;Ele é um gerador de código que ajuda você a começar seu projeto em HTML5. Ele é baseado no &lt;a href=&#34;http://html5boilerplate.com/&#34; title=&#34;oilerplate HTML5&#34;&gt;Boilerplate&lt;/a&gt; e foi criado por Jonathan Verrecchia (&lt;a href=&#34;http://twitter.com/#!/verekia&#34; title=&#34;Twitter Jonathan Verrecchia&#34;&gt;@verekia&lt;/a&gt;) com o objetivo de ampliar o uso do HTML5.&lt;/p&gt;
+
+&lt;p&gt;Em contato com o Jonathan, combinei com ele de traduzir a documentação oficial do Initializr do francês para o português, para ajudar a divulgar ainda mais essa tremenda ferramenta e quem sabe com isso ver o uso do HTML5 mais e mais em novos projetos.&lt;/p&gt;
+
+&lt;p&gt;Segue a tradução da documentação abaixo.&lt;br/&gt;
+Você encontra a versão original em francês no seguinte link: &lt;a href=&#34;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&#34; title=&#34;Documentação oficial Initializr Francês&#34;&gt;http://www.html5-css3.fr/html5/initializr-generateur-template-html5-boilerplate&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Conheça esses projetos e comece já a trabalhar com HTML5!&lt;br/&gt;
+Grande Abraço!&lt;/p&gt;
+
+&lt;h3&gt;Initializr &amp;#8211; Um gerador baseado nos templates Boilerplate HTML5&lt;/h3&gt;
+
+&lt;p&gt;&lt;img class=&#34;aligncenter size-full wp-image-371&#34; title=&#34;logo-initializr&#34; src=&#34;../../assets/uploads/2011/07/logo-initializr.png&#34; alt=&#34;Initializr!&#34; width=&#34;600&#34; height=&#34;285&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery</title>
+      <link>/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</link>
+      <pubDate>Wed, 17 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Hoje trago um artigo pesado e extenso, mas acredito que vá ajudar o pessoal que precisar em várias frentes. Vou Tratar aqui de JQuery, JQuery Validation, a diferença entre síncrono e assíncrono, como fazer ajax síncrono usando JQuery e também soluções para problemas em um dia de trabalho no mundo do desenvolvimento.&lt;/p&gt;
+
+&lt;p&gt;Bom, que o JQuery é um dos frameworks mais usados para javascript e que facilita muito a sua vida você já deve saber. E que o plugin para JQuery, JQuery Validation, é uma excelente maneira de validar seus formulários do lado cliente, você também deveria saber.&lt;/p&gt;
+
+&lt;p&gt;Veja um exemplo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;jquery jquery validation sincrono e assincrono cpf unico no banco de dados ajax sincrono com jquery&amp;rdquo;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo; src=&amp;ldquo;jquery.validate.js&amp;rdquo;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;function init()
+{
+    $(&amp;ldquo;#form&amp;rdquo;).validate({
+        rules:
+        {
+            nome:{required: true},
+            senha:{required: true, minlength: 5}
+                }
+    });
+}&lt;/p&gt;
+
+&lt;p&gt;$(document).ready(init);&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/script&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;form id=&amp;ldquo;form&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;amp;lt;p&amp;amp;gt;
+    &amp;amp;lt;label for=&amp;quot;nome&amp;quot;&amp;amp;gt;Nome&amp;amp;lt;/label&amp;amp;gt;
+    &amp;amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;nome&amp;quot; id=&amp;quot;nome&amp;quot; /&amp;amp;gt;
+&amp;amp;lt;/p&amp;amp;gt;
+
+&amp;amp;lt;p&amp;amp;gt;
+    &amp;amp;lt;label for=&amp;quot;senha&amp;quot;&amp;amp;gt;Senha&amp;amp;lt;/label&amp;amp;gt;
+    &amp;amp;lt;input type=&amp;quot;password&amp;quot; name=&amp;quot;senha&amp;quot; id=&amp;quot;senha&amp;quot; /&amp;amp;gt;
+&amp;amp;lt;/p&amp;amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/form&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário</title>
+      <link>/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</link>
+      <pubDate>Fri, 15 Oct 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Muita gente me manda emails ou mensagens no twitter achando que eu escrevi o Plugin JQuery Price para JQuery, que ajuda você a formatar seus campos de texto com valores monetários, valores de preço. Se você ler bem certinho na &lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;página oficial do Plugin&lt;/a&gt; (&lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;http://meiaduzia.com.br/cuducos2/priceformat&lt;/a&gt;), e também no código ao baixar ele, verá que eu apenas colaborei com uma nova função do plugin, uma necessidade minha no início do ano de 2009.&lt;/p&gt;
+
+&lt;p&gt;O Autor do Plugin é o &lt;a href=&#34;http://www.meiaduzia.com.br/cuducos/&#34;&gt;Eduardo Cuducos&lt;/a&gt;, Um tremendo Designer e Desenvolvedor Web do estado de Santa Catarina que conheci por meio desse Plugin. &lt;a href=&#34;http://www.meiaduzia.com.br/cuducos/&#34;&gt;Aqui&lt;/a&gt; você pode conhecer mais dele ou seguir seu &lt;a href=&#34;http://twitter.com/cuducos&#34;&gt;twitter&lt;/a&gt; (&lt;a href=&#34;http://twitter.com/cuducos&#34;&gt;http://twitter.com/cuducos&lt;/a&gt;) para pegar suas idéias, sejam de designer, política ou pensamentos de vida, que também valem a pena.&lt;/p&gt;
+
+&lt;p&gt;Para usar o Plugin é fácil.&lt;br/&gt;
+Na &lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;página oficial&lt;/a&gt; consta alguns exemplos bem explicativos.&lt;br/&gt;
+Mas se você ainda tem dúvidas vou reproduzí-los aqui.&lt;/p&gt;
+
+&lt;p&gt;Primeiro crie seu Html com o campo que quer formatar.&lt;br/&gt;
+Não preciso dizer para você carregar a JQuery e o Plugin JQuery Price preciso ?&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;jquery e jquery price para formatar seus campos de valor monetario&amp;rdquo;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo; src=&amp;ldquo;jprice.js&amp;rdquo;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script type=&amp;ldquo;text/javascript&amp;rdquo;&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;function init()
+{
+
+}
+
+$(document).ready(init);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/script&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;amp;lt;h1&amp;amp;gt;Exemplo&amp;amp;lt;/h1&amp;amp;gt;
+
+&amp;amp;lt;label for=&amp;quot;price&amp;quot;&amp;amp;gt;Valor:&amp;amp;lt;/label&amp;amp;gt;
+&amp;amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;price&amp;quot; /&amp;amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&amp;lt;/body&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</title>
+      <link>/2009/redirecionando-para-versao-mobile/</link>
+      <pubDate>Sun, 19 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/redirecionando-para-versao-mobile/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
+&lt;/div&gt;
+
+&lt;p&gt;As pessoas que me acompanham sabem que há pouco mais de um mês adquiri um IPhone.&lt;br/&gt;
+A minha operadora me ligou oferecendo alguns pontos que valiam desconto na aquisição do aparelho. Não perdi tempo e corri lá buscar.&lt;/p&gt;
+
+&lt;p&gt;Desde então as minhas leituras diárias começaram a se voltar mais para IPhone.&lt;br/&gt;
+Desenvolvimento de aplicativos, desenvolvimento de sites, &amp;#8216;manhas&amp;#8217; para usar o aparelho, dicas para economizar bateria, e por ai vai.&lt;/p&gt;
+
+&lt;p&gt;O que trago hoje aqui faz parte dos meus estudos para criação de sites para o público que usa IPhone, que é, identificar que seu visitante está usando o aparelho e redirecioná-lo para a versão mobile do seu site.&lt;/p&gt;
+
+&lt;p&gt;A ideia é bem simples, e, para colocar ela em prática usamos JavaScript.&lt;/p&gt;
+
+&lt;p&gt;Primeiro crie um arquivo HTML e o prepare para receber um javaScript dentro das tags do cabeçalho.&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;redirecionando para versao mobile&amp;rdquo;
+&amp;lt;head&amp;gt;
+&amp;lt;title&amp;gt;::: Teste IPhone :::&amp;lt;/title&amp;gt;
+&amp;lt;script type=&amp;lsquo;text/javascript&amp;rsquo;&amp;gt;
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

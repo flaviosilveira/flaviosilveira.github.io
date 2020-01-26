@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on Vida e Tecnologia</title>
+    <link>/categories/php/</link>
+    <description>Recent content in php on Vida e Tecnologia</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 12 Feb 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Criando seu Container com Dockerfile</title>
+      <link>/2017/criando-seu-container-com-dockerfile/</link>
+      <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-com-dockerfile/</guid>
+      <description>&lt;p&gt;Foi uma longa jornada até criarmos nosso container da maneira que queríamos &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&lt;/a&gt;. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.&lt;/p&gt;
+
+&lt;p&gt;Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!&lt;/p&gt;
+
+&lt;p&gt;Dockerfile é um arquivo onde colocamos tudo o que precisamos para nosso container. De qual container ele se origina, o que você quer instalar, que serviços quer rodar.&lt;/p&gt;
+
+&lt;p&gt;Se você está acompanhando a série de artigos sobre docker, basicamente vamos traduzir o que fizemos nos dois artigos anteriores para um Dockerfile.&lt;/p&gt;
+
+&lt;p&gt;No decorrer deste artigo vou me referir aos 2 anteriores praticamente o tempo todo. Caso você não os tenha lido, pode ficar um pouco fora de contexto para você, mas nada que vá comprometer o entendimento final.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Criando seu Container NGinx &#43; PHP (Parte 1)</title>
+      <link>/2017/criando-seu-container-nginx-php-1/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-nginx-php-1/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;br/&gt;Esse já é nosso terceiro artigo sobre docker:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Já vimos como podemos iniciar com o Docker no artigo &lt;a href=&#34;http://flaviosilveira.com/2016/comece-com-docker/&#34;&gt;http://flaviosilveira.com/2016/comece-com-docker&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Em seguida vimos como iniciar um Container com PHP 7 e usar seu servidor embutido (built in) em &lt;a href=&#34;http://flaviosilveira.com/2016/docker-php7-e-php-built-in/&#34;&gt;http://flaviosilveira.com/2016/docker-php7-e-php-built-in&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Com isso já conseguimos trabalhar com o PHP, mas o servidor Built-in não é a maneira ideal para isso. Como podemos colocar o PHP como um todo rodando em um container Docker para a gente? Vamos responder a isso.&lt;/p&gt;
+
+&lt;p&gt;Para quem não leu os primeiros dois artigos citados acima, recomendo. Acredito que vá ficar melhor de entender o que vem abaixo. Temos bastante &lt;em&gt;tecnês&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Criando seu Container NGinx &#43; PHP (Parte 2)</title>
+      <link>/2017/criando-seu-container-nginx-php-2/</link>
+      <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/criando-seu-container-nginx-php-2/</guid>
+      <description>&lt;p&gt;No final da &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1&#34;&gt;parte 1 desse artigo&lt;/a&gt;, onde montamos um container com Debian, NGinx e PHP, nos deparamos com o seguinte: Se pararmos nosso container e precisar novamente de NGinx + PHP, teremos que partir do zero.&lt;/p&gt;
+
+&lt;p&gt;Para evitar isso, vamos criar nossa própria imagem, uma imagem que vai guardar o que fizemos até agora.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Docker, PHP7 e PHP Built In</title>
+      <link>/2016/docker-php7-e-php-built-in/</link>
+      <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/2016/docker-php7-e-php-built-in/</guid>
+      <description>&lt;p&gt;No artigo anterior (&lt;a href=&#34;http://flaviosilveira.com/2016/comece-com-docker/&#34;&gt;Comece com Docker!&lt;/a&gt;) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.&lt;/p&gt;
+
+&lt;p&gt;Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Vagrant, PuPHPet E PHP Built In</title>
+      <link>/2013/vagrant-puphpet-e-php-built-in/</link>
+      <pubDate>Sun, 15 Sep 2013 00:00:00 +0000</pubDate>
+      
+      <guid>/2013/vagrant-puphpet-e-php-built-in/</guid>
+      <description>&lt;p&gt;Fala pessoal.&lt;br/&gt;
+Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;O que é Vagrant?&lt;/strong&gt;&lt;br/&gt;
+Para quem ainda não conhece, Vagrant é uma ferramenta que vem revolucionando os ambientes de desenvolvimento.&lt;br/&gt;
+Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi aqui no blog: &lt;a href=&#34;http://flaviosilveira.com/2012/vagrant-facil-e-util/&#34;&gt;http://flaviosilveira.com/2012/vagrant-facil-e-util/&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Primeiros Passos No PHPUnit</title>
+      <link>/2012/primeiros-passos-no-phpunit/</link>
+      <pubDate>Sun, 14 Oct 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/2012/primeiros-passos-no-phpunit/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.&lt;/p&gt;
+
+&lt;p&gt;Para quem não sabe PHPUnit é um framework que nos ajuda a desenvolver testes unitários em PHP. Esse unitário se refere literalmente a unidade, pequenas partes. Logo, testes unitários são testes para pequenas partes de código. No objetivo geral, testando cada unidade vamos saber se toda nossa aplicação está funcionando corretamente, e se não está, qual parte (unidade) está falhando. Pense em um portal onde uma equipe grande trabalha e tem várias alterações de código diariamente para melhorias e correções. Os testes tem que estar sempre ok antes de algo ir para o ar, uma maneira rápida certeira de conferir se nada foi quebrado no código.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codeigniter 2 – Templates E Layouts</title>
+      <link>/2011/codeigniter-2-templates-e-layouts/</link>
+      <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/2011/codeigniter-2-templates-e-layouts/</guid>
+      <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
+
+&lt;p&gt;O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo &lt;em&gt;Habilitando Layouts no CodeIgniter (Template Engine)&lt;/em&gt; que está dividido em &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/&#34;&gt;parte 1&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/&#34;&gt;parte 2&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Como esse artigo tem mais de um ano, resolvi dar um upgrade nele com algumas observações.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>O for Além Do for – PHP</title>
+      <link>/2010/o-for-alem-do-for-php/</link>
+      <pubDate>Sat, 20 Nov 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/o-for-alem-do-for-php/</guid>
+      <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
+
+&lt;p&gt;O Post que trago hoje trata de algo bem simples mas que pode não ser muito comum para algumas pessoas.&lt;br/&gt;
+São usos não muito populares de um de nossos laços de repetição, o FOR.&lt;/p&gt;
+
+&lt;p&gt;Quando estamos aprendendo uma linguagem, bem no início, os manuais parecem mais nos confundir do que ajudar.&lt;br/&gt;
+O que fazemos ?? Saímos em busca de uma comunicação mais direta em Blogs ou Sites.&lt;/p&gt;
+
+&lt;p&gt;Essas fontes resolvem nosso problema mais podem acabar deixando alguns vácuos quando se trata de estruturas básicas, como é o caso do FOR.&lt;/p&gt;
+
+&lt;p&gt;E sobre o FOR eu te pergunto o seguinte:&lt;br/&gt;
+Você sabia que os parâmetros passados para ele são opcionais ??&lt;br/&gt;
+Você sabia que pode passar quantas variáveis quiser para os parâmetros ??&lt;/p&gt;
+
+&lt;p&gt;Se já sabe maravilha, caso não, vamos ver como isso funciona.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 1</title>
+      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</link>
+      <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  &lt;p&gt;
+    Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Vejo muitos desenvolvedores criticarem o CodeIgniter por ele não utilizar o conceito de Layout ou ter um Template Engine dentro dele.&lt;/p&gt;
+
+&lt;p&gt;Template engine ou o conceito Layouts , falando em um exemplo rápido e prático seria mais ou menos o seguinte:&lt;br/&gt;
+Pense que você tem um topo e um rodapé que nunca mudam no seu portal.&lt;br/&gt;
+Ou seja, muda apenas o meio das páginas. Veja a figura abaixo.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&#34;alignnone size-full wp-image-345&#34; title=&#34;Screen shot 2011-05-20 at 2.22.38 PM&#34; src=&#34;../../assets/uploads/2010/02/Screen-shot-2011-05-20-at-2.22.38-PM.png&#34; alt=&#34;&#34; width=&#34;239&#34; height=&#34;217&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#34;clear: both;&#34; /&gt;&lt;br/&gt;
+E aí? Você vai ter que colocar esse topo e esse rodapé em todas as páginas que você chamar?&lt;br/&gt;
+Ou você é malandro e vai fazer um include dentro das telas?&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 2</title>
+      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</link>
+      <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</guid>
+      <description>&lt;div id=&#34;atencao&#34;&gt;
+  &lt;p&gt;
+    Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
+  &lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Continuando a parte 1 deste post.&lt;br/&gt;
+Se você perdeu a primeira parte &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1&#34;&gt;clique aqui para ler a primeira parte&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;5 &amp;#8211; Construindo sua View&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Sua View deve ser feita normalmente, como voce já está acostumado a fazer, com o nome que você colocaria normalmente.&lt;br/&gt;
+Apenas com o conteúdo que muda de uma página para outra.&lt;/p&gt;
+
+&lt;p&gt;O HTML que você colocar aqui na View irá substituir a variável &lt;em&gt;{content_for_layout}&lt;/em&gt; que definimos no layout acima.&lt;br/&gt;
+Vou colocar nessa nossa view de exemplo apenas um título e um parágrafo para demonstrar.&lt;br/&gt;
+Ficando assim:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;habilitando layouts no codeigniter template engine 2&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;p&amp;gt;Paragrafo teste teste teste teste.&amp;lt;/p&amp;gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;Chamei essa view de &lt;em&gt;home.php&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;6 &amp;#8211; Desenvolvendo a Classe&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Quando definimos nosso Hook no passo 2, setamos que a pasta onde ficaria nossa classe seria a pasta hooks que vem por padrão no projeto do CodeIgniter.&lt;/p&gt;
+
+&lt;p&gt;Vamos criar nossa classe dentro dessa pasta, e, com o nome que também especificamos na definição do Hook que foi Layout.php&lt;br/&gt;
+Se você não seguiu o exemplo, faça suas devidas adaptações.&lt;/p&gt;
+
+&lt;p&gt;A classe é um pouco extensa, leia com atenção.&lt;br/&gt;
+Para ajudar ela está com os comentários do próprio &lt;a href=&#34;http://www.mozartpetter.com/pt/&#34;&gt;Mozart Petter&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Comparando Arrays E Trazendo Os Valores Diferentes</title>
+      <link>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</link>
+      <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</guid>
+      <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
+
+&lt;p&gt;Ontem precisei comparar os resultados de dois arrays e deles trazer os valores que estavam em apenas um dos arrays.&lt;/p&gt;
+
+&lt;p&gt;A princípio procurei uma função que fizesse isso pra mim, achei que o &lt;em&gt;array_diff&lt;/em&gt; fizesse isso para a gente. Mas me enganei! Não achei uma função com esse resultado.&lt;/p&gt;
+
+&lt;p&gt;A função &lt;em&gt;array_diff&lt;/em&gt; na verdade traz apenas os valores que constam no primeiro array, mas não constam no segundo.&lt;br/&gt;
+Exemplo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;comparando arrays e trazendo os valores diferentes&amp;rdquo;&lt;/p&gt;
+
+&lt;p&gt;$array1 = array(&amp;ldquo;bola&amp;rdquo;, &amp;ldquo;quadrado&amp;rdquo;, &amp;ldquo;triangulo&amp;rdquo;);
+$array2 = array(&amp;ldquo;esfera&amp;rdquo;, &amp;ldquo;quadrado&amp;rdquo;, &amp;ldquo;triangulo&amp;rdquo;);&lt;/p&gt;
+
+&lt;p&gt;$result = array_diff($array1, $array2);
+print_r($result);&lt;/p&gt;
+
+&lt;p&gt;?&amp;gt;
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;O resultado do código acima nos retorna um array com o valor &amp;#8220;bola&amp;#8221;.&lt;br/&gt;
+Pois é o único valor que consta no primeiro array e não no segundo.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios</title>
+      <link>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</link>
+      <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</guid>
+      <description>&lt;p&gt;Cenário:&lt;/p&gt;
+
+&lt;p&gt;Você compra o domínio principal, &lt;em&gt;www.site.com.br&lt;/em&gt;. E você vai ter duas versões desse site, uma para cada cliente, que vai usar todas as regras de negócio iguais. A única diferença será o layout. Os clientes pediram os subdomínios &lt;em&gt;branco.site.com.br&lt;/em&gt; e &lt;em&gt;preto.site.com.br&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Você pode fazer duas cópias do site em pastas diferentes, mas levando em consideração que eles tem o mesmo CORE, isso não é muito inteligente. Pense se você tiver que fazer uma atualização, você vai ter de mexer em ambos os projetos.&lt;/p&gt;
+
+&lt;p&gt;Porque não fazer os subdomínios como links simbólicos para uma mesma pasta? De lá você pode fazer uma verificação. Se for um site, pega o layout branco, se for o outro pega o layout preto.&lt;/p&gt;
+
+&lt;p&gt;Problema:&lt;/p&gt;
+
+&lt;p&gt;No Codeigniter você define a URL principal do seu projeto nos arquivos de configuração, na variável &lt;em&gt;$config[&amp;#8216;base_url&amp;#8217;]&lt;/em&gt;. Você não vai ter como colocar os subdomínios lá. O que fazer?&lt;/p&gt;
+
+&lt;p&gt;Solução:&lt;br/&gt;
+Usar a Global &lt;em&gt;$_SERVER&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Essa Global traz informações como o host que você está acessando, o email do administrador da máquina, o software usado, a configuração do TimeOut entre outras.&lt;/p&gt;
+
+&lt;p&gt;Para que você mesmo visualize tudo isso faça o seguinte. Abra o seu config.php do CodeIgniter e logo acima de onde está setado a variável &lt;em&gt;$config[&amp;#8216;base_url&amp;#8217;]&lt;/em&gt; de um print_r, como abaixo:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;codeigniter use a global _server no config para ganhar dinamismo com subdominios&amp;rdquo;
+| Base Site URL
+|&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       &lt;a href=&#34;http://example.com/&#34;&gt;http://example.com/&lt;/a&gt;
+|
+*
+print_r($_SERVER);
+die;
+$config[&amp;lsquo;base_url&amp;rsquo;]     = &amp;ldquo;&lt;a href=&#34;http://www.site.com.br/&amp;quot;&#34;&gt;http://www.site.com.br/&amp;quot;&lt;/a&gt;;&lt;/p&gt;
+
+&lt;p&gt;&lt;/pre&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)</title>
+      <link>/2009/codeigniter-metido-a-ruby/</link>
+      <pubDate>Thu, 16 Apr 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-metido-a-ruby/</guid>
+      <description>&lt;p&gt;Salve Galera&amp;#8230;&lt;/p&gt;
+
+&lt;p&gt;Vocês sabem, muitos projetos em sistemas são similares, sempre aquela mesma coisa&amp;#8230;Listar, Inserir, Editar e Remover.&lt;br/&gt;
+Isso me levou a querer criar algo para facilitar tudo isso.&lt;/p&gt;
+
+&lt;p&gt;Vendo meu Amigo &lt;a href=&#34;http://www.fabiotomio.com&#34; title=&#34;Fábio&#39;s Blogs&#34;&gt;Fábio Tomio&lt;/a&gt; mandando ver no &lt;a href=&#34;http://www.rubyonrails.pro.br/&#34;&gt;Ruby On Rails&lt;/a&gt;, ele me mostrou que criava um cadastro (Listar, Inserir, Editar e Remover) muito facilmente, com apenas um comando no terminal, usando a funcão Scaffold se não me engano.&lt;/p&gt;
+
+&lt;p&gt;Inspirado nisso, resolvi fazer um Shell Script que geraria todas as views, controller e model prontas com essas opções.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Introdução&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Chamei de CiForms.&lt;/li&gt;
+&lt;li&gt;Essa é uma versão de teste. É a versão Zero.&lt;/li&gt;
+&lt;li&gt;Fiz esse script como estudo. Não tenho pretensões de lucros, suporte, nem nada com ele.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Porque não usar o Scaffolding do CodeIgniter&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;O Scaffolding do CodeIgniter não é aproveitável para o desenvolvimento de um projeto, ele não segue o padrão MVC do Framework. Como consta no manual, ele é apenas uma maneira de popular rapidamente uma tabela.&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
+    
+    <item>
+      <title>Múltiplos Sites Com CodeIgniter – Exemplo Prático</title>
+      <link>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</link>
+      <pubDate>Tue, 27 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</guid>
+      <description>&lt;p&gt;Devido a muita procura do post sobre a restruturação do CodeIgniter para trabalhar com múltiplos sites (&lt;a href=&#34;http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter/&#34;&gt;Múltiplos sites com CodeIgniter&lt;/a&gt;), fiz um passo a passo aqui da estrutura para o pessoal entender melhor.&lt;/p&gt;
+
+&lt;p&gt;Estava recebendo muitas dúvidas, vamos ver se com este exemplo consigo deixar as coisas mais claras para todos.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Começando do zero.&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Baixei a &lt;a href=&#34;http://codeigniter.com/downloads/&#34;&gt;última versão do CodeIgniter&lt;/a&gt;.&lt;br/&gt;
+Descompacto ela no meu &lt;em&gt;desktop&lt;/em&gt;.&lt;/p&gt;
+
+&lt;p&gt;Dentro dessa pasta veio o &lt;em&gt;system&lt;/em&gt;, o &lt;em&gt;user_guide&lt;/em&gt;, o &lt;em&gt;index.php&lt;/em&gt; e o &lt;em&gt;license.txt&lt;/em&gt;.&lt;br/&gt;
+Costumo deletar o User_guide, pois uso a documentação online.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Atenção agora ! &lt;/strong&gt;&lt;br/&gt;
+Dentro da pasta system temos a pasta &lt;em&gt;application&lt;/em&gt;. É esta pasta que faz o seu site funcionar. Com esta informação em mente vamos em frente.&lt;/p&gt;
+
+&lt;p&gt;Para começar a trabalhar com o servidor. Começe criando uma pasta para cada site. Como exemplo &lt;em&gt;site1&lt;/em&gt; e &lt;em&gt;site2&lt;/em&gt;.&lt;br/&gt;
+&lt;img class=&#34;alignnone size-full wp-image-61&#34; title=&#34;ex1&#34; src=&#34;../../assets/uploads/2009/01/ex1.jpg&#34; alt=&#34;ex1&#34; width=&#34;99&#34; height=&#34;77&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#34;clear: both;&#34; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Codeigniter, Internet Explorer E O Tempo De Expiração Da Sessão</title>
+      <link>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</link>
+      <pubDate>Sat, 17 Jan 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</guid>
+      <description>&lt;p&gt;Nesta Quinta-feira antes de sair do trabalho me deparo com uma surpresa no novo sistema que estou trabalhando. O login de acesso havia parado de funcionar no Internet Explorer. No Firefox tudo normal. Chata mania de ficar testando só no Firefox por conta das facilidades como Firebug e WebDeveloper, ai quando vamos testar no browser do usuário acontece essas coisas.&lt;/p&gt;
+
+&lt;p&gt;Sexta pela manhã, foi minha primeira tarefa do dia. Achei que seria algo bobo. Realmente era, mas levei 4 horas para descobrir.&lt;/p&gt;
+
+&lt;p&gt;Comecei pelos arquivos de JavaScript vendo se estava tudo ok.&lt;br/&gt;
+Os retornos via ajax do banco estavam ok.&lt;br/&gt;
+Parti para os controllers que gravam a sessão no browser.&lt;br/&gt;
+Comentei a biblioteca que faz verificação da sessão para deixar eu acessar livremente a aplicação. Dei um print no valor da sessão, que pelo codeIgniter se verifica assim:&lt;/p&gt;
+
+&lt;p&gt;title = &amp;ldquo;codeigniter internet explorer e o tempo de expiracao da sessao&amp;rdquo;
+// Login é o valor que eu estava gravando na sessão
+print($this-&amp;gt;session-&amp;gt;userdata(&amp;lsquo;login&amp;rsquo;));&lt;/p&gt;
+
+&lt;p&gt;// A tradicional global session não funcionará no codeIgniter
+print($_SESSION[&amp;lsquo;login&amp;rsquo;]);
+&lt;/pre&gt;&lt;/p&gt;
+
+&lt;p&gt;No Firefox tudo ok. No Internet Explorer em branco. Que beleza, o Internet Explorer não está deixando escrever na sessão&amp;#8230;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Erro 500, Timeout Apache, Max_execution_time PHP</title>
+      <link>/2008/erro-500-timeout-apache-max_execution_time-php/</link>
+      <pubDate>Fri, 26 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/erro-500-timeout-apache-max_execution_time-php/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Cenário:&lt;/strong&gt; Site que funciona como um painel do cliente, onde ele adiciona produtos que necessita para seu negócio. Há uma área onde de um lado é listado os produtos já adicionados, e do outro os que ele ainda pode adicionar.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Ocorrência:&lt;/strong&gt; &amp;#8220;Sempre demorou para carregar. Funcionava normal. Mas agora quando um cliente tem muitos produtos, não abre. Dá erro 500.&amp;#8221;&lt;br/&gt;
+&amp;#8220;No servidor de testes está funcionando, no do ar não. &amp;#8221;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Pesquisa:&lt;/strong&gt; Fui atrás do tal erro 500. Claro já havia o visto antes, mas não sou daqueles que sabe de cor o significado dos erros de servidor e do apache, e nem dos bips de erro da placa mãe. No &lt;a href=&#34;http://www.google.com&#34;&gt;segundo cérebro&lt;/a&gt; há muitas inconstantes sobre o erro 500. Uns dizem ser erro de permissão, outros de configuração. Felizmente meu &lt;a href=&#34;http://delicious.com/flaviosilveira&#34;&gt;Delicious&lt;/a&gt; me salvou. Eu tinha salvo &lt;a href=&#34;http://suporte.bs2.com.br/questions/83/P%E1ginas+de+erro+de+servidores+Web.&#34;&gt;esse link&lt;/a&gt; com uma lista sobre os erros de servidor há algum tempo.&lt;/p&gt;
+
+&lt;p&gt;Agora sim. Erro 500: Algo não foi compreendido pelo servidor.&lt;br/&gt;
+Certo. Muito bom. Não ajudou muito. Em nada melhor dizendo.&lt;br/&gt;
+&lt;strong&gt;E agora?&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Múltiplos Sites Com Codeigniter</title>
+      <link>/2008/alterando-configuracao-do-codeigniter/</link>
+      <pubDate>Fri, 19 Dec 2008 00:00:00 +0000</pubDate>
+      
+      <guid>/2008/alterando-configuracao-do-codeigniter/</guid>
+      <description>&lt;p&gt;Entrei em uma empresa recentemente, e acredito que conquistei a vaga por já ter trabalhado com CodeIgniter antes. Pra quem não sabe o &lt;a href=&#34;http://codeigniter.com/&#34;&gt;CodeIgniter&lt;/a&gt; é um framework PHP com estrutura em &lt;a href=&#34;http://pt.wikipedia.org/wiki/MVC&#34;&gt;MVC&lt;/a&gt;, o que deixa tudo mais organizado. E foi a ferramenta escolhida pela empresa para organizar os seus bagunçados projetos.&lt;/p&gt;
+
+&lt;p&gt;Apesar de já ter trabalhado com CodeIgniter antes, nunca havia me envolvido tanto, entrado em suas configurações principais e etc. Me limitava ao superficial para fazer funcionar. Controler, consulta no banco pelo Model, chama a view para mostrar o conteúdo e fechou. No máximo chamar uma library.&lt;/p&gt;
+
+&lt;p&gt;Porém pediram para mim e meu amigo &lt;a href=&#34;http://twitter.com/RonieNeubauer&#34;&gt;Ronie&lt;/a&gt;, que já tinhamos experiência com a ferramenta, para deixar ela configurada para múltiplos sites. Já tinhamos visto isso antes. Vamos lá! Pesquisar no segundo cérebro (&lt;a href=&#34;http://www.google.com&#34;&gt;Google&lt;/a&gt;)!&lt;/p&gt;
+
+&lt;p&gt;O site oficial propõe duas maneiras para se trabalhar com múltiplos sites em CodeIgniter. A primeira seria criando as pastas principais dos sites dentro de Application (Application é onde fica a estrutura do site). Funciona como se cada pasta dessa, fosse um application. Logo, você deve replicar o conteúdo da pasta application que vem por padrão no CodeIgniter para cada site que for ter, renomeando para um nome de acordo (No exemplo abaixo a pasta site1 e a pasta site2).&lt;br/&gt;
+&lt;img class=&#34;alignnone size-full wp-image-54&#34; title=&#34;ci1&#34; src=&#34;../../assets/uploads/2009/01/ci1.jpg&#34; alt=&#34;ci1&#34; width=&#34;148&#34; height=&#34;139&#34; /&gt;&lt;br/&gt;
+&lt;br style=&#39;clear: both&#39; /&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
