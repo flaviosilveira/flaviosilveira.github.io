@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vídeos e casts on Vida e Tecnologia</title>
-    <link>/categories/v%C3%ADdeos-e-casts/</link>
+    <link>//localhost:1313/categories/v%C3%ADdeos-e-casts/</link>
     <description>Recent content in vídeos e casts on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 19 Nov 2012 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/v%C3%ADdeos-e-casts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//localhost:1313/categories/v%C3%ADdeos-e-casts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hangout – Começando Bem Com Zend Framework 1</title>
-      <link>/2012/hangout-comecando-bem-com-zend-framework-1/</link>
+      <link>//localhost:1313/2012/hangout-comecando-bem-com-zend-framework-1/</link>
       <pubDate>Mon, 19 Nov 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/hangout-comecando-bem-com-zend-framework-1/</guid>
+      <guid>//localhost:1313/2012/hangout-comecando-bem-com-zend-framework-1/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
 
 &lt;p&gt;Recentemente estive no Rio de Janeiro para ministrar o curso &lt;em&gt;Começando Bem com Zend Framework&lt;/em&gt;. Curso que mostra um bé-a-bá em cima do Zend Framework 1 usando a ajuda da Zend Tool. Infelizmente por alguns problemas técnicos não consegui realizar o curso completo e por conta disso marquei um hangout com o pessoal que estava inscrito no evento.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Hangout PHP in Rio</title>
-      <link>/2012/hangout-php-in-rio/</link>
+      <link>//localhost:1313/2012/hangout-php-in-rio/</link>
       <pubDate>Fri, 02 Nov 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/hangout-php-in-rio/</guid>
+      <guid>//localhost:1313/2012/hangout-php-in-rio/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
 
 &lt;p&gt;A organização do PHP n Rio deste ano de 2012 tem realizado um bate papo com os palestrantes do evento via Hangout, a funcionalidade de videoconferência do Google Plus.&lt;/p&gt;
@@ -40,10 +40,10 @@
     
     <item>
       <title>Screencast – Começando Bem Com Zend Framework</title>
-      <link>/2011/screencast-comecando-bem-com-zend-framework/</link>
+      <link>//localhost:1313/2011/screencast-comecando-bem-com-zend-framework/</link>
       <pubDate>Thu, 29 Dec 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/screencast-comecando-bem-com-zend-framework/</guid>
+      <guid>//localhost:1313/2011/screencast-comecando-bem-com-zend-framework/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;Gravei esse screencast baseado no mini-curso/palestra que estive apresentando durante esse ano com o título de &lt;em&gt;Começando bem com Zend Framework&lt;/em&gt;.&lt;/p&gt;
@@ -58,10 +58,10 @@ Grande Abraço!&lt;/p&gt;</description>
     
     <item>
       <title>Palestra – Quero Ser Um Desenvolvedor De Jogos</title>
-      <link>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</link>
+      <link>//localhost:1313/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</guid>
+      <guid>//localhost:1313/2011/palestra-quero-ser-um-desenvolvedor-de-jogos/</guid>
       <description>&lt;p&gt;Olá pessoal!&lt;/p&gt;
 
 &lt;p&gt;Se vocês acompanham minhas notícias, ficaram sabendo que estive em Bento Gonçalves &amp;#8211; Rio Grande do Sul, palestrando sobre desenvolvimento de jogos no evento Tchê Linux.&lt;/p&gt;
@@ -71,10 +71,10 @@ Grande Abraço!&lt;/p&gt;</description>
     
     <item>
       <title>PodCast – Desenvolvimento Mobile Web</title>
-      <link>/2010/podcast-desenvolvimento-mobile-web/</link>
+      <link>//localhost:1313/2010/podcast-desenvolvimento-mobile-web/</link>
       <pubDate>Thu, 02 Sep 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/podcast-desenvolvimento-mobile-web/</guid>
+      <guid>//localhost:1313/2010/podcast-desenvolvimento-mobile-web/</guid>
       <description>&lt;p&gt;Salve Galera!&lt;br/&gt;
 Hoje deixo aqui o meu podcast relatando minha ida ao &lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;PHP SC Conf&lt;/a&gt; (&lt;a href=&#34;http://www.phpsc.com.br/&#34;&gt;http://www.phpsc.com.br/&lt;/a&gt;) neste ano de 2010, falando principalmente dos assuntos colocados pelo &lt;a href=&#34;http://www.porkaria.com.br/&#34;&gt;Bruno Fernandes&lt;/a&gt; (@porkaria) em sua palestra &lt;em&gt;Desenvolvimento Mobile Web&lt;/em&gt;.&lt;/p&gt;
 
@@ -94,10 +94,10 @@ Hoje deixo aqui o meu podcast relatando minha ida ao &lt;a href=&#34;http://www.
     
     <item>
       <title>ScreenCast – Bate Papo Sobre Desenvolvimento De Sites Para IPhone</title>
-      <link>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</link>
+      <link>//localhost:1313/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</link>
       <pubDate>Tue, 19 Jan 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</guid>
+      <guid>//localhost:1313/2010/screencast-bate-papo-sobre-desenvolvimento-de-sites-para-iphone/</guid>
       <description>&lt;div id=&#34;atencao&#34;&gt;
   Atenção! Este Screencast foi gravado em um momento onde o desenvolvimento para mobile ainda estava se estabelecendo. Não havia técnicas nem material bem definido das coisas ainda. As técnicas apresentadas aqui ainda podem servir para alguns casos, mas recomendo a pesquisa em cima de novas ferramentas.
 &lt;/div&gt;

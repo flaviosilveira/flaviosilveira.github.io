@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>shell on Vida e Tecnologia</title>
-    <link>/categories/shell/</link>
+    <link>//localhost:1313/categories/shell/</link>
     <description>Recent content in shell on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Fri, 17 Jan 2014 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/shell/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//localhost:1313/categories/shell/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Erros No Vagrant No Mavericks OSX?</title>
-      <link>/2014/erros-com-vagrant-no-mavericks-osx/</link>
+      <link>//localhost:1313/2014/erros-com-vagrant-no-mavericks-osx/</link>
       <pubDate>Fri, 17 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>/2014/erros-com-vagrant-no-mavericks-osx/</guid>
+      <guid>//localhost:1313/2014/erros-com-vagrant-no-mavericks-osx/</guid>
       <description>&lt;p&gt;Há algum tempo a Apple liberou a nova versão de seu sistema operacional, o Mavericks OSX. Se você usa Macs e Vagrant para desenvolvimento deve ter percebido que as coisas de repente não rodaram mais.&lt;/p&gt;
 
 &lt;p&gt;[Ainda não sabe o que é Vagrant? Confira esses meus dois posts: &lt;a href=&#34;http://flaviosilveira.com/2012/vagrant-facil-e-util/&#34; title=&#34;Vagrant fácil e útil&#34;&gt;http://flaviosilveira.com/2012/vagrant-facil-e-util/&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/&#34; title=&#34;Vagrant, PuPHPet e PHP Built In&#34;&gt;http://flaviosilveira.com/2013/vagrant-puphpet-e-php-built-in/&lt;/a&gt;]&lt;/p&gt;</description>
@@ -23,10 +23,10 @@
     
     <item>
       <title>Salvando Tempo No Terminal</title>
-      <link>/2011/salvando-tempo-no-terminal/</link>
+      <link>//localhost:1313/2011/salvando-tempo-no-terminal/</link>
       <pubDate>Fri, 02 Dec 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/salvando-tempo-no-terminal/</guid>
+      <guid>//localhost:1313/2011/salvando-tempo-no-terminal/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
 
 &lt;p&gt;No post anterior (&lt;a href=&#34;http://flaviosilveira.com/2011/conhecendo-melhor-seu-interpretador-de-comandos/&#34;&gt;conhecendo melhor seu interpretador de comandos&lt;/a&gt;) vimos uma prévia sobre o que é Shell e as implementações de Shell, dentro disso a principal de todas elas que é o bash e alguns comandos que podem facilitar a sua vida enquanto trabalha com ele.&lt;/p&gt;
@@ -38,10 +38,10 @@
     
     <item>
       <title>Conhecendo Melhor Seu Interpretador De Comandos</title>
-      <link>/2011/conhecendo-melhor-seu-interpretador-de-comandos/</link>
+      <link>//localhost:1313/2011/conhecendo-melhor-seu-interpretador-de-comandos/</link>
       <pubDate>Sun, 30 Oct 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/conhecendo-melhor-seu-interpretador-de-comandos/</guid>
+      <guid>//localhost:1313/2011/conhecendo-melhor-seu-interpretador-de-comandos/</guid>
       <description>&lt;p&gt;Se você é usuário de sistemas operacionais baseados em unix, deve estar acostumado a abrir o terminal para tarefas simples como mover e copiar arquivos, remover arquivos em massa, criar pastas, verificar diretórios, etc. Se você conhece um pouco mais e administra sites por exemplo, deve mover seus arquivos com scp, usar conexões ssh e fazer todo seu trabalho via terminal.&lt;/p&gt;
 
 &lt;p&gt;Quem faz essa ligação entre você e o coração do sistema operacional, permitindo executar esses comandos, é o Shell. Quem interpreta e processa os comandos para você, é uma implementação do Shell, que é o que vamos conhecer melhor aqui hoje.&lt;/p&gt;
@@ -53,10 +53,10 @@
     
     <item>
       <title>CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)</title>
-      <link>/2009/codeigniter-metido-a-ruby/</link>
+      <link>//localhost:1313/2009/codeigniter-metido-a-ruby/</link>
       <pubDate>Thu, 16 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/codeigniter-metido-a-ruby/</guid>
+      <guid>//localhost:1313/2009/codeigniter-metido-a-ruby/</guid>
       <description>&lt;p&gt;Salve Galera&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;Vocês sabem, muitos projetos em sistemas são similares, sempre aquela mesma coisa&amp;#8230;Listar, Inserir, Editar e Remover.&lt;br/&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>php on Vida e Tecnologia</title>
-    <link>/categories/php/</link>
+    <link>//localhost:1313/categories/php/</link>
     <description>Recent content in php on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sun, 12 Feb 2017 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/php/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//localhost:1313/categories/php/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Criando seu Container com Dockerfile</title>
-      <link>/2017/criando-seu-container-com-dockerfile/</link>
+      <link>//localhost:1313/2017/criando-seu-container-com-dockerfile/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/criando-seu-container-com-dockerfile/</guid>
+      <guid>//localhost:1313/2017/criando-seu-container-com-dockerfile/</guid>
       <description>&lt;p&gt;Foi uma longa jornada até criarmos nosso container da maneira que queríamos &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-1/&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&#34;&gt;flaviosilveira.com/2017/criando-seu-container-nginx-php-2/&lt;/a&gt;. Ainda assim temos alguns pontos chatos como o de ter de iniciar o Nginx e o PHP-FPM Manualmente.&lt;/p&gt;
 
 &lt;p&gt;Felizmente há uma maneira mais simples de montarmos nosso container e ainda fugindo do trabalho manual. Vamos usar Dockerfile!&lt;/p&gt;
@@ -29,10 +29,10 @@
     
     <item>
       <title>Criando seu Container NGinx &#43; PHP (Parte 1)</title>
-      <link>/2017/criando-seu-container-nginx-php-1/</link>
+      <link>//localhost:1313/2017/criando-seu-container-nginx-php-1/</link>
       <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/criando-seu-container-nginx-php-1/</guid>
+      <guid>//localhost:1313/2017/criando-seu-container-nginx-php-1/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;br/&gt;Esse já é nosso terceiro artigo sobre docker:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -47,10 +47,10 @@
     
     <item>
       <title>Criando seu Container NGinx &#43; PHP (Parte 2)</title>
-      <link>/2017/criando-seu-container-nginx-php-2/</link>
+      <link>//localhost:1313/2017/criando-seu-container-nginx-php-2/</link>
       <pubDate>Sat, 14 Jan 2017 00:00:00 +0000</pubDate>
       
-      <guid>/2017/criando-seu-container-nginx-php-2/</guid>
+      <guid>//localhost:1313/2017/criando-seu-container-nginx-php-2/</guid>
       <description>&lt;p&gt;No final da &lt;a href=&#34;http://flaviosilveira.com/2017/criando-seu-container-nginx-php-1&#34;&gt;parte 1 desse artigo&lt;/a&gt;, onde montamos um container com Debian, NGinx e PHP, nos deparamos com o seguinte: Se pararmos nosso container e precisar novamente de NGinx + PHP, teremos que partir do zero.&lt;/p&gt;
 
 &lt;p&gt;Para evitar isso, vamos criar nossa própria imagem, uma imagem que vai guardar o que fizemos até agora.&lt;/p&gt;</description>
@@ -58,10 +58,10 @@
     
     <item>
       <title>Docker, PHP7 e PHP Built In</title>
-      <link>/2016/docker-php7-e-php-built-in/</link>
+      <link>//localhost:1313/2016/docker-php7-e-php-built-in/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>/2016/docker-php7-e-php-built-in/</guid>
+      <guid>//localhost:1313/2016/docker-php7-e-php-built-in/</guid>
       <description>&lt;p&gt;No artigo anterior (&lt;a href=&#34;http://flaviosilveira.com/2016/comece-com-docker/&#34;&gt;Comece com Docker!&lt;/a&gt;) descrevemos juntos alguns passos iniciais com o Docker. Criamos containers, usamos attached, detached, entramos, saímos, executamos comandos. Se você não está familiarizado a isso, te convido a visitar o artigo.&lt;/p&gt;
 
 &lt;p&gt;Sendo repetitivo, meu desejo com esses artigos sobre docker é passar para as pessoas as facilidades que containers nos dão para experimentar tecnologias. Que tal hoje experimentarmos o PHP7? Se você não teve a oportunidade de mexer um pouco com ele o Docker está aqui para facilitar as coisas. E para facilitar ainda mais vamos usar o recurso Built In, presente desde a versão 5.4, que nos traz um servidor web embutido. Assim não vamos precisar instalar nada mais.&lt;/p&gt;</description>
@@ -69,10 +69,10 @@
     
     <item>
       <title>Vagrant, PuPHPet E PHP Built In</title>
-      <link>/2013/vagrant-puphpet-e-php-built-in/</link>
+      <link>//localhost:1313/2013/vagrant-puphpet-e-php-built-in/</link>
       <pubDate>Sun, 15 Sep 2013 00:00:00 +0000</pubDate>
       
-      <guid>/2013/vagrant-puphpet-e-php-built-in/</guid>
+      <guid>//localhost:1313/2013/vagrant-puphpet-e-php-built-in/</guid>
       <description>&lt;p&gt;Fala pessoal.&lt;br/&gt;
 Hoje trago uma dica simples, talvez sem uma utilidade de pronto, mas que pode ser interessante para algum estudo.&lt;/p&gt;
 
@@ -83,10 +83,10 @@ Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi 
     
     <item>
       <title>Primeiros Passos No PHPUnit</title>
-      <link>/2012/primeiros-passos-no-phpunit/</link>
+      <link>//localhost:1313/2012/primeiros-passos-no-phpunit/</link>
       <pubDate>Sun, 14 Oct 2012 00:00:00 +0000</pubDate>
       
-      <guid>/2012/primeiros-passos-no-phpunit/</guid>
+      <guid>//localhost:1313/2012/primeiros-passos-no-phpunit/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
 
 &lt;p&gt;Hoje vamos cobrir os primeiros passos de uma ferramenta super importante para quem quer avançar no desenvolvimento PHP, o PHPUnit. Não vamos passar aqui pela instalação e configuração dele, sendo que já temos vários artigos sobre isso internet a fora seja lá qual for seu sistema operacional. Eu estarei demonstrando os exemplos aqui no Mac OS X mas você pode seguir normalmente no seu sistema.&lt;/p&gt;
@@ -96,10 +96,10 @@ Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi 
     
     <item>
       <title>Codeigniter 2 – Templates E Layouts</title>
-      <link>/2011/codeigniter-2-templates-e-layouts/</link>
+      <link>//localhost:1313/2011/codeigniter-2-templates-e-layouts/</link>
       <pubDate>Thu, 26 May 2011 00:00:00 +0000</pubDate>
       
-      <guid>/2011/codeigniter-2-templates-e-layouts/</guid>
+      <guid>//localhost:1313/2011/codeigniter-2-templates-e-layouts/</guid>
       <description>&lt;p&gt;Fala pessoal!&lt;/p&gt;
 
 &lt;p&gt;O que mais gera acessos aqui no Blog são os artigos sobre Codeigniter, e principalmente a parte de layouts. É o artigo &lt;em&gt;Habilitando Layouts no CodeIgniter (Template Engine)&lt;/em&gt; que está dividido em &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-1/&#34;&gt;parte 1&lt;/a&gt; e &lt;a href=&#34;http://flaviosilveira.com/2010/habilitando-layouts-no-codeigniter-template-engine-2/&#34;&gt;parte 2&lt;/a&gt;.&lt;/p&gt;
@@ -109,10 +109,10 @@ Se você ainda não sabe nada sobre essa ferramenta, confira o post que escrevi 
     
     <item>
       <title>O for Além Do for – PHP</title>
-      <link>/2010/o-for-alem-do-for-php/</link>
+      <link>//localhost:1313/2010/o-for-alem-do-for-php/</link>
       <pubDate>Sat, 20 Nov 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/o-for-alem-do-for-php/</guid>
+      <guid>//localhost:1313/2010/o-for-alem-do-for-php/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;O Post que trago hoje trata de algo bem simples mas que pode não ser muito comum para algumas pessoas.&lt;br/&gt;
@@ -132,10 +132,10 @@ Você sabia que pode passar quantas variáveis quiser para os parâmetros ??&lt;
     
     <item>
       <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 1</title>
-      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</link>
+      <link>//localhost:1313/2010/habilitando-layouts-no-codeigniter-template-engine-1/</link>
       <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-1/</guid>
+      <guid>//localhost:1313/2010/habilitando-layouts-no-codeigniter-template-engine-1/</guid>
       <description>&lt;div id=&#34;atencao&#34;&gt;
   &lt;p&gt;
     Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
@@ -156,10 +156,10 @@ Ou você é malandro e vai fazer um include dentro das telas?&lt;/p&gt;</descrip
     
     <item>
       <title>Habilitando Layouts No CodeIgniter (Template Engine) – Parte 2</title>
-      <link>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</link>
+      <link>//localhost:1313/2010/habilitando-layouts-no-codeigniter-template-engine-2/</link>
       <pubDate>Thu, 18 Feb 2010 00:00:00 +0000</pubDate>
       
-      <guid>/2010/habilitando-layouts-no-codeigniter-template-engine-2/</guid>
+      <guid>//localhost:1313/2010/habilitando-layouts-no-codeigniter-template-engine-2/</guid>
       <description>&lt;div id=&#34;atencao&#34;&gt;
   &lt;p&gt;
     Atenção!! Este artigo foi escrito em cima da versão 1 do Codeigniter. Para detalhes de como usar com a versão 2 do framework &lt;a href=&#34;http://flaviosilveira.com/2011/codeigniter-2-templates-e-layouts&#34;&gt;clique aqui&lt;/a&gt;.
@@ -199,10 +199,10 @@ Para ajudar ela está com os comentários do próprio &lt;a href=&#34;http://www
     
     <item>
       <title>Comparando Arrays E Trazendo Os Valores Diferentes</title>
-      <link>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</link>
+      <link>//localhost:1313/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</link>
       <pubDate>Wed, 16 Sep 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</guid>
+      <guid>//localhost:1313/2009/comparando-arrays-e-trazendo-os-valores-diferentes/</guid>
       <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
 
 &lt;p&gt;Ontem precisei comparar os resultados de dois arrays e deles trazer os valores que estavam em apenas um dos arrays.&lt;/p&gt;
@@ -229,10 +229,10 @@ Pois é o único valor que consta no primeiro array e não no segundo.&lt;/p&gt;
     
     <item>
       <title>CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios</title>
-      <link>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</link>
+      <link>//localhost:1313/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</link>
       <pubDate>Sun, 26 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</guid>
+      <guid>//localhost:1313/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/</guid>
       <description>&lt;p&gt;Cenário:&lt;/p&gt;
 
 &lt;p&gt;Você compra o domínio principal, &lt;em&gt;www.site.com.br&lt;/em&gt;. E você vai ter duas versões desse site, uma para cada cliente, que vai usar todas as regras de negócio iguais. A única diferença será o layout. Os clientes pediram os subdomínios &lt;em&gt;branco.site.com.br&lt;/em&gt; e &lt;em&gt;preto.site.com.br&lt;/em&gt;.&lt;/p&gt;
@@ -271,10 +271,10 @@ $config[&amp;lsquo;base_url&amp;rsquo;]     = &amp;ldquo;&lt;a href=&#34;http://
     
     <item>
       <title>CodeIgniter ‘metido’ a Ruby on Rails. (ciforms.sh)</title>
-      <link>/2009/codeigniter-metido-a-ruby/</link>
+      <link>//localhost:1313/2009/codeigniter-metido-a-ruby/</link>
       <pubDate>Thu, 16 Apr 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/codeigniter-metido-a-ruby/</guid>
+      <guid>//localhost:1313/2009/codeigniter-metido-a-ruby/</guid>
       <description>&lt;p&gt;Salve Galera&amp;#8230;&lt;/p&gt;
 
 &lt;p&gt;Vocês sabem, muitos projetos em sistemas são similares, sempre aquela mesma coisa&amp;#8230;Listar, Inserir, Editar e Remover.&lt;br/&gt;
@@ -301,10 +301,10 @@ Isso me levou a querer criar algo para facilitar tudo isso.&lt;/p&gt;
     
     <item>
       <title>Múltiplos Sites Com CodeIgniter – Exemplo Prático</title>
-      <link>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</link>
+      <link>//localhost:1313/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</link>
       <pubDate>Tue, 27 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</guid>
+      <guid>//localhost:1313/2009/multiplos-sites-com-codeigniter-exemplo-pratico/</guid>
       <description>&lt;p&gt;Devido a muita procura do post sobre a restruturação do CodeIgniter para trabalhar com múltiplos sites (&lt;a href=&#34;http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter/&#34;&gt;Múltiplos sites com CodeIgniter&lt;/a&gt;), fiz um passo a passo aqui da estrutura para o pessoal entender melhor.&lt;/p&gt;
 
 &lt;p&gt;Estava recebendo muitas dúvidas, vamos ver se com este exemplo consigo deixar as coisas mais claras para todos.&lt;/p&gt;
@@ -327,10 +327,10 @@ Dentro da pasta system temos a pasta &lt;em&gt;application&lt;/em&gt;. É esta p
     
     <item>
       <title>Codeigniter, Internet Explorer E O Tempo De Expiração Da Sessão</title>
-      <link>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</link>
+      <link>//localhost:1313/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</link>
       <pubDate>Sat, 17 Jan 2009 00:00:00 +0000</pubDate>
       
-      <guid>/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</guid>
+      <guid>//localhost:1313/2009/codeigniter-internet-explorer-e-o-tempo-de-expiracao-da-sessao/</guid>
       <description>&lt;p&gt;Nesta Quinta-feira antes de sair do trabalho me deparo com uma surpresa no novo sistema que estou trabalhando. O login de acesso havia parado de funcionar no Internet Explorer. No Firefox tudo normal. Chata mania de ficar testando só no Firefox por conta das facilidades como Firebug e WebDeveloper, ai quando vamos testar no browser do usuário acontece essas coisas.&lt;/p&gt;
 
 &lt;p&gt;Sexta pela manhã, foi minha primeira tarefa do dia. Achei que seria algo bobo. Realmente era, mas levei 4 horas para descobrir.&lt;/p&gt;
@@ -353,10 +353,10 @@ print($_SESSION[&amp;lsquo;login&amp;rsquo;]);
     
     <item>
       <title>Erro 500, Timeout Apache, Max_execution_time PHP</title>
-      <link>/2008/erro-500-timeout-apache-max_execution_time-php/</link>
+      <link>//localhost:1313/2008/erro-500-timeout-apache-max_execution_time-php/</link>
       <pubDate>Fri, 26 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/erro-500-timeout-apache-max_execution_time-php/</guid>
+      <guid>//localhost:1313/2008/erro-500-timeout-apache-max_execution_time-php/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Cenário:&lt;/strong&gt; Site que funciona como um painel do cliente, onde ele adiciona produtos que necessita para seu negócio. Há uma área onde de um lado é listado os produtos já adicionados, e do outro os que ele ainda pode adicionar.&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Ocorrência:&lt;/strong&gt; &amp;#8220;Sempre demorou para carregar. Funcionava normal. Mas agora quando um cliente tem muitos produtos, não abre. Dá erro 500.&amp;#8221;&lt;br/&gt;
@@ -371,10 +371,10 @@ Certo. Muito bom. Não ajudou muito. Em nada melhor dizendo.&lt;br/&gt;
     
     <item>
       <title>Múltiplos Sites Com Codeigniter</title>
-      <link>/2008/alterando-configuracao-do-codeigniter/</link>
+      <link>//localhost:1313/2008/alterando-configuracao-do-codeigniter/</link>
       <pubDate>Fri, 19 Dec 2008 00:00:00 +0000</pubDate>
       
-      <guid>/2008/alterando-configuracao-do-codeigniter/</guid>
+      <guid>//localhost:1313/2008/alterando-configuracao-do-codeigniter/</guid>
       <description>&lt;p&gt;Entrei em uma empresa recentemente, e acredito que conquistei a vaga por já ter trabalhado com CodeIgniter antes. Pra quem não sabe o &lt;a href=&#34;http://codeigniter.com/&#34;&gt;CodeIgniter&lt;/a&gt; é um framework PHP com estrutura em &lt;a href=&#34;http://pt.wikipedia.org/wiki/MVC&#34;&gt;MVC&lt;/a&gt;, o que deixa tudo mais organizado. E foi a ferramenta escolhida pela empresa para organizar os seus bagunçados projetos.&lt;/p&gt;
 
 &lt;p&gt;Apesar de já ter trabalhado com CodeIgniter antes, nunca havia me envolvido tanto, entrado em suas configurações principais e etc. Me limitava ao superficial para fazer funcionar. Controler, consulta no banco pelo Model, chama a view para mostrar o conteúdo e fechou. No máximo chamar uma library.&lt;/p&gt;

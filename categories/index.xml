@@ -2,128 +2,128 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Vida e Tecnologia</title>
-    <link>/categories/</link>
+    <link>//localhost:1313/categories/</link>
     <description>Recent content in Categories on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Wed, 27 Feb 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="//localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>desenvolvimento</title>
-      <link>/categories/desenvolvimento/</link>
+      <link>//localhost:1313/categories/desenvolvimento/</link>
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/desenvolvimento/</guid>
+      <guid>//localhost:1313/categories/desenvolvimento/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vida</title>
-      <link>/categories/vida/</link>
+      <link>//localhost:1313/categories/vida/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>/categories/vida/</guid>
+      <guid>//localhost:1313/categories/vida/</guid>
       <description></description>
     </item>
     
     <item>
       <title>php</title>
-      <link>/categories/php/</link>
+      <link>//localhost:1313/categories/php/</link>
       <pubDate>Sun, 12 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>/categories/php/</guid>
+      <guid>//localhost:1313/categories/php/</guid>
       <description></description>
     </item>
     
     <item>
       <title>tecnologia</title>
-      <link>/categories/tecnologia/</link>
+      <link>//localhost:1313/categories/tecnologia/</link>
       <pubDate>Mon, 13 Jun 2016 00:00:00 +0000</pubDate>
       
-      <guid>/categories/tecnologia/</guid>
+      <guid>//localhost:1313/categories/tecnologia/</guid>
       <description></description>
     </item>
     
     <item>
       <title>games</title>
-      <link>/categories/games/</link>
+      <link>//localhost:1313/categories/games/</link>
       <pubDate>Mon, 17 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>/categories/games/</guid>
+      <guid>//localhost:1313/categories/games/</guid>
       <description></description>
     </item>
     
     <item>
       <title>shell</title>
-      <link>/categories/shell/</link>
+      <link>//localhost:1313/categories/shell/</link>
       <pubDate>Fri, 17 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>/categories/shell/</guid>
+      <guid>//localhost:1313/categories/shell/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mobile</title>
-      <link>/categories/mobile/</link>
+      <link>//localhost:1313/categories/mobile/</link>
       <pubDate>Sat, 13 Apr 2013 00:00:00 +0000</pubDate>
       
-      <guid>/categories/mobile/</guid>
+      <guid>//localhost:1313/categories/mobile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>vídeos e casts</title>
-      <link>/categories/v%C3%ADdeos-e-casts/</link>
+      <link>//localhost:1313/categories/v%C3%ADdeos-e-casts/</link>
       <pubDate>Mon, 19 Nov 2012 00:00:00 +0000</pubDate>
       
-      <guid>/categories/v%C3%ADdeos-e-casts/</guid>
+      <guid>//localhost:1313/categories/v%C3%ADdeos-e-casts/</guid>
       <description></description>
     </item>
     
     <item>
       <title>css</title>
-      <link>/categories/css/</link>
+      <link>//localhost:1313/categories/css/</link>
       <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
       
-      <guid>/categories/css/</guid>
+      <guid>//localhost:1313/categories/css/</guid>
       <description></description>
     </item>
     
     <item>
       <title>html</title>
-      <link>/categories/html/</link>
+      <link>//localhost:1313/categories/html/</link>
       <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
       
-      <guid>/categories/html/</guid>
+      <guid>//localhost:1313/categories/html/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Javascript</title>
-      <link>/categories/javascript/</link>
+      <link>//localhost:1313/categories/javascript/</link>
       <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
       
-      <guid>/categories/javascript/</guid>
+      <guid>//localhost:1313/categories/javascript/</guid>
       <description></description>
     </item>
     
     <item>
       <title>expressão regular</title>
-      <link>/categories/express%C3%A3o-regular/</link>
+      <link>//localhost:1313/categories/express%C3%A3o-regular/</link>
       <pubDate>Fri, 21 May 2010 00:00:00 +0000</pubDate>
       
-      <guid>/categories/express%C3%A3o-regular/</guid>
+      <guid>//localhost:1313/categories/express%C3%A3o-regular/</guid>
       <description></description>
     </item>
     
     <item>
       <title>sql</title>
-      <link>/categories/sql/</link>
+      <link>//localhost:1313/categories/sql/</link>
       <pubDate>Fri, 06 Nov 2009 00:00:00 +0000</pubDate>
       
-      <guid>/categories/sql/</guid>
+      <guid>//localhost:1313/categories/sql/</guid>
       <description></description>
     </item>
     
