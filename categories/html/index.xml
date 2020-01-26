@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>html on Vida e Tecnologia</title>
-    <link>//localhost:1313/categories/html/</link>
+    <link>http://flaviosilveira.com/categories/html/</link>
     <description>Recent content in html on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 25 Jul 2011 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/html/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://flaviosilveira.com/categories/html/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!</title>
-      <link>//localhost:1313/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
+      <link>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
       <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
+      <guid>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;Vocês já ouviram falar sobre o &lt;a href=&#34;http://initializr.com/&#34; title=&#34;Initializr!&#34;&gt;Initializr!&lt;/a&gt; ?&lt;/p&gt;

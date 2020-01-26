@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Javascript on Vida e Tecnologia</title>
-    <link>//localhost:1313/categories/javascript/</link>
+    <link>http://flaviosilveira.com/categories/javascript/</link>
     <description>Recent content in Javascript on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Mon, 25 Jul 2011 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://flaviosilveira.com/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Initializr – Comece Seu Projeto HTML5 Em 15 Segundos!</title>
-      <link>//localhost:1313/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
+      <link>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</link>
       <pubDate>Mon, 25 Jul 2011 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
+      <guid>http://flaviosilveira.com/2011/initializr-comece-seu-projeto-html5-em-15-segundos/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;Vocês já ouviram falar sobre o &lt;a href=&#34;http://initializr.com/&#34; title=&#34;Initializr!&#34;&gt;Initializr!&lt;/a&gt; ?&lt;/p&gt;
@@ -37,10 +37,10 @@ Grande Abraço!&lt;/p&gt;
     
     <item>
       <title>JQuery / JQuery Validation / Síncrono E Assíncrono / CPF único No Banco De Dados / Ajax Síncrono Com JQuery</title>
-      <link>//localhost:1313/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</link>
+      <link>http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</link>
       <pubDate>Wed, 17 Nov 2010 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</guid>
+      <guid>http://flaviosilveira.com/2010/jquery-jquery-validation-sincrono-e-assincrono-cpf-unico-no-banco-de-dados-ajax-sincrono-com-jquery/</guid>
       <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
 
 &lt;p&gt;Hoje trago um artigo pesado e extenso, mas acredito que vá ajudar o pessoal que precisar em várias frentes. Vou Tratar aqui de JQuery, JQuery Validation, a diferença entre síncrono e assíncrono, como fazer ajax síncrono usando JQuery e também soluções para problemas em um dia de trabalho no mundo do desenvolvimento.&lt;/p&gt;
@@ -93,10 +93,10 @@ Grande Abraço!&lt;/p&gt;
     
     <item>
       <title>JQuery E JQuery Price Para Formatar Seus Campos De Valor Monetário</title>
-      <link>//localhost:1313/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</link>
+      <link>http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</link>
       <pubDate>Fri, 15 Oct 2010 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</guid>
+      <guid>http://flaviosilveira.com/2010/jquery-e-jquery-price-para-formatar-seus-campos-de-valor-monetario/</guid>
       <description>&lt;p&gt;Salve pessoal.&lt;/p&gt;
 
 &lt;p&gt;Muita gente me manda emails ou mensagens no twitter achando que eu escrevi o Plugin JQuery Price para JQuery, que ajuda você a formatar seus campos de texto com valores monetários, valores de preço. Se você ler bem certinho na &lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;página oficial do Plugin&lt;/a&gt; (&lt;a href=&#34;http://meiaduzia.com.br/cuducos2/priceformat/&#34;&gt;http://meiaduzia.com.br/cuducos2/priceformat&lt;/a&gt;), e também no código ao baixar ele, verá que eu apenas colaborei com uma nova função do plugin, uma necessidade minha no início do ano de 2009.&lt;/p&gt;
@@ -140,10 +140,10 @@ $(document).ready(init);
     
     <item>
       <title>Redirecionando Usuários Do IPhone Para a Versão Mobile Do Seu Site – JavaScript</title>
-      <link>//localhost:1313/2009/redirecionando-para-versao-mobile/</link>
+      <link>http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/</link>
       <pubDate>Sun, 19 Jul 2009 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2009/redirecionando-para-versao-mobile/</guid>
+      <guid>http://flaviosilveira.com/2009/redirecionando-para-versao-mobile/</guid>
       <description>&lt;div id=&#34;atencao&#34;&gt;
   Atenção! O post abaixo foi escrito em uma época onde o desenvolvimento de sites mobile estava começando e as técnicas para se fazer isso ainda eram muito poucas. Embora a solução abaixo possa funcionar para alguns casos específicos, recomendo que você pesquise outras formas de trazer seu site para o mundo mobile, como Css-Query e outros.
 &lt;/div&gt;

@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vida on Vida e Tecnologia</title>
-    <link>//localhost:1313/categories/vida/</link>
+    <link>http://flaviosilveira.com/categories/vida/</link>
     <description>Recent content in vida on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Tue, 08 Jan 2019 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="//localhost:1313/categories/vida/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://flaviosilveira.com/categories/vida/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Como foi 2018 e o que você pode esperar de mim para 2019</title>
-      <link>//localhost:1313/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</link>
+      <link>http://flaviosilveira.com/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</link>
       <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</guid>
+      <guid>http://flaviosilveira.com/2019/como-foi-2018-e-o-que-voce-pode-esperar-de-mim-para-2019/</guid>
       <description>&lt;p&gt;Em minha carreira, graças a excelentes mestres e amigos no meu caminho (cito alguns no final), eu acabei evoluindo e subindo de cargo muito rapidamente. Em poucos anos como desenvolvedor eu fui promovido para Analista e assim se seguiu para Líder de desenvolvimento e chegando até Gerente de TI.&lt;/p&gt;
 
 &lt;p&gt;Em uma dessas promoções eu cheguei a pedir demissão, pois queria me preparar melhor antes de liderar ou dar instruções para um time. Mas depois aceitei os desafios.&lt;/p&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>4 Drops of Life - Five</title>
-      <link>//localhost:1313/2017/4-drops-of-life-5/</link>
+      <link>http://flaviosilveira.com/2017/4-drops-of-life-5/</link>
       <pubDate>Mon, 13 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2017/4-drops-of-life-5/</guid>
+      <guid>http://flaviosilveira.com/2017/4-drops-of-life-5/</guid>
       <description>&lt;p&gt;No 4 Drops of life de hoje trago uma sugestão de banda, um ponto de atenção que pode melhorar seu sono, uma dica para focar mais e uma ideia para se manter desafiado.&lt;/p&gt;
 
 &lt;p&gt;Para quem não conhece minha série 4 Drops of Life, visite &lt;a href=&#34;http://flaviosilveira.com/categories/vida/&#34;&gt;http://flaviosilveira.com/categories/vida/&lt;/a&gt; e os artigos com 4 pequenas dicas para você inserir na sua vida e viver melhor.&lt;/p&gt;
@@ -49,10 +49,10 @@ A primeira vez que trouxe essa série, trouxe uma banda e hoje quero repetir a d
     
     <item>
       <title>4 Drops of Life - Four</title>
-      <link>//localhost:1313/2017/4-drops-of-life-4/</link>
+      <link>http://flaviosilveira.com/2017/4-drops-of-life-4/</link>
       <pubDate>Mon, 06 Feb 2017 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2017/4-drops-of-life-4/</guid>
+      <guid>http://flaviosilveira.com/2017/4-drops-of-life-4/</guid>
       <description>&lt;p&gt;No 4 Drops of life de hoje trago uma sugestão para aumentar seu hábito de leitura, um aplicativo, maneiras de se desafiar e a história de uma amiga com uma pele perfeita.&lt;/p&gt;
 
 &lt;p&gt;Para quem não conhece minha série 4 Drops of Life, visite &lt;a href=&#34;http://flaviosilveira.com/categories/vida/&#34;&gt;http://flaviosilveira.com/categories/vida/&lt;/a&gt; e os artigos com 4 pequenas dicas para você inserir na sua vida e viver melhor.&lt;/p&gt;
@@ -65,10 +65,10 @@ Gosto de ler, mas sim, não é um hábito fácil. Seriados e filmes são muito a
     
     <item>
       <title>4 Drops of Life - Three</title>
-      <link>//localhost:1313/2016/4-drops-of-life-3/</link>
+      <link>http://flaviosilveira.com/2016/4-drops-of-life-3/</link>
       <pubDate>Mon, 07 Nov 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2016/4-drops-of-life-3/</guid>
+      <guid>http://flaviosilveira.com/2016/4-drops-of-life-3/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;No Drops of Life de hoje vamos falar de meditação, como melhorar seu inglês, sobre decisões difíceis e uma dica para aumentar sua produtividade no trabalho.&lt;/p&gt;
@@ -83,10 +83,10 @@ Tenho um conhecimento bom de mim mesmo, como aprendo e como absorvo melhor as co
     
     <item>
       <title>4 Drops of Life - Two</title>
-      <link>//localhost:1313/2016/4-drops-of-life-2/</link>
+      <link>http://flaviosilveira.com/2016/4-drops-of-life-2/</link>
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2016/4-drops-of-life-2/</guid>
+      <guid>http://flaviosilveira.com/2016/4-drops-of-life-2/</guid>
       <description>&lt;p&gt;Salve pessoal!&lt;/p&gt;
 
 &lt;p&gt;No Drops of Life de hoje vamos falar de hidratação, exercício para seu cérebro, música para trabalhar e qualidade de sono.&lt;/p&gt;
@@ -101,10 +101,10 @@ Vejo muita gente com aplicativos e outras técnicas para lembrar de tomar água.
     
     <item>
       <title>4 Drops of Life - One</title>
-      <link>//localhost:1313/2016/4-drops-of-life-1/</link>
+      <link>http://flaviosilveira.com/2016/4-drops-of-life-1/</link>
       <pubDate>Mon, 10 Oct 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2016/4-drops-of-life-1/</guid>
+      <guid>http://flaviosilveira.com/2016/4-drops-of-life-1/</guid>
       <description>&lt;p&gt;Continuando com a série 4 drops of life, essa é a edição 1.&lt;/p&gt;
 
 &lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
@@ -118,10 +118,10 @@ Vejo muita gente com aplicativos e outras técnicas para lembrar de tomar água.
     
     <item>
       <title>4 Drops of Life - Zero</title>
-      <link>//localhost:1313/2016/4-drops-of-life-0/</link>
+      <link>http://flaviosilveira.com/2016/4-drops-of-life-0/</link>
       <pubDate>Mon, 26 Sep 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2016/4-drops-of-life-0/</guid>
+      <guid>http://flaviosilveira.com/2016/4-drops-of-life-0/</guid>
       <description>&lt;p&gt;Reavaliando minha lista de metas para 2016, vejo que uma delas era &lt;strong&gt;Escrever mais&lt;/strong&gt;. Olhando aqui no blog coloquei apenas 2 posts esse ano, o que não altera minha péssima métrica dos últimos 730 dias. Procurando mudar isso vou começar essa série que estou chamando de &lt;strong&gt;4 Drops of life&lt;/strong&gt;, que no nosso português seria algo como &lt;strong&gt;4 gotas de vida&lt;/strong&gt;.&lt;/p&gt;
 
 &lt;p&gt;4 drops of life, é uma série de artigos onde trago 4 pequenas coisas para sua vida quinzenalmente. Um pensamento, uma tecnologia, arte, alimentação, exercícios e etc. Pequenos hábitos em busca de mais produtividade, conhecimento e uma vida melhor. Lifehackings!&lt;/p&gt;
@@ -131,10 +131,10 @@ Vejo muita gente com aplicativos e outras técnicas para lembrar de tomar água.
     
     <item>
       <title>Não Existem Pessoas Sem Tempo</title>
-      <link>//localhost:1313/2016/nao-existem-pessoas-sem-tempo/</link>
+      <link>http://flaviosilveira.com/2016/nao-existem-pessoas-sem-tempo/</link>
       <pubDate>Fri, 22 Apr 2016 00:00:00 +0000</pubDate>
       
-      <guid>//localhost:1313/2016/nao-existem-pessoas-sem-tempo/</guid>
+      <guid>http://flaviosilveira.com/2016/nao-existem-pessoas-sem-tempo/</guid>
       <description>&lt;p&gt;Você não é uma pessoa que não tem tempo, e sim uma pessoa que prioriza certas coisas, e outras não. Se você está priorizando coisas importantes, cabe a você entender o que melhor define essa palavra, quais seus objetivos de/com/pela vida e o que está lhe ajudando a alcançá-los.&lt;/p&gt;</description>
     </item>
     
