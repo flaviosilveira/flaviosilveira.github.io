@@ -5,10 +5,19 @@
     <link>http://flaviosilveira.com/categories/</link>
     <description>Recent content in Categories on Vida e Tecnologia</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 27 Feb 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://flaviosilveira.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vida</title>
+      <link>http://flaviosilveira.com/categories/vida/</link>
+      <pubDate>Mon, 27 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>http://flaviosilveira.com/categories/vida/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>desenvolvimento</title>
@@ -16,15 +25,6 @@
       <pubDate>Wed, 27 Feb 2019 00:00:00 +0000</pubDate>
       
       <guid>http://flaviosilveira.com/categories/desenvolvimento/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vida</title>
-      <link>http://flaviosilveira.com/categories/vida/</link>
-      <pubDate>Tue, 08 Jan 2019 00:00:00 +0000</pubDate>
-      
-      <guid>http://flaviosilveira.com/categories/vida/</guid>
       <description></description>
     </item>
     

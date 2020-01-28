@@ -35,7 +35,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://flaviosilveira.com/post/" />
 
-<meta property="og:updated_time" content="2019-02-27T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-01-27T00:00:00+00:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -124,6 +124,59 @@
       
     </section>
     <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        July 26, 2009
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="http://flaviosilveira.com/2009/codeigniter-use-a-global-_server-no-config-para-ganhar-dinamismo-com-subdominios/" class="link black dim">
+        CodeIgniter: Use a Global $_SERVER No Config Para Ganhar Dinamismo Com Subdomínios
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Cenário:</p>
+
+<p>Você compra o domínio principal, <em>www.site.com.br</em>. E você vai ter duas versões desse site, uma para cada cliente, que vai usar todas as regras de negócio iguais. A única diferença será o layout. Os clientes pediram os subdomínios <em>branco.site.com.br</em> e <em>preto.site.com.br</em>.</p>
+
+<p>Você pode fazer duas cópias do site em pastas diferentes, mas levando em consideração que eles tem o mesmo CORE, isso não é muito inteligente. Pense se você tiver que fazer uma atualização, você vai ter de mexer em ambos os projetos.</p>
+
+<p>Porque não fazer os subdomínios como links simbólicos para uma mesma pasta? De lá você pode fazer uma verificação. Se for um site, pega o layout branco, se for o outro pega o layout preto.</p>
+
+<p>Problema:</p>
+
+<p>No Codeigniter você define a URL principal do seu projeto nos arquivos de configuração, na variável <em>$config[&#8216;base_url&#8217;]</em>. Você não vai ter como colocar os subdomínios lá. O que fazer?</p>
+
+<p>Solução:<br/>
+Usar a Global <em>$_SERVER</em>.</p>
+
+<p>Essa Global traz informações como o host que você está acessando, o email do administrador da máquina, o software usado, a configuração do TimeOut entre outras.</p>
+
+<p>Para que você mesmo visualize tudo isso faça o seguinte. Abra o seu config.php do CodeIgniter e logo acima de onde está setado a variável <em>$config[&#8216;base_url&#8217;]</em> de um print_r, como abaixo:</p>
+
+<p>title = &ldquo;codeigniter use a global _server no config para ganhar dinamismo com subdominios&rdquo;
+| Base Site URL
+|&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;
+|
+| URL to your CodeIgniter root. Typically this will be your base URL,
+| WITH a trailing slash:
+|
+|       <a href="http://example.com/">http://example.com/</a>
+|
+*
+print_r($_SERVER);
+die;
+$config[&lsquo;base_url&rsquo;]     = &ldquo;<a href="http://www.site.com.br/&quot;">http://www.site.com.br/&quot;</a>;</p>
+
+<p></pre></p>
+    </div>
+  </div>
+
+        </div>
       
         <div class="relative w-100 w-30-l mb4 bg-white">
           
