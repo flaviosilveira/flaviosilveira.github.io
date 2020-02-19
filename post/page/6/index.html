@@ -35,7 +35,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://flaviosilveira.com/post/" />
 
-<meta property="og:updated_time" content="2020-01-27T00:00:00+00:00" />
+<meta property="og:updated_time" content="2020-02-19T00:00:00+00:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -124,6 +124,47 @@
       
     </section>
     <aside class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          
+            <div class="mb3 pa4 mid-gray overflow-hidden">
+    
+      <div class="f6">
+        September 16, 2009
+      </div>
+    
+    <h1 class="f3 near-black">
+      <a href="http://flaviosilveira.com/2009/comparando-arrays-e-trazendo-os-valores-diferentes/" class="link black dim">
+        Comparando Arrays E Trazendo Os Valores Diferentes
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <p>Salve pessoal.</p>
+
+<p>Ontem precisei comparar os resultados de dois arrays e deles trazer os valores que estavam em apenas um dos arrays.</p>
+
+<p>A princípio procurei uma função que fizesse isso pra mim, achei que o <em>array_diff</em> fizesse isso para a gente. Mas me enganei! Não achei uma função com esse resultado.</p>
+
+<p>A função <em>array_diff</em> na verdade traz apenas os valores que constam no primeiro array, mas não constam no segundo.<br/>
+Exemplo:</p>
+
+<p>title = &ldquo;comparando arrays e trazendo os valores diferentes&rdquo;</p>
+
+<p>$array1 = array(&ldquo;bola&rdquo;, &ldquo;quadrado&rdquo;, &ldquo;triangulo&rdquo;);
+$array2 = array(&ldquo;esfera&rdquo;, &ldquo;quadrado&rdquo;, &ldquo;triangulo&rdquo;);</p>
+
+<p>$result = array_diff($array1, $array2);
+print_r($result);</p>
+
+<p>?&gt;
+</pre></p>
+
+<p>O resultado do código acima nos retorna um array com o valor &#8220;bola&#8221;.<br/>
+Pois é o único valor que consta no primeiro array e não no segundo.</p>
+    </div>
+  </div>
+
+        </div>
       
         <div class="relative w-100 w-30-l mb4 bg-white">
           
@@ -464,34 +505,6 @@ Certo. Muito bom. Não ajudou muito. Em nada melhor dizendo.<br/>
 
         </div>
       
-        <div class="relative w-100 w-30-l mb4 bg-white">
-          
-            <div class="mb3 pa4 mid-gray overflow-hidden">
-    
-      <div class="f6">
-        December 19, 2008
-      </div>
-    
-    <h1 class="f3 near-black">
-      <a href="http://flaviosilveira.com/2008/alterando-configuracao-do-codeigniter/" class="link black dim">
-        Múltiplos Sites Com Codeigniter
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <p>Entrei em uma empresa recentemente, e acredito que conquistei a vaga por já ter trabalhado com CodeIgniter antes. Pra quem não sabe o <a href="http://codeigniter.com/">CodeIgniter</a> é um framework PHP com estrutura em <a href="http://pt.wikipedia.org/wiki/MVC">MVC</a>, o que deixa tudo mais organizado. E foi a ferramenta escolhida pela empresa para organizar os seus bagunçados projetos.</p>
-
-<p>Apesar de já ter trabalhado com CodeIgniter antes, nunca havia me envolvido tanto, entrado em suas configurações principais e etc. Me limitava ao superficial para fazer funcionar. Controler, consulta no banco pelo Model, chama a view para mostrar o conteúdo e fechou. No máximo chamar uma library.</p>
-
-<p>Porém pediram para mim e meu amigo <a href="http://twitter.com/RonieNeubauer">Ronie</a>, que já tinhamos experiência com a ferramenta, para deixar ela configurada para múltiplos sites. Já tinhamos visto isso antes. Vamos lá! Pesquisar no segundo cérebro (<a href="http://www.google.com">Google</a>)!</p>
-
-<p>O site oficial propõe duas maneiras para se trabalhar com múltiplos sites em CodeIgniter. A primeira seria criando as pastas principais dos sites dentro de Application (Application é onde fica a estrutura do site). Funciona como se cada pasta dessa, fosse um application. Logo, você deve replicar o conteúdo da pasta application que vem por padrão no CodeIgniter para cada site que for ter, renomeando para um nome de acordo (No exemplo abaixo a pasta site1 e a pasta site2).<br/>
-<img class="alignnone size-full wp-image-54" title="ci1" src="../../assets/uploads/2009/01/ci1.jpg" alt="ci1" width="148" height="139" /><br/>
-<br style='clear: both' /></p>
-    </div>
-  </div>
-
-        </div>
-      
     </aside>
     
 
@@ -573,12 +586,23 @@ Certo. Muito bom. Não ajudou muito. Em nada melhor dizendo.<br/>
     <li class="page-item active"><a class="page-link" href="/post/page/6/">6</a></li>
     
     
-    <li class="page-item disabled">
-    <a  class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+    
+    
+    
+    
+        
+        
+    
+    
+    <li class="page-item"><a class="page-link" href="/post/page/7/">7</a></li>
+    
+    
+    <li class="page-item">
+    <a href="/post/page/7/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
     </li>
     
     <li class="page-item">
-        <a href="/post/page/6/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
+        <a href="/post/page/7/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
     </li>
     
 </ul>
